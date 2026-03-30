@@ -1,0 +1,1 @@
+# fclass-landing\n\nFirst Class Travel — fclass.by landing site.\nCorporate travel, VIP tours, visa support.\nDeployed via Vercel.\n
