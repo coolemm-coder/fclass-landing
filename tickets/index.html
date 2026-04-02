@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO -->
+    <title>Авиабилеты из Минска — First Class | GDS-системы, лоукостеры, спецбагаж</title>
+    <meta name="description" content="Авиабилеты из Минска через GDS-системы: 400+ авиакомпаний, спецбагаж, европейские лоукостеры, сложные маршруты. Персональный подбор, а не поисковик. С 2018 года.">
+    <meta name="keywords" content="авиабилеты минск, купить авиабилеты минск, авиабилеты из минска, гдс авиабилеты, спецбагаж авиабилет, лоукостеры из минска, корпоративные авиабилеты, first class travel">
+    <link rel="canonical" href="https://fclass.by/tickets/">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.png" type="image/png" sizes="120x120">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Авиабилеты из Минска — First Class Travel">
+    <meta property="og:description" content="GDS-системы, лоукостеры, спецбагаж, сложные маршруты. Не поисковик — персональный сервис.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fclass.by/tickets/">
+    <meta property="og:image" content="https://fclass.by/hero-bg.jpg">
+    <meta property="og:locale" content="ru_BY">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #0c1825;
+            --primary-light: #1a3a5c;
+            --cream: #ffffff;
+            --sand: #f7f8fa;
+            --gray: #5a6d7e;
+            --white: #ffffff;
+            --accent: #c9a962;
+            --accent-light: #dfc78a;
+            --accent-glow: rgba(201, 169, 98, 0.3);
+            --font-sans: 'DM Sans', sans-serif;
+            --font-serif: 'Playfair Display', serif;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+            --shadow-md: 0 8px 30px rgba(0,0,0,0.08);
+            --shadow-lg: 0 20px 60px rgba(0,0,0,0.12);
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --transition: all 0.4s var(--ease-out-expo);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-sans); background: var(--white); color: var(--primary); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+
+        /* Navigation */
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            padding: 0 60px; height: 70px;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(12, 24, 37, 0.95); backdrop-filter: blur(20px);
+        }
+        .nav-logo { display: flex; align-items: center; text-decoration: none; }
+        .nav-logo-img { height: 48px; width: auto; }
+        .nav-links { display: flex; gap: 36px; list-style: none; align-items: center; }
+        .nav-links a { text-decoration: none; font-size: 13px; font-weight: 500; color: var(--white); letter-spacing: 0.5px; transition: var(--transition); }
+        .nav-links a:hover { color: var(--accent); }
+        .nav-links a.active { color: var(--accent); }
+        .nav-cta {
+            padding: 12px 28px; border-radius: 6px; font-size: 12px; font-weight: 700;
+            text-decoration: none; letter-spacing: 1.5px; text-transform: uppercase;
+            background: var(--accent); color: var(--primary); transition: var(--transition);
+        }
+        .nav-cta:hover { background: var(--white); }
+        .nav-mobile { display: none; width: 28px; height: 20px; flex-direction: column; justify-content: space-between; cursor: pointer; }
+        .nav-mobile span { height: 2px; background: var(--white); }
+        .nav-links.mobile-open {
+            display: flex !important; position: absolute; top: 100%; left: 0; right: 0;
+            flex-direction: column; background: var(--primary); padding: 30px; gap: 20px;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 80vh; display: flex; align-items: center; position: relative;
+            background: var(--primary); padding: 120px 60px 80px;
+        }
+        .hero-bg { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+        .hero-bg img { width: 100%; height: 100%; object-fit: cover; opacity: 0.35; }
+        .hero-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(12,24,37,0.95) 0%, rgba(12,24,37,0.7) 50%, rgba(12,24,37,0.4) 100%); }
+        .hero-content { position: relative; z-index: 1; max-width: 700px; }
+        .hero-badge { display: inline-block; background: var(--accent); color: var(--primary); font-size: 11px; font-weight: 700; letter-spacing: 2px; padding: 8px 20px; border-radius: 4px; margin-bottom: 24px; text-transform: uppercase; }
+        .hero h1 { font-family: var(--font-serif); font-size: clamp(32px, 5vw, 52px); font-weight: 700; color: var(--white); line-height: 1.15; margin-bottom: 20px; }
+        .hero h1 em { font-style: normal; color: var(--accent); }
+        .hero-desc { font-size: 18px; color: rgba(255,255,255,0.8); margin-bottom: 32px; line-height: 1.8; }
+        .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+
+        /* Buttons */
+        .btn { display: inline-flex; align-items: center; gap: 10px; padding: 16px 32px; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; text-decoration: none; border-radius: 6px; transition: var(--transition); cursor: pointer; border: none; font-family: inherit; }
+        .btn-primary { background: var(--accent); color: var(--primary); }
+        .btn-primary:hover { background: var(--accent-light); transform: translateY(-2px); }
+        .btn-outline { background: transparent; color: var(--white); border: 1px solid rgba(255,255,255,0.3); }
+        .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.1); }
+
+        /* Section styles */
+        .section { padding: 100px 60px; }
+        .section-alt { background: var(--sand); }
+        .section-dark { background: var(--primary); color: var(--white); }
+        .section-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; text-align: center; }
+        .section-title { font-family: var(--font-serif); font-size: clamp(28px, 4vw, 42px); font-weight: 700; text-align: center; margin-bottom: 16px; line-height: 1.2; }
+        .section-subtitle { font-size: 17px; color: var(--gray); text-align: center; max-width: 650px; margin: 0 auto 60px; line-height: 1.7; }
+        .section-dark .section-subtitle { color: rgba(255,255,255,0.7); }
+
+        /* USP Grid — why not Aviasales */
+        .usp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1100px; margin: 0 auto; }
+        .usp-card { background: var(--white); padding: 40px 30px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.06); transition: var(--transition); }
+        .usp-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+        .usp-icon { width: 56px; height: 56px; background: var(--primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; color: var(--accent); }
+        .usp-title { font-family: var(--font-serif); font-size: 20px; font-weight: 700; margin-bottom: 12px; }
+        .usp-desc { font-size: 14px; color: var(--gray); line-height: 1.7; }
+        .usp-tag { display: inline-block; background: rgba(201,169,98,0.15); color: var(--primary); font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 20px; margin-top: 16px; letter-spacing: 0.5px; }
+
+        /* Comparison table */
+        .compare-wrap { max-width: 900px; margin: 0 auto; overflow-x: auto; }
+        .compare-table { width: 100%; border-collapse: collapse; font-size: 15px; }
+        .compare-table th { background: var(--primary); color: var(--white); padding: 16px 20px; text-align: left; font-weight: 600; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; }
+        .compare-table th:first-child { border-radius: 8px 0 0 0; }
+        .compare-table th:last-child { border-radius: 0 8px 0 0; }
+        .compare-table td { padding: 14px 20px; border-bottom: 1px solid rgba(0,0,0,0.06); }
+        .compare-table tr:last-child td { border-bottom: none; }
+        .compare-table tr:hover td { background: rgba(201,169,98,0.05); }
+        .compare-table .check { color: #22c55e; font-weight: 700; font-size: 18px; }
+        .compare-table .cross { color: #ef4444; font-weight: 700; font-size: 18px; }
+        .compare-table .fc-col { background: rgba(201,169,98,0.08); font-weight: 600; }
+
+        /* Services detailed */
+        .services-detail { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; max-width: 1000px; margin: 0 auto; }
+        .sd-card { padding: 40px; border-radius: 16px; background: var(--white); border: 1px solid rgba(0,0,0,0.06); }
+        .sd-card h3 { font-family: var(--font-serif); font-size: 22px; font-weight: 700; margin-bottom: 12px; }
+        .sd-card p { font-size: 15px; color: var(--gray); line-height: 1.7; margin-bottom: 16px; }
+        .sd-list { list-style: none; }
+        .sd-list li { font-size: 14px; padding: 6px 0; padding-left: 24px; position: relative; color: var(--gray); }
+        .sd-list li::before { content: ""; position: absolute; left: 0; top: 14px; width: 8px; height: 8px; background: var(--accent); border-radius: 50%; }
+
+        /* B2B section */
+        .b2b-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1000px; margin: 0 auto; align-items: center; }
+        .b2b-content h3 { font-family: var(--font-serif); font-size: 28px; font-weight: 700; color: var(--white); margin-bottom: 16px; }
+        .b2b-content p { font-size: 16px; color: rgba(255,255,255,0.75); line-height: 1.8; margin-bottom: 24px; }
+        .b2b-features { list-style: none; }
+        .b2b-features li { font-size: 15px; color: rgba(255,255,255,0.9); padding: 10px 0; padding-left: 32px; position: relative; }
+        .b2b-features li::before { content: ""; position: absolute; left: 0; top: 17px; width: 12px; height: 12px; border: 2px solid var(--accent); border-radius: 50%; }
+        .b2b-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        .b2b-stat { background: rgba(255,255,255,0.08); padding: 30px; border-radius: 12px; text-align: center; }
+        .b2b-stat-num { font-family: var(--font-serif); font-size: 36px; font-weight: 700; color: var(--accent); }
+        .b2b-stat-label { font-size: 13px; color: rgba(255,255,255,0.6); margin-top: 4px; letter-spacing: 0.5px; }
+
+        /* CTA form */
+        .form-section { padding: 100px 60px; background: var(--sand); }
+        .form-container { max-width: 600px; margin: 0 auto; background: var(--white); padding: 50px; border-radius: 16px; box-shadow: var(--shadow-lg); }
+        .form-title { font-family: var(--font-serif); font-size: 30px; font-weight: 700; text-align: center; margin-bottom: 8px; }
+        .form-subtitle { text-align: center; color: var(--gray); margin-bottom: 32px; font-size: 15px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 0; }
+        .form-group { margin-bottom: 20px; }
+        .form-label { display: block; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--gray); margin-bottom: 8px; }
+        .form-input { width: 100%; padding: 14px 16px; background: var(--sand); border: 1px solid transparent; border-radius: 6px; font-size: 15px; font-family: inherit; transition: var(--transition); }
+        .form-input:focus { outline: none; border-color: var(--primary); background: var(--white); }
+        select.form-input { cursor: pointer; }
+        .form-submit { width: 100%; padding: 18px; margin-top: 8px; }
+        .form-note { text-align: center; font-size: 13px; color: var(--gray); margin-top: 16px; }
+
+        /* Footer */
+        .footer { background: var(--primary); color: var(--white); padding: 50px 60px 30px; }
+        .footer-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
+        .footer-brand p { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.7; margin-top: 12px; }
+        .footer h4 { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+        .footer-links { display: flex; flex-direction: column; gap: 10px; }
+        .footer-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 14px; transition: var(--transition); }
+        .footer-links a:hover { color: var(--white); }
+        .footer-bottom { text-align: center; padding-top: 30px; margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 13px; color: rgba(255,255,255,0.4); }
+
+        /* Floating buttons */
+        .floating-buttons { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 12px; z-index: 999; }
+        .floating-btn { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white); text-decoration: none; box-shadow: 0 4px 20px rgba(0,0,0,0.25); transition: var(--transition); }
+        .floating-btn:hover { transform: scale(1.1); }
+        .floating-btn.whatsapp { background: #25D366; }
+        .floating-btn.telegram { background: #0088cc; }
+        .floating-btn svg { width: 28px; height: 28px; }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .nav { padding: 0 20px; }
+            .nav-links { display: none; }
+            .nav-mobile { display: flex; }
+            .hero { padding: 100px 20px 60px; min-height: 70vh; }
+            .section { padding: 60px 20px; }
+            .usp-grid { grid-template-columns: 1fr; }
+            .services-detail { grid-template-columns: 1fr; }
+            .b2b-grid { grid-template-columns: 1fr; }
+            .b2b-stats { grid-template-columns: 1fr 1fr; }
+            .compare-wrap { margin: 0 -20px; padding: 0 20px; }
+            .form-section { padding: 60px 20px; }
+            .form-container { padding: 30px 20px; }
+            .form-row { grid-template-columns: 1fr; }
+            .footer-inner { grid-template-columns: 1fr; }
+        }
+    </style>
+
+    <!-- Schema.org: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://fclass.by/"},
+            {"@type": "ListItem", "position": 2, "name": "Билеты", "item": "https://fclass.by/tickets/"}
+        ]
+    }
+    </script>
+
+    <!-- Schema.org: Service -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Продажа авиабилетов из Минска",
+        "description": "Бронирование авиабилетов через GDS-системы: Amadeus, Sabre, Travelport, Sirena, ТКП. 400+ авиакомпаний, спецбагаж, европейские лоукостеры, корпоративное обслуживание.",
+        "provider": {
+            "@type": "TravelAgency",
+            "name": "First Class",
+            "url": "https://fclass.by",
+            "telephone": "+375447725266"
+        },
+        "areaServed": "BY",
+        "serviceType": "Бронирование авиабилетов"
+    }
+    </script>
+
+    <!-- Schema.org: FAQPage -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Чем покупка билетов через First Class отличается от Aviasales?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Aviasales — поисковик, который показывает цены и перенаправляет на сайт авиакомпании. First Class работает через профессиональные GDS-системы (Amadeus, Sabre, Travelport, Sirena, ТКП) с доступом к тарифам, которых нет в открытой продаже: корпоративные скидки, спецтарифы на группы, гибкие условия обмена и возврата. Плюс персональный менеджер решает любые вопросы — от спецбагажа до изменения маршрута в последний момент."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Можно ли купить билеты на европейские лоукостеры через First Class?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Да. Мы выкупаем билеты на Ryanair, Wizz Air, easyJet и другие лоукостеры, которые не продаются через GDS. Это удобно, если вам нужна единая бухгалтерская отчётость или помощь с оформлением сложного маршрута с пересадками."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Как оформить спецбагаж на рейс?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Через GDS-систему мы отправляем запрос напрямую авиакомпании: спортивное оборудование (лыжи, велосипед, сёрф, кайт), музыкальные инструменты, негабаритный багаж. Подтверждение приходит до вылета — не нужно разбираться в аэропорту."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Работаете ли вы с юридическими лицами?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Да, корпоративное обслуживание — одно из ключевых направлений. Заключаем договор, предоставляем закрывающие документы для бухгалтерии (акты, счета-фактуры), оптимизируем бюджет на командировки через подбор оптимальных тарифов и маршрутов."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Сколько стоят услуги First Class по бронированию билетов?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Сервисный сбор зависит от сложности маршрута и типа обслуживания. Часто за счёт доступа к закрытым тарифам итоговая стоимость билета через нас оказывается ниже, чем при самостоятельной покупке. Оставьте заявку — рассчитаем стоимость за 15 минут."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <!-- Yandex.Metrika -->
+    <script type="text/javascript">
+       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+       m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+       (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+       ym(107237229, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/107237229" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <a href="/" class="nav-logo">
+            <img src="/logo.png" alt="First Class — авиабилеты из Минска" class="nav-logo-img">
+        </a>
+        <ul class="nav-links">
+            <li><a href="/#services">Услуги</a></li>
+            <li><a href="/tickets/" class="active">Билеты</a></li>
+            <li><a href="/visa-support/">Визы</a></li>
+            <li><a href="/#expertise">О нас</a></li>
+            <li><a href="/blog/">Блог</a></li>
+            <li><a href="/#contact">Контакты</a></li>
+        </ul>
+        <a href="#form" class="nav-cta">Заявка на билеты</a>
+        <div class="nav-mobile" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-bg">
+            <img src="/hero-bg.jpg" alt="Авиабилеты из Минска — First Class Travel" loading="eager">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">Сертификат Департамента авиации РБ</div>
+            <h1>Авиабилеты — <em>не через поисковик, а через профессионала</em></h1>
+            <p class="hero-desc">
+                5 GDS-систем, 400+ авиакомпаний, европейские лоукостеры, спецбагаж и сложные маршруты.
+                Один звонок — и ваш билет оформлен с гарантией.
+            </p>
+            <div class="hero-ctas">
+                <a href="#form" class="btn btn-primary">Подобрать билет за 15 минут</a>
+                <a href="https://t.me/+375447725266" class="btn btn-outline" target="_blank" rel="noopener">Написать в Telegram</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why not Aviasales -->
+    <section class="section section-alt" id="advantages">
+        <div class="section-eyebrow">Почему мы, а не поисковик</div>
+        <h2 class="section-title">6 преимуществ, которых нет у Aviasales</h2>
+        <p class="section-subtitle">Aviasales показывает цены. Мы решаем задачи.</p>
+
+        <div class="usp-grid">
+            <div class="usp-card">
+                <div class="usp-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <h3 class="usp-title">5 GDS-систем</h3>
+                <p class="usp-desc">Amadeus, Sabre, Travelport, Sirena, ТКП — мы видим тарифы, которых нет в открытой продаже. Корпоративные скидки, спецтарифы, закрытые промо.</p>
+                <span class="usp-tag">400+ авиакомпаний</span>
+            </div>
+            <div class="usp-card">
+                <div class="usp-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"/><path d="M4 6v12c0 1.1.9 2 2 2h14v-4"/><path d="M18 12a2 2 0 0 0 0 4h4v-4z"/></svg>
+                </div>
+                <h3 class="usp-title">Спецбагаж без головной боли</h3>
+                <p class="usp-desc">Лыжи, кайт, велосипед, музыкальные инструменты, негабарит — оформляем запрос напрямую в авиакомпанию через GDS. Подтверждение до вылета.</p>
+                <span class="usp-tag">Любой негабарит</span>
+            </div>
+            <div class="usp-card">
+                <div class="usp-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                </div>
+                <h3 class="usp-title">Европейские лоукостеры</h3>
+                <p class="usp-desc">Ryanair, Wizz Air, easyJet — выкупаем билеты, которые не продаются через GDS. Единая отчётность для бухгалтерии, помощь со сложными маршрутами.</p>
+                <span class="usp-tag">Лоукостеры ЕС</span>
+            </div>
+            <div class="usp-card">
+                <div class="usp-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <h3 class="usp-title">Персональный менеджер</h3>
+                <p class="usp-desc">Не бот и не колл-центр. Менеджер знает ваш маршрут, помнит предпочтения и решает вопросы — от выбора места до экстренного перебронирования.</p>
+                <span class="usp-tag">Живой человек</span>
+            </div>
+            <div class="usp-card">
+                <div class="usp-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </div>
+                <h3 class="usp-title">Обмен и возврат без боли</h3>
+                <p class="usp-desc">Рейс отменили? Нужно изменить дату? Мы делаем обмен и возврат через GDS напрямую — быстрее и с лучшими условиями, чем через сайт авиакомпании.</p>
+                <span class="usp-tag">Гибкие условия</span>
+            </div>
+            <div class="usp-card">
+                <div class="usp-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <h3 class="usp-title">Сложные маршруты</h3>
+                <p class="usp-desc">Мульти-сити, стыковки через разные аэропорты, open jaw — собираем маршрут, который поисковик просто не покажет. Оптимизируем по цене и времени.</p>
+                <span class="usp-tag">Любая сложность</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison table -->
+    <section class="section">
+        <div class="section-eyebrow">Сравнение</div>
+        <h2 class="section-title">First Class vs Онлайн-агрегаторы</h2>
+        <p class="section-subtitle">Прямое сравнение: что вы получаете при покупке билетов через нас.</p>
+
+        <div class="compare-wrap">
+            <table class="compare-table">
+                <thead>
+                    <tr>
+                        <th style="width:40%">Возможность</th>
+                        <th style="width:30%" class="fc-col">First Class</th>
+                        <th style="width:30%">Aviasales / Skyscanner</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Доступ к GDS-тарифам</td>
+                        <td class="fc-col"><span class="check">&#10003;</span> 5 систем</td>
+                        <td><span class="cross">&#10007;</span> Нет</td>
+                    </tr>
+                    <tr>
+                        <td>Европейские лоукостеры</td>
+                        <td class="fc-col"><span class="check">&#10003;</span> Выкуп напрямую</td>
+                        <td><span class="check">&#10003;</span> Перенаправление</td>
+                    </tr>
+                    <tr>
+                        <td>Оформление спецбагажа</td>
+                        <td class="fc-col"><span class="check">&#10003;</span> Через GDS</td>
+                        <td><span class="cross">&#10007;</span> Самостоятельно</td>
+                    </tr>
+                    <tr>
+                        <td>Выбор места в салоне</td>
+                        <td class="fc-col"><span class="check">&#10003;</span> При бронировании</td>
+                        <td><span class="cross">&#10007;</span> После покупки</td>
+                    </tr>
+                    <tr>
+                        <td>Персональный менеджер</td>
+                        <td class="fc-col"><span class="check">&#10003;</span> Закреплённый</td>
+                        <td><span class="cross">&#10007;</span> Нет</td>
+                    </tr>
+                    <tr>
+                        <td>Обмен / возврат билета</td>
+                        <td class="fc-col"><span class="check">&#10003;</span> Мы решаем</td>
+                        <td><span class="cross">&#10007;</span> Сами с авиакомпанией</td>
+                    </tr>
+                    <tr>
+                        <td>Сложные маршруты (multi-city)</td>
+                        <td class="fc-col"><span class="check">&#10003;</span> Любая сложность</td>
+                        <td>Ограничено</td>
+                    </tr>
+                    <tr>
+                        <td>Документы для бухгалтерии</td>
+                        <td class="fc-col"><span class="check">&#10003;</span> Полный пакет</td>
+                        <td><span class="cross">&#10007;</span> Нет</td>
+                    </tr>
+                    <tr>
+                        <td>Помощь при задержке рейса</td>
+                        <td class="fc-col"><span class="check">&#10003;</span> 24/7</td>
+                        <td><span class="cross">&#10007;</span> Нет</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Services detailed -->
+    <section class="section section-alt">
+        <div class="section-eyebrow">Что мы делаем</div>
+        <h2 class="section-title">Полный спектр транспортных услуг</h2>
+        <p class="section-subtitle">Не только авиа — любой транспорт из Минска и обратно.</p>
+
+        <div class="services-detail">
+            <div class="sd-card">
+                <h3>Авиабилеты</h3>
+                <p>Регулярные рейсы, чартеры, лоукостеры. Эконом, бизнес, первый класс. Из Минска и из любого города мира.</p>
+                <ul class="sd-list">
+                    <li>Прямые рейсы Belavia, Turkish Airlines, FlyDubai, Аэрофлот</li>
+                    <li>Стыковочные маршруты в Европу через Стамбул, Москву, Дубай</li>
+                    <li>Лоукостеры: Ryanair, Wizz Air, easyJet — выкуп и оформление</li>
+                    <li>Бизнес-класс и апгрейды по спецтарифам</li>
+                </ul>
+            </div>
+            <div class="sd-card">
+                <h3>Ж/Д билеты</h3>
+                <p>Внутренние и международные маршруты. БЖД, РЖД, европейские операторы.</p>
+                <ul class="sd-list">
+                    <li>Минск — Москва, Санкт-Петербург, Калининград</li>
+                    <li>Региональные маршруты по Беларуси</li>
+                    <li>Плацкарт, купе, СВ — любой класс</li>
+                    <li>Электронное оформление, доставка билетов</li>
+                </ul>
+            </div>
+            <div class="sd-card">
+                <h3>Автобусные билеты</h3>
+                <p>Международные и междугородние рейсы из Минска.</p>
+                <ul class="sd-list">
+                    <li>Ecolines, Lux Express, FlixBus и другие</li>
+                    <li>Минск — Вильнюс, Варшава, Рига, Киев</li>
+                    <li>Трансферы до аэропортов (Вильнюс, Варшава)</li>
+                </ul>
+            </div>
+            <div class="sd-card">
+                <h3>Консьерж-сервис</h3>
+                <p>Полное сопровождение поездки — от билета до возвращения домой.</p>
+                <ul class="sd-list">
+                    <li>VIP-залы и fast track в аэропортах</li>
+                    <li>Трансферы аэропорт — отель</li>
+                    <li>Помощь при задержке / отмене рейса 24/7</li>
+                    <li>Ведение программ лояльности авиакомпаний</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- B2B Section -->
+    <section class="section section-dark" id="b2b">
+        <div class="section-eyebrow">Для бизнеса</div>
+        <h2 class="section-title" style="color: var(--white);">Корпоративные билеты</h2>
+        <p class="section-subtitle">Командировки, конференции, групповые поездки — единый партнёр для всей транспортной логистики компании.</p>
+
+        <div class="b2b-grid">
+            <div class="b2b-content">
+                <h3>Экономия без потери качества</h3>
+                <p>Мы подбираем оптимальные тарифы через GDS-системы, находим корпоративные скидки авиакомпаний и оптимизируем маршруты. Средняя экономия для постоянных клиентов — 15-20% от бюджета на командировки.</p>
+                <ul class="b2b-features">
+                    <li>Договор и полный пакет закрывающих документов</li>
+                    <li>Единый счёт за все виды транспорта</li>
+                    <li>Отчётность по расходам за любой период</li>
+                    <li>Корпоративные тарифы авиакомпаний</li>
+                    <li>Персональный менеджер для компании</li>
+                    <li>Экстренное перебронирование 24/7</li>
+                </ul>
+            </div>
+            <div class="b2b-stats">
+                <div class="b2b-stat">
+                    <div class="b2b-stat-num">400+</div>
+                    <div class="b2b-stat-label">авиакомпаний</div>
+                </div>
+                <div class="b2b-stat">
+                    <div class="b2b-stat-num">5</div>
+                    <div class="b2b-stat-label">GDS-систем</div>
+                </div>
+                <div class="b2b-stat">
+                    <div class="b2b-stat-num">С 2018</div>
+                    <div class="b2b-stat-label">года на рынке</div>
+                </div>
+                <div class="b2b-stat">
+                    <div class="b2b-stat-num">24/7</div>
+                    <div class="b2b-stat-label">поддержка</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Form -->
+    <section class="form-section" id="form">
+        <div class="form-container">
+            <h2 class="form-title">Заявка на билеты</h2>
+            <p class="form-subtitle">Укажите маршрут — подберём лучший вариант за 15 минут</p>
+            <form id="lead-form">
+                <div class="form-group">
+                    <label class="form-label">Тип обслуживания</label>
+                    <select class="form-input" name="service_type" required>
+                        <option value="">Выберите...</option>
+                        <option value="Частный клиент">Частный клиент — разовый билет</option>
+                        <option value="Корпоративный клиент">Корпоративный клиент — договор</option>
+                        <option value="Группа">Групповой билет (5+ человек)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Тип транспорта</label>
+                    <select class="form-input" name="transport_type" required>
+                        <option value="">Выберите...</option>
+                        <option value="Авиа">Авиабилеты</option>
+                        <option value="ЖД">Ж/Д билеты</option>
+                        <option value="Автобус">Автобус</option>
+                        <option value="Комбо">Комбинированный маршрут</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Откуда</label>
+                        <input type="text" class="form-input" name="from" placeholder="Город отправления" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Куда</label>
+                        <input type="text" class="form-input" name="to" placeholder="Город назначения" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Дата туда</label>
+                        <input type="date" class="form-input" name="date_out" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Дата обратно</label>
+                        <input type="date" class="form-input" name="date_back">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Имя</label>
+                        <input type="text" class="form-input" name="name" placeholder="Контактное лицо" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Телефон</label>
+                        <input type="tel" class="form-input" name="phone" placeholder="+375..." required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Комментарий</label>
+                    <input type="text" class="form-input" name="comment" placeholder="Пассажиры, класс, спецбагаж, пожелания...">
+                </div>
+                <input type="hidden" name="destination" value="Билеты">
+                <input type="hidden" name="source" value="landing_tickets">
+                <button type="submit" class="btn btn-primary form-submit">Отправить заявку</button>
+            </form>
+            <p class="form-note">Перезвоним с вариантами в течение 15 минут в рабочее время</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <img src="/logo.png" alt="First Class" style="height:40px;">
+                <p>Организация командировок и продажа билетов в Минске. Аккредитованный агент Belavia. Работаем с юридическими и физическими лицами с 2018 года. УНП 193582943.</p>
+            </div>
+            <div>
+                <h4>Услуги</h4>
+                <div class="footer-links">
+                    <a href="/tickets/">Билеты</a>
+                    <a href="/visa-support/">Визовая поддержка</a>
+                    <a href="/tours/">Направления</a>
+                    <a href="/concierge/">Консьерж-сервис</a>
+                </div>
+            </div>
+            <div>
+                <h4>Информация</h4>
+                <div class="footer-links">
+                    <a href="/blog/">Блог</a>
+                    <a href="/#expertise">О компании</a>
+                    <a href="/privacy/">Политика конфиденциальности</a>
+                </div>
+            </div>
+            <div>
+                <h4>Контакты</h4>
+                <div class="footer-links">
+                    <a href="tel:+375447725266">+375 44 772-52-66</a>
+                    <a href="mailto:marketing@fclass.by">marketing@fclass.by</a>
+                    <a href="https://t.me/+375447725266" target="_blank">Telegram</a>
+                    <a href="https://wa.me/375447725266" target="_blank">WhatsApp</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 First Class Travel. Все права защищены.
+        </div>
+    </footer>
+
+    <!-- Floating buttons -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/375447725266" class="floating-btn whatsapp" target="_blank" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+        <a href="https://t.me/firstclassby" class="floating-btn telegram" target="_blank" aria-label="Telegram">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+        </a>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            document.querySelector('.nav-links').classList.toggle('mobile-open');
+        }
+
+        // Form submission
+        document.getElementById('lead-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            var btn = e.target.querySelector('button');
+            var original = btn.textContent;
+            btn.textContent = 'Отправка...';
+            btn.disabled = true;
+
+            var data = Object.fromEntries(new FormData(e.target));
+            data.timestamp = new Date().toISOString();
+
+            try {
+                await fetch('https://emikss.host/webhook/fc-lead', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                btn.textContent = 'Отправлено!';
+                btn.style.background = '#22c55e';
+                e.target.reset();
+            } catch (err) {
+                btn.textContent = 'Ошибка — попробуйте позвонить';
+            }
+            setTimeout(function() { btn.textContent = original; btn.style.background = ''; btn.disabled = false; }, 4000);
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+            a.addEventListener('click', function(e) {
+                e.preventDefault();
+                var target = document.querySelector(a.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+
+</body>
+</html>
