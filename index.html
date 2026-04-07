@@ -754,18 +754,18 @@
 
         /* Final CTA */
         .final-cta {
-            padding: 120px 60px;
+            padding: 72px 40px;
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
             text-align: center;
         }
-        .final-cta-inner { max-width: 700px; margin: 0 auto; }
+        .final-cta-inner { max-width: 540px; margin: 0 auto; }
         .final-cta-eyebrow { color: var(--accent-light); }
         .final-cta-title {
-            font-family: var(--font-serif); font-size: clamp(28px, 4vw, 44px);
+            font-family: var(--font-serif); font-size: clamp(24px, 3vw, 34px);
             font-weight: 700; color: var(--white); margin-bottom: 16px;
         }
         .final-cta-text {
-            font-size: 18px; color: rgba(255,255,255,0.7); margin-bottom: 40px;
+            font-size: 16px; color: rgba(255,255,255,0.7); margin-bottom: 28px;
             max-width: 520px; margin-left: auto; margin-right: auto;
         }
         .final-cta-buttons { display: flex; gap: 24px; justify-content: center; }
@@ -836,7 +836,7 @@
             .nav { padding: 0 20px; height: 70px; }
             .hero, .philosophy, .expertise, .contact, .services { padding: 80px 20px; }
             .trust { padding: 60px 20px; }
-            .final-cta { padding: 80px 20px; }
+            .final-cta { padding: 56px 16px; }
             .map-section { padding: 0 20px 60px; }
             .trust-strip { padding: 10px 20px; }
             .ts-inner { flex-wrap: wrap; justify-content: center; gap: 4px 0; }
@@ -1027,6 +1027,66 @@
     .reveal-left { opacity: 0; transform: translateX(-40px); }
     .reveal-right { opacity: 0; transform: translateX(40px); }
     .reveal-scale { opacity: 0; transform: scale(0.9); }
+
+    /* FIX: Mobile audit fixes */
+    @media(max-width:768px) {
+        .hero-glow { display: none !important; }
+        .hero-accent-line { max-width: 60px; }
+        /* Fix small text */
+        .hero-bottom-text, .hero-meta { font-size: 14px !important; }
+        .feeling-stars-label, .feeling-subtitle { font-size: 14px !important; }
+        .consent-label, .consent-label span { font-size: 14px !important; }
+        .footer-bottom { font-size: 14px !important; }
+        /* Fix touch targets */
+        .contact-detail a { min-height: 44px; display: inline-flex; align-items: center; padding: 8px 0; }
+        .form-toggle-link a, #form-extra ~ div a { min-height: 44px; display: inline-flex; align-items: center; padding: 10px 0; }
+        input[type="checkbox"] { width: 24px; height: 24px; min-width: 24px; }
+        .service-link, a[href*="visa-support"] { min-height: 44px; display: inline-flex; align-items: center; padding: 10px 0; }
+    }
+
+    /* FIX: Remaining mobile issues */
+    @media(max-width:768px) {
+        /* Overflow: force everything within bounds */
+        section, .hero, .trust-strip, .services-section, .steps-section,
+        .expertise, .trust-section, .faq-section, .contact-section,
+        .map-section, .final-cta, .footer, .nav {
+            max-width: 100vw !important; overflow-x: hidden !important;
+        }
+        /* Trust strip items too small */
+        .ts-item, .ts-text, .ts-label, .ts-num,
+        .trust-strip span, .trust-strip div {
+            font-size: 12px !important; /* already small by design, ok for badge-style */
+        }
+        /* Hero eyebrow */
+        .hero-eyebrow { font-size: 12px !important; }
+        /* Hero CTA buttons */
+        .hero-actions a, .hero-buttons a, .hero-cta a {
+            font-size: 14px !important;
+            min-height: 48px !important;
+            padding: 12px 20px !important;
+        }
+        /* Nav CTA */
+        .nav-cta-btn, .nav .btn { font-size: 13px !important; }
+        /* Contact detail links */
+        .contact-detail, .contact-detail a {
+            min-height: 44px !important;
+            display: flex !important; align-items: center !important;
+            font-size: 15px !important;
+        }
+        /* Form toggle link */
+        a[onclick*="form-extra"] {
+            min-height: 44px !important;
+            display: inline-flex !important; align-items: center !important;
+            padding: 12px 0 !important; font-size: 14px !important;
+        }
+        /* Checkbox bigger */
+        .consent-label input[type="checkbox"] {
+            width: 24px !important; height: 24px !important;
+            min-width: 24px !important; margin-right: 8px !important;
+        }
+        /* Phone link in hero */
+        .hero-bottom-text a { font-size: 14px !important; min-height: 44px; display: inline-flex; align-items: center; }
+    }
 </style>
 
     <!-- BreadcrumbList Schema -->
@@ -1166,7 +1226,7 @@
                     </svg>
                 </div>
                 <h3 class="service-title">MICE</h3>
-                <p class="service-desc">Организация деловых мероп��иятий и корпоративных поездок.</p>
+                <p class="service-desc">Организация деловых мероприятий и корпоративных поездок.</p>
                 <ul class="service-features">
                     <li>Конференции и семинары</li>
                     <li>Incentive-программы</li>
