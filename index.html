@@ -1,1 +1,472 @@
-PLACEHOLDER
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-500FTKX6V9"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-500FTKX6V9");</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>Организация командировок под ключ — билеты, отели, визы | First Class</title>
+    <meta name="description" content="Организация служебных командировок под ключ — авиабилеты, отели, визы, трансферы. Полное сопровождение для компаний в Минске и по всей РБ. Документы для бухгалтерии. С 2018 года.">
+    <meta name="keywords" content="служебные командировки, организация командировок Беларусь, командировки Минск, визовая поддержка Минск, командировки по РБ, деловые поездки Беларусь, деловые поездки, бизнес тревел, корпоративные командировки, организация служебных командировок, first class travel">
+    <meta name="author" content="First Class Travel">
+    <meta name="robots" content="index, follow">
+    <meta name="google-site-verification" content="zPDaMQYc6X1Rq6UfL8UvFNetKClXX64TdyMMROUAJNY" />
+    <meta name="yandex-verification" content="4e81328b8fa39540" />
+    <link rel="canonical" href="https://fclass.by/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Организация командировок под ключ | First Class">
+    <meta property="og:description" content="Командировки под ключ: билеты, отели, визы, трансферы. Закажите организацию командировки. С 2018 года.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fclass.by/">
+    <meta property="og:locale" content="ru_BY">
+    <meta property="og:image" content="https://fclass.by/hero-bg.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='32' height='32' fill='%234f46e5'/%3E%3Ctext x='8' y='24' font-family='Arial' font-size='20' font-weight='bold' fill='white'%3EFC%3C/text%3E%3C/svg%3E">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif; color: #2c3e50; background: #ffffff; overflow-x: hidden; }
+        html { scroll-behavior: smooth; }
+
+        /* Header */
+        header { background: rgba(255,255,255,.95); backdrop-filter: blur(8px); position: fixed; top: 0; left: 0; right: 0; z-index: 1000; border-bottom: 1px solid #e8eef7; }
+        .header-inner { max-width: 1140px; margin: 0 auto; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.3rem; font-weight: 700; color: #4f46e5; text-decoration: none; }
+        nav { display: flex; gap: 2rem; }
+        nav a { text-decoration: none; color: #5a6c7d; font-size: 0.875rem; font-weight: 500; transition: color 0.2s; }
+        nav a:hover { color: #4f46e5; }
+        .nav-cta { background: #4f46e5; color: white; padding: 8px 16px; border-radius: 6px; font-weight: 600; }
+        .nav-cta:hover { background: #4338ca; }
+
+        /* Main layout */
+        main { margin-top: 56px; }
+        .container { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+        section { padding: 60px 0; }
+
+        /* Hero */
+        .hero { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 100px 0; position: relative; overflow: hidden; }
+        .hero .container { position: relative; z-index: 1; }
+        .hero h1 { font-size: clamp(2rem, 5vw, 3rem); line-height: 1.2; margin-bottom: 24px; }
+        .hero p { font-size: 1.125rem; margin-bottom: 32px; opacity: 0.95; max-width: 600px; }
+        .hero .cta-btn { display: inline-block; background: white; color: #667eea; padding: 14px 32px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s; border: 2px solid white; }
+        .hero .cta-btn:hover { background: #667eea; color: white; }
+
+        /* Section Headings */
+        h2 { font-size: clamp(1.75rem, 4vw, 2.25rem); line-height: 1.3; margin-bottom: 40px; color: #1a202c; }
+        h3 { font-size: 1.25rem; margin-bottom: 16px; color: #2c3e50; }
+
+        /* Services Grid */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .service-card { background: #f8fafc; padding: 32px; border-radius: 12px; border: 1px solid #e2e8f0; transition: all 0.3s; }
+        .service-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(79, 70, 229, 0.1); border-color: #4f46e5; }
+        .service-card h3 { color: #4f46e5; }
+
+        /* Form Section */
+        .form-section { background: #f8fafc; border-radius: 12px; padding: 40px; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; color: #2c3e50; font-weight: 500; }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 12px; border: 1px solid #d1d5db; border-radius: 6px; font-family: inherit; font-size: 1rem; }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: #4f46e5; box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1); }
+        .form-btn { background: #4f46e5; color: white; padding: 12px 32px; border: none; border-radius: 6px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: background 0.3s; width: 100%; max-width: 300px; }
+        .form-btn:hover { background: #4338ca; }
+
+        /* FAQ Section */
+        .faq-item { margin-bottom: 24px; border-bottom: 1px solid #e2e8f0; padding-bottom: 24px; }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-question { cursor: pointer; font-weight: 600; color: #2c3e50; display: flex; justify-content: space-between; align-items: center; }
+        .faq-answer { display: none; margin-top: 16px; color: #5a6c7d; line-height: 1.6; }
+        .faq-item.active .faq-answer { display: block; }
+
+        /* Footer */
+        footer { background: #1a202c; color: white; padding: 40px 0; text-align: center; }
+        footer a { color: #667eea; text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+
+        /* Sticky Mobile CTA */
+        .sticky-mobile-cta { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: #4f46e5; color: white; padding: 12px 20px; text-align: center; z-index: 999; }
+        .sticky-mobile-cta a { color: white; text-decoration: none; font-weight: 600; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav { gap: 1rem; font-size: 0.75rem; }
+            .nav-cta { padding: 6px 12px; font-size: 0.75rem; }
+            .sticky-mobile-cta { display: block; }
+            section { padding: 40px 0; }
+            .form-section { padding: 24px; }
+        }
+
+        /* Social Proof */
+        .social-proof { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; align-items: center; margin: 40px 0; }
+        .proof-item { text-align: center; }
+        .proof-number { font-size: 2rem; font-weight: 700; color: #4f46e5; }
+        .proof-text { color: #5a6c7d; font-size: 0.875rem; }
+
+        /* Utilities */
+        .section-subtitle { color: #5a6c7d; font-size: 1rem; margin-bottom: 24px; line-height: 1.6; }
+        .text-center { text-align: center; }
+        .mt-40 { margin-top: 40px; }
+        .mb-40 { margin-bottom: 40px; }
+
+        /* Collapse Form Mobile */
+        .form-toggle { display: none; background: #4f46e5; color: white; padding: 12px; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; width: 100%; margin-bottom: 16px; }
+        @media (max-width: 640px) {
+            .form-toggle { display: block; }
+            .form-section { display: none; }
+            .form-section.active { display: block; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+    <div class="header-inner">
+        <a href="/" class="logo">First Class</a>
+        <nav>
+            <a href="#services">Услуги</a>
+            <a href="#contact" class="nav-cta">Заказать</a>
+        </nav>
+    </div>
+</header>
+
+<!-- Main -->
+<main>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Служебные командировки под ключ</h1>
+            <p>Авиабилеты, отели, визы, трансферы. Полное сопровождение для компаний в Минске и по всей Беларуси. Документы для бухгалтерии. С 2018 года.</p>
+            <a href="#contact" class="cta-btn">Заказать командировку</a>
+        </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="text-center">
+        <div class="container">
+            <h2>Почему нас выбирают</h2>
+            <div class="social-proof">
+                <div class="proof-item">
+                    <div class="proof-number">2500+</div>
+                    <div class="proof-text">Командировок организовано</div>
+                </div>
+                <div class="proof-item">
+                    <div class="proof-number">120+</div>
+                    <div class="proof-text">Корпоративных клиентов</div>
+                </div>
+                <div class="proof-item">
+                    <div class="proof-number">95%</div>
+                    <div class="proof-text">Повторных заказов</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <h2>Наши услуги</h2>
+            <p class="section-subtitle">Комплексная подготовка командировок и деловых поездок для компаний любого размера.</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Авиабилеты</h3>
+                    <p>Поиск и бронирование билетов по лучшим расценкам. Работаем с глобальными базами. Гибкие условия возврата и переноса. Помощь при задержках и отменах.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Бронирование отелей</h3>
+                    <p>Квартиры и отели в любой стране. Договорные цены для постоянных клиентов. Гарантия найча цены. Круглосуточная поддержка по проживанию.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Визовая поддержка</h3>
+                    <p>Подготовка и подача документов на визу. Ускоренное оформление. Консультации по требованиям стран. Сопровождение по всем этапам.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Трансферы и логистика</h3>
+                    <p>Встреча в аэропорту, доставка в отель. Аренда автомобиля с водителем. Организация внутренних перевозок по городу.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Документы для бухгалтерии</h3>
+                    <p>Авансовые отчёты и счета-фактуры. Уставные документы. Подтверждение расходов. Помощь с налоговым учётом.</p>
+                </div>
+                <div class="service-card">
+                    <h3>MICE (конференции, события)</h3>
+                    <p>Организация корпоративных мероприятий. Переговорные площадки. Подготовка площадок для деловых встреч. Логистика участников.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact" class="text-center">
+        <div class="container">
+            <h2>Заказать командировку</h2>
+            <p class="section-subtitle">Заполните форму ниже. Мы свяжемся с вами в течение 2 часов в рабочее время.</p>
+
+            <button class="form-toggle" id="form-toggle">Открыть форму заказа</button>
+
+            <div class="form-section" id="form-section" style="max-width: 600px; margin: 0 auto;">
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="name">Ваше имя</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Телефон</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Компания</label>
+                        <input type="text" id="company" name="company" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="trip-date">Дата поездки</label>
+                        <input type="date" id="trip-date" name="trip-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="destination">Пункт назначения</label>
+                        <input type="text" id="destination" name="destination" placeholder="Город или страна" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="comment">Комментарий</label>
+                        <textarea id="comment" name="comment" rows="4" placeholder="Дополнительные требования..."></textarea>
+                    </div>
+                    <button type="submit" class="form-btn">Отправить заявку</button>
+                </form>
+                <div id="form-thank-you" style="display: none; margin-top: 20px;">
+                    <h3 style="color: #4f46e5;">Спасибо за заявку!</h3>
+                    <p>Мы свяжемся с вами в течение 2 часов.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section>
+        <div class="container">
+            <h2>Часто задаваемые вопросы</h2>
+            <div id="faq-list" style="max-width: 700px; margin: 0 auto;">
+                <div class="faq-item">
+                    <div class="faq-question">Как быстро вы организуете командировку?</div>
+                    <div class="faq-answer">Стандартный срок — от 7 дней. При срочных командировках можем начать работу в течение 24 часов. Срок зависит от требований страны назначения и наличия документов.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Какие способы оплаты вы принимаете?</div>
+                    <div class="faq-answer">Оплата на расчетный счет компании. Выставляем счета и акты о выполнении. Возможна предоплата или постоплата в зависимости от статуса клиента.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Какие страны вы обслуживаете?</div>
+                    <div class="faq-answer">Мы организуем командировки в любую страну мира. Специализируемся на странах Европы, Азии и Ближнего Востока. Помогаем с визовой поддержкой для всех направлений.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Что входит в стоимость командировки?</div>
+                    <div class="faq-answer">Мы предоставляем смету по каждому элементу: авиабилеты, отель, трансферы, страховка. Итоговую стоимость согласуем с клиентом перед бронированием. Скрытых платежей нет.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Как вы помогаете с визами?</div>
+                    <div class="faq-answer">Консультируем по требованиям страны. Помогаем подготовить документы. Подаём визы от вашего имени. Отслеживаем статус. Забираем паспорт из посольства.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Можно ли отменить или изменить заказ?</div>
+                    <div class="faq-answer">Да. Условия отмены зависят от условий авиакомпании и отеля. Чем раньше вы известите нас об изменении, тем больше вероятность минимальных потерь. Некоторые тарифы допускают бесплатное изменение.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-align: center;">
+        <div class="container">
+            <h2 style="color: white;">Готовы организовать командировку?</h2>
+            <p class="section-subtitle" style="color: white;">Свяжитесь с нами прямо сейчас. Ответим на все вопросы и предложим индивидуальное решение для вашей компании.</p>
+            <a href="#contact" class="cta-btn" style="background: white; color: #667eea; margin-top: 20px;">Заполнить форму заказа</a>
+        </div>
+    </section>
+
+</main>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <p>&copy; 2024–2026 <a href="https://fclass.by">First Class Travel</a> — организация командировок в Минске и Беларуси</p>
+        <p style="margin-top: 12px; font-size: 0.875rem;">
+            Контакты: +375 (44) 772-52-66 | <a href="mailto:info@fclass.by">info@fclass.by</a>
+        </p>
+    </div>
+</footer>
+
+<!-- Sticky Mobile CTA -->
+<div class="sticky-mobile-cta">
+    <a href="#contact">Заказать командировку</a>
+</div>
+
+<!-- JSON-LD Schema Markup -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "First Class Travel",
+    "image": "https://fclass.by/hero-bg.jpg",
+    "description": "Организация служебных командировок под ключ — авиабилеты, отели, визы, трансферы",
+    "telephone": "+375447725266",
+    "email": "info@fclass.by",
+    "url": "https://fclass.by",
+    "areaServed": {
+        "@type": "Country",
+        "name": "BY"
+    },
+    "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "ул. Чайковского, 6а",
+        "addressLocality": "Минск",
+        "addressCountry": "BY"
+    },
+    "sameAs": [
+        "https://wa.me/375447725266"
+    ],
+    "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "156"
+    }
+}
+</script>
+
+<!-- FAQ Schema -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {
+            "@type": "Question",
+            "name": "Как быстро вы организуете командировку?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Стандартный срок — от 7 дней. При срочных командировках можем начать работу в течение 24 часов. Срок зависит от требований страны назначения и наличия документов."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Какие способы оплаты вы принимаете?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Оплата на расчетный счет компании. Выставляем счета и акты о выполнении. Возможна предоплата или постоплата в зависимости от статуса клиента."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Какие страны вы обслуживаете?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Мы организуем командировки в любую страну мира. Специализируемся на странах Европы, Азии и Ближнего Востока. Помогаем с визовой поддержкой для всех направлений."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Что входит в стоимость командировки?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Мы предоставляем смету по каждому элементу: авиабилеты, отель, трансферы, страховка. Итоговую стоимость согласуем с клиентом перед бронированием. Скрытых платежей нет."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Как вы помогаете с визами?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Консультируем по требованиям страны. Помогаем подготовить документы. Подаём визы от вашего имени. Отслеживаем статус. Забираем паспорт из посольства."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Можно ли отменить или изменить заказ?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Да. Условия отмены зависят от условий авиакомпании и отеля. Чем раньше вы известите нас об изменении, тем больше вероятность минимальных потерь. Некоторые тарифы допускают бесплатное изменение."
+            }
+        }
+    ]
+}
+</script>
+
+<!-- Form Submission Handler -->
+<script>
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Collect form data
+        const formData = {
+            name: document.getElementById('name').value,
+            phone: document.getElementById('phone').value,
+            company: document.getElementById('company').value,
+            tripDate: document.getElementById('trip-date').value,
+            destination: document.getElementById('destination').value,
+            comment: document.getElementById('comment').value,
+            timestamp: new Date().toISOString()
+        };
+
+        // Log to console (for demo)
+        console.log('Form submitted:', formData);
+
+        // Send to Telegram Bot (replace TELEGRAM_BOT_ID and CHAT_ID)
+        const BOT_TOKEN = '7358936256:AAFfpLB8BXwhJw5l2R6UX0bP4M5_YpYH7Ww';
+        const CHAT_ID = '558783876';
+        
+        const message = `
+🎫 *Новая заявка на командировку*
+👤 Имя: ${formData.name}
+📱 Телефон: ${formData.phone}
+🏢 Компания: ${formData.company}
+📅 Дата: ${formData.tripDate}
+📍 Пункт назначения: ${formData.destination}
+💬 Комментарий: ${formData.comment || '—'}
+⏰ Время: ${new Date().toLocaleString('ru-RU')}
+        `;
+
+        fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                chat_id: CHAT_ID,
+                text: message,
+                parse_mode: 'Markdown'
+            })
+        }).then(r => r.json()).then(data => {
+            if (data.ok) {
+                // Show thank you message
+                document.getElementById('contact-form').style.display = 'none';
+                const ty = document.getElementById('form-thank-you');
+                if (ty) ty.style.display = 'block';
+            }
+        })
+    });
+
+    // Form toggle button for mobile
+    const formToggle = document.getElementById('form-toggle');
+    const formSection = document.getElementById('form-section');
+    if (formToggle) {
+        formToggle.addEventListener('click', function() {
+            formSection.classList.toggle('active');
+            formToggle.textContent = formSection.classList.contains('active') ? 'Скрыть форму' : 'Открыть форму заказа';
+        });
+    }
+
+    // FAQ toggle functionality
+    document.querySelectorAll('.faq-question').forEach(question => {
+        question.addEventListener('click', function() {
+            const faqItem = this.closest('.faq-item');
+            faqItem.classList.toggle('active');
+        });
+    });
+</script>
+
+</body>
+</html>
