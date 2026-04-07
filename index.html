@@ -868,6 +868,165 @@
     .sticky-mobile-cta a{flex:1;text-align:center;padding:12px;border-radius:8px;font-weight:600;font-size:14px;text-decoration:none}
     .sticky-mobile-cta .smc-call{background:var(--accent);color:#fff}
     .sticky-mobile-cta .smc-tg{background:#f1f5f9;color:#1e293b}
+
+    /* ══ PREMIUM DESIGN UPGRADE ══ */
+
+    /* Gradient accent line on nav scroll */
+    .nav.scrolled { border-bottom: 1px solid rgba(201,169,98,0.15); }
+    .nav.scrolled::after {
+        content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
+        background: linear-gradient(90deg, transparent, var(--accent), transparent);
+        opacity: 0.5;
+    }
+
+    /* Section headings — premium gradient text accent */
+    .section-subtitle {
+        background: linear-gradient(135deg, var(--accent), var(--accent-light));
+        -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        background-clip: text; font-weight: 600; letter-spacing: 2px;
+    }
+
+    /* Service cards — glassmorphism hover */
+    .service-card {
+        backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(255,255,255,0.08);
+        transition: transform 0.5s var(--ease-out-expo), box-shadow 0.5s var(--ease-out-expo), border-color 0.5s ease;
+    }
+    .service-card:hover {
+        transform: translateY(-8px) scale(1.01);
+        box-shadow: 0 25px 60px rgba(0,0,0,0.2), 0 0 40px rgba(201,169,98,0.08);
+        border-color: rgba(201,169,98,0.25);
+    }
+    .service-card::before {
+        content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+        background: linear-gradient(90deg, transparent, var(--accent), transparent);
+        opacity: 0; transition: opacity 0.5s ease;
+    }
+    .service-card:hover::before { opacity: 1; }
+
+    /* Steps cards — numbered glow on hover */
+    .step-card {
+        transition: transform 0.5s var(--ease-out-expo), box-shadow 0.4s ease;
+        position: relative; overflow: hidden;
+    }
+    .step-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    }
+    .step-card::after {
+        content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+        background: radial-gradient(circle at center, rgba(201,169,98,0.06) 0%, transparent 70%);
+        opacity: 0; transition: opacity 0.5s ease;
+    }
+    .step-card:hover::after { opacity: 1; }
+
+    /* Trust/stat cards — pulse glow */
+    .trust-card {
+        transition: transform 0.4s var(--ease-out-expo), box-shadow 0.4s ease;
+    }
+    .trust-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 50px rgba(0,0,0,0.12), 0 0 30px rgba(201,169,98,0.1);
+    }
+
+    /* Feeling card (Yandex review) — subtle glow */
+    .feeling-card {
+        transition: transform 0.4s var(--ease-out-expo), box-shadow 0.4s ease;
+    }
+    .feeling-card:hover {
+        transform: translateY(-4px) scale(1.02);
+        box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+    }
+
+    /* FAQ accordion — smoother, accent on open */
+    .faq-q { transition: color 0.3s ease, padding-left 0.3s ease; }
+    .faq-q:hover { color: var(--accent); padding-left: 8px; }
+    .faq-item.active .faq-q { color: var(--accent); }
+    .faq-a { transition: max-height 0.6s var(--ease-out-expo), opacity 0.4s ease, padding 0.4s ease; }
+
+    /* CTA buttons — premium gradient border animation */
+    .btn-primary {
+        position: relative; overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(201,169,98,0.35);
+    }
+    .btn-primary::after {
+        content: ''; position: absolute; top: -2px; left: -2px; right: -2px; bottom: -2px;
+        background: linear-gradient(135deg, var(--accent), var(--accent-light), var(--accent));
+        z-index: -1; border-radius: inherit; opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+    .btn-primary:hover::after { opacity: 1; }
+
+    /* Contact form — premium border glow on focus */
+    .form-input:focus {
+        border-color: var(--accent) !important;
+        box-shadow: 0 0 0 3px rgba(201,169,98,0.15), 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    /* Expertise section image — subtle float animation */
+    @keyframes gentleFloat {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+    .expertise-image img { animation: gentleFloat 6s ease-in-out infinite; }
+
+    /* Map section polish */
+    .map-section { position: relative; }
+    .map-section::before {
+        content: ''; position: absolute; top: 0; left: 0; right: 0; height: 80px;
+        background: linear-gradient(to bottom, var(--sand), transparent);
+        pointer-events: none; z-index: 1;
+    }
+
+    /* Footer — gradient separator */
+    .footer { position: relative; }
+    .footer::before {
+        content: ''; position: absolute; top: 0; left: 10%; right: 10%; height: 1px;
+        background: linear-gradient(90deg, transparent, var(--accent), transparent);
+        opacity: 0.3;
+    }
+
+    /* Scrollbar premium styling */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--primary-dark); }
+    ::-webkit-scrollbar-thumb {
+        background: linear-gradient(to bottom, var(--accent), var(--primary-light));
+        border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+    /* Animated gradient on final CTA section */
+    @keyframes gradientShift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+    .final-cta {
+        background-size: 200% 200%;
+        animation: gradientShift 8s ease infinite;
+    }
+
+    /* WhatsApp/Telegram floating buttons — premium shadow */
+    .float-buttons a {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .float-buttons a:hover {
+        transform: scale(1.12);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+    }
+
+    /* Premium selection color */
+    ::selection { background: rgba(201,169,98,0.3); color: #fff; }
+
+    /* Smooth reveal base class for GSAP */
+    .reveal-up { opacity: 0; transform: translateY(40px); }
+    .reveal-left { opacity: 0; transform: translateX(-40px); }
+    .reveal-right { opacity: 0; transform: translateX(40px); }
+    .reveal-scale { opacity: 0; transform: scale(0.9); }
 </style>
 
     <!-- BreadcrumbList Schema -->
@@ -1044,7 +1203,7 @@
         <h2 class="section-title">Организация командировки за 4 шага</h2>
         <p class="section-subtitle">От заявки до закрывающих документов — полное сопровождение.</p>
         <div class="feelings-grid">
-            <div class="feeling-card">
+            <div class="feeling-card reveal-scale">
                 <div class="step-icon">
                     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                         <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
@@ -1086,7 +1245,7 @@
     </section>
 
     <!-- Expertise -->
-    <section class="expertise" id="expertise">
+    <section class="expertise reveal-up" id="expertise">
         <div class="expertise-grid">
             <div class="expertise-content">
                 <div class="section-eyebrow">О нас</div>
@@ -1308,7 +1467,7 @@
     </section>
 
     <!-- Final CTA -->
-    <section class="final-cta">
+    <section class="final-cta reveal-up">
         <div class="final-cta-inner">
             <div class="section-eyebrow final-cta-eyebrow">Начните сейчас</div>
             <h2 class="final-cta-title">Закажите организацию командировки</h2>
@@ -1477,7 +1636,7 @@
                     { y: 25, opacity: 0 },
                     Object.assign({ y: 0, opacity: 1, duration: 0.9, ease: ease }, ir), 0.75)
                 /* CTA button: subtle scale bounce */
-                .fromTo(document.querySelector('.hero-cta a') ? '.hero-cta a' : '.hero-overlay a',
+                .fromTo(document.querySelector('.hero-actions a, .hero-buttons a, .hero-content a') ? '.hero-actions a, .hero-buttons a, .hero-content a' : '.hero-content .btn',
                     { y: 15, opacity: 0, scale: 0.95 },
                     Object.assign({ y: 0, opacity: 1, scale: 1, duration: 0.8, ease: 'back.out(1.4)' }, ir), 0.95)
                 /* Scroll hint */
@@ -1812,6 +1971,190 @@
 
     <script>
     (function(){var f=document.getElementById('contact-form');if(!f)return;f.addEventListener('submit',function(e){e.preventDefault();if(typeof gtag==='function'){gtag('event','generate_lead',{event_category:'form',event_label:'contact_form'})}f.style.display='none';var ty=document.getElementById('form-thank-you');if(ty)ty.style.display='block'})})();
+    </script>
+
+    <script>
+    /* ══ PREMIUM ANIMATIONS ══ */
+    (function() {
+        if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+        /* ── Batch reveal: all sections fade in on scroll ── */
+        gsap.utils.toArray('.reveal-up').forEach(function(el) {
+            gsap.fromTo(el,
+                { opacity: 0, y: 50 },
+                { opacity: 1, y: 0, duration: 1, ease: 'power3.out',
+                  scrollTrigger: { trigger: el, start: 'top 85%', once: true }
+                }
+            );
+        });
+        gsap.utils.toArray('.reveal-scale').forEach(function(el) {
+            gsap.fromTo(el,
+                { opacity: 0, scale: 0.92 },
+                { opacity: 1, scale: 1, duration: 0.8, ease: 'back.out(1.2)',
+                  scrollTrigger: { trigger: el, start: 'top 85%', once: true }
+                }
+            );
+        });
+
+        /* ── Service cards: staggered entrance ── */
+        var serviceCards = gsap.utils.toArray('.service-card');
+        if (serviceCards.length) {
+            serviceCards.forEach(function(card, i) {
+                gsap.fromTo(card,
+                    { opacity: 0, y: 60, rotateX: 5 },
+                    { opacity: 1, y: 0, rotateX: 0, duration: 0.8, delay: i * 0.12,
+                      ease: 'power3.out',
+                      scrollTrigger: { trigger: card, start: 'top 88%', once: true }
+                    }
+                );
+            });
+        }
+
+        /* ── Step cards: sequential slide-in ── */
+        var stepCards = gsap.utils.toArray('.step-card');
+        if (stepCards.length) {
+            stepCards.forEach(function(card, i) {
+                gsap.fromTo(card,
+                    { opacity: 0, x: i % 2 === 0 ? -40 : 40, scale: 0.95 },
+                    { opacity: 1, x: 0, scale: 1, duration: 0.7, delay: i * 0.15,
+                      ease: 'power3.out',
+                      scrollTrigger: { trigger: card, start: 'top 88%', once: true }
+                    }
+                );
+            });
+        }
+
+        /* ── Trust cards: scale + rotate entrance ── */
+        var trustCards = gsap.utils.toArray('.trust-card');
+        if (trustCards.length) {
+            trustCards.forEach(function(card, i) {
+                gsap.fromTo(card,
+                    { opacity: 0, y: 40, scale: 0.9 },
+                    { opacity: 1, y: 0, scale: 1, duration: 0.7, delay: i * 0.1,
+                      ease: 'back.out(1.4)',
+                      scrollTrigger: { trigger: card, start: 'top 88%', once: true }
+                    }
+                );
+            });
+        }
+
+        /* ── Expertise section: image from right, text from left ── */
+        var expContent = document.querySelector('.expertise-content');
+        var expVisual = document.querySelector('.expertise-visual');
+        if (expContent) {
+            gsap.fromTo(expContent,
+                { opacity: 0, x: -50 },
+                { opacity: 1, x: 0, duration: 1, ease: 'power3.out',
+                  scrollTrigger: { trigger: expContent, start: 'top 80%', once: true }
+                }
+            );
+        }
+        if (expVisual) {
+            gsap.fromTo(expVisual,
+                { opacity: 0, x: 50 },
+                { opacity: 1, x: 0, duration: 1, ease: 'power3.out',
+                  scrollTrigger: { trigger: expVisual, start: 'top 80%', once: true }
+                }
+            );
+        }
+
+        /* ── FAQ items: staggered entrance ── */
+        var faqItems = gsap.utils.toArray('.faq-item');
+        if (faqItems.length) {
+            faqItems.forEach(function(item, i) {
+                gsap.fromTo(item,
+                    { opacity: 0, y: 25 },
+                    { opacity: 1, y: 0, duration: 0.5, delay: i * 0.08,
+                      ease: 'power2.out',
+                      scrollTrigger: { trigger: item, start: 'top 90%', once: true }
+                    }
+                );
+            });
+        }
+
+        /* ── Contact form: slide in from right ── */
+        var contactForm = document.querySelector('.contact-form-wrapper, .contact-form');
+        var contactInfo = document.querySelector('.contact-info');
+        if (contactInfo) {
+            gsap.fromTo(contactInfo,
+                { opacity: 0, x: -40 },
+                { opacity: 1, x: 0, duration: 0.8, ease: 'power3.out',
+                  scrollTrigger: { trigger: contactInfo, start: 'top 85%', once: true }
+                }
+            );
+        }
+        if (contactForm) {
+            gsap.fromTo(contactForm,
+                { opacity: 0, x: 40 },
+                { opacity: 1, x: 0, duration: 0.8, delay: 0.15, ease: 'power3.out',
+                  scrollTrigger: { trigger: contactForm, start: 'top 85%', once: true }
+                }
+            );
+        }
+
+        /* ── Section headings: clip-path wipe reveal ── */
+        gsap.utils.toArray('h2').forEach(function(h2) {
+            if (h2.closest('.hero')) return; // skip hero
+            gsap.fromTo(h2,
+                { clipPath: 'inset(0 100% 0 0)' },
+                { clipPath: 'inset(0 0% 0 0)', duration: 1, ease: 'power3.inOut',
+                  scrollTrigger: { trigger: h2, start: 'top 85%', once: true }
+                }
+            );
+        });
+
+        /* ── Parallax for section backgrounds ── */
+        gsap.utils.toArray('.trust-section, .final-cta').forEach(function(sec) {
+            gsap.to(sec, {
+                backgroundPositionY: '30%', ease: 'none',
+                scrollTrigger: { trigger: sec, start: 'top bottom', end: 'bottom top', scrub: 1 }
+            });
+        });
+
+        /* ── Enhanced counter animation (if not already running) ── */
+        /* The existing counters in the main script handle .trust-num,
+           this adds a subtle scale pulse when they finish */
+        gsap.utils.toArray('.trust-num').forEach(function(el) {
+            ScrollTrigger.create({
+                trigger: el, start: 'top 85%', once: true,
+                onEnter: function() {
+                    gsap.fromTo(el, { scale: 1 },
+                        { scale: 1.08, duration: 0.3, delay: 2.2,
+                          ease: 'power2.out', yoyo: true, repeat: 1 }
+                    );
+                }
+            });
+        });
+
+        /* ── Footer reveal ── */
+        var footer = document.querySelector('.footer');
+        if (footer) {
+            gsap.fromTo(footer,
+                { opacity: 0, y: 30 },
+                { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out',
+                  scrollTrigger: { trigger: footer, start: 'top 95%', once: true }
+                }
+            );
+        }
+
+        /* ── Cursor glow effect on hero (desktop only) ── */
+        if (window.innerWidth > 1024) {
+            var heroEl = document.querySelector('.hero');
+            if (heroEl) {
+                var glow = document.createElement('div');
+                glow.style.cssText = 'position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(201,169,98,0.08) 0%,transparent 70%);pointer-events:none;z-index:2;transform:translate(-50%,-50%);transition:opacity 0.3s;opacity:0;';
+                heroEl.style.position = 'relative';
+                heroEl.appendChild(glow);
+                heroEl.addEventListener('mousemove', function(e) {
+                    var rect = heroEl.getBoundingClientRect();
+                    glow.style.left = (e.clientX - rect.left) + 'px';
+                    glow.style.top = (e.clientY - rect.top) + 'px';
+                    glow.style.opacity = '1';
+                });
+                heroEl.addEventListener('mouseleave', function() { glow.style.opacity = '0'; });
+            }
+        }
+    })();
     </script>
 </body>
 </html>
