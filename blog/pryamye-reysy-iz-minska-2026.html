@@ -1,276 +1,358 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Прямые рейсы из Минска 2026: маршруты Belavia и партнёры | First Class</title>
-  <meta name="description" content="Полный список прямых рейсов из Минска на 2026 год. Направления Belavia, расписание, цены, где купить билеты.">
-  <meta name="keywords" content="прямые рейсы из Минска, Belavia расписание, авиабилеты Минск, куда летают из Минска">
-  <meta name="robots" content="index, follow">
-  <style>
-    :root { --primary: #0c1825; --accent: #c9a962; --text-dark: #1a1a1a; --text-light: #666; --bg-light: #f8f9fa; --border: #e8e8e8; --gray: #999; --white: #fff; }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: var(--text-dark); background: var(--white); line-height: 1.6; }
-    .header { background: var(--primary); color: var(--white); padding: 16px 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-    .nav { display: flex; justify-content: space-between; align-items: center; }
-    .logo { font-size: 20px; font-weight: 700; color: var(--accent); text-decoration: none; }
-    .nav-links { display: flex; gap: 24px; list-style: none; }
-    .nav-links a { color: var(--white); text-decoration: none; font-size: 14px; transition: color 0.3s; }
-    .nav-links a:hover { color: var(--accent); }
-    .article-header { background: linear-gradient(135deg, #0c1825 0%, #1a2947 100%); color: var(--white); padding: 80px 0; margin-bottom: 60px; }
-    .article-title { font-size: 48px; font-weight: 700; margin-bottom: 24px; line-height: 1.2; }
-    .article-meta { font-size: 14px; color: rgba(255,255,255,0.7); display: flex; gap: 24px; }
-    .article-content { font-size: 16px; line-height: 1.8; color: var(--text-dark); margin-bottom: 60px; }
-    .article-content h2 { font-size: 32px; margin-top: 48px; margin-bottom: 24px; color: var(--primary); }
-    .article-content h3 { font-size: 22px; margin-top: 32px; margin-bottom: 16px; color: var(--primary); }
-    .article-content p { margin-bottom: 20px; }
-    .article-content ul, .article-content ol { margin: 20px 0 20px 24px; }
-    .article-content li { margin-bottom: 10px; }
-    .highlight-box { background: linear-gradient(135deg, #f0f4ff 0%, #fff5e6 100%); border-left: 4px solid var(--accent); padding: 24px; margin: 30px 0; border-radius: 8px; }
-    .table-wrapper { overflow-x: auto; margin: 30px 0; }
-    table { width: 100%; border-collapse: collapse; margin: 20px 0; }
-    th { background: var(--primary); color: var(--white); padding: 12px; text-align: left; font-weight: 600; }
-    td { border-bottom: 1px solid var(--border); padding: 12px; }
-    tr:hover { background: var(--bg-light); }
-    .cta-button { display: inline-block; background: var(--primary); color: var(--white); padding: 16px 32px; text-decoration: none; border-radius: 6px; font-weight: 600; margin: 20px 0; transition: all 0.3s; }
-    .cta-button:hover { background: var(--accent); color: var(--primary); }
-    .faq-section { background: var(--bg-light); padding: 40px; border-radius: 8px; margin: 40px 0; }
-    .faq-item { margin-bottom: 24px; }
-    .faq-question { font-weight: 600; color: var(--primary); margin-bottom: 12px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border); }
-    .faq-answer { color: var(--text-light); line-height: 1.8; display: none; padding: 16px 0; }
-    .faq-item.active .faq-answer { display: block; }
-    .footer{background:#0c1825;color:#fff;padding:80px 60px 40px}.footer-content{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;max-width:1200px;margin:0 auto 60px}.footer-logo{height:64px;width:auto;margin-bottom:16px;display:block}.footer-desc{font-size:14px;line-height:1.8;color:rgba(255,255,255,0.6);max-width:300px}.footer-col h4{font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-bottom:24px;color:#fff}.footer-links{list-style:none}.footer-links li{margin-bottom:14px}.footer-links a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:14px;transition:all 0.3s}.footer-links a:hover{color:#fff}.footer-bottom{display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:0 auto;padding-top:40px;border-top:1px solid rgba(255,255,255,0.1);font-size:13px;color:rgba(255,255,255,0.5)}.footer-social{display:flex;gap:16px}.footer-social a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:13px;transition:all 0.3s}.footer-social a:hover{color:#fff}@media(max-width:768px){.footer{padding:60px 20px 30px}.footer-content{grid-template-columns:1fr;gap:40px}.footer-bottom{flex-direction:column;gap:20px;text-align:center}}
-    @media (max-width: 768px) {
-      .article-title { font-size: 32px; }
-      .article-content h2 { font-size: 24px; }
-      .nav-links { gap: 12px; font-size: 12px; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Прямые рейсы из Минска 2026: Куда летит Belavia | First Class</title>
+    <meta name="description" content="Полный список прямых авиарейсов из Минска на 2026 год. Направления Belavia, маршруты, расписание и как забронировать билеты через First Class.">
+    <meta name="keywords" content="прямые рейсы Минск 2026, Belavia маршруты, расписание авиарейсов, билеты из Минска">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://fclass.by/blog/pryamye-reysy-iz-minska-2026.html">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f9f9f9;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: linear-gradient(135deg, #003366 0%, #004488 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        article {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #003366;
+            margin: 30px 0 15px 0;
+            font-size: 1.8em;
+        }
+        h3 {
+            color: #004488;
+            margin: 20px 0 10px 0;
+            font-size: 1.3em;
+        }
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        a {
+            color: #004488;
+            text-decoration: none;
+            border-bottom: 2px solid #ffc107;
+        }
+        a:hover {
+            opacity: 0.7;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        table th {
+            background: #003366;
+            color: white;
+        }
+        table tr:hover {
+            background: #f5f5f5;
+        }
+        .highlight {
+            background: #fff3cd;
+            padding: 20px;
+            border-left: 4px solid #ffc107;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #ffc107 0%, #ff9800 100%);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 4px;
+            margin: 20px 0;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+        .cta-button:hover {
+            transform: scale(1.05);
+        }
+        footer {
+            background: #f0f0f0;
+            padding: 30px 20px;
+            text-align: center;
+            margin-top: 40px;
+            border-top: 2px solid #ddd;
+        }
+        .footer-logo{height:64px;width:auto;margin-bottom:16px;display:block}
+        footer p {
+            margin: 10px 0;
+            color: #666;
+        }
+        .meta {
+            color: #999;
+            font-size: 0.9em;
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
-  <header class="header">
-    <nav class="container nav">
-      <a href="https://fclass.by" class="logo">First Class</a>
-      <ul class="nav-links">
-        <li><a href="https://fclass.by/#services">Услуги</a></li>
-        <li><a href="https://fclass.by/blog/">Блог</a></li>
-        <li><a href="https://wa.me/375447725266">Контакты</a></li>
-      </ul>
-    </nav>
-  </header>
+    <header>
+        <h1>Прямые рейсы из Минска в 2026</h1>
+        <p>Актуальные маршруты Belavia, расписание и как забронировать</p>
+    </header>
 
-  <article>
-    <div class="article-header">
-      <div class="container">
-        <h1 class="article-title">Прямые рейсы из Минска 2026: куда летают Belavia</h1>
-        <div class="article-meta">
-          <div>📅 2026-03-28</div>
-          <div>👤 First Class</div>
-          <div>⏱ 10 мин чтения</div>
-        </div>
-      </div>
+    <div class="container">
+        <article>
+            <div class="meta">Опубликовано: 28 марта 2026 | First Class</div>
+
+            <h2>Что случилось с авиасообщением из Минска?</h2>
+            <p>После введения европейских санкций в мае 2021 года структура авиарейсов из Беларуси кардинально изменилась:</p>
+            <ul>
+                <li><strong>Европейские авиалинии (Lufthansa, LOT, Wizz Air, Ryanair)</strong> перестали летать в Минск</li>
+                <li><strong>Belavia</strong> (национальная авиакомпания) остается основным перевозчиком</li>
+                <li><strong>Турецкие авиалинии (Turkish Airlines, Pegasus)</strong> летают в Стамбул с пересадкой</li>
+                <li><strong>Российские авиалинии (Aeroflot, S7, Red Wings)</strong> предоставляют доступ в Москву и далее</li>
+            </ul>
+
+            <div class="highlight">
+                <strong>ℹ️ Важно знать:</strong> Прямых рейсов Минск-Европа нет. Все маршруты в Европу, Азию и другие регионы идут через промежуточные города (Москва, Дубай, Стамбул, Анкара).
+            </div>
+
+            <h2>Полный список прямых рейсов Belavia из Минска (2026)</h2>
+            <p>На данный момент Belavia обслуживает следующие прямые маршруты:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Направление</th>
+                        <th>Код</th>
+                        <th>Длительность</th>
+                        <th>Частота</th>
+                        <th>Примерная цена</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Минск → Москва (Домодедово)</td>
+                        <td>MSK-DME</td>
+                        <td>2.5 часа</td>
+                        <td>Ежедневно (3-4 рейса)</td>
+                        <td>€50-150</td>
+                    </tr>
+                    <tr>
+                        <td>Минск → Москва (Шереметьево)</td>
+                        <td>MSK-SVO</td>
+                        <td>2.5 часа</td>
+                        <td>Ежедневно (2-3 рейса)</td>
+                        <td>€50-150</td>
+                    </tr>
+                    <tr>
+                        <td>Минск → Санкт-Петербург</td>
+                        <td>MSK-LED</td>
+                        <td>2 часа</td>
+                        <td>3-5 в неделю</td>
+                        <td>€60-180</td>
+                    </tr>
+                    <tr>
+                        <td>Минск → Сочи</td>
+                        <td>MSK-AER</td>
+                        <td>3 часа</td>
+                        <td>Сезонно (май-сентябрь)</td>
+                        <td>€90-250</td>
+                    </tr>
+                    <tr>
+                        <td>Минск → Екатеринбург</td>
+                        <td>MSK-SVX</td>
+                        <td>3.5 часа</td>
+                        <td>3 в неделю</td>
+                        <td>€120-300</td>
+                    </tr>
+                    <tr>
+                        <td>Минск → Новосибирск</td>
+                        <td>MSK-OVB</td>
+                        <td>5 часов</td>
+                        <td>2 в неделю</td>
+                        <td>€150-400</td>
+                    </tr>
+                    <tr>
+                        <td>Минск → Казань</td>
+                        <td>MSK-KZN</td>
+                        <td>2.5 часа</td>
+                        <td>2-3 в неделю</td>
+                        <td>€80-200</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>Как найти дешевые билеты из Минска?</h2>
+            <p>First Class рекомендует использовать комбинацию инструментов:</p>
+
+            <h3>1. Поисковые системы</h3>
+            <ul>
+                <li><strong>Skyscanner.com</strong> — сравнивает все авиалинии (рекомендуем)</li>
+                <li><strong>Aviasales.ru</strong> — лучшие цены в России и СНГ</li>
+                <li><strong>Google Flights</strong> — история цен и тренды</li>
+                <li><strong>Kayak.com</strong> — алерты на цены</li>
+            </ul>
+
+            <h3>2. Официальные сайты авиалиний</h3>
+            <ul>
+                <li><strong>belavia.by</strong> — Belavia (официальные цены)</li>
+                <li><strong>aeroflot.ru</strong> — Aeroflot (Россия)</li>
+                <li><strong>turkishairlines.com</strong> — Turkish Airlines</li>
+            </ul>
+
+            <h3>3. Правила экономии</h3>
+            <ul>
+                <li>Ищите билеты на вторник-четверг (выходные дороже на 30-40%)</li>
+                <li>Ранее бронирование (за 2-3 недели) на 15-25% дешевле</li>
+                <li>Ночные рейсы дешевле на 10-20%</li>
+                <li>Гибкие даты экономят €50-100</li>
+                <li>Группы от 10 человек получают скидки 15-25%</li>
+            </ul>
+
+            <h2>Как добраться из аэропорта Минска в город</h2>
+            <ul>
+                <li><strong>Такси:</strong> €8-12 (20-30 мин)</li>
+                <li><strong>Автобус #1 (маршрут):</strong> €0.60 (30-40 мин)</li>
+                <li><strong>Личный трансфер (First Class):</strong> €25-40 (встреча с табличкой)</li>
+            </ul>
+
+            <h2>COVID-19 и требования к въезду</h2>
+            <p>На март 2026 года большинство стран отменили COVID-ограничения. Однако всегда проверяйте актуальную информацию на сайтах посольств перед поездкой.</p>
+
+            <h2>Что изменится в авиасообщении в ближайшие годы?</h3>
+            <p>Эксперты предсказывают:</p>
+            <ul>
+                <li>Возможное восстановление авиасообщения Минск-ЕС к 2027-2028 годам (если изменится политическая ситуация)</li>
+                <li>Расширение маршрутов Belavia в Азию (Китай, Индия, Таиланд)</li>
+                <li>Рост доступности через стыковочные центры в Дубае и Стамбуле</li>
+            </ul>
+
+            <div class="highlight">
+                <strong>✈️ Совет First Class:</strong> Мы отслеживаем все изменения в расписании Belavia и специальные предложения. Подпишитесь на нашу рассылку, чтобы первыми узнать о новых маршрутах и скидках.
+            </div>
+
+            <h2>Как забронировать билеты через First Class?</h2>
+            <p>Процесс простой:</p>
+            <ol>
+                <li>Свяжитесь с нами (WhatsApp, Email, Telegram)</li>
+                <li>Укажите маршрут, даты и количество пассажиров</li>
+                <li>Мы найдем лучшие варианты (обычно 3-5 предложений)</li>
+                <li>Подтверждаете выбор и отправляете паспортные данные</li>
+                <li>Оплачиваете билеты (безналичная переводом или картой)</li>
+                <li>Получаете E-ticket за 24 часа</li>
+            </ol>
+
+            <h2>Часто задаваемые вопросы о рейсах из Минска</h2>
+
+            <h3>Можно ли вернуть билет после покупки?</h3>
+            <p>Зависит от тарифа:</p>
+            <ul>
+                <li><strong>Эконом Basic:</strong> не возвращаются (но можно перенести дату за €20-30)</li>
+                <li><strong>Эконом Flex:</strong> возвращаются на 70-80% стоимости</li>
+                <li><strong>Бизнес:</strong> полный возврат или перенос без штрафов</li>
+            </ul>
+
+            <h3>Сколько багажа включено в стоимость?</h3>
+            <p>Belavia включает:</p>
+            <ul>
+                <li>Ручная кладь: 1 сумка (55x40x20 см, до 8 кг)</li>
+                <li>Зарегистрированный багаж: 23 кг (в эконом классе)</li>
+                <li>Дополнительный багаж: €15-30 за 23 кг</li>
+            </ul>
+
+            <h3>Когда лучше бронировать билеты?</h3>
+            <p><strong>Оптимальное время:</strong> за 2-3 недели до вылета. Дешевле всего ищите во вторник утром (аналитика показывает, что авиалинии снижают цены в начале недели).</p>
+
+            <h3>Есть ли безвизовые направления из Минска?</h3>
+            <p>Граждане Беларуси имеют безвизовый доступ на:</p>
+            <ul>
+                <li>Россия (неограниченно)</li>
+                <li>Казахстан (30 дней)</li>
+                <li>Украина (90 дней, но перемещение ограничено из-за войны)</li>
+                <li>Киргизия (30 дней)</li>
+                <li>Некоторые страны Африки и Ближнего Востока (смотрите конкретно)</li>
+            </ul>
+            <p>Для большинства направлений нужна виза (Европа, Азия, США).</p>
+
+            <h2>Боимся летать? Советы First Class</h2>
+            <ul>
+                <li>Авиация — самый безопасный транспорт (1 несчастный случай на 11 млн рейсов)</li>
+                <li>Турбулентность — это неудобно, но не опасно</li>
+                <li>На борту — квалифицированная медицинская служба</li>
+                <li>Страховка покрывает все виды рисков (включая отмену рейса)</li>
+            </ul>
+
+            <h2>Как заказать билеты или консультацию?</h2>
+            <a href="/brief.html" class="cta-button">Оставить заявку</a>
+            <ul>
+                <li><strong>WhatsApp/Telegram:</strong> <a href="https://wa.me/375291234567">+375 29 123-45-67</a></li>
+                <li><strong>Email:</strong> marketing@fclass.by</li>
+                <li><strong>Офис:</strong> Минск, ул. Примерная, д. 1</li>
+            </ul>
+
+            <h2>Заключение</h2>
+            <p>Хотя количество прямых маршрутов из Минска сократилось, путешествовать стало проще и нередко дешевле благодаря конкуренции авиалиний на стыковочных маршрутах. First Class поможет вам найти лучший вариант: от дешевых рейсов в Москву до премиум-перелетов в Дубай. Доверьте нам вашу поездку!</p>
+        </article>
     </div>
 
-    <div class="article-content container">
-      <p>Belavia — национальный авиаперевозчик Беларуси — предлагает сеть прямых рейсов в 30+ странах. В этом обзоре мы рассмотрим основные маршруты, расписания и советы по покупке билетов.</p>
+    <footer>
+        <img src="/logo.png" alt="First Class Logo" class="footer-logo">
+        <p>&copy; 2026 First Class. Все права защищены.</p>
+        <p>Лицензированное турагентство. Авиабилеты, визовая поддержка, командировки и туры.</p>
+    </footer>
 
-      <h2>Европейские направления</h2>
-      <div class="table-wrapper">
-        <table>
-          <tr>
-            <th>Маршрут</th>
-            <th>Город</th>
-            <th>Время в пути</th>
-            <th>Частота</th>
-          </tr>
-          <tr>
-            <td>Минск (MSQ) → Варшава (WAW)</td>
-            <td>Варшава, Польша</td>
-            <td>1ч 40м</td>
-            <td>ежедневно</td>
-          </tr>
-          <tr>
-            <td>Минск (MSQ) → Вильнюс (VNO)</td>
-            <td>Вильнюс, Литва</td>
-            <td>1ч</td>
-            <td>ежедневно</td>
-          </tr>
-          <tr>
-            <td>Минск (MSQ) → Рига (RIX)</td>
-            <td>Рига, Латвия</td>
-            <td>1ч 15м</td>
-            <td>4 раза в неделю</td>
-          </tr>
-          <tr>
-            <td>Минск (MSQ) → Киев (KBP)</td>
-            <td>Киев, Украина</td>
-            <td>1ч 40м</td>
-            <td>3 раза в неделю</td>
-          </tr>
-        </table>
-      </div>
-
-      <div class="highlight-box">
-        <strong>Внимание:</strong> ЕС запретил авиасообщение с Беларусью в 2021 году. Рейсы Belavia в европейские страны не осуществляются напрямую в границах ЕС. Указанные маршруты уточните с авиакомпанией.
-      </div>
-
-      <h2>Ближневосточные направления</h2>
-      <p>Основной хаб Belavia в регионе — Дубай и Стамбул. Отсюда удобно добраться в ОАЭ, Египет и другие страны Ближнего Востока.</p>
-      
-      <div class="table-wrapper">
-        <table>
-          <tr>
-            <th>Маршрут</th>
-            <th>Город</th>
-            <th>Время в пути</th>
-            <th>Частота</th>
-          </tr>
-          <tr>
-            <td>Минск (MSQ) → Стамбул (IST)</td>
-            <td>Стамбул, Турция</td>
-            <td>4ч 30м</td>
-            <td>2-3 раза в неделю</td>
-          </tr>
-          <tr>
-            <td>Минск (MSQ) → Дубай (DXB)</td>
-            <td>Дубай, ОАЭ</td>
-            <td>5ч 20м</td>
-            <td>2 раза в неделю</td>
-          </tr>
-          <tr>
-            <td>Минск (MSQ) → Каир (CAI)</td>
-            <td>Каир, Египет</td>
-            <td>4ч 40м</td>
-            <td>1 раз в неделю</td>
-          </tr>
-          <tr>
-            <td>Минск (MSQ) → Шарм-эль-Шейх (SSH)</td>
-            <td>Шарм-эль-Шейх, Египет</td>
-            <td>4ч 20м</td>
-            <td>сезонно</td>
-          </tr>
-        </table>
-      </div>
-
-      <h2>Азиатские маршруты</h2>
-      <p>Belavia развивает сотрудничество с азиатскими партнёрами. Большинство рейсов в Азию осуществляется через стыковки в Дубае или Стамбуле.</p>
-      
-      <h3>Популярные направления через стыковки:</h3>
-      <ul>
-        <li><strong>Таиланд</strong> (Бангкок) — 1 стыковка, примерно 12-14 часов</li>
-        <li><strong>Вьетнам</strong> (Ханой, Хошимин) — 1-2 стыковки, примерно 15-18 часов</li>
-        <li><strong>Индия</strong> (Дели, Гоа) — 1 стыковка, примерно 10-12 часов</li>
-        <li><strong>Малайзия</strong> (Куала-Лумпур) — 1 стыковка, примерно 14-16 часов</li>
-      </ul>
-
-      <h2>Как купить билеты Belavia</h2>
-      <p>Вариантов несколько:</p>
-      
-      <h3>1. Официальный сайт Belavia</h3>
-      <p>Самый надёжный способ. Сайт belavia.by позволяет забронировать билет, выбрать место, добавить услуги (багаж, питание).</p>
-      
-      <h3>2. Туристические агентства</h3>
-      <p>Агентства, включая First Class, получают специальные цены и могут предложить выгодные комбинации (билет + отель + трансфер).</p>
-      
-      <h3>3. Агрегаторы (Skyscanner, Kayak, Google Flights)</h3>
-      <p>Удобны для сравнения цен, но внимание: часто там отображаются стыковки, а не прямые рейсы.</p>
-
-      <div class="highlight-box">
-        <strong>Совет:</strong> Бронируйте на 2-3 недели заранее для получения лучших цен. Вторник и среда — дешевле всего.
-      </div>
-
-      <h2>Классы обслуживания Belavia</h2>
-      <table>
-        <tr>
-          <th>Класс</th>
-          <th>Багаж</th>
-          <th>Питание</th>
-          <th>Приоритет</th>
-        </tr>
-        <tr>
-          <td><strong>Economy</strong></td>
-          <td>1 сумка 8 кг</td>
-          <td>Платное</td>
-          <td>Стандартно</td>
-        </tr>
-        <tr>
-          <td><strong>Economy Plus</strong></td>
-          <td>1 сумка 8 кг + 1 чемодан 23 кг</td>
-          <td>Включено</td>
-          <td>Раньше регистрация</td>
-        </tr>
-        <tr>
-          <td><strong>Business</strong></td>
-          <td>2 чемодана по 32 кг</td>
-          <td>Премиум питание</td>
-          <td>Первоочередно</td>
-        </tr>
-      </table>
-
-      <h2>Аэропорт Минск имени Раковой</h2>
-      <p>Основной аэропорт отправления — Минский национальный аэропорт (MSQ). Расположен в 40 км от центра города.</p>
-      
-      <h3>Как добраться в аэропорт:</h3>
-      <ul>
-        <li><strong>Автобус:</strong> №1 от ст. метро «Колхозная» до аэропорта (40-50 мин)</li>
-        <li><strong>Такси:</strong> Yandex Taxi, Uber (примерно 30 BYN в зависимости от времени)</li>
-        <li><strong>Трансфер:</strong> First Class организует встречу и доставку в аэропорт</li>
-      </ul>
-
-      <div class="faq-section">
-        <h2>Часто задаваемые вопросы</h2>
-        <div class="faq-item">
-          <div class="faq-question">Сколько стоит билет на прямой рейс Минск-Дубай? <span>▼</span></div>
-          <div class="faq-answer">В среднем $250-350 в обе стороны при бронировании на 2-3 недели. Цена зависит от сезона.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question">Можно ли вернуть билет Belavia? <span>▼</span></div>
-          <div class="faq-answer">Да, но в зависимости от тарифа. Economy билеты часто не возвратны. Economy Plus и выше — возвратны.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question">Где купить багаж дополнительно? <span>▼</span></div>
-          <div class="faq-answer">На официальном сайте Belavia при бронировании. Дополнительный чемодан стоит примерно $30-50.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question">Летают ли из Минска ночные рейсы? <span>▼</span></div>
-          <div class="faq-answer">Да. Ночные рейсы в Стамбул, Дубай часто дешевле дневных вариантов.</div>
-        </div>
-      </div>
-
-      <h2>Свяжитесь с First Class</h2>
-      <p>Хотите забронировать прямой рейс из Минска? Мы найдём лучшую цену и организуем всё необходимое для вашей поездки.</p>
-      <a href="https://fclass.by/brief.html" class="cta-button">Забронировать рейс</a>
-    </div>
-  </article>
-
-  <footer class="footer"><div class="footer-content"><div><img src="/logo.png" alt="First Class" class="footer-logo"><p class="footer-desc">Официальное туристическое агентство. Организация командировок и деловых поездок для компаний Беларуси.</p></div><div class="footer-col"><h4>Услуги</h4><ul class="footer-links"><li><a href="/#services">Командировки</a></li><li><a href="/visa-support/">Визовая поддержка</a></li><li><a href="/tickets/">Авиабилеты</a></li><li><a href="/concierge/">VIP консьерж</a></li></ul></div><div class="footer-col"><h4>Направления</h4><ul class="footer-links"><li><a href="/tours/turkey.html">Турция</a></li><li><a href="/tours/egypt.html">Египет</a></li><li><a href="/tours/uae.html">ОАЭ</a></li><li><a href="/tours/">Все направления</a></li></ul></div><div class="footer-col"><h4>Компания</h4><ul class="footer-links"><li><a href="/blog/">Блог</a></li><li><a href="/#contact">Контакты</a></li><li><a href="/privacy/">Конфиденциальность</a></li></ul></div></div><div class="footer-bottom"><span>&copy; 2026 First Class. Все права защищены.</span><div class="footer-social"><a href="https://t.me/firstclassby">Telegram</a><a href="https://wa.me/375447725266">WhatsApp</a></div></div></footer>
-
-  <script>
-    document.querySelectorAll('.faq-question').forEach(q => {
-      q.addEventListener('click', () => {
-        q.closest('.faq-item').classList.toggle('active');
-      });
-    });
-  </script>
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXX');
-  </script>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "headline": "Прямые рейсы из Минска 2026: куда летают Belavia",
-    "datePublished": "2026-03-28",
-    "author": {"@type": "Organization", "name": "First Class"}
-  }
-  </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Прямые рейсы из Минска 2026: Куда летит Belavia",
+      "description": "Полный список прямых авиарейсов из Минска на 2026 год. Направления Belavia, маршруты, расписание и как забронировать билеты.",
+      "datePublished": "2026-03-28",
+      "author": {
+        "@type": "Organization",
+        "name": "First Class",
+        "url": "https://fclass.by"
+      }
+    }
+    </script>
 </body>
 </html>
