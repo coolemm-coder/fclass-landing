@@ -2,6 +2,20 @@ User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /outlet/
+Disallow: /catalog/
+Disallow: /product/
+Disallow: /cart/
+Disallow: /checkout/
+Disallow: /search?
+Disallow: /filter/
+Disallow: /wp-admin/
+Disallow: /wp-content/
+Disallow: /wp-includes/
+Disallow: /*.php$
+Disallow: /*?sort=
+Disallow: /*?page=
+Disallow: /*?filter=
+Crawl-delay: 1
 
 User-agent: GPTBot
 Allow: /
