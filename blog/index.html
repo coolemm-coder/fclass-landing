@@ -1,184 +1,155 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Блог о командировках — First Class Travel, Минск</title>
-<meta name="description" content="Полезные статьи о служебных командировках: визы, авиабилеты, организация деловых поездок, лайфхаки для бизнес-путешественников. First Class, Минск.">
-<link rel="canonical" href="https://fclass.by/blog/">
-<meta name="yandex-verification" content="4e81328b8fa39540" />
-<meta name="google-site-verification" content="zPDaMQYc6X1Rq6UfL8UvFNetKClXX64TdyMMROUAJNY" />
-<link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="/favicon.png" type="image/png" sizes="120x120">
-<meta property="og:title" content="Блог о командировках — First Class Travel">
-<meta property="og:description" content="Полезные статьи о служебных командировках: визы, авиабилеты, организация деловых поездок.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://fclass.by/blog/">
-<meta property="og:image" content="https://fclass.by/hero-bg.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:locale" content="ru_RU">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
-<script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");ym(107237229,"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/107237229" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<style>
-:root {
-    --primary: #0c1825; --accent: #c9a962; --gray: #5a6d7e; --white: #ffffff; --sand: #f7f8fa;
-    --charcoal: #0c1825; --font-sans: 'DM Sans', sans-serif; --font-serif: 'Playfair Display', serif;
-    --shadow-sm: 0 2px 8px rgba(0,0,0,0.06); --shadow-md: 0 8px 30px rgba(0,0,0,0.08);
-    --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; overflow-x: hidden; }
-body { font-family: var(--font-sans); background: var(--white); color: var(--charcoal); line-height: 1.7; }
-.nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    padding: 0 60px; height: 80px; display: flex; justify-content: space-between; align-items: center;
-    background: rgba(12, 24, 37, 0.95); backdrop-filter: blur(20px);
-}
-.nav-logo-img { height: 56px; }
-.nav-links { display: flex; gap: 44px; list-style: none; }
-.nav-links a { text-decoration: none; font-size: 13px; font-weight: 500; letter-spacing: 0.5px; color: var(--white); transition: var(--transition); }
-.nav-links a:hover { color: var(--accent); }
-.nav-cta { padding: 14px 32px; border-radius: 6px; font-size: 12px; font-weight: 500; text-decoration: none; letter-spacing: 1.5px; text-transform: uppercase; background: var(--accent); color: var(--primary); transition: var(--transition); }
-.nav-mobile { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 10px; }
-.nav-mobile span { display: block; width: 24px; height: 2px; background: var(--white); }
-.hero-inner { padding: 160px 60px 80px; background: var(--primary); color: var(--white); text-align: center; }
-.hero-inner .eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
-.hero-inner h1 { font-family: var(--font-serif); font-size: clamp(32px, 5vw, 52px); font-weight: 700; margin-bottom: 20px; }
-.hero-inner p { font-size: 18px; color: rgba(255,255,255,0.7); max-width: 600px; margin: 0 auto; }
-.content { max-width: 900px; margin: 0 auto; padding: 80px 30px; }
-.articles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
-.article-card {
-    background: var(--sand); border-radius: 12px; padding: 32px; border: 1px solid #eef0f2;
-    transition: var(--transition); text-decoration: none; color: inherit; display: block;
-}
-.article-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
-.article-tag { font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
-.article-card h2 { font-family: var(--font-serif); font-size: 22px; margin-bottom: 12px; line-height: 1.3; }
-.article-card p { font-size: 15px; color: var(--gray); line-height: 1.7; margin-bottom: 16px; }
-.article-date { font-size: 13px; color: var(--gray); }
-.footer-mini { padding: 30px; text-align: center; font-size: 13px; color: var(--gray); border-top: 1px solid #eef0f2; }
-.footer-mini a { color: var(--charcoal); text-decoration: none; }
-@media (max-width: 768px) {
-    .nav { padding: 0 20px; height: 70px; flex-wrap: wrap; }
-    .nav-links, .nav-cta { display: none; }
-    .nav-links.mobile-open { display: flex; flex-direction: column; width: 100%; gap: 16px; padding: 20px 0; order: 3; }
-    .nav-cta.mobile-open { display: inline-block; order: 4; margin-bottom: 16px; }
-    .nav-mobile { display: flex; }
-    .hero-inner { padding: 120px 20px 60px; }
-    .content { padding: 60px 20px; }
-    .articles-grid { grid-template-columns: 1fr; }
-    .article-card h2 { font-size: 20px; }
-    .article-card p { font-size: 16px; }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Блог First Class: путеводители, советы, новости командировок | First Class</title>
+  <meta name="description" content="Блог туристического агентства First Class. Путеводители, советы по командировкам, визовая информация, авиарейсы и горячие новости.">
+  <meta name="keywords" content="блог путешествий, советы командировки, визовая информация, авиабилеты, туризм Беларусь">
+  <meta name="robots" content="index, follow">
+  <style>
+    :root { --primary: #0c1825; --accent: #c9a962; --text-dark: #1a1a1a; --text-light: #666; --bg-light: #f8f9fa; --border: #e8e8e8; --gray: #999; --white: #fff; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: var(--text-dark); background: var(--white); line-height: 1.6; }
+    .header { background: var(--primary); color: var(--white); padding: 16px 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    .nav { display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-size: 20px; font-weight: 700; color: var(--accent); text-decoration: none; }
+    .nav-links { display: flex; gap: 24px; list-style: none; }
+    .nav-links a { color: var(--white); text-decoration: none; font-size: 14px; transition: color 0.3s; }
+    .nav-links a:hover { color: var(--accent); }
+    .hero { background: linear-gradient(135deg, #0c1825 0%, #1a2947 100%); color: var(--white); padding: 80px 0; text-align: center; }
+    .hero h1 { font-size: 48px; margin-bottom: 20px; font-weight: 700; }
+    .hero p { font-size: 18px; color: rgba(255,255,255,0.7); }
+    .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 32px; margin: 60px 0; }
+    .blog-card { background: var(--white); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; transition: all 0.3s; }
+    .blog-card:hover { transform: translateY(-8px); box-shadow: 0 12px 24px rgba(0,0,0,0.1); }
+    .blog-card-image { width: 100%; height: 200px; background: linear-gradient(135deg, #f0f4ff 0%, #fff5e6 100%); display: flex; align-items: center; justify-content: center; font-size: 48px; }
+    .blog-card-content { padding: 24px; }
+    .blog-card h3 { font-size: 18px; margin-bottom: 12px; color: var(--primary); }
+    .blog-card p { font-size: 14px; color: var(--text-light); margin-bottom: 16px; line-height: 1.6; }
+    .blog-card-meta { font-size: 12px; color: var(--gray); display: flex; gap: 12px; margin-bottom: 16px; }
+    .blog-card a { color: var(--accent); text-decoration: none; font-weight: 600; transition: color 0.3s; }
+    .blog-card a:hover { color: var(--primary); }
+    .footer{background:#0c1825;color:#fff;padding:80px 60px 40px}.footer-content{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;max-width:1200px;margin:0 auto 60px}.footer-logo{height:64px;width:auto;margin-bottom:16px;display:block}.footer-desc{font-size:14px;line-height:1.8;color:rgba(255,255,255,0.6);max-width:300px}.footer-col h4{font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-bottom:24px;color:#fff}.footer-links{list-style:none}.footer-links li{margin-bottom:14px}.footer-links a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:14px;transition:all 0.3s}.footer-links a:hover{color:#fff}.footer-bottom{display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:0 auto;padding-top:40px;border-top:1px solid rgba(255,255,255,0.1);font-size:13px;color:rgba(255,255,255,0.5)}.footer-social{display:flex;gap:16px}.footer-social a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:13px;transition:all 0.3s}.footer-social a:hover{color:#fff}@media(max-width:768px){.footer{padding:60px 20px 30px}.footer-content{grid-template-columns:1fr;gap:40px}.footer-bottom{flex-direction:column;gap:20px;text-align:center}}
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 32px; }
+      .blog-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-<nav class="nav">
-    <a href="/"><img src="/logo.png" alt="First Class" class="nav-logo-img"></a>
-    <ul class="nav-links">
-        <li><a href="/#services">Услуги</a></li>
-        <li><a href="/tickets/">Билеты</a></li>
-        <li><a href="/visa-support/">Визы</a></li>
-        <li><a href="/#expertise">О нас</a></li>
-        <li><a href="/blog/" style="color:var(--accent)">Блог</a></li>
-        <li><a href="/#contact">Контакты</a></li>
-    </ul>
-    <a href="/#contact" class="nav-cta">Связаться</a>
-    <div class="nav-mobile" onclick="document.querySelector('.nav-links').classList.toggle('mobile-open');document.querySelector('.nav-cta').classList.toggle('mobile-open')"><span></span><span></span><span></span></div>
-</nav>
-<section class="hero-inner">
-    <div class="eyebrow">Блог</div>
-    <h1>Полезное о командировках</h1>
-    <p>Лайфхаки, чек-листы и советы для тех, кто организует деловые поездки</p>
-</section>
-<div class="content">
-    <div class="articles-grid">
-        <a href="/blog/viza-v-oae-dlya-belorusov-2026.html" class="article-card">
-            <div class="article-tag">ОАЭ / Визы</div>
-            <h2>Виза в ОАЭ для белорусов 2026: нужна ли и как добраться в Дубай</h2>
-            <p>Безвизовый режим 90 дней, прямые рейсы FlyDubai и Belavia, деловые районы Дубая и документы для командировки.</p>
-            <div class="article-date">7 апреля 2026</div>
-        </a>
-        <a href="/blog/komandirovki-belarus-2026.html" class="article-card">
-            <div class="article-tag">Бухгалтеру</div>
-            <h2>Служебные командировки в Беларуси: новые правила с апреля 2026</h2>
-            <p>С 4 апреля 2026 суточные выросли до 13 BYN/день. Новые правила оформления документов, маршруты авиасообщения, MICE-тренды.</p>
-            <div class="article-date">1 апреля 2026</div>
-        </a>
-        <a href="/blog/pryamye-reysy-iz-minska-2026.html" class="article-card">
-            <div class="article-tag">Авиабилеты</div>
-            <h2>Прямые рейсы из Минска 2026: полный гид по авиабилетам</h2>
-            <p>Все направления, авиакомпании, расписание и цены. Россия, Турция, ОАЭ, Грузия и новые маршруты в Азию.</p>
-            <div class="article-date">1 апреля 2026</div>
-        </a>
-        <a href="/blog/aviabilety-minsk-stambul.html" class="article-card">
-            <div class="article-tag">Авиабилеты</div>
-            <h2>Авиабилеты Минск — Стамбул 2026: расписание, цены, советы</h2>
-            <p>Прямые рейсы Belavia и Turkish Airlines, до 11 рейсов в неделю. Цены, транзит в Европу, лайфхаки.</p>
-            <div class="article-date">1 апреля 2026</div>
-        </a>
-        <a href="/blog/komandirovka-v-turciyu.html" class="article-card">
-            <div class="article-tag">Командировки</div>
-            <h2>Командировка в Турцию из Беларуси: перелёт, виза, советы 2026</h2>
-            <p>Безвизовый режим до 30 дней, прямой рейс Belavia, деловые районы Стамбула и практические советы.</p>
-            <div class="article-date">31 марта 2026</div>
-        </a>
-        <a href="/blog/visa-guide-2026.html" class="article-card">
-            <div class="article-tag">Визы</div>
-            <h2>Шенгенская виза для командировки из Минска в 2026 году — полный гайд</h2>
-            <p>Как оформить шенгенскую визу для служебной командировки из Беларуси. Сроки, стоимость, документы, выбор консульства.</p>
-            <div class="article-date">28 марта 2026</div>
-        </a>
-        <a href="/blog/komandirovka-v-kitay.html" class="article-card">
-            <div class="article-tag">Китай</div>
-            <h2>Командировка в Китай из Беларуси: виза, перелёт, советы 2026</h2>
-            <p>Нужна ли виза, как добраться, деловой этикет, интернет — полный гид для командировочных.</p>
-            <div class="article-date">23 марта 2026</div>
-        </a>
-        <a href="/blog/strahovka-dlya-komandirovki.html" class="article-card">
-            <div class="article-tag">Страховка</div>
-            <h2>Медицинская страховка для командировки: что покрывает и как оформить</h2>
-            <p>Минимум 30 000 EUR для шенгена, годовой полис vs разовый, что не покрывает стандартный полис.</p>
-            <div class="article-date">23 марта 2026</div>
-        </a>
-        <a href="/blog/sutochnye-komandirovka-2026.html" class="article-card">
-            <div class="article-tag">Бухгалтеру</div>
-            <h2>Суточные при командировке за рубеж в 2026 году: нормы и расчёт</h2>
-            <p>Нормы по регионам, налоговые последствия сверхлимитных суточных, авансовый отчёт.</p>
-            <div class="article-date">23 марта 2026</div>
-        </a>
-        <a href="/blog/korporativnye-aviabilety-minsk.html" class="article-card">
-            <div class="article-tag">Авиабилеты</div>
-            <h2>Корпоративные авиабилеты для командировок из Минска: как сэкономить до 40%</h2>
-            <p>Корпоративные тарифы, возврат и обмен, маршруты из Минска — полный разбор.</p>
-            <div class="article-date">23 марта 2026</div>
-        </a>
-        <a href="/blog/delovoy-turizm-belarus-2026.html" class="article-card">
-            <div class="article-tag">Деловой туризм</div>
-            <h2>Деловой туризм в Беларуси 2026: как компании организуют корпоративные поездки</h2>
-            <p>Топ направлений, модели организации, тренды делового туризма и стоимость через агентство.</p>
-            <div class="article-date">23 марта 2026</div>
-        </a>
-        <a href="/blog/vizovaya-podderzhka-minsk.html" class="article-card">
-            <div class="article-tag">Визы</div>
-            <h2>Визовая поддержка в Минске: полный гид на 2026 год</h2>
-            <p>Шенген, Великобритания, Китай — сроки, документы, стоимость. Пошаговая инструкция.</p>
-            <div class="article-date">28 февраля 2026</div>
-        </a>
-        <a href="/blog/organizaciya-komandirovok.html" class="article-card">
-            <div class="article-tag">Организация</div>
-            <h2>Как организовать служебную командировку: чек-лист для бухгалтера</h2>
-            <p>Документы, суточные, отчётность, авиабилеты, проживание — всё в одном месте.</p>
-            <div class="article-date">28 февраля 2026</div>
-        </a>
+  <header class="header">
+    <nav class="container nav">
+      <a href="https://fclass.by" class="logo">First Class</a>
+      <ul class="nav-links">
+        <li><a href="https://fclass.by/#services">Услуги</a></li>
+        <li><a href="https://fclass.by/blog/">Блог</a></li>
+        <li><a href="https://wa.me/375447725266">Контакты</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>Блог First Class</h1>
+      <p>Путеводители, советы по командировкам и актуальная информация для деловых путешественников</p>
     </div>
-</div>
-<div class="footer-mini">
-    &copy; 2026 <a href="/">First Class Travel</a>. УНП 193582943 | <a href="/privacy/">Политика конфиденциальности</a> | Разработка сайта — <a href="https://landingpro.by" target="_blank" rel="noopener">LandingPro.by</a>
-</div>
+  </section>
+
+  <div class="container">
+    <div class="blog-grid">
+      <div class="blog-card">
+        <div class="blog-card-image">✈️</div>
+        <div class="blog-card-content">
+          <div class="blog-card-meta">📅 2026-03-28 | ⏱ 9 мин</div>
+          <h3>Командировка в Турцию из Минска</h3>
+          <p>Полное руководство по организации командировки в Турцию. Визовые требования, авиабилеты, отели и поддержка от First Class.</p>
+          <a href="./komandirovka-v-turciyu.html">Читать →</a>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <div class="blog-card-image">🛫</div>
+        <div class="blog-card-content">
+          <div class="blog-card-meta">📅 2026-03-28 | ⏱ 10 мин</div>
+          <h3>Прямые рейсы из Минска 2026</h3>
+          <p>Куда летают Belavia? Расписание, маршруты в Европу и Азию, классы обслуживания, цены на билеты.</p>
+          <a href="./pryamye-reysy-iz-minska-2026.html">Читать →</a>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <div class="blog-card-image">🏨</div>
+        <div class="blog-card-content">
+          <div class="blog-card-meta">📅 2026-03-28 | ⏱ 9 мин</div>
+          <h3>Виза в ОАЭ для белорусов 2026</h3>
+          <p>Полная инструкция по оформлению визы в ОАЭ. Требования к документам, стоимость, сроки пребывания.</p>
+          <a href="./viza-v-oae-dlya-belorusov-2026.html">Читать →</a>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <div class="blog-card-image">🏢</div>
+        <div class="blog-card-content">
+          <div class="blog-card-meta">📅 2026-04-05 | ⏱ 7 мин</div>
+          <h3>Суточные командировки в апреле 2026</h3>
+          <p>Советы для однодневных деловых поездок: что взять с собой, как оформить документы, горячие маршруты.</p>
+          <a href="./sutochnye-komandirovki-aprel-2026.html">Читать →</a>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <div class="blog-card-image">🗺️</div>
+        <div class="blog-card-content">
+          <div class="blog-card-meta">📅 2026-04-06 | ⏱ 8 мин</div>
+          <h3>Командировки по Беларуси 2026</h3>
+          <p>Лучшие направления внутри страны для корпоративных встреч и командировок. Отели, транспорт, инфраструктура.</p>
+          <a href="./komandirovki-belarus-2026.html">Читать →</a>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <div class="blog-card-image">🌴</div>
+        <div class="blog-card-content">
+          <div class="blog-card-meta">📅 2026-04-07 | ⏱ 7 мин</div>
+          <h3>Belavia в Нха Тrang 2026: гайд</h3>
+          <p>Новый маршрут Belavia в популярный вьетнамский курорт. Визовые требования, отели, что попробовать.</p>
+          <a href="./belavia-nha-trang-2026/">Читать →</a>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <div class="blog-card-image">🎯</div>
+        <div class="blog-card-content">
+          <div class="blog-card-meta">📅 2026-04-08 | ⏱ 8 мин</div>
+          <h3>Turkey Business Trip Guide 2026</h3>
+          <p>Полный справочник для деловых поездок в Турцию. Деловые центры, встречи, этика, культура.</p>
+          <a href="./turkey-business-trip/">Читать →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer"><div class="footer-content"><div><img src="/logo.png" alt="First Class" class="footer-logo"><p class="footer-desc">Официальное туристическое агентство. Организация командировок и деловых поездок для компаний Беларуси.</p></div><div class="footer-col"><h4>Услуги</h4><ul class="footer-links"><li><a href="/#services">Командировки</a></li><li><a href="/visa-support/">Визовая поддержка</a></li><li><a href="/tickets/">Авиабилеты</a></li><li><a href="/concierge/">VIP консьерж</a></li></ul></div><div class="footer-col"><h4>Направления</h4><ul class="footer-links"><li><a href="/tours/turkey.html">Турция</a></li><li><a href="/tours/egypt.html">Египет</a></li><li><a href="/tours/uae.html">ОАЭ</a></li><li><a href="/tours/">Все направления</a></li></ul></div><div class="footer-col"><h4>Компания</h4><ul class="footer-links"><li><a href="/blog/">Блог</a></li><li><a href="/#contact">Контакты</a></li><li><a href="/privacy/">Конфиденциальность</a></li></ul></div></div><div class="footer-bottom"><span>&copy; 2026 First Class. Все права защищены.</span><div class="footer-social"><a href="https://t.me/firstclassby">Telegram</a><a href="https://wa.me/375447725266">WhatsApp</a></div></div></footer>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXX');
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Блог First Class",
+    "description": "Путеводители, советы по командировкам и актуальная информация для деловых путешественников",
+    "url": "https://fclass.by/blog/"
+  }
+  </script>
 </body>
 </html>
