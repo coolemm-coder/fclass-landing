@@ -10,182 +10,141 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #0c1825;
-            --primary-light: #1a3a5c;
-            --cream: #f8f9fa;
-            --gray: #5a6d7e;
-            --white: #fff;
-            --accent: #c9a962;
-            --font-sans: 'DM Sans', sans-serif;
-            --font-serif: 'Playfair Display', serif;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: var(--font-sans); color: var(--primary); line-height: 1.6; background: var(--white); }
-        nav { position: fixed; top: 0; width: 100%; background: var(--primary); padding: 1rem 2rem; z-index: 1000; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        .logo { font-family: var(--font-serif); font-size: 1.8rem; color: var(--accent); font-weight: 700; }
-        .article-hero { margin-top: 5rem; background: linear-gradient(135deg, #0c1825 0%, #1a3a5c 100%); color: var(--white); padding: 4rem 2rem; text-align: center; }
-        .article-hero h1 { font-family: var(--font-serif); font-size: 3rem; margin-bottom: 1rem; }
-        .container { max-width: 800px; margin: 0 auto; padding: 3rem 2rem; }
-        h2 { font-family: var(--font-serif); font-size: 2rem; margin: 2.5rem 0 1.5rem; color: var(--primary); }
-        h3 { font-family: var(--font-serif); font-size: 1.5rem; margin: 2rem 0 1rem; }
-        .info-table { width: 100%; border-collapse: collapse; margin: 2rem 0; border: 1px solid #e0e0e0; }
-        .info-table th { background: var(--primary); color: white; padding: 1rem; text-align: left; }
-        .info-table td { padding: 1rem; border-bottom: 1px solid #e0e0e0; }
-        .tip-box { padding: 1.5rem; margin: 2rem 0; border-left: 5px solid var(--accent); background: rgba(201, 169, 98, 0.08); }
-        .cta-box { padding: 1.5rem; margin: 2rem 0; background: var(--cream); text-align: center; border-radius: 4px; }
-        .faq-section { background: var(--cream); padding: 3rem 2rem; margin-top: 3rem; }
-        .faq-item { background: white; padding: 1.5rem; margin-bottom: 1rem; border-left: 5px solid var(--accent); }
-        footer { background: var(--primary); color: white; padding: 3rem 2rem; margin-top: 3rem; }
-    </style>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-500FTKX6V9"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-500FTKX6V9');</script>
+    <script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,'script','https://mc.yandex.ru/metrika/tag.js?id=107237229','ym');ym(107237229,'init',{ssr:true,webvisor:true,clickmap:true,accurateTrackBounce:true,trackLinks:true});</script>
+    <style>:root{--primary:#0c1825;--primary-light:#1a3a5c;--cream:#f8f9fa;--gray:#5a6d7e;--white:#fff;--accent:#c9a962;--font-sans:'DM Sans',sans-serif;--font-serif:'Playfair Display',serif;--transition:all .4s cubic-bezier(.16,1,.3,1)}*{margin:0;padding:0;box-sizing:border-box}body{font-family:var(--font-sans);background:var(--white);color:var(--primary);line-height:1.8}.nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 60px;height:80px;display:flex;justify-content:space-between;align-items:center;background:rgba(12,24,37,.95);backdrop-filter:blur(10px)}.nav-logo{display:flex;align-items:center;text-decoration:none}.nav-logo-img{height:56px;width:auto}.nav-links{display:flex;gap:44px;list-style:none}.nav-links a{color:var(--white);text-decoration:none;font-size:13px;font-weight:500;letter-spacing:.5px}.nav-links a:hover{color:var(--accent)}.nav-cta{padding:14px 32px;border-radius:6px;font-size:12px;text-decoration:none;letter-spacing:1.5px;text-transform:uppercase;background:var(--accent);border:1px solid var(--accent);color:var(--primary);font-weight:700}.nav-mobile{display:none;width:28px;height:20px;flex-direction:column;justify-content:space-between;cursor:pointer}.nav-mobile span{height:2px;background:var(--white)}.article-hero{padding:130px 40px 60px;text-align:center;background:linear-gradient(135deg,var(--primary) 0%,var(--primary-light) 100%);color:var(--white)}.article-tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:20px}.article-hero h1{font-family:var(--font-serif);font-size:clamp(28px,5vw,44px);font-weight:700;margin-bottom:16px;line-height:1.2;max-width:800px;margin-left:auto;margin-right:auto}.article-meta{font-size:14px;color:rgba(255,255,255,.6)}.breadcrumbs{max-width:800px;margin:0 auto;padding:20px 40px 0;font-size:13px;color:var(--gray)}.breadcrumbs a{color:var(--accent);text-decoration:none}.article{max-width:800px;margin:0 auto;padding:40px 40px 80px}.article h2{font-family:var(--font-serif);font-size:28px;font-weight:700;margin:48px 0 20px}.article h3{font-size:20px;font-weight:700;margin:32px 0 16px;color:var(--primary-light)}.article p{margin-bottom:20px;color:#374151;font-size:16px}.article ul,.article ol{margin:0 0 20px 24px;color:#374151}.article li{margin-bottom:8px}.article a{color:var(--accent)}.info-table{width:100%;border-collapse:collapse;margin:24px 0;font-size:15px}.info-table th{background:var(--primary);color:var(--white);padding:14px 16px;text-align:left;font-weight:600;font-size:13px}.info-table td{padding:12px 16px;border-bottom:1px solid #e5e7eb}.info-table tr:hover{background:var(--cream)}.warning-box{background:#fef3c7;border-left:4px solid #f59e0b;padding:20px 24px;margin:24px 0;border-radius:0 8px 8px 0}.tip-box{background:#ecfdf5;border-left:4px solid #10b981;padding:20px 24px;margin:24px 0;border-radius:0 8px 8px 0}.cta-box{background:linear-gradient(135deg,var(--primary) 0%,var(--primary-light) 100%);color:var(--white);padding:40px;border-radius:12px;margin:48px 0;text-align:center}.cta-box h3{color:var(--white);font-family:var(--font-serif);font-size:24px;margin:0 0 12px}.cta-box p{color:rgba(255,255,255,.8);margin-bottom:24px}.cta-btn{display:inline-block;padding:20px 48px;background:var(--white);color:var(--primary);text-decoration:none;font-weight:700;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;border-radius:4px}.footer{background:var(--primary);color:var(--white);padding:80px 60px 40px}.footer-content{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;max-width:1200px;margin:0 auto 60px}.footer-logo{height:64px;width:auto;margin-bottom:16px}.footer-desc{font-size:14px;line-height:1.8;color:rgba(255,255,255,.6);max-width:300px}.footer-col h4{font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-bottom:24px}.footer-links{list-style:none}.footer-links li{margin-bottom:14px}.footer-links a{color:rgba(255,255,255,.6);text-decoration:none;font-size:14px}.footer-links a:hover{color:var(--white)}@media(max-width:768px){.nav{padding:0 20px;height:70px}.nav-links{display:none}.nav-mobile{display:flex}.nav-cta{display:none}.article-hero{padding:100px 20px 40px}.article{padding:30px 20px 60px}.footer{padding:60px 20px 30px}.footer-content{grid-template-columns:1fr;gap:40px}}</style>
 </head>
 <body>
-    <nav>
-        <div class="logo">FC Travel</div>
-        <a href="tel:+375291234567" style="background: var(--accent); color: var(--primary); padding: 0.7rem 1.5rem; border-radius: 4px; text-decoration: none; font-weight: 600;">Заказать тур</a>
-    </nav>
+<nav class="nav"><a href="/" class="nav-logo"><img src="/logo.png" alt="First Class" class="nav-logo-img"></a><ul class="nav-links"><li><a href="/#services">Услуги</a></li><li><a href="/tickets/">Билеты</a></li><li><a href="/visa-support/">Визы</a></li><li><a href="/#expertise">О нас</a></li><li><a href="/blog/">Блог</a></li><li><a href="/#contact">Контакты</a></li></ul><a href="/#contact" class="nav-cta">Связаться</a><div class="nav-mobile" onclick="document.querySelector('.nav-links').classList.toggle('mobile-open')"><span></span><span></span><span></span></div></nav>
 
-    <section class="article-hero">
-        <span style="display: inline-block; background: var(--accent); color: var(--primary); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem; text-transform: uppercase;">Деловой туризм</span>
-        <h1>Деловой туризм в Беларуси 2026: тренды и возможности</h1>
-        <div style="font-size: 0.95rem; color: rgba(255,255,255,0.9);">
-            <span>15 апреля 2026</span> · <span>18 минут чтения</span>
-        </div>
-    </section>
+<section class="article-hero"><div class="article-tag">Деловой туризм</div><h1>Деловой туризм в Беларуси 2026: тренды и возможности</h1><div class="article-meta">15 апреля 2026 &middot; 18 минут чтения</div></section>
 
-    <div class="container">
-        <p>Деловой туризм в Беларуси переживает период динамичного развития. В 2026 году страна получила официальную <strong>госпрограмму развития туристических услуг на 2026–2030 годы</strong>, которая ставит амбициозную цель: увеличить экспорт туристических услуг до <strong>$1.35 млрд к 2030 году</strong>.</p>
+<div class="breadcrumbs"><a href="/">Главная</a> / <a href="/blog/">Блог</a> / Деловой туризм в Беларуси 2026</div>
 
-        <p>Беларусь входит в топ-5 направлений деловых поездок из России и других стран СНГ, конкурируя с Казахстаном, Узбекистаном, ОАЭ и Азербайджаном.</p>
+<article class="article">
 
-        <h2>Госпрограмма развития туризма 2026–2030</h2>
-        <table class="info-table">
-            <thead>
-                <tr>
-                    <th>Показатель</th>
-                    <th>2025 (базовый год)</th>
-                    <th>2030 (целевой год)</th>
-                    <th>Рост</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Экспорт туруслуг (млн USD)</td>
-                    <td>~700–750</td>
-                    <td>1,350</td>
-                    <td>+80–92%</td>
-                </tr>
-                <tr>
-                    <td>Количество туристов (млн)</td>
-                    <td>~11–12</td>
-                    <td>15–16</td>
-                    <td>+30–40%</td>
-                </tr>
-                <tr>
-                    <td>Деловых туров (MICE)</td>
-                    <td>~20%</td>
-                    <td>25–30%</td>
-                    <td>+5–10 п.п.</td>
-                </tr>
-            </tbody>
-        </table>
+<p>Деловой туризм в Беларуси переживает период динамичного развития. В 2026 году страна получила официальную <strong>госпрограмму развития туристических услуг на 2026–2030 годы</strong>, которая ставит амбициозную цель: увеличить экспорт туристических услуг до <strong>$1.35 млрд к 2030 году</strong>.</p>
 
-        <h2>Новые тренды делового туризма в 2026</h2>
+<p>Беларусь входит в топ-5 направлений деловых поездок из России и других стран СНГ, конкурируя с Казахстаном, Узбекистаном, ОАЭ и Азербайджаном.</p>
 
-        <h3>Тренд 1: ESG корпоративные ретриты</h3>
-        <p>ESG ретриты сочетают профессиональное развитие с экологической ответственностью. Компании проводят встречи в условиях природы.</p>
-        <ul style="margin-left: 1.5rem; margin-bottom: 1.2rem;">
-            <li>Национальный парк «Беловежская пуща»</li>
-            <li>Озёра в Полесье</li>
-            <li>Эко-отели в центральной Беларуси</li>
-        </ul>
+<h2>Госпрограмма развития туризма 2026–2030</h2>
+<table class="info-table">
+<thead>
+<tr>
+<th>Показатель</th>
+<th>2025 (базовый год)</th>
+<th>2030 (целевой год)</th>
+<th>Рост</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Экспорт туруслуг (млн USD)</td>
+<td>~700–750</td>
+<td>1,350</td>
+<td>+80–92%</td>
+</tr>
+<tr>
+<td>Количество туристов (млн)</td>
+<td>~11–12</td>
+<td>15–16</td>
+<td>+30–40%</td>
+</tr>
+<tr>
+<td>Деловых туров (MICE)</td>
+<td>~20%</td>
+<td>25–30%</td>
+<td>+5–10 п.п.</td>
+</tr>
+</tbody>
+</table>
 
-        <h3>Тренд 2: Образовательные корпоративные туры</h3>
-        <p>Образовательные туры сочетают обучение, командообразование и культурный обмен.</p>
-        <ul style="margin-left: 1.5rem; margin-bottom: 1.2rem;">
-            <li>IT-конференции</li>
-            <li>Бизнес-школы и мастер-классы</li>
-            <li>Экскурсии на производства</li>
-            <li>Культурные программы</li>
-        </ul>
+<h2>Новые тренды делового туризма в 2026</h2>
 
-        <h2>Минск как деловой хаб</h2>
-        <p><strong>Основные MICE-площадки:</strong></p>
-        <ul style="margin-left: 1.5rem; margin-bottom: 1.2rem;">
-            <li><strong>Marriott Minsk</strong> — 230 номеров, конференц-залы на 1000+ участников</li>
-            <li><strong>DoubleTree by Hilton Minsk</strong> — 223 номера</li>
-            <li><strong>BelExpo</strong> — площадь 80,000 м²</li>
-        </ul>
+<h3>Тренд 1: ESG корпоративные ретриты</h3>
+<p>ESG ретриты сочетают профессиональное развитие с экологической ответственностью. Компании проводят встречи в условиях природы.</p>
+<ul>
+<li>Национальный парк «Беловежская пуща»</li>
+<li>Озёра в Полесье</li>
+<li>Эко-отели в центральной Беларуси</li>
+</ul>
 
-        <h2>Полный пакет делового тура</h2>
-        <p><strong>Что входит в пакет от First Class:</strong></p>
-        <ul style="margin-left: 1.5rem; margin-bottom: 1.2rem;">
-            <li>Авиабилеты</li>
-            <li>Размещение в отелях</li>
-            <li>Трансферты</li>
-            <li>Организация конференций</li>
-            <li>Визовая поддержка</li>
-            <li>Переводчики</li>
-        </ul>
+<h3>Тренд 2: Образовательные корпоративные туры</h3>
+<p>Образовательные туры сочетают обучение, командообразование и культурный обмен.</p>
+<ul>
+<li>IT-конференции</li>
+<li>Бизнес-школы и мастер-классы</li>
+<li>Экскурсии на производства</li>
+<li>Культурные программы</li>
+</ul>
 
-        <table class="info-table">
-            <thead>
-                <tr>
-                    <th>Программа</th>
-                    <th>Продолжительность</th>
-                    <th>Участники</th>
-                    <th>Цена (USD на чел.)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Минск Бизнес Экспресс</td>
-                    <td>3 дня</td>
-                    <td>10–50 чел.</td>
-                    <td>$1,200–1,800</td>
-                </tr>
-                <tr>
-                    <td>Конференция в Минске</td>
-                    <td>5 дней</td>
-                    <td>50–300 чел.</td>
-                    <td>$2,500–5,000</td>
-                </tr>
-                <tr>
-                    <td>ESG Ретрит</td>
-                    <td>4 дня</td>
-                    <td>20–100 чел.</td>
-                    <td>$2,000–3,500</td>
-                </tr>
-            </tbody>
-        </table>
+<h2>Минск как деловой хаб</h2>
+<p><strong>Основные MICE-площадки:</strong></p>
+<ul>
+<li><strong>Marriott Minsk</strong> — 230 номеров, конференц-залы на 1000+ участников</li>
+<li><strong>DoubleTree by Hilton Minsk</strong> — 223 номера</li>
+<li><strong>BelExpo</strong> — площадь 80,000 м²</li>
+</ul>
 
-        <div class="cta-box">
-            <h3>Организуем ваше деловое мероприятие</h3>
-            <p>Опыт First Class помогает компаниям провести памятные и продуктивные мероприятия.</p>
-            <a href="mailto:marketing@fclass.by?subject=Деловой тур в Беларусь" style="display: inline-block; background: var(--accent); color: var(--primary); padding: 1rem 2rem; text-decoration: none; border-radius: 4px; font-weight: 600; margin-top: 1rem;">Заказать консультацию</a>
-        </div>
-    </div>
+<h2>Полный пакет делового тура</h2>
+<p><strong>Что входит в пакет от First Class:</strong></p>
+<ul>
+<li>Авиабилеты</li>
+<li>Размещение в отелях</li>
+<li>Трансферты</li>
+<li>Организация конференций</li>
+<li>Визовая поддержка</li>
+<li>Переводчики</li>
+</ul>
 
-    <section class="faq-section">
-        <div class="container">
-            <h2 style="text-align: center; margin-bottom: 2rem;">Часто задаваемые вопросы</h2>
-            <div class="faq-item">
-                <h3>Какова цель госпрограммы?</h3>
-                <p>Увеличить экспорт туруслуг до $1.35 млрд к 2030 году (в 2 раза больше чем в 2025).</p>
-            </div>
-            <div class="faq-item">
-                <h3>На каком месте Беларусь?</h3>
-                <p>Входит в топ-5 направлений деловых поездок из России и СНГ.</p>
-            </div>
-        </div>
-    </section>
+<table class="info-table">
+<thead>
+<tr>
+<th>Программа</th>
+<th>Продолжительность</th>
+<th>Участники</th>
+<th>Цена (USD на чел.)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Минск Бизнес Экспресс</td>
+<td>3 дня</td>
+<td>10–50 чел.</td>
+<td>$1,200–1,800</td>
+</tr>
+<tr>
+<td>Конференция в Минске</td>
+<td>5 дней</td>
+<td>50–300 чел.</td>
+<td>$2,500–5,000</td>
+</tr>
+<tr>
+<td>ESG Ретрит</td>
+<td>4 дня</td>
+<td>20–100 чел.</td>
+<td>$2,000–3,500</td>
+</tr>
+</tbody>
+</table>
 
-    <footer>
-        <p style="text-align: center; margin-bottom: 2rem;">
-            Email: <strong>marketing@fclass.by</strong> | Телефон: <strong>+375 (29) 123-45-67</strong>
-        </p>
-        <p style="text-align: center; color: rgba(255,255,255,0.7);">&copy; 2026 First Class Travel</p>
-    </footer>
+<div class="cta-box">
+<h3>Организуем ваше деловое мероприятие</h3>
+<p>Опыт First Class помогает компаниям провести памятные и продуктивные мероприятия.</p>
+<a href="/#contact" class="cta-btn">Заказать консультацию</a>
+</div>
+
+<h2>Часто задаваемые вопросы</h2>
+<h3>Какова цель госпрограммы?</h3>
+<p>Увеличить экспорт туруслуг до $1.35 млрд к 2030 году (в 2 раза больше чем в 2025).</p>
+
+<h3>На каком месте Беларусь?</h3>
+<p>Входит в топ-5 направлений деловых поездок из России и СНГ.</p>
+
+</article>
+
+<footer class="footer"><div class="footer-content"><div class="footer-brand"><img src="/logo.png" alt="First Class" class="footer-logo" loading="lazy"><p class="footer-desc">Организация командировок в Минске. Билеты, проживание, трансферы, визовая поддержка. Работаем с юридическими лицами с 2018 года. УНП 193582943.</p></div><div class="footer-col"><h4>Услуги</h4><ul class="footer-links"><li><a href="/#services">Авиа и ж/д билеты</a></li><li><a href="/#services">Проживание</a></li><li><a href="/#services">Трансферы</a></li><li><a href="/visa-support/">Визовая поддержка</a></li></ul></div><div class="footer-col"><h4>Для бизнеса</h4><ul class="footer-links"><li><a href="/#contact">Корпоративный договор</a></li><li><a href="/#contact">Гибкие условия оплаты</a></li><li><a href="/#contact">Документы для бухгалтерии</a></li><li><a href="/#contact">Персональный менеджер</a></li></ul></div><div class="footer-col"><h4>Контакты</h4><ul class="footer-links"><li><a href="tel:+375447725266">+375 44 772-52-66</a></li><li><a href="mailto:marketing@fclass.by">marketing@fclass.by</a></li><li>Пн-Пт: 9:00-19:00</li></ul></div></div></footer>
+<script>document.querySelector('.nav-mobile').addEventListener('click',function(){document.querySelector('.nav-links').classList.toggle('mobile-open')});</script>
 </body>
 </html>
