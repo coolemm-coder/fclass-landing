@@ -1,0 +1,41 @@
+# fclass.by .htaccess
+# Created 2026-04-22 to fix GSC Soft 404 warning (email from sc-noreply@google.com 2026-04-20)
+# Problem: blog/{post}/ trailing-slash URLs return stub index.html while canonical content lives at blog/{post}.html
+# Solution: server-level 301 redirect all trailing-slash blog URLs to their .html counterparts
+
+RewriteEngine On
+
+# === BLOG STUB DIRECTORY REDIRECTS ===
+
+# Orphan stubs without a .html version — redirect to blog index
+RewriteRule ^blog/turkey-business-trip/?$ /blog/ [R=301,L]
+RewriteRule ^blog/belavia-nha-trang-2026/?$ /blog/ [R=301,L]
+
+# Trailing-slash duplicates — 301 to canonical .html
+# Matches blog/{slug}/ where slug has no inner slash → redirect to blog/{slug}.html
+RewriteRule ^blog/([^/]+)/$ /blog/$1.html [R=301,L]
+
+# === STATIC ASSET COMPRESSION ===
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain application/javascript application/xml application/xml+rss text/xml
+</IfModule>
+
+# === SECURITY HEADERS ===
+
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# === CACHE CONTROL ===
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+</IfModule>
