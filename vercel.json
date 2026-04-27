@@ -34,9 +34,5 @@
       ],
       "destination": "/robots-vercel.txt"
     }
-  ],
-  "routes": [
-    { "handle": "filesystem" },
-    { "src": "/(.*)", "dest": "/404.html", "status": 404 }
   ]
 }
