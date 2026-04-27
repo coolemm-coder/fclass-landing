@@ -1,0 +1,7 @@
+# This file is served only on *.vercel.app preview/staging domains via vercel.json rewrite.
+# The production site fclass.by is hosted in Belarus (Beltelecom 178.159.240.15) and uses /robots.txt directly.
+User-agent: *
+Disallow: /
+
+# Hint to consolidate signals to the canonical production host
+Host: https://fclass.by
