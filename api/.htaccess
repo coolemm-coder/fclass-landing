@@ -1,0 +1,12 @@
+# Deny direct access to any non-PHP file in /api/
+<FilesMatch "\.(csv|log|json|txt|md)$">
+    Require all denied
+</FilesMatch>
+
+# Allow PHP execution
+<FilesMatch "\.php$">
+    Require all granted
+</FilesMatch>
+
+# Disable directory listing
+Options -Indexes
