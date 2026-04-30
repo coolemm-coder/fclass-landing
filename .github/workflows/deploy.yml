@@ -1,0 +1,60 @@
+name: Deploy to fclass.by
+
+# Этот workflow заменяет сломанный fclass-ftp-sync (sandbox blocked).
+# Триггерится на push в main → автодеплой на ISPmanager FTP за ~30 секунд.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:  # ручной запуск из Actions UI
+
+concurrency:
+  group: ftp-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: FTP Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: FTP Sync
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          port: 21
+          protocol: ftp
+          local-dir: ./
+          server-dir: ./
+          state-name: .ftp-deploy-sync-state.json
+          log-level: standard
+          dry-run: false
+          dangerous-clean-slate: false
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github/**
+            **/.github/**/*
+            **/node_modules/**
+            **/.env
+            **/.env.*
+            **/.DS_Store
+            **/CLAUDE.md
+            **/README.md
+            **/PROJECT_LOG.md
+            **/ROADMAP.md
+            **/VISION.md
+            **/.ftp-deploy-sync-state.json
+
+      - name: Verify deploy
+        run: |
+          echo "Deploy completed at $(date -u)"
+          echo "Verifying live URLs..."
+          for path in "/" "/komandirovochnye-kalkulyator/" "/tickets/" "/visa-support/" "/blog/" "/sitemap.xml"; do
+            STATUS=$(curl -s -o /dev/null -w "%{http_code}" "https://fclass.by${path}")
+            echo "  ${path} -> HTTP ${STATUS}"
+          done
