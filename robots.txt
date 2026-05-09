@@ -6,15 +6,25 @@ Disallow: /catalog/
 Disallow: /product/
 Disallow: /cart/
 Disallow: /checkout/
+Disallow: /search/
 Disallow: /search?
 Disallow: /filter/
 Disallow: /wp-admin/
 Disallow: /wp-content/
 Disallow: /wp-includes/
+# Legacy Bitrix URLs (old site, no longer maintained)
+Disallow: /contacts/
+Disallow: /info/
+Disallow: /company/
+Disallow: /personal/
+Disallow: /auth/
+Disallow: /bitrix/
 Disallow: /*.php$
 Disallow: /*?sort=
 Disallow: /*?page=
 Disallow: /*?filter=
+Disallow: /*?tags=
+Disallow: /*?q=
 Crawl-delay: 1
 
 User-agent: GPTBot
