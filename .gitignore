@@ -1,0 +1,75 @@
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Secrets
+*.key
+credentials.json
+secrets/
+.gh-token*
+*.gh-token-tmp
+
+# Claude Code
+.claude/settings.local.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Node
+node_modules/
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# Data (sensitive)
+data/clients/
+data/exports/
+*.xlsx
+*.xls
+
+# MCP Cache
+.playwright-mcp/
+
+# Temp
+*.tmp
+*.log
+
+# Media artifacts (screencasts, drafts) — не нужны в репо, тяжёлые
+*.mp4
+*.mov
+*.zip
+*.tar.gz
+*.7z
+
+# Screenshots (debug, не для прода)
+meta-*.png
+meta-*.jpeg
+meta_*.png
+ig-*.png
+ispmanager-*.png
+princess-*.png
+instructor-*.png
+upload-*.png
+context-menu.png
+extract-dialog.png
+hero-mobile.png
+index-new-fonts.png
+prod-hero.png
+services-fonts.png
+audit-main.jpeg
+mobile-audit.jpeg
+
+# API debug JSON
+upload-data.json
+
+# FTP deploy state
+.ftp-deploy-sync-state.json
