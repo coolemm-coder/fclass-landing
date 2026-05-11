@@ -1,0 +1,99 @@
+{
+  "name": "FC Lead - Process Form",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "fc-lead",
+        "options": {
+          "allowedOrigins": "*"
+        },
+        "responseMode": "responseNode"
+      },
+      "id": "webhook",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [250, 300],
+      "webhookId": "fc-lead"
+    },
+    {
+      "parameters": {
+        "jsCode": "var raw = $input.first().json;\nvar body = raw.body || raw;\n\nvar name = body.name || '—';\nvar phone = body.phone || '—';\nvar email = body.email || '—';\nvar company = body.company || '—';\nvar message = body.message || '—';\n\nvar now = new Date();\nvar minsk = now.toLocaleString('ru-RU', {timeZone: 'Europe/Minsk'});\n\nvar text = '🔔 Новая заявка с сайта!\\n\\n';\ntext += '👤 ' + name + '\\n';\ntext += '📞 ' + phone + '\\n';\ntext += '📧 ' + email + '\\n';\ntext += '🏢 ' + company + '\\n';\n\nif (message && message !== '—') {\n  text += '\\n💬 ' + message + '\\n';\n}\n\ntext += '\\n🕐 ' + minsk;\n\nvar cleanPhone = phone.replace(/[^\\d+]/g, '');\n\nreturn {\n  json: {\n    text: text,\n    name: name,\n    phone: phone,\n    cleanPhone: cleanPhone,\n    email: email,\n    company: company,\n    message: message,\n    timestamp: now.toISOString()\n  }\n};"
+      },
+      "id": "code",
+      "name": "Format Lead",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [450, 300]
+    },
+    {
+      "parameters": {
+        "chatId": "543428212",
+        "text": "={{ $json.text }}",
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "id": "telegram",
+      "name": "Send to Telegram",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [650, 300],
+      "credentials": {
+        "telegramApi": {
+          "id": "k4d0qASGIxEm3iYy",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ success: true, message: 'Заявка принята' }) }}",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Access-Control-Allow-Origin",
+                "value": "*"
+              }
+            ]
+          }
+        }
+      },
+      "id": "respond",
+      "name": "Respond Success",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [850, 300]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          { "node": "Format Lead", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Format Lead": {
+      "main": [
+        [
+          { "node": "Send to Telegram", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Send to Telegram": {
+      "main": [
+        [
+          { "node": "Respond Success", "type": "main", "index": 0 }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

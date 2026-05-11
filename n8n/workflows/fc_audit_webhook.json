@@ -1,0 +1,92 @@
+{
+  "name": "FC Audit - Collect Responses",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "fc-audit",
+        "options": {
+          "allowedOrigins": "*"
+        },
+        "responseMode": "responseNode"
+      },
+      "id": "webhook",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [250, 300],
+      "webhookId": "fc-audit"
+    },
+    {
+      "parameters": {
+        "jsCode": "const raw = $input.first().json;\nconst body = raw.body || raw;\n\n// Handle Time Diary entries\nif (body.type === 'time_diary') {\n  const name = body.name || 'Неизвестно';\n  const date = body.date || 'Неизвестно';\n  const entries = body.entries || {};\n  \n  let entriesText = '';\n  const hours = Object.keys(entries).sort();\n  for (const hour of hours) {\n    entriesText += `${hour} — ${entries[hour]}\\n`;\n  }\n  \n  // Calculate summary\n  const summary = {};\n  for (const task of Object.values(entries)) {\n    const key = task.toLowerCase();\n    summary[key] = (summary[key] || 0) + 1;\n  }\n  const summaryText = Object.entries(summary)\n    .sort((a, b) => b[1] - a[1])\n    .map(([task, hours]) => `${hours}ч ${task}`)\n    .join(', ');\n  \n  const message = `⏱️ Дневник времени\\n\\n👤 ${name}\\n📅 ${date}\\n\\n${entriesText}\\n📊 Итого: ${summaryText}`;\n  \n  return { json: { message } };\n}\n\n// Handle Audit Forms\nconst roleNames = {\n  dasha: '👩‍💼 Даша',\n  pasha: '👨‍💼 Паша',\n  backoffice: '📋 Бэкофис',\n  accountant: '📊 Надя'\n};\n\nconst role = body.role || 'unknown';\nconst roleName = roleNames[role] || role;\nconst timestamp = new Date(body.timestamp).toLocaleString('ru-RU', {timeZone: 'Europe/Minsk'});\n\nlet answersText = '';\nconst answers = body.answers || {};\n\nfor (const [question, value] of Object.entries(answers)) {\n  let displayValue = value;\n  \n  if (Array.isArray(value)) {\n    displayValue = value.join(', ') || '—';\n  } else if (typeof value === 'object' && value !== null) {\n    displayValue = Object.entries(value)\n      .filter(([k, v]) => v)\n      .map(([k, v]) => `${k}: ${v}`)\n      .join('; ') || '—';\n  }\n  \n  if (displayValue) {\n    // Shorten question for readability\n    const shortQ = question.length > 50 ? question.slice(0, 47) + '...' : question;\n    answersText += `❓ ${shortQ}\\n➡️ ${displayValue}\\n\\n`;\n  }\n}\n\nconst message = `🔔 Анкета: ${roleName}\\n🕐 ${timestamp}\\n\\n${answersText.slice(0, 3500)}`;\n\nreturn {\n  json: {\n    message,\n    role,\n    timestamp: body.timestamp,\n    answers: body.answers\n  }\n};"
+      },
+      "id": "code",
+      "name": "Format Message",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [450, 300]
+    },
+    {
+      "parameters": {
+        "chatId": "543428212",
+        "text": "={{ $json.message }}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "id": "telegram",
+      "name": "Send to Telegram",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [650, 300]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ success: true }) }}",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Access-Control-Allow-Origin",
+                "value": "*"
+              }
+            ]
+          }
+        }
+      },
+      "id": "respond",
+      "name": "Respond Success",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [850, 300]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          { "node": "Format Message", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Format Message": {
+      "main": [
+        [
+          { "node": "Send to Telegram", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Send to Telegram": {
+      "main": [
+        [
+          { "node": "Respond Success", "type": "main", "index": 0 }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

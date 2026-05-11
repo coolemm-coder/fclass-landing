@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+
+# Build artifacts
+dist/
+build/
+.vercel/
+.next/
+
+# Lock files
+package-lock.json
+yarn.lock
+
+# Environment & secrets
+.env
+.env.*
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+
+# Git
+.git/
+
+# Claude internals
+.claude/settings.local.json

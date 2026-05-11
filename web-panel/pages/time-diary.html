@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дневник времени | First Class</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .time-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .time-row {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .time-label {
+            min-width: 55px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--accent);
+        }
+        .time-input {
+            flex: 1;
+            padding: 12px 15px;
+            background: var(--bg-input);
+            border: 2px solid transparent;
+            border-radius: 8px;
+            font-size: 14px;
+            color: var(--text);
+            transition: all 0.2s;
+        }
+        .time-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: var(--bg-card);
+        }
+        .time-input::placeholder {
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+        .name-input {
+            width: 100%;
+            padding: 16px 20px;
+            background: var(--bg-input);
+            border: 2px solid transparent;
+            border-radius: 10px;
+            font-size: 16px;
+            color: var(--text);
+            margin-bottom: 20px;
+        }
+        .name-input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        .date-selector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        .date-btn {
+            background: var(--bg-input);
+            border: none;
+            color: var(--text);
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        .date-btn:hover {
+            background: var(--accent);
+        }
+        .current-date {
+            font-size: 16px;
+            font-weight: 600;
+            min-width: 140px;
+            text-align: center;
+        }
+        .quick-tasks {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        .quick-task {
+            padding: 8px 14px;
+            background: var(--bg-input);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            font-size: 12px;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .quick-task:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+        .summary-box {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 25px;
+        }
+        .summary-title {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+        .summary-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .summary-stat {
+            background: var(--bg-input);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 13px;
+        }
+        .summary-stat strong {
+            color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <div class="logo">FIRST CLASS</div>
+            <div class="tagline">Дневник времени</div>
+        </header>
+
+        <main class="main">
+            <div class="form-header">
+                <a href="../index.html" style="color: var(--text-muted); text-decoration: none; font-size: 14px;">← Назад</a>
+                <h1 style="margin-top: 15px;">Дневник времени</h1>
+                <p>Записывайте чем занимались каждый час</p>
+            </div>
+
+            <input type="text" class="name-input" id="user-name" placeholder="Ваше имя">
+
+            <div class="date-selector">
+                <button class="date-btn" onclick="changeDate(-1)">←</button>
+                <span class="current-date" id="current-date"></span>
+                <button class="date-btn" onclick="changeDate(1)">→</button>
+            </div>
+
+            <div class="info-box" style="margin-bottom: 20px;">
+                <div class="info-icon">💡</div>
+                <div class="info-text">
+                    <strong>Совет</strong>
+                    <span>Кликните на подсказку ниже, чтобы быстро добавить задачу</span>
+                </div>
+            </div>
+
+            <div class="quick-tasks" id="quick-tasks">
+                <span class="quick-task" data-task="Звонки клиентам">Звонки</span>
+                <span class="quick-task" data-task="Работа с заявками">Заявки</span>
+                <span class="quick-task" data-task="Оформление документов">Документы</span>
+                <span class="quick-task" data-task="Переписка">Переписка</span>
+                <span class="quick-task" data-task="Работа с туроператорами">ТО</span>
+                <span class="quick-task" data-task="Бухгалтерия / 1С">1С</span>
+                <span class="quick-task" data-task="Обед">Обед</span>
+                <span class="quick-task" data-task="Совещание">Совещание</span>
+            </div>
+
+            <div class="time-grid" id="time-grid"></div>
+
+            <div class="summary-box" id="summary-box" style="display: none;">
+                <div class="summary-title">Статистика за день:</div>
+                <div class="summary-stats" id="summary-stats"></div>
+            </div>
+
+            <div class="nav-buttons" style="margin-top: 30px;">
+                <button class="btn btn-secondary" onclick="clearDay()">Очистить</button>
+                <button class="btn btn-primary" onclick="saveAndSend()">Сохранить</button>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>First Class Travel Automation © 2026</p>
+        </footer>
+    </div>
+
+    <script>
+        const WORK_HOURS = [
+            '09:00', '10:00', '11:00', '12:00', '13:00',
+            '14:00', '15:00', '16:00', '17:00', '18:00', '19:00'
+        ];
+
+        let currentDate = new Date();
+        let activeInput = null;
+        let isSending = false;
+
+        function formatDate(date) {
+            const days = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
+            const day = days[date.getDay()];
+            return `${day}, ${date.getDate().toString().padStart(2, '0')}.${(date.getMonth() + 1).toString().padStart(2, '0')}`;
+        }
+
+        function getStorageKey(date) {
+            return `fc_diary_${date.toISOString().split('T')[0]}`;
+        }
+
+        function changeDate(delta) {
+            currentDate.setDate(currentDate.getDate() + delta);
+            renderPage();
+        }
+
+        function renderPage() {
+            document.getElementById('current-date').textContent = formatDate(currentDate);
+
+            const grid = document.getElementById('time-grid');
+            const stored = JSON.parse(localStorage.getItem(getStorageKey(currentDate)) || '{}');
+
+            grid.innerHTML = WORK_HOURS.map(hour => `
+                <div class="time-row">
+                    <span class="time-label">${hour}</span>
+                    <input type="text"
+                           class="time-input"
+                           data-hour="${hour}"
+                           value="${stored[hour] || ''}"
+                           placeholder="Чем занимались?"
+                           onfocus="activeInput = this">
+                </div>
+            `).join('');
+
+            // Load saved name
+            const savedName = localStorage.getItem('fc_diary_name');
+            if (savedName) {
+                document.getElementById('user-name').value = savedName;
+            }
+
+            updateSummary();
+        }
+
+        function saveToLocal() {
+            const data = {};
+            document.querySelectorAll('.time-input').forEach(input => {
+                if (input.value.trim()) {
+                    data[input.dataset.hour] = input.value.trim();
+                }
+            });
+            localStorage.setItem(getStorageKey(currentDate), JSON.stringify(data));
+
+            // Save name
+            const name = document.getElementById('user-name').value.trim();
+            if (name) {
+                localStorage.setItem('fc_diary_name', name);
+            }
+
+            updateSummary();
+        }
+
+        function updateSummary() {
+            const data = {};
+            document.querySelectorAll('.time-input').forEach(input => {
+                const val = input.value.trim().toLowerCase();
+                if (val) {
+                    data[val] = (data[val] || 0) + 1;
+                }
+            });
+
+            const box = document.getElementById('summary-box');
+            const stats = document.getElementById('summary-stats');
+
+            if (Object.keys(data).length === 0) {
+                box.style.display = 'none';
+                return;
+            }
+
+            box.style.display = 'block';
+
+            const sorted = Object.entries(data).sort((a, b) => b[1] - a[1]);
+            stats.innerHTML = sorted.map(([task, hours]) =>
+                `<div class="summary-stat"><strong>${hours}ч</strong> ${task}</div>`
+            ).join('');
+        }
+
+        function clearDay() {
+            if (confirm('Очистить записи за этот день?')) {
+                localStorage.removeItem(getStorageKey(currentDate));
+                renderPage();
+            }
+        }
+
+        async function saveAndSend() {
+            // Prevent duplicate submissions
+            if (isSending) return;
+
+            saveToLocal();
+
+            const name = document.getElementById('user-name').value.trim();
+            if (!name) {
+                alert('Введите ваше имя');
+                document.getElementById('user-name').focus();
+                return;
+            }
+
+            const data = {};
+            document.querySelectorAll('.time-input').forEach(input => {
+                if (input.value.trim()) {
+                    data[input.dataset.hour] = input.value.trim();
+                }
+            });
+
+            if (Object.keys(data).length === 0) {
+                alert('Заполните хотя бы один час');
+                return;
+            }
+
+            // Block button
+            isSending = true;
+            const btn = document.querySelector('.btn-primary');
+            const originalText = btn.textContent;
+            btn.textContent = 'Отправка...';
+            btn.disabled = true;
+
+            const payload = {
+                type: 'time_diary',
+                name: name,
+                date: currentDate.toISOString().split('T')[0],
+                entries: data,
+                timestamp: new Date().toISOString()
+            };
+
+            try {
+                await fetch('https://emikss.host/webhook/fc-audit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                // Save to combined storage
+                const allDiaries = JSON.parse(localStorage.getItem('fc_time_diaries') || '[]');
+                allDiaries.push(payload);
+                localStorage.setItem('fc_time_diaries', JSON.stringify(allDiaries));
+
+                alert('Сохранено!');
+            } catch (e) {
+                console.error('Send error:', e);
+                alert('Ошибка отправки, но данные сохранены локально');
+            } finally {
+                // Unblock button
+                isSending = false;
+                btn.textContent = originalText;
+                btn.disabled = false;
+            }
+        }
+
+        // Quick task click
+        document.getElementById('quick-tasks').addEventListener('click', (e) => {
+            if (e.target.classList.contains('quick-task')) {
+                if (activeInput) {
+                    activeInput.value = e.target.dataset.task;
+                    saveToLocal();
+
+                    // Move to next input
+                    const inputs = Array.from(document.querySelectorAll('.time-input'));
+                    const idx = inputs.indexOf(activeInput);
+                    if (idx < inputs.length - 1) {
+                        inputs[idx + 1].focus();
+                    }
+                }
+            }
+        });
+
+        // Auto-save on input
+        document.getElementById('time-grid').addEventListener('input', () => {
+            saveToLocal();
+        });
+
+        // Init
+        renderPage();
+    </script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Анкета — Бухгалтер | First Class</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>:root { --accent: #f5576c; --accent-secondary: #f093fb; }</style>
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <div class="logo">FIRST CLASS</div>
+            <div class="tagline">Аудит процессов</div>
+        </header>
+
+        <main class="main">
+            <div class="form-header">
+                <a href="../index.html" style="color: var(--text-muted); text-decoration: none; font-size: 14px;">← Назад</a>
+                <h1 style="margin-top: 15px;">📊 Анкета: Бухгалтер</h1>
+                <p>Работа с 1С и учет операций</p>
+            </div>
+
+            <div class="info-box" style="margin-bottom: 25px; background: rgba(245, 87, 108, 0.15);">
+                <div class="info-icon">⭐</div>
+                <div class="info-text">
+                    <strong>Ключевая анкета</strong>
+                    <span>Ваши ответы критически важны для интеграции Union ↔ 1С</span>
+                </div>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill" style="width: 25%"></div>
+            </div>
+            <div class="progress-text" id="progress-text">Раздел 1 из 4</div>
+
+            <div id="form-container"></div>
+
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" id="btn-prev" style="display: none;">← Назад</button>
+                <button class="btn btn-primary" id="btn-next">Далее →</button>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>🔒 Ваши ответы конфиденциальны</p>
+        </footer>
+    </div>
+
+    <script src="../js/form.js"></script>
+    <script>
+        const formConfig = {
+            role: 'accountant',
+            sections: [
+                {
+                    title: 'Система 1С',
+                    questions: [
+                        {
+                            type: 'radio',
+                            text: 'Какую версию 1С используете?',
+                            options: ['1С:Бухгалтерия 8.3', '1С:Бухгалтерия 8.2', '1С:Предприятие (другая)', 'Не знаю точно']
+                        },
+                        {
+                            type: 'radio',
+                            text: 'Где установлена 1С?',
+                            options: ['Локально на компьютере', 'На сервере компании', 'Облачная версия', 'Не знаю']
+                        },
+                        {
+                            type: 'radio',
+                            text: 'Есть ли специальная конфигурация для турагентств?',
+                            options: ['Да, отраслевая', 'Нет, типовая', 'Не знаю']
+                        }
+                    ]
+                },
+                {
+                    title: 'Получение данных',
+                    questions: [
+                        {
+                            type: 'checkbox',
+                            text: 'Какие данные получаете от бэкофиса?',
+                            options: ['ФИО и паспорт клиента', 'Суммы сделок', 'Даты тура', 'Инфо о туроператоре', 'Сканы документов', 'Договоры']
+                        },
+                        {
+                            type: 'radio',
+                            text: 'В каком виде получаете данные?',
+                            options: ['Excel-файлы', 'Email', 'Бумажные документы', 'Устно', 'Смотрю сама в Union']
+                        },
+                        {
+                            type: 'table',
+                            text: 'Сколько времени уходит на ввод в 1С?',
+                            rows: ['В день', 'В неделю', 'В конце месяца'],
+                            placeholder: 'часов'
+                        },
+                        {
+                            type: 'checkbox',
+                            text: 'Какие проблемы при получении данных?',
+                            options: ['Неполная информация', 'Ошибки в данных', 'Нечитаемые документы', 'Задержки', 'Расхождения в суммах']
+                        }
+                    ]
+                },
+                {
+                    title: 'Учет и сверка',
+                    questions: [
+                        {
+                            type: 'checkbox',
+                            text: 'Какие операции отражаете по турам?',
+                            options: ['Поступление от клиента', 'Оплата туроператору', 'Комиссионный доход', 'Возвраты', 'Авансы']
+                        },
+                        {
+                            type: 'radio',
+                            text: 'Как сверяете данные Union и 1С?',
+                            options: ['Вручную по отчетам', 'По итогам месяца', 'Не сверяю']
+                        },
+                        {
+                            type: 'radio',
+                            text: 'Как часто находите расхождения?',
+                            options: ['Почти каждый месяц', 'Иногда', 'Редко', 'Никогда']
+                        },
+                        {
+                            type: 'radio',
+                            text: 'Сколько времени уходит на исправление ошибок?',
+                            options: ['До 1 часа/месяц', '1-3 часа/месяц', '3-5 часов/месяц', 'Более 5 часов/месяц']
+                        }
+                    ]
+                },
+                {
+                    title: 'Требования к интеграции',
+                    questions: [
+                        {
+                            type: 'textarea',
+                            text: 'Какие данные ОБЯЗАТЕЛЬНО должны приходить автоматически?',
+                            placeholder: 'Перечислите в порядке важности...'
+                        },
+                        {
+                            type: 'radio',
+                            text: 'Нужно ли согласование перед загрузкой в 1С?',
+                            options: ['Да, каждую операцию', 'Нет, можно автоматически', 'Только для больших сумм']
+                        },
+                        {
+                            type: 'radio',
+                            text: 'Автоматизация сэкономит времени:',
+                            options: ['До 1 часа/день', '1-2 часа/день', '2-4 часа/день', 'Сложно оценить']
+                        },
+                        {
+                            type: 'textarea',
+                            text: 'Что было бы идеальным результатом?',
+                            placeholder: 'Как должно работать в идеале...'
+                        },
+                        {
+                            type: 'textarea',
+                            text: 'Какие риски видите в автоматизации?',
+                            placeholder: 'Что может пойти не так...'
+                        },
+                        {
+                            type: 'radio',
+                            text: 'Можно получить доступ к тестовой базе 1С?',
+                            options: ['Да', 'Нужно согласовать', 'Можем создать копию', 'Нет']
+                        }
+                    ]
+                }
+            ]
+        };
+
+        new AuditForm(formConfig);
+    </script>
+</body>
+</html>

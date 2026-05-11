@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go-to-Market План | StratArts</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        /* ═══════════════════════════════════════════════════════════════════════════
+           STRATARTS EDITORIAL DARK THEME - BASE TEMPLATE v2.0
+           ═══════════════════════════════════════════════════════════════════════════ */
+
+        /* === RESET & BASE === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+            background: #0a0a0a;
+            color: #f5f5f5;
+            line-height: 1.6;
+        }
+
+        .container {
+            margin: 0 auto;
+            background: #0a0a0a;
+        }
+
+        /* === HEADER === */
+        header {
+            background: #0a0a0a;
+            padding: 0;
+            color: white;
+            display: flex;
+            justify-content: center;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1600px;
+            width: 100%;
+            background: linear-gradient(135deg, #10b981 0%, #14b8a6 100%);
+            padding: 4rem 4rem 3rem 4rem;
+            border-bottom: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .header-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect fill="rgba(255,255,255,0.05)" width="50" height="50"/></svg>');
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .kicker {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            font-weight: 400;
+            margin-bottom: 2rem;
+        }
+
+        .meta-info {
+            display: flex;
+            gap: 2rem;
+            font-size: 0.9rem;
+            opacity: 0.9;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* === SCORE BANNER === */
+        .score-banner {
+            background: #0a0a0a;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .score-container {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 3rem;
+            align-items: center;
+            max-width: 1600px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 3rem 4rem;
+            background: #1a1a1a;
+            border-bottom: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .score-main {
+            text-align: center;
+        }
+
+        .score-number {
+            font-size: 5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #10b981 0%, #14b8a6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+        }
+
+        .score-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #a3a3a3;
+            margin-top: 0.5rem;
+            font-weight: 600;
+        }
+
+        .score-interpretation {
+            border-left: 3px solid #10b981;
+            padding-left: 2rem;
+        }
+
+        .interpretation-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: #f5f5f5;
+        }
+
+        .interpretation-text {
+            color: #d4d4d4;
+            line-height: 1.7;
+        }
+
+        .verdict-badge {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            white-space: nowrap;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+        }
+
+        /* === CONTENT SECTIONS === */
+        .content {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 4rem 4rem;
+            background: #0a0a0a;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+        }
+
+        .section:last-child {
+            margin-bottom: 2rem;
+        }
+
+        .section-header {
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #f5f5f5;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-description {
+            font-size: 1.05rem;
+            color: #d4d4d4;
+            max-width: 800px;
+        }
+
+        /* === CHART LAYOUTS === */
+        .chart-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .chart-card {
+            background: #1a1a1a;
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .chart-card.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .chart-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #f5f5f5;
+            margin-bottom: 0.5rem;
+        }
+
+        .chart-subtitle {
+            font-size: 0.9rem;
+            color: #a3a3a3;
+            margin-bottom: 1.5rem;
+        }
+
+        .chart-wrapper {
+            position: relative;
+            height: 350px;
+            margin-bottom: 1.5rem;
+        }
+
+        .chart-wrapper.tall {
+            height: 450px;
+        }
+
+        /* === INSIGHTS PANEL === */
+        .insights-panel {
+            background: #0a0a0a;
+            border-left: 4px solid #10b981;
+            padding: 1.5rem;
+            margin-top: 1rem;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .insight-title {
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #10b981;
+            margin-bottom: 1rem;
+        }
+
+        .insight-list {
+            list-style: none;
+        }
+
+        .insight-list li {
+            padding: 0.6rem 0;
+            color: #d4d4d4;
+            font-size: 0.95rem;
+            border-bottom: 1px solid rgba(16, 185, 129, 0.1);
+        }
+
+        .insight-list li:last-child {
+            border-bottom: none;
+        }
+
+        .insight-list li strong {
+            color: #10b981;
+            font-weight: 600;
+        }
+
+        /* === METRIC CARDS (3-column) === */
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .metric-card {
+            background: #1a1a1a;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(16, 185, 129, 0.4);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);
+        }
+
+        .metric-card .label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #a3a3a3;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .metric-card .value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #10b981;
+            line-height: 1.2;
+        }
+
+        .metric-card .range {
+            font-size: 0.9rem;
+            color: #d4d4d4;
+            margin-top: 0.5rem;
+        }
+
+        .metric-card .description {
+            font-size: 0.85rem;
+            color: #a3a3a3;
+            margin-top: 0.75rem;
+            line-height: 1.5;
+        }
+
+        /* === FEATURE CARDS (2-column) === */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: #1a1a1a;
+            border: 2px solid rgba(16, 185, 129, 0.3);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+        }
+
+        .feature-card.primary {
+            border-color: #10b981;
+            box-shadow: 0 4px 20px rgba(16, 185, 129, 0.15);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-2px);
+            border-color: #10b981;
+            box-shadow: 0 4px 20px rgba(16, 185, 129, 0.2);
+        }
+
+        .feature-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .feature-name {
+            font-weight: 700;
+            color: #f5f5f5;
+            font-size: 1.1rem;
+        }
+
+        .feature-score {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #10b981;
+        }
+
+        .feature-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+        }
+
+        .feature-description {
+            font-size: 0.95rem;
+            color: #d4d4d4;
+            line-height: 1.6;
+        }
+
+        /* === SMALL CARDS (4-column) === */
+        .small-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .small-card {
+            background: #1a1a1a;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 8px;
+            padding: 1.25rem;
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+        }
+
+        .small-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(16, 185, 129, 0.4);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);
+        }
+
+        .small-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .small-name {
+            font-weight: 700;
+            color: #f5f5f5;
+            font-size: 0.95rem;
+        }
+
+        .small-value {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #10b981;
+        }
+
+        .small-description {
+            font-size: 0.85rem;
+            color: #d4d4d4;
+            line-height: 1.5;
+        }
+
+        .small-meta {
+            font-size: 0.75rem;
+            color: #a3a3a3;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+
+        /* === FOOTER === */
+        footer {
+            background: #0a0a0a;
+            display: flex;
+            justify-content: center;
+        }
+
+        .footer-content {
+            max-width: 1600px;
+            width: 100%;
+            background: #1a1a1a;
+            color: #a3a3a3;
+            padding: 2rem 4rem;
+            font-size: 0.85rem;
+            text-align: center;
+            border-top: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .footer-content p {
+            margin: 0.3rem 0;
+        }
+
+        .footer-content strong {
+            color: #10b981;
+        }
+
+        /* === PRINT STYLES === */
+        @media print {
+            body { background: white; color: #000000; }
+            .container { background: white; }
+            header { background: white; }
+            .header-content { background: white; color: #000000; border: 2px solid #10b981; }
+            .header-content::before { display: none; }
+            .kicker { color: #666666; }
+            h1 { color: #000000; }
+            .subtitle { color: #333333; }
+            .meta-item { color: #666666; }
+            .score-banner { background: white; }
+            .score-container { background: white; border: 2px solid #10b981; }
+            .score-number { background: none; -webkit-text-fill-color: #10b981; color: #10b981; }
+            .score-label { color: #666666; }
+            .score-interpretation { border-left: 3px solid #10b981; }
+            .interpretation-title { color: #000000; }
+            .interpretation-text { color: #333333; }
+            .verdict-badge { border: 2px solid #10b981; color: #000000; }
+            .content { background: white; }
+            .section-title { color: #000000; }
+            .section-description { color: #333333; }
+            .chart-card, .metric-card, .feature-card, .small-card { background: white; border: 2px solid #10b981; page-break-inside: avoid; }
+            .chart-title, .metric-card .label, .feature-name, .small-name { color: #000000; font-weight: 900; }
+            .chart-subtitle { color: #666666; }
+            .insights-panel { background: #f5f5f5; border: 2px solid #10b981; }
+            .insight-title { color: #10b981; font-weight: 900; }
+            .insight-list li { color: #333333; border-bottom: 1px solid #cccccc; }
+            .insight-list li strong { color: #000000; font-weight: 900; }
+            footer { background: white; }
+            .footer-content { background: white; color: #666666; border-top: 2px solid #10b981; }
+            .footer-content strong { color: #10b981; font-weight: 900; }
+            canvas { max-width: 100%; height: auto !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .goal-card, .channel-card, .month-block, .risk-card, .dashboard-card { background: white; border: 2px solid #10b981; page-break-inside: avoid; }
+            .budget-table th { background: #f5f5f5; color: #000000; }
+            .month-title, .channel-name, .risk-title { color: #000000; }
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 1400px) {
+            .small-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 1024px) {
+            .metric-grid { grid-template-columns: 1fr; }
+            .feature-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .chart-grid { grid-template-columns: 1fr; }
+            .small-grid { grid-template-columns: 1fr; }
+            .score-container { grid-template-columns: 1fr; text-align: center; }
+            .score-interpretation { border-left: none; border-top: 3px solid #10b981; padding-left: 0; padding-top: 1.5rem; }
+            .header-content { padding: 2rem; }
+            .score-container { padding: 2rem; }
+            .content { padding: 2rem 2rem; }
+            .footer-content { padding: 2rem; }
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════════════
+           SKILL-SPECIFIC CSS
+           ═══════════════════════════════════════════════════════════════════════════ */
+
+        /* GTM Goals Cards */
+        .goals-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .goal-card {
+            background: #1a1a1a;
+            border: 2px solid rgba(16, 185, 129, 0.3);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+        }
+
+        .goal-card:hover {
+            transform: translateY(-2px);
+            border-color: #10b981;
+            box-shadow: 0 4px 20px rgba(16, 185, 129, 0.2);
+        }
+
+        .goal-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .goal-target { font-size: 2.5rem; font-weight: 700; color: #10b981; line-height: 1.2; }
+        .goal-label { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px; color: #a3a3a3; margin-top: 0.5rem; font-weight: 600; }
+        .goal-description { font-size: 0.9rem; color: #d4d4d4; margin-top: 0.75rem; }
+
+        /* Channel Cards */
+        .channel-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .channel-card {
+            background: #1a1a1a;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+        }
+
+        .channel-card.primary { border: 2px solid #10b981; box-shadow: 0 4px 20px rgba(16, 185, 129, 0.15); }
+        .channel-card:hover { transform: translateY(-2px); border-color: rgba(16, 185, 129, 0.4); box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1); }
+
+        .channel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .channel-info { display: flex; align-items: center; gap: 0.75rem; }
+        .channel-icon { width: 40px; height: 40px; background: rgba(16, 185, 129, 0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; }
+        .channel-name { font-weight: 700; color: #f5f5f5; font-size: 1.1rem; }
+        .channel-type { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #a3a3a3; }
+
+        .channel-priority { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 20px; font-weight: 600; font-size: 0.75rem; text-transform: uppercase; }
+        .channel-priority.primary { background: rgba(16, 185, 129, 0.2); color: #10b981; }
+        .channel-priority.secondary { background: rgba(246, 173, 85, 0.2); color: #f6ad55; }
+
+        .channel-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1rem; }
+        .channel-metric { text-align: center; padding: 0.75rem; background: rgba(16, 185, 129, 0.05); border-radius: 6px; }
+        .cm-value { font-size: 1.25rem; font-weight: 700; color: #10b981; }
+        .cm-label { font-size: 0.7rem; color: #a3a3a3; text-transform: uppercase; letter-spacing: 0.05em; }
+        .channel-tactics { font-size: 0.9rem; color: #d4d4d4; line-height: 1.6; }
+
+        /* Timeline/Roadmap */
+        .roadmap-container { margin-top: 2rem; }
+
+        .month-block {
+            background: #1a1a1a;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .month-block::before { content: ''; position: absolute; left: 30px; top: 100%; width: 2px; height: 1.5rem; background: rgba(16, 185, 129, 0.3); }
+        .month-block:last-child::before { display: none; }
+
+        .month-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .month-info { display: flex; align-items: center; gap: 1rem; }
+        .month-number { background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: #0a0a0a; width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.1rem; }
+        .month-title { font-weight: 700; color: #f5f5f5; font-size: 1.1rem; }
+        .month-theme { font-size: 0.85rem; color: #a3a3a3; font-style: italic; }
+        .month-goals { display: flex; gap: 1.5rem; }
+        .month-goal { text-align: right; }
+        .mg-value { font-size: 1.25rem; font-weight: 700; color: #10b981; }
+        .mg-label { font-size: 0.7rem; color: #a3a3a3; text-transform: uppercase; }
+
+        .week-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+        .week-card { background: rgba(16, 185, 129, 0.05); border-radius: 8px; padding: 1rem; }
+        .week-label { font-weight: 600; color: #10b981; font-size: 0.8rem; text-transform: uppercase; margin-bottom: 0.5rem; }
+        .week-tasks { list-style: none; padding: 0; margin: 0; }
+        .week-task { font-size: 0.85rem; color: #d4d4d4; padding: 0.25rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .week-task:last-child { border-bottom: none; }
+
+        /* Budget Table */
+        .budget-table-container { background: #1a1a1a; border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 12px; padding: 1.5rem; margin-top: 2rem; overflow-x: auto; }
+        .budget-table { width: 100%; border-collapse: collapse; }
+        .budget-table th { background: rgba(16, 185, 129, 0.1); color: #10b981; font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.75rem 1rem; text-align: left; border-bottom: 2px solid rgba(16, 185, 129, 0.3); }
+        .budget-table td { padding: 0.75rem 1rem; color: #d4d4d4; font-size: 0.9rem; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .budget-table tr:hover td { background: rgba(16, 185, 129, 0.05); }
+        .budget-table tr.total td { font-weight: 700; color: #10b981; border-top: 2px solid rgba(16, 185, 129, 0.3); }
+
+        /* Risk Cards */
+        .risk-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 2rem; }
+        .risk-card { background: #1a1a1a; border: 1px solid rgba(252, 129, 129, 0.3); border-radius: 12px; padding: 1.5rem; }
+        .risk-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 1px solid rgba(252, 129, 129, 0.2); }
+        .risk-icon { color: #fc8181; font-size: 1.25rem; }
+        .risk-title { font-weight: 700; color: #fc8181; font-size: 1rem; }
+        .risk-description { font-size: 0.9rem; color: #d4d4d4; margin-bottom: 1rem; }
+        .mitigation-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #10b981; font-weight: 600; margin-bottom: 0.5rem; }
+        .mitigation-text { font-size: 0.9rem; color: #d4d4d4; padding-left: 1rem; border-left: 2px solid #10b981; }
+
+        /* Metrics Dashboard */
+        .metrics-dashboard { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 2rem; }
+        .dashboard-card { background: #1a1a1a; border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 8px; padding: 1.25rem; text-align: center; }
+        .dash-value { font-size: 1.75rem; font-weight: 700; color: #10b981; }
+        .dash-label { font-size: 0.8rem; color: #a3a3a3; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.25rem; }
+        .dash-target { font-size: 0.8rem; color: #d4d4d4; margin-top: 0.5rem; }
+
+        /* Responsive - GTM specific */
+        @media (max-width: 1200px) {
+            .goals-grid { grid-template-columns: 1fr; }
+            .channel-grid { grid-template-columns: 1fr; }
+            .week-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .risk-grid { grid-template-columns: 1fr; }
+            .metrics-dashboard { grid-template-columns: repeat(2, 1fr); }
+            .channel-metrics { grid-template-columns: 1fr; }
+            .month-goals { flex-direction: column; gap: 0.5rem; }
+            .month-goal { text-align: left; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <header>
+            <div class="header-content">
+                <div class="kicker">StratArts Business Analysis</div>
+                <h1>Go-to-Market План</h1>
+                <div class="subtitle">First Class — Корпоративный Тревел Менеджмент для бизнеса Беларуси</div>
+                <div class="meta-info">
+                    <div class="meta-item">
+                        <span>📅</span>
+                        <span>Generated: 5 марта 2026</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>📊</span>
+                        <span>Analysis Type: Стратегия выхода на рынок</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>🎯</span>
+                        <span>Version 1.0.0</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- SCORE BANNER -->
+        <div class="score-banner">
+            <div class="score-container">
+                <div class="score-main">
+                    <div class="score-number">90</div>
+                    <div class="score-label">День План Запуска</div>
+                </div>
+
+                <div class="score-interpretation">
+                    <div class="interpretation-title">Что означает этот план</div>
+                    <div class="interpretation-text">
+                        Комплексный 90-дневный план выхода на B2B рынок корпоративного тревел-менеджмента Беларуси. Охватывает холодный outreach, SEO, партнёрства и тендеры.
+                    </div>
+                </div>
+
+                <div class="verdict-badge">
+                    К ЗАПУСКУ
+                </div>
+            </div>
+        </div>
+
+        <!-- MAIN CONTENT -->
+        <div class="content">
+
+            <!-- Section 1: 90-Day Goals -->
+            <section class="section">
+                <div class="section-header">
+                    <h2 class="section-title">Цели на 90 дней</h2>
+                    <p class="section-description">
+                        Ключевые целевые показатели роста и вехи для периода запуска go-to-market стратегии.
+                    </p>
+                </div>
+
+                <div class="goals-grid">
+                    <div class="goal-card">
+                        <div class="goal-icon">👥</div>
+                        <div class="goal-target">10-15</div>
+                        <div class="goal-label">Новые клиенты</div>
+                        <div class="goal-description">Новые корпоративные контракты за 90 дней</div>
+                    </div>
+                    <div class="goal-card">
+                        <div class="goal-icon">💰</div>
+                        <div class="goal-target">$15K</div>
+                        <div class="goal-label">Месячная выручка</div>
+                        <div class="goal-description">Месячная выручка от комиссий (MRR)</div>
+                    </div>
+                    <div class="goal-card">
+                        <div class="goal-icon">🎯</div>
+                        <div class="goal-target">50</div>
+                        <div class="goal-label">Ключевая веха</div>
+                        <div class="goal-description">Целевых аккаунтов в pipeline</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: Target Customer & Beachhead -->
+            <section class="section">
+                <div class="section-header">
+                    <h2 class="section-title">Целевой клиент и плацдарм</h2>
+                    <p class="section-description">
+                        Основная персона клиента и начальный сегмент рынка для фокусного исполнения GTM стратегии.
+                    </p>
+                </div>
+
+                <div class="feature-grid">
+                    <div class="feature-card primary">
+                        <div class="feature-badge">Основная персона</div>
+                        <div class="feature-name">Административный директор / HR-директор</div>
+                        <div class="feature-description">Отвечает за организацию командировок в компании 50-500 человек. Устал от ручного бронирования, хаоса с документами и отсутствия единого учёта.</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-badge">Плацдарм</div>
+                        <div class="feature-name">IT-компании Минска (50-500 сотрудников)</div>
+                        <div class="feature-description">Частые международные командировки, бюджет есть, нет выделенного тревел-менеджера. Короткий цикл принятия решений.</div>
+                    </div>
+                </div>
+
+                <div class="metric-grid" style="margin-top: 1.5rem;">
+                    <div class="metric-card">
+                        <div class="label">Размер рынка</div>
+                        <div class="value">800+</div>
+                        <div class="description">Общий адресуемый рынок</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Цикл покупки</div>
+                        <div class="value">2-6 нед</div>
+                        <div class="description">Средний срок принятия решения</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Целевой ACV</div>
+                        <div class="value">$5-15K</div>
+                        <div class="description">Годовая стоимость контракта</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Channel Strategy -->
+            <section class="section">
+                <div class="section-header">
+                    <h2 class="section-title">Стратегия каналов</h2>
+                    <p class="section-description">
+                        Основные и вспомогательные каналы привлечения с распределением бюджета и ожидаемой эффективностью.
+                    </p>
+                </div>
+
+                <div class="channel-grid">
+                    <!-- Primary Channel 1 -->
+                    <div class="channel-card primary">
+                        <div class="channel-header">
+                            <div class="channel-info">
+                                <div class="channel-icon">💼</div>
+                                <div>
+                                    <div class="channel-name">LinkedIn + Cold Email</div>
+                                    <div class="channel-type">Direct Sales</div>
+                                </div>
+                            </div>
+                            <div class="channel-priority primary">Основной</div>
+                        </div>
+                        <div class="channel-metrics">
+                            <div class="channel-metric">
+                                <div class="cm-value">$200</div>
+                                <div class="cm-label">Бюджет/мес</div>
+                            </div>
+                            <div class="channel-metric">
+                                <div class="cm-value">5-7</div>
+                                <div class="cm-label">Ож. клиенты</div>
+                            </div>
+                            <div class="channel-metric">
+                                <div class="cm-value">$40</div>
+                                <div class="cm-label">Целевой CAC</div>
+                            </div>
+                        </div>
+                        <div class="channel-tactics">LinkedIn Sales Navigator: персонализированные connection requests, 200/нед. Cold email через Apollo.io, 500 писем/мес. Цепочка 5-7 касаний. Follow-up через Telegram.</div>
+                    </div>
+
+                    <!-- Primary Channel 2 -->
+                    <div class="channel-card primary">
+                        <div class="channel-header">
+                            <div class="channel-info">
+                                <div class="channel-icon">🔍</div>
+                                <div>
+                                    <div class="channel-name">SEO + Контент</div>
+                                    <div class="channel-type">Organic</div>
+                                </div>
+                            </div>
+                            <div class="channel-priority primary">Основной</div>
+                        </div>
+                        <div class="channel-metrics">
+                            <div class="channel-metric">
+                                <div class="cm-value">$100</div>
+                                <div class="cm-label">Бюджет/мес</div>
+                            </div>
+                            <div class="channel-metric">
+                                <div class="cm-value">3-5</div>
+                                <div class="cm-label">Ож. клиенты</div>
+                            </div>
+                            <div class="channel-metric">
+                                <div class="cm-value">$30</div>
+                                <div class="cm-label">Целевой CAC</div>
+                            </div>
+                        </div>
+                        <div class="channel-tactics">SEO по 'визовая поддержка минск' (1126 зап/мес), 'служебные командировки' (420). Лид-магниты: PDF тревел-политика, чек-лист визового сопровождения. Yandex.Бизнес + Google Business.</div>
+                    </div>
+
+                    <!-- Secondary Channel -->
+                    <div class="channel-card">
+                        <div class="channel-header">
+                            <div class="channel-info">
+                                <div class="channel-icon">🤝</div>
+                                <div>
+                                    <div class="channel-name">Партнёрства</div>
+                                    <div class="channel-type">Partnerships</div>
+                                </div>
+                            </div>
+                            <div class="channel-priority secondary">Вспомогательный</div>
+                        </div>
+                        <div class="channel-metrics">
+                            <div class="channel-metric">
+                                <div class="cm-value">$150</div>
+                                <div class="cm-label">Бюджет/мес</div>
+                            </div>
+                            <div class="channel-metric">
+                                <div class="cm-value">2-3</div>
+                                <div class="cm-label">Ож. клиенты</div>
+                            </div>
+                            <div class="channel-metric">
+                                <div class="cm-value">$60</div>
+                                <div class="cm-label">Целевой CAC</div>
+                            </div>
+                        </div>
+                        <div class="channel-tactics">Бухгалтерские аутсорсеры, HR-консалтинг, бизнес-центры А-класса. Co-marketing с Belavia. Бизнес-завтраки. Реферальная комиссия 5-10%.</div>
+                    </div>
+
+                    <!-- Secondary Channel 2 -->
+                    <div class="channel-card">
+                        <div class="channel-header">
+                            <div class="channel-info">
+                                <div class="channel-icon">📋</div>
+                                <div>
+                                    <div class="channel-name">Тендеры icetrade.by</div>
+                                    <div class="channel-type">Government</div>
+                                </div>
+                            </div>
+                            <div class="channel-priority secondary">Вспомогательный</div>
+                        </div>
+                        <div class="channel-metrics">
+                            <div class="channel-metric">
+                                <div class="cm-value">$50</div>
+                                <div class="cm-label">Бюджет/мес</div>
+                            </div>
+                            <div class="channel-metric">
+                                <div class="cm-value">1-2</div>
+                                <div class="cm-label">Ож. клиенты</div>
+                            </div>
+                            <div class="channel-metric">
+                                <div class="cm-value">$50</div>
+                                <div class="cm-label">Целевой CAC</div>
+                            </div>
+                        </div>
+                        <div class="channel-tactics">Мониторинг тендеров через n8n. Ключи: командировки, бронирование билетов, деловые поездки. Подача 3-5 заявок/мес. Предварительное касание заказчика.</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4: Visual Analysis -->
+            <section class="section">
+                <div class="section-header">
+                    <h2 class="section-title">Визуальный анализ</h2>
+                    <p class="section-description">
+                        Распределение бюджета по каналам, ожидаемое привлечение клиентов и визуализация траектории роста.
+                    </p>
+                </div>
+
+                <div class="chart-grid">
+                    <!-- Chart 1: Budget Allocation -->
+                    <div class="chart-card">
+                        <div class="chart-title">Распределение бюджета по каналам</div>
+                        <div class="chart-subtitle">Ежемесячные маркетинговые расходы</div>
+                        <div class="chart-wrapper">
+                            <canvas id="budgetPieChart"></canvas>
+                        </div>
+                        <div class="insights-panel">
+                            <div class="insight-title">Стратегия распределения</div>
+                            <ul class="insight-list">
+                                <li><strong>Основные каналы:</strong> 60% общего бюджета</li>
+                                <li><strong>Вспомогательные каналы:</strong> 40% общего бюджета</li>
+                                <li><strong>Фокус:</strong> Фокус на прямых продажах через LinkedIn и SEO для долгосрочного органического роста</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Chart 2: Customer Growth -->
+                    <div class="chart-card">
+                        <div class="chart-title">Прогнозируемый рост клиентов</div>
+                        <div class="chart-subtitle">Кумулятивное привлечение клиентов по месяцам</div>
+                        <div class="chart-wrapper">
+                            <canvas id="growthLineChart"></canvas>
+                        </div>
+                        <div class="insights-panel">
+                            <div class="insight-title">Траектория роста</div>
+                            <ul class="insight-list">
+                                <li><strong>Месяц 1:</strong> 3 клиента</li>
+                                <li><strong>Месяц 3:</strong> 15 клиентов</li>
+                                <li><strong>Темп роста:</strong> +50% MoM</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Chart 3: CAC by Channel -->
+                    <div class="chart-card">
+                        <div class="chart-title">Стоимость привлечения клиента по каналам</div>
+                        <div class="chart-subtitle">Сравнение эффективности каналов</div>
+                        <div class="chart-wrapper">
+                            <canvas id="cacBarChart"></canvas>
+                        </div>
+                        <div class="insights-panel">
+                            <div class="insight-title">Анализ CAC</div>
+                            <ul class="insight-list">
+                                <li><strong>Минимальный CAC:</strong> SEO + Контент ($30)</li>
+                                <li><strong>Средний CAC:</strong> $38</li>
+                                <li><strong>LTV:CAC Ratio:</strong> 130:1</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Chart 4: Funnel Metrics -->
+                    <div class="chart-card">
+                        <div class="chart-title">Воронка конверсии</div>
+                        <div class="chart-subtitle">Ожидаемые показатели конверсии по этапам</div>
+                        <div class="chart-wrapper">
+                            <canvas id="funnelChart"></canvas>
+                        </div>
+                        <div class="insights-panel">
+                            <div class="insight-title">Показатели воронки</div>
+                            <ul class="insight-list">
+                                <li><strong>Посетители → Лиды:</strong> 4%</li>
+                                <li><strong>Лиды → Клиенты:</strong> 19%</li>
+                                <li><strong>Общая конверсия:</strong> 0.75%</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 5: 90-Day Tactical Roadmap -->
+            <section class="section">
+                <div class="section-header">
+                    <h2 class="section-title">Тактический роадмап на 90 дней</h2>
+                    <p class="section-description">
+                        Понедельный план действий с конкретными тактиками и метриками успеха.
+                    </p>
+                </div>
+
+                <div class="roadmap-container">
+                    <!-- Month 1 -->
+                    <div class="month-block">
+                        <div class="month-header">
+                            <div class="month-info">
+                                <div class="month-number">M1</div>
+                                <div>
+                                    <div class="month-title">Фундамент и инфраструктура</div>
+                                    <div class="month-theme">Построить базу для систематического outreach</div>
+                                </div>
+                            </div>
+                            <div class="month-goals">
+                                <div class="month-goal">
+                                    <div class="mg-value">3</div>
+                                    <div class="mg-label">Клиенты</div>
+                                </div>
+                                <div class="month-goal">
+                                    <div class="mg-value">$3K</div>
+                                    <div class="mg-label">MRR</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="week-grid">
+                            <div class="week-card">
+                                <div class="week-label">Неделя 1</div>
+                                <ul class="week-tasks">
+                                    <li class="week-task">Создать Airtable CRM + pipeline 50 аккаунтов</li>
+                                    <li class="week-task">Обновить LinkedIn профиль компании</li>
+                                    <li class="week-task">Настроить Yandex.Метрику + GSC</li>
+                                </ul>
+                            </div>
+                            <div class="week-card">
+                                <div class="week-label">Неделя 2</div>
+                                <ul class="week-tasks">
+                                    <li class="week-task">Запустить LinkedIn outreach (50/нед)</li>
+                                    <li class="week-task">Настроить Apollo.io + email цепочки</li>
+                                    <li class="week-task">Создать 3 PDF лид-магнита</li>
+                                </ul>
+                            </div>
+                            <div class="week-card">
+                                <div class="week-label">Неделя 3</div>
+                                <ul class="week-tasks">
+                                    <li class="week-task">Yandex.Бизнес + Google Business</li>
+                                    <li class="week-task">Первая SEO-статья</li>
+                                    <li class="week-task">Связаться с 5 партнёрами</li>
+                                </ul>
+                            </div>
+                            <div class="week-card">
+                                <div class="week-label">Неделя 4</div>
+                                <ul class="week-tasks">
+                                    <li class="week-task">10+ discovery calls</li>
+                                    <li class="week-task">Первый тендер icetrade.by</li>
+                                    <li class="week-task">Анализ результатов</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Month 2 -->
+                    <div class="month-block">
+                        <div class="month-header">
+                            <div class="month-info">
+                                <div class="month-number">M2</div>
+                                <div>
+                                    <div class="month-title">Активация и масштабирование</div>
+                                    <div class="month-theme">Конвертировать pipeline в контракты</div>
+                                </div>
+                            </div>
+                            <div class="month-goals">
+                                <div class="month-goal">
+                                    <div class="mg-value">5</div>
+                                    <div class="mg-label">Клиенты</div>
+                                </div>
+                                <div class="month-goal">
+                                    <div class="mg-value">$8K</div>
+                                    <div class="mg-label">MRR</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="week-grid">
+                            <div class="week-card">
+                                <div class="week-label">Неделя 5-6</div>
+                                <ul class="week-tasks">
+                                    <li class="week-task">Email outreach до 200/нед</li>
+                                    <li class="week-task">2 партнёрских соглашения</li>
+                                </ul>
+                            </div>
+                            <div class="week-card">
+                                <div class="week-label">Неделя 7-8</div>
+                                <ul class="week-tasks">
+                                    <li class="week-task">Первый бизнес-завтрак (15-20 HR/АХО)</li>
+                                    <li class="week-task">4 SEO-статьи</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Month 3 -->
+                    <div class="month-block">
+                        <div class="month-header">
+                            <div class="month-info">
+                                <div class="month-number">M3</div>
+                                <div>
+                                    <div class="month-title">Масштаб и оптимизация</div>
+                                    <div class="month-theme">Удвоить лучшие каналы</div>
+                                </div>
+                            </div>
+                            <div class="month-goals">
+                                <div class="month-goal">
+                                    <div class="mg-value">7</div>
+                                    <div class="mg-label">Клиенты</div>
+                                </div>
+                                <div class="month-goal">
+                                    <div class="mg-value">$15K</div>
+                                    <div class="mg-label">MRR</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="week-grid">
+                            <div class="week-card">
+                                <div class="week-label">Неделя 9-10</div>
+                                <ul class="week-tasks">
+                                    <li class="week-task">Реферальная программа</li>
+                                    <li class="week-task">Удвоить бюджет лучшего канала</li>
+                                </ul>
+                            </div>
+                            <div class="week-card">
+                                <div class="week-label">Неделя 11-12</div>
+                                <ul class="week-tasks">
+                                    <li class="week-task">A/B тест email тем</li>
+                                    <li class="week-task">Закрыть первый тендер</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 6: Budget & Resource Allocation -->
+            <section class="section">
+                <div class="section-header">
+                    <h2 class="section-title">Бюджет и распределение ресурсов</h2>
+                    <p class="section-description">
+                        Общий маркетинговый бюджет на 90 дней по категориям и ожидаемый ROI.
+                    </p>
+                </div>
+
+                <div class="budget-table-container">
+                    <table class="budget-table">
+                        <thead>
+                            <tr>
+                                <th>Категория</th>
+                                <th>Бюджет/мес</th>
+                                <th>Итого за 90 дней</th>
+                                <th>% от общего</th>
+                                <th>Ожидаемый результат</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Outreach (LinkedIn + Email)</td>
+                                <td>$200</td>
+                                <td>$600</td>
+                                <td>40%</td>
+                                <td>6-8 встреч/месяц</td>
+                            </tr>
+                            <tr>
+                                <td>Контент и SEO</td>
+                                <td>$100</td>
+                                <td>$300</td>
+                                <td>20%</td>
+                                <td>3000+ органических визитов</td>
+                            </tr>
+                            <tr>
+                                <td>Партнёрства и нетворкинг</td>
+                                <td>$150</td>
+                                <td>$450</td>
+                                <td>30%</td>
+                                <td>2-3 реферальных контракта</td>
+                            </tr>
+                            <tr>
+                                <td>Тендеры</td>
+                                <td>$50</td>
+                                <td>$150</td>
+                                <td>10%</td>
+                                <td>1 выигранный контракт</td>
+                            </tr>
+                            <tr class="total">
+                                <td>Итого</td>
+                                <td>$500</td>
+                                <td>$1,500</td>
+                                <td>100%</td>
+                                <td>10-15 новых контрактов</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Section 7: Risks & Mitigation -->
+            <section class="section">
+                <div class="section-header">
+                    <h2 class="section-title">Риски и митигация</h2>
+                    <p class="section-description">
+                        Ключевые риски исполнения GTM стратегии с проактивными мерами снижения.
+                    </p>
+                </div>
+
+                <div class="risk-grid">
+                    <div class="risk-card">
+                        <div class="risk-header">
+                            <div class="risk-icon">⚠️</div>
+                            <div class="risk-title">Длинный цикл B2B продаж</div>
+                        </div>
+                        <div class="risk-description">Корп клиенты принимают решения 2-6 недель</div>
+                        <div class="mitigation-label">План митигации</div>
+                        <div class="mitigation-text">Начать с малых компаний (50-100 чел) с коротким циклом</div>
+                    </div>
+
+                    <div class="risk-card">
+                        <div class="risk-header">
+                            <div class="risk-icon">⚠️</div>
+                            <div class="risk-title">Конкуренция SaaS-платформ</div>
+                        </div>
+                        <div class="risk-description">Smartway, OneTwoTrip автоматизируют дешевле</div>
+                        <div class="mitigation-label">План митигации</div>
+                        <div class="mitigation-text">Конкурировать сервисом: живой менеджер 24/7, белорусская специфика</div>
+                    </div>
+
+                    <div class="risk-card">
+                        <div class="risk-header">
+                            <div class="risk-icon">⚠️</div>
+                            <div class="risk-title">Ограниченная команда</div>
+                        </div>
+                        <div class="risk-description">5 человек на все задачи</div>
+                        <div class="mitigation-label">План митигации</div>
+                        <div class="mitigation-text">Максимальная автоматизация через n8n</div>
+                    </div>
+
+                    <div class="risk-card">
+                        <div class="risk-header">
+                            <div class="risk-icon">⚠️</div>
+                            <div class="risk-title">Зависимость от тендеров</div>
+                        </div>
+                        <div class="risk-description">Длинный цикл, нет гарантии</div>
+                        <div class="mitigation-label">План митигации</div>
+                        <div class="mitigation-text">Тендеры — 10% бюджета, основной фокус на прямой outreach</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 8: Success Metrics Dashboard -->
+            <section class="section">
+                <div class="section-header">
+                    <h2 class="section-title">Дашборд метрик успеха</h2>
+                    <p class="section-description">
+                        Ключевые показатели эффективности для еженедельного и ежемесячного отслеживания в период GTM.
+                    </p>
+                </div>
+
+                <div class="metrics-dashboard">
+                    <div class="dashboard-card">
+                        <div class="dash-value">0</div>
+                        <div class="dash-label">Новые клиенты</div>
+                        <div class="dash-target">Цель: 15 за 90 дней</div>
+                    </div>
+                    <div class="dashboard-card">
+                        <div class="dash-value">$0</div>
+                        <div class="dash-label">MRR</div>
+                        <div class="dash-target">Цель: $15,000</div>
+                    </div>
+                    <div class="dashboard-card">
+                        <div class="dash-value">0</div>
+                        <div class="dash-label">Pipeline</div>
+                        <div class="dash-target">Цель: 50 аккаунтов</div>
+                    </div>
+                    <div class="dashboard-card">
+                        <div class="dash-value">0</div>
+                        <div class="dash-label">LinkedIn connects</div>
+                        <div class="dash-target">Цель: 200/мес</div>
+                    </div>
+                    <div class="dashboard-card">
+                        <div class="dash-value">0</div>
+                        <div class="dash-label">Cold emails</div>
+                        <div class="dash-target">Цель: 500/мес</div>
+                    </div>
+                    <div class="dashboard-card">
+                        <div class="dash-value">-</div>
+                        <div class="dash-label">Blended CAC</div>
+                        <div class="dash-target">Цель: &lt; $40</div>
+                    </div>
+                    <div class="dashboard-card">
+                        <div class="dash-value">0</div>
+                        <div class="dash-label">Discovery calls</div>
+                        <div class="dash-target">Цель: 20/мес</div>
+                    </div>
+                    <div class="dashboard-card">
+                        <div class="dash-value">0%</div>
+                        <div class="dash-label">Conversion rate</div>
+                        <div class="dash-target">Цель: 25%</div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- FOOTER -->
+        <footer>
+            <div class="footer-content">
+                <p><strong>Generated:</strong> 5 марта 2026 | <strong>Project:</strong> First Class TMC</p>
+                <p style="margin-top: 5px;">StratArts Business Strategy Skills | go-to-market-planner-v1.0.0</p>
+                <p style="margin-top: 5px;">Context Signature: go-to-market-planner-v1.0.0 | Final Report (1 iteration)</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // CHART.JS GLOBAL CONFIGURATION
+        Chart.defaults.font.family = "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif";
+        Chart.defaults.color = '#a3a3a3';
+
+        // Standard tooltip configuration
+        const tooltipConfig = {
+            backgroundColor: '#1a1a1a',
+            titleColor: '#f5f5f5',
+            bodyColor: '#d4d4d4',
+            borderColor: '#10b981',
+            borderWidth: 1
+        };
+
+        // Color palette
+        const COLORS = {
+            primary: '#10b981',
+            primaryLight: '#14b8a6',
+            primaryDark: '#059669',
+            primaryDarker: '#047857',
+            primaryDarkest: '#065f46',
+            gray: '#a3a3a3',
+            backgrounds: [
+                'rgba(16, 185, 129, 0.4)',
+                'rgba(16, 185, 129, 0.6)',
+                'rgba(16, 185, 129, 0.8)',
+                'rgba(16, 185, 129, 0.9)',
+                'rgba(20, 184, 166, 0.8)',
+                'rgba(5, 150, 105, 0.8)'
+            ],
+            borders: ['#10b981', '#14b8a6', '#059669', '#047857', '#065f46']
+        };
+
+        // SKILL-SPECIFIC CHART CODE
+
+        // Data object
+        const data = {
+            channels: [
+                { name: 'LinkedIn + Cold Email', budget: 200, customers: 6, cac: 40 },
+                { name: 'SEO + Контент', budget: 100, customers: 4, cac: 30 },
+                { name: 'Партнёрства', budget: 150, customers: 2, cac: 60 },
+                { name: 'Тендеры icetrade.by', budget: 50, customers: 1, cac: 50 }
+            ],
+            growth: {
+                month1: 3,
+                month2: 5,
+                month3: 7
+            },
+            funnel: {
+                visitors: 2000,
+                trials: 80,
+                paid: 15
+            }
+        };
+
+        // Chart 1: Budget Allocation Pie Chart
+        const budgetPieCtx = document.getElementById('budgetPieChart').getContext('2d');
+        new Chart(budgetPieCtx, {
+            type: 'doughnut',
+            data: {
+                labels: data.channels.map(c => c.name),
+                datasets: [{
+                    data: data.channels.map(c => c.budget),
+                    backgroundColor: ['#10b981', '#14b8a6', '#059669', '#047857'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '60%',
+                plugins: {
+                    legend: { position: 'bottom', labels: { color: '#f5f5f5', font: { size: 11 }, padding: 15 } },
+                    tooltip: tooltipConfig
+                }
+            }
+        });
+
+        // Chart 2: Customer Growth Line Chart
+        const growthLineCtx = document.getElementById('growthLineChart').getContext('2d');
+        new Chart(growthLineCtx, {
+            type: 'line',
+            data: {
+                labels: ['Месяц 1', 'Месяц 2', 'Месяц 3'],
+                datasets: [{
+                    label: 'Клиенты (кумулятивно)',
+                    data: [data.growth.month1, data.growth.month1 + data.growth.month2, data.growth.month1 + data.growth.month2 + data.growth.month3],
+                    borderColor: '#10b981',
+                    backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: 6,
+                    pointBackgroundColor: '#10b981'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: { grid: { color: 'rgba(16, 185, 129, 0.1)' }, ticks: { color: '#a3a3a3' } },
+                    y: { beginAtZero: true, grid: { color: 'rgba(16, 185, 129, 0.1)' }, ticks: { color: '#a3a3a3' } }
+                },
+                plugins: { legend: { display: false }, tooltip: tooltipConfig }
+            }
+        });
+
+        // Chart 3: CAC by Channel Bar Chart
+        const cacBarCtx = document.getElementById('cacBarChart').getContext('2d');
+        new Chart(cacBarCtx, {
+            type: 'bar',
+            data: {
+                labels: data.channels.map(c => c.name),
+                datasets: [{
+                    label: 'CAC',
+                    data: data.channels.map(c => c.cac),
+                    backgroundColor: ['#10b981', '#14b8a6', '#059669', '#047857'],
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: { grid: { display: false }, ticks: { color: '#a3a3a3', font: { size: 10 } } },
+                    y: { grid: { color: 'rgba(16, 185, 129, 0.1)' }, ticks: { color: '#a3a3a3', callback: v => '$' + v } }
+                },
+                plugins: { legend: { display: false }, tooltip: tooltipConfig }
+            }
+        });
+
+        // Chart 4: Funnel Chart (horizontal bar)
+        const funnelCtx = document.getElementById('funnelChart').getContext('2d');
+        new Chart(funnelCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Посетители', 'Лиды', 'Клиенты'],
+                datasets: [{
+                    label: 'Воронка',
+                    data: [data.funnel.visitors, data.funnel.trials, data.funnel.paid],
+                    backgroundColor: ['#10b981', '#14b8a6', '#059669'],
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: 'y',
+                scales: {
+                    x: { grid: { color: 'rgba(16, 185, 129, 0.1)' }, ticks: { color: '#a3a3a3' } },
+                    y: { grid: { display: false }, ticks: { color: '#f5f5f5', font: { weight: '600' } } }
+                },
+                plugins: { legend: { display: false }, tooltip: tooltipConfig }
+            }
+        });
+
+        // Print-friendly chart colors
+        window.addEventListener('beforeprint', function() {
+            Chart.defaults.color = '#000000';
+        });
+
+        window.addEventListener('afterprint', function() {
+            Chart.defaults.color = '#a3a3a3';
+        });
+    </script>
+</body>
+</html>

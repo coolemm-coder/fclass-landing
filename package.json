@@ -1,0 +1,20 @@
+{
+  "name": "firstclass_automation",
+  "version": "1.0.0",
+  "description": "Проект автоматизации для турагентства \"Первый Класс\" (Минск, Беларусь).",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "dotenv": "^17.3.1",
+    "playwright": "^1.58.2"
+  }
+}

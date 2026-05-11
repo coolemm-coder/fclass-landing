@@ -1,0 +1,805 @@
+- generic [active]:
+  - generic:
+    - generic:
+      - iframe
+    - generic:
+      - iframe
+    - generic:
+      - iframe
+    - generic:
+      - iframe
+    - generic [ref=e1]:
+      - generic [ref=e62]:
+        - generic [ref=e63]:
+          - link "Логотип Meta" [ref=e65] [cursor=pointer]:
+            - /url: /?no_redirect=true
+            - img "Логотип Meta" [ref=e67]
+          - tablist [ref=e76]:
+            - link "Мои приложения" [ref=e77] [cursor=pointer]:
+              - /url: /apps/
+              - generic [ref=e80]: Мои приложения
+            - link "Требуются действия" [ref=e81] [cursor=pointer]:
+              - /url: /required-actions/
+              - generic [ref=e84]: Требуются действия
+            - tab "Документы" [ref=e85] [cursor=pointer]:
+              - generic [ref=e88]: Документы
+            - tab "Инструменты" [ref=e90] [cursor=pointer]:
+              - generic [ref=e93]: Инструменты
+            - tab "Поддержка" [ref=e95] [cursor=pointer]:
+              - generic [ref=e98]: Поддержка
+        - generic [ref=e100]:
+          - generic [ref=e101]:
+            - generic [ref=e107]: Поле для ввода
+            - textbox "Поле для ввода" [ref=e118]:
+              - /placeholder: Поиск...
+          - link "1" [ref=e121] [cursor=pointer]:
+            - /url: "#"
+            - generic [ref=e124]:
+              - generic [ref=e126]: "1"
+              - status [ref=e127]: Notification count
+          - link "Facebook" [ref=e130] [cursor=pointer]:
+            - /url: "#"
+            - img "Facebook" [ref=e135]
+      - generic [ref=e18]:
+        - generic [ref=e136]:
+          - generic [ref=e139]:
+            - generic [ref=e142]:
+              - generic [ref=e148]: Searchable selector for all apps
+              - combobox "Searchable selector for all apps First Class" [ref=e153] [cursor=pointer]:
+                - generic [ref=e158]:
+                  - generic:
+                    - generic: First Class
+            - navigation [ref=e162]:
+              - list [ref=e163]:
+                - listitem [ref=e164]:
+                  - button "Панель" [ref=e166] [cursor=pointer]
+                  - generic:
+                    - listitem:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic: Панель
+                - listitem [ref=e172]:
+                  - button "Требуемые действия" [ref=e174] [cursor=pointer]
+                  - generic:
+                    - listitem:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic: Требуемые действия
+                - listitem [ref=e180]:
+                  - button "Сценарии использования" [ref=e182] [cursor=pointer]
+                  - generic:
+                    - listitem:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic: Сценарии использования
+                - listitem [ref=e188]:
+                  - generic [ref=e189]:
+                    - button "Вход через Facebook для компаний" [ref=e191] [cursor=pointer]
+                    - generic:
+                      - listitem:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic: Вход через Facebook для компаний
+                          - button "Развернуть/свернуть группу" [disabled] [ref=e197]:
+                            - generic [ref=e200]: Развернуть/свернуть группу
+                  - list [ref=e203]:
+                    - generic [ref=e204]:
+                      - button "Настройки" [ref=e206] [cursor=pointer]
+                      - generic:
+                        - listitem:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: Настройки
+                    - generic [ref=e211]:
+                      - button "Быстрое начало работы" [ref=e213] [cursor=pointer]
+                      - generic:
+                        - listitem:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: Быстрое начало работы
+                    - generic [ref=e218]:
+                      - button "Конфигурации" [ref=e220] [cursor=pointer]
+                      - generic:
+                        - listitem:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: Конфигурации
+                    - generic [ref=e225]:
+                      - button "Шаблоны" [ref=e227] [cursor=pointer]
+                      - generic:
+                        - listitem:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: Шаблоны
+                - listitem [ref=e232]:
+                  - generic [ref=e233]:
+                    - button "Проверка" [ref=e235] [cursor=pointer]
+                    - generic:
+                      - listitem:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic: Проверка
+                          - button "Развернуть/свернуть группу" [disabled] [ref=e241]:
+                            - generic [ref=e244]: Развернуть/свернуть группу
+                  - list [ref=e247]:
+                    - generic [ref=e248]:
+                      - button "Тестирование" [ref=e250] [cursor=pointer]
+                      - generic:
+                        - listitem:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: Тестирование
+                    - generic [ref=e255]:
+                      - button "Подтверждение" [ref=e257] [cursor=pointer]
+                      - generic:
+                        - listitem:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: Подтверждение
+                    - generic [ref=e262]:
+                      - button "Проверка приложения" [ref=e264] [cursor=pointer]
+                      - generic:
+                        - listitem:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: Проверка приложения
+                - listitem [ref=e269]:
+                  - button "Опубликовать" [ref=e271] [cursor=pointer]
+                  - generic:
+                    - listitem:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic: Опубликовать
+          - generic [ref=e277]:
+            - navigation [ref=e278]:
+              - list [ref=e279]:
+                - listitem [ref=e280]:
+                  - generic [ref=e281]:
+                    - button "Настройки приложения" [ref=e283] [cursor=pointer]
+                    - generic:
+                      - listitem:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic: Настройки приложения
+                          - button "Развернуть/свернуть группу" [disabled] [ref=e289]:
+                            - generic [ref=e292]: Развернуть/свернуть группу
+                  - list [ref=e295]:
+                    - generic [ref=e296]:
+                      - button "Основное" [ref=e298] [cursor=pointer]
+                      - generic:
+                        - listitem:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: Основное
+                    - generic [ref=e303]:
+                      - button "Дополнительно" [ref=e305] [cursor=pointer]
+                      - generic:
+                        - listitem:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: Дополнительно
+                - listitem [ref=e310]:
+                  - generic [ref=e311]:
+                    - button "Роли в приложении" [ref=e313] [cursor=pointer]
+                    - generic:
+                      - listitem:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic: Роли в приложении
+                          - button "Развернуть/свернуть группу" [disabled] [ref=e319]:
+                            - generic [ref=e322]: Развернуть/свернуть группу
+                  - list [ref=e325]:
+                    - generic [ref=e326]:
+                      - button "Роли" [ref=e328] [cursor=pointer]
+                      - generic:
+                        - listitem:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: Роли
+                    - generic [ref=e333]:
+                      - button "Тестовые пользователи" [ref=e335] [cursor=pointer]
+                      - generic:
+                        - listitem:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: Тестовые пользователи
+                - listitem [ref=e340]:
+                  - button "Оповещения" [ref=e342] [cursor=pointer]:
+                    - generic [ref=e349]:
+                      - generic [ref=e351]: "2"
+                      - status [ref=e352]: 2 непрочитанных оповещений
+                  - generic:
+                    - listitem:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic: Оповещения
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic: "2"
+                            - status: 2 непрочитанных оповещений
+            - separator [ref=e353]
+            - generic [ref=e354]:
+              - button "Журнал действий" [ref=e355] [cursor=pointer]:
+                - generic [ref=e358]: Журнал действий
+              - button "Помощь" [ref=e362] [cursor=pointer]:
+                - generic [ref=e365]: Помощь
+              - button "Открыть/закрыть боковую навигацию" [ref=e370] [cursor=pointer]:
+                - generic [ref=e373]: Открыть/закрыть боковую навигацию
+        - generic [ref=e379]:
+          - navigation "Навигационная цепочка" [ref=e381]:
+            - generic [ref=e382]:
+              - link "Сценарии использования" [ref=e383] [cursor=pointer]:
+                - /url: "#"
+                - heading "Сценарии использования" [level=4] [ref=e384]
+              - heading "Настройка" [level=4] [ref=e386]
+          - generic [ref=e390]:
+            - heading "Настройка сценария использования" [level=2] [ref=e391]
+            - generic [ref=e392]: Настройте параметры и разрешения для сценариев использования, чтобы приложение работало так, как вам нужно.
+          - generic [ref=e393]:
+            - generic [ref=e399]:
+              - generic [ref=e401]:
+                - generic [ref=e407]: Переключатель сценариев использования
+                - combobox "Переключатель сценариев использования Instagram API" [ref=e412] [cursor=pointer]:
+                  - generic [ref=e421]: Instagram API
+              - navigation "Основные сценарии использования" [ref=e428]:
+                - list [ref=e429]:
+                  - generic [ref=e430]:
+                    - listitem [ref=e432]:
+                      - button "Разрешения и функции" [ref=e434] [cursor=pointer]
+                      - generic:
+                        - listitem:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: Разрешения и функции
+                    - listitem [ref=e438]:
+                      - button "Настройка API для входа в Instagram" [ref=e440] [cursor=pointer]
+                      - generic:
+                        - listitem:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: Настройка API для входа в Instagram
+                    - listitem [ref=e444]:
+                      - button "Помощник по интеграции с API" [ref=e446] [cursor=pointer]
+                      - generic:
+                        - listitem:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: Помощник по интеграции с API
+                    - listitem [ref=e450]:
+                      - button "Настройка API для входа на Facebook" [ref=e452] [cursor=pointer]
+                      - generic:
+                        - listitem:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: Настройка API для входа на Facebook
+                    - listitem [ref=e456]:
+                      - button "Webhooks" [ref=e458] [cursor=pointer]
+                      - generic:
+                        - listitem:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: Webhooks
+            - grid "Таблица разрешений" [ref=e466]:
+              - rowgroup [ref=e467]:
+                - row "Разрешения и функции Вызовы API Статус Действие" [ref=e468]:
+                  - columnheader "Разрешения и функции" [ref=e469] [cursor=pointer]:
+                    - button "Разрешения и функции" [ref=e472]:
+                      - heading "Разрешения и функции" [level=4] [ref=e475]
+                  - columnheader "Вызовы API" [ref=e479] [cursor=pointer]:
+                    - button "Вызовы API" [ref=e482]:
+                      - heading "Вызовы API" [level=4] [ref=e487]
+                  - columnheader "Статус" [ref=e496] [cursor=pointer]:
+                    - button "Статус" [ref=e499]:
+                      - heading "Статус" [level=4] [ref=e502]
+                  - columnheader "Действие" [ref=e506]:
+                    - heading "Действие" [level=4] [ref=e510]
+              - rowgroup [ref=e511]:
+                - row "Business Asset User Profile Access Функция Доступ к профилю пользователя объектов компании позволяет вашему приложению считывать такие поля пользователей , взаимодействующих с вашими объектами компании, как id, ids_for_business, name и picture. … Подробное описание Найдено в 2 сценариях использования Требования Добавить в запрос на проверку приложения" [ref=e512]:
+                  - gridcell "Business Asset User Profile Access Функция Доступ к профилю пользователя объектов компании позволяет вашему приложению считывать такие поля пользователей , взаимодействующих с вашими объектами компании, как id, ids_for_business, name и picture. … Подробное описание Найдено в 2 сценариях использования Требования" [ref=e513]:
+                    - generic [ref=e515]:
+                      - generic [ref=e516]:
+                        - heading "Business Asset User Profile Access" [level=3] [ref=e518]
+                        - generic [ref=e520]:
+                          - generic [ref=e522]: Функция Доступ к профилю пользователя объектов компании позволяет вашему приложению считывать такие поля пользователей , взаимодействующих с вашими объектами компании, как id, ids_for_business, name и picture.
+                          - generic [ref=e523]: …
+                      - generic [ref=e524]:
+                        - generic [ref=e529]: Подробное описание
+                        - link "Найдено в 2 сценариях использования" [ref=e534] [cursor=pointer]:
+                          - /url: "#"
+                        - generic [ref=e540]: Требования
+                  - gridcell [ref=e541]
+                  - gridcell [ref=e545]
+                  - gridcell "Добавить в запрос на проверку приложения" [ref=e549]:
+                    - button "Добавить в запрос на проверку приложения" [ref=e554] [cursor=pointer]:
+                      - generic [ref=e559]: Добавить в запрос на проверку приложения
+                - row "Human Agent Благодаря функции Живой агент живые агенты могут отвечать в вашем приложении на сообщения пользователей с меткой human_agent в течение 7 дней с момента их отправки. … Подробное описание Требования Добавить в запрос на проверку приложения" [ref=e560]:
+                  - gridcell "Human Agent Благодаря функции Живой агент живые агенты могут отвечать в вашем приложении на сообщения пользователей с меткой human_agent в течение 7 дней с момента их отправки. … Подробное описание Требования" [ref=e561]:
+                    - generic [ref=e563]:
+                      - generic [ref=e564]:
+                        - heading "Human Agent" [level=3] [ref=e566]
+                        - generic [ref=e568]:
+                          - generic [ref=e570]: Благодаря функции Живой агент живые агенты могут отвечать в вашем приложении на сообщения пользователей с меткой human_agent в течение 7 дней с момента их отправки.
+                          - generic [ref=e571]: …
+                      - generic [ref=e572]:
+                        - generic [ref=e577]: Подробное описание
+                        - generic [ref=e583]: Требования
+                  - gridcell [ref=e584]
+                  - gridcell [ref=e588]
+                  - gridcell "Добавить в запрос на проверку приложения" [ref=e592]:
+                    - button "Добавить в запрос на проверку приложения" [ref=e597] [cursor=pointer]:
+                      - generic [ref=e602]: Добавить в запрос на проверку приложения
+                - row "Instagram Public Content Access Функция доступа к общедоступному контенту в Instagram позволяет вашему приложению получать доступ к конечным точкам поиска хэштегов в API Graph для Instagram. … Подробное описание Требования Добавить в запрос на проверку приложения" [ref=e603]:
+                  - gridcell "Instagram Public Content Access Функция доступа к общедоступному контенту в Instagram позволяет вашему приложению получать доступ к конечным точкам поиска хэштегов в API Graph для Instagram. … Подробное описание Требования" [ref=e604]:
+                    - generic [ref=e606]:
+                      - generic [ref=e607]:
+                        - heading "Instagram Public Content Access" [level=3] [ref=e609]
+                        - generic [ref=e611]:
+                          - generic [ref=e613]: Функция доступа к общедоступному контенту в Instagram позволяет вашему приложению получать доступ к конечным точкам поиска хэштегов в API Graph для Instagram.
+                          - generic [ref=e614]: …
+                      - generic [ref=e615]:
+                        - generic [ref=e620]: Подробное описание
+                        - generic [ref=e626]: Требования
+                  - gridcell [ref=e627]
+                  - gridcell [ref=e631]
+                  - gridcell "Добавить в запрос на проверку приложения" [ref=e635]:
+                    - button "Добавить в запрос на проверку приложения" [ref=e640] [cursor=pointer]:
+                      - generic [ref=e645]: Добавить в запрос на проверку приложения
+                - row "ads_management Разрешение ads_management позволяет вашему приложению просматривать рекламный аккаунт и управлять им (при условии, что вы или владелец аккаунта предоставили разрешение на это). … Подробное описание Требования Добавить в запрос на проверку приложения" [ref=e646]:
+                  - gridcell "ads_management Разрешение ads_management позволяет вашему приложению просматривать рекламный аккаунт и управлять им (при условии, что вы или владелец аккаунта предоставили разрешение на это). … Подробное описание Требования" [ref=e647]:
+                    - generic [ref=e649]:
+                      - generic [ref=e650]:
+                        - heading "ads_management" [level=3] [ref=e652]
+                        - generic [ref=e654]:
+                          - generic [ref=e656]: Разрешение ads_management позволяет вашему приложению просматривать рекламный аккаунт и управлять им (при условии, что вы или владелец аккаунта предоставили разрешение на это).
+                          - generic [ref=e657]: …
+                      - generic [ref=e658]:
+                        - generic [ref=e663]: Подробное описание
+                        - generic [ref=e669]: Требования
+                  - gridcell [ref=e670]
+                  - gridcell [ref=e674]
+                  - gridcell "Добавить в запрос на проверку приложения" [ref=e678]:
+                    - button "Добавить в запрос на проверку приложения" [ref=e683] [cursor=pointer]:
+                      - generic [ref=e688]: Добавить в запрос на проверку приложения
+                - row "ads_read Разрешение ads_read предоставляет вашему приложению доступ к API Ads Insights , чтобы получать информацию об отчетах по рекламе для ваших собственных рекламных аккаунтов или рекламных аккаунтов, доступ к которым вам предоставили их владельцы посредством этого разрешения. Это разрешение также предоставляет вашему приложению доступ к серверному API , благодаря чему рекламодатели могут отправлять веб-события со своих серверов непосредственно в Facebook. … Подробное описание Требования Добавить в запрос на проверку приложения" [ref=e689]:
+                  - gridcell "ads_read Разрешение ads_read предоставляет вашему приложению доступ к API Ads Insights , чтобы получать информацию об отчетах по рекламе для ваших собственных рекламных аккаунтов или рекламных аккаунтов, доступ к которым вам предоставили их владельцы посредством этого разрешения. Это разрешение также предоставляет вашему приложению доступ к серверному API , благодаря чему рекламодатели могут отправлять веб-события со своих серверов непосредственно в Facebook. … Подробное описание Требования" [ref=e690]:
+                    - generic [ref=e692]:
+                      - generic [ref=e693]:
+                        - heading "ads_read" [level=3] [ref=e695]
+                        - generic [ref=e697]:
+                          - generic [ref=e699]: Разрешение ads_read предоставляет вашему приложению доступ к API Ads Insights , чтобы получать информацию об отчетах по рекламе для ваших собственных рекламных аккаунтов или рекламных аккаунтов, доступ к которым вам предоставили их владельцы посредством этого разрешения. Это разрешение также предоставляет вашему приложению доступ к серверному API , благодаря чему рекламодатели могут отправлять веб-события со своих серверов непосредственно в Facebook.
+                          - generic [ref=e700]: …
+                      - generic [ref=e701]:
+                        - generic [ref=e706]: Подробное описание
+                        - generic [ref=e712]: Требования
+                  - gridcell [ref=e713]
+                  - gridcell [ref=e717]
+                  - gridcell "Добавить в запрос на проверку приложения" [ref=e721]:
+                    - button "Добавить в запрос на проверку приложения" [ref=e726] [cursor=pointer]:
+                      - generic [ref=e731]: Добавить в запрос на проверку приложения
+                - row "business_management Разрешение business_management позволяет вашему приложению просматривать и создавать записи с помощью API Business Manager. … Подробное описание Найдено в 2 сценариях использования Требования 9 Приложение отклонено в результате проверки Действия" [ref=e732]:
+                  - gridcell "business_management Разрешение business_management позволяет вашему приложению просматривать и создавать записи с помощью API Business Manager. … Подробное описание Найдено в 2 сценариях использования Требования" [ref=e733]:
+                    - generic [ref=e735]:
+                      - generic [ref=e736]:
+                        - heading "business_management" [level=3] [ref=e738]
+                        - generic [ref=e740]:
+                          - generic [ref=e742]: Разрешение business_management позволяет вашему приложению просматривать и создавать записи с помощью API Business Manager.
+                          - generic [ref=e743]: …
+                      - generic [ref=e744]:
+                        - generic [ref=e749]: Подробное описание
+                        - link "Найдено в 2 сценариях использования" [ref=e754] [cursor=pointer]:
+                          - /url: "#"
+                        - generic [ref=e760]: Требования
+                  - gridcell "9" [ref=e761]:
+                    - generic [ref=e763]: "9"
+                  - gridcell "Приложение отклонено в результате проверки" [ref=e764]:
+                    - generic [ref=e766]: Приложение отклонено в результате проверки
+                  - gridcell "Действия" [ref=e767]:
+                    - button "Действия" [ref=e770] [cursor=pointer]:
+                      - generic [ref=e774]: Действия
+                - row "catalog_management Разрешение catalog_management позволяет вашему приложению создавать, просматривать, обновлять и удалять каталоги товаров компании, администратором которых является пользователь. … Подробное описание Требования Добавить в запрос на проверку приложения" [ref=e776]:
+                  - gridcell "catalog_management Разрешение catalog_management позволяет вашему приложению создавать, просматривать, обновлять и удалять каталоги товаров компании, администратором которых является пользователь. … Подробное описание Требования" [ref=e777]:
+                    - generic [ref=e779]:
+                      - generic [ref=e780]:
+                        - heading "catalog_management" [level=3] [ref=e782]
+                        - generic [ref=e784]:
+                          - generic [ref=e786]: Разрешение catalog_management позволяет вашему приложению создавать, просматривать, обновлять и удалять каталоги товаров компании, администратором которых является пользователь.
+                          - generic [ref=e787]: …
+                      - generic [ref=e788]:
+                        - generic [ref=e793]: Подробное описание
+                        - generic [ref=e799]: Требования
+                  - gridcell [ref=e800]
+                  - gridcell [ref=e804]
+                  - gridcell "Добавить в запрос на проверку приложения" [ref=e808]:
+                    - button "Добавить в запрос на проверку приложения" [ref=e813] [cursor=pointer]:
+                      - generic [ref=e818]: Добавить в запрос на проверку приложения
+                - row "email Разрешение email позволяет вашему приложению просматривать основной электронный адрес пользователя. … Подробное описание Найдено в 2 сценариях использования Требования Добавить в запрос на проверку приложения" [ref=e819]:
+                  - gridcell "email Разрешение email позволяет вашему приложению просматривать основной электронный адрес пользователя. … Подробное описание Найдено в 2 сценариях использования Требования" [ref=e820]:
+                    - generic [ref=e822]:
+                      - generic [ref=e823]:
+                        - heading "email" [level=3] [ref=e825]
+                        - generic [ref=e827]:
+                          - generic [ref=e829]: Разрешение email позволяет вашему приложению просматривать основной электронный адрес пользователя.
+                          - generic [ref=e830]: …
+                      - generic [ref=e831]:
+                        - generic [ref=e836]: Подробное описание
+                        - link "Найдено в 2 сценариях использования" [ref=e841] [cursor=pointer]:
+                          - /url: "#"
+                        - generic [ref=e847]: Требования
+                  - gridcell [ref=e848]
+                  - gridcell [ref=e852]
+                  - gridcell "Добавить в запрос на проверку приложения" [ref=e856]:
+                    - button "Добавить в запрос на проверку приложения" [ref=e861] [cursor=pointer]:
+                      - generic [ref=e866]: Добавить в запрос на проверку приложения
+                - row "instagram_basic Разрешение instagram_basic позволяет вашему приложению просматривать информацию профиля и медиафайлы аккаунта Instagram. … Подробное описание Требования 53 Приложение отклонено в результате проверки Действия" [ref=e867]:
+                  - gridcell "instagram_basic Разрешение instagram_basic позволяет вашему приложению просматривать информацию профиля и медиафайлы аккаунта Instagram. … Подробное описание Требования" [ref=e868]:
+                    - generic [ref=e870]:
+                      - generic [ref=e871]:
+                        - heading "instagram_basic" [level=3] [ref=e873]
+                        - generic [ref=e875]:
+                          - generic [ref=e877]: Разрешение instagram_basic позволяет вашему приложению просматривать информацию профиля и медиафайлы аккаунта Instagram.
+                          - generic [ref=e878]: …
+                      - generic [ref=e879]:
+                        - generic [ref=e884]: Подробное описание
+                        - generic [ref=e890]: Требования
+                  - gridcell "53" [ref=e891]:
+                    - generic [ref=e893]: "53"
+                  - gridcell "Приложение отклонено в результате проверки" [ref=e894]:
+                    - generic [ref=e896]: Приложение отклонено в результате проверки
+                  - gridcell "Действия" [ref=e897]:
+                    - button "Действия" [ref=e900] [cursor=pointer]:
+                      - generic [ref=e904]: Действия
+                - row "instagram_branded_content_ads_brand Разрешение instagram_branded_content_ads_brand позволяет приложению читать публикации в Instagram, в которых аккаунт пользователя приложения в Instagram отмечен как платный партнер, а пользователю приложения — читать, запрашивать и отзывать разрешения на запуск партнерской рекламы. … Подробное описание Требования Добавить в запрос на проверку приложения" [ref=e906]:
+                  - gridcell "instagram_branded_content_ads_brand Разрешение instagram_branded_content_ads_brand позволяет приложению читать публикации в Instagram, в которых аккаунт пользователя приложения в Instagram отмечен как платный партнер, а пользователю приложения — читать, запрашивать и отзывать разрешения на запуск партнерской рекламы. … Подробное описание Требования" [ref=e907]:
+                    - generic [ref=e909]:
+                      - generic [ref=e910]:
+                        - heading "instagram_branded_content_ads_brand" [level=3] [ref=e912]
+                        - generic [ref=e914]:
+                          - generic [ref=e916]: Разрешение instagram_branded_content_ads_brand позволяет приложению читать публикации в Instagram, в которых аккаунт пользователя приложения в Instagram отмечен как платный партнер, а пользователю приложения — читать, запрашивать и отзывать разрешения на запуск партнерской рекламы.
+                          - generic [ref=e917]: …
+                      - generic [ref=e918]:
+                        - generic [ref=e923]: Подробное описание
+                        - generic [ref=e929]: Требования
+                  - gridcell [ref=e930]
+                  - gridcell [ref=e934]
+                  - gridcell "Добавить в запрос на проверку приложения" [ref=e938]:
+                    - button "Добавить в запрос на проверку приложения" [ref=e943] [cursor=pointer]:
+                      - generic [ref=e948]: Добавить в запрос на проверку приложения
+                - row "instagram_branded_content_brand С помощью разрешения instagram_branded_content_brand приложение может добавлять, удалять и просматривать профили авторов из списка одобренных авторов бренда. … Подробное описание Требования Добавить в запрос на проверку приложения" [ref=e949]:
+                  - gridcell "instagram_branded_content_brand С помощью разрешения instagram_branded_content_brand приложение может добавлять, удалять и просматривать профили авторов из списка одобренных авторов бренда. … Подробное описание Требования" [ref=e950]:
+                    - generic [ref=e952]:
+                      - generic [ref=e953]:
+                        - heading "instagram_branded_content_brand" [level=3] [ref=e955]
+                        - generic [ref=e957]:
+                          - generic [ref=e959]: С помощью разрешения instagram_branded_content_brand приложение может добавлять, удалять и просматривать профили авторов из списка одобренных авторов бренда.
+                          - generic [ref=e960]: …
+                      - generic [ref=e961]:
+                        - generic [ref=e966]: Подробное описание
+                        - generic [ref=e972]: Требования
+                  - gridcell [ref=e973]
+                  - gridcell [ref=e977]
+                  - gridcell "Добавить в запрос на проверку приложения" [ref=e981]:
+                    - button "Добавить в запрос на проверку приложения" [ref=e986] [cursor=pointer]:
+                      - generic [ref=e991]: Добавить в запрос на проверку приложения
+                - row "instagram_branded_content_creator Разрешение instagram_branded_content_creator позволяет приложению получать и изменять состояние продвижения конкретного контента автора. … Подробное описание Требования Добавить в запрос на проверку приложения" [ref=e992]:
+                  - gridcell "instagram_branded_content_creator Разрешение instagram_branded_content_creator позволяет приложению получать и изменять состояние продвижения конкретного контента автора. … Подробное описание Требования" [ref=e993]:
+                    - generic [ref=e995]:
+                      - generic [ref=e996]:
+                        - heading "instagram_branded_content_creator" [level=3] [ref=e998]
+                        - generic [ref=e1000]:
+                          - generic [ref=e1002]: Разрешение instagram_branded_content_creator позволяет приложению получать и изменять состояние продвижения конкретного контента автора.
+                          - generic [ref=e1003]: …
+                      - generic [ref=e1004]:
+                        - generic [ref=e1009]: Подробное описание
+                        - generic [ref=e1015]: Требования
+                  - gridcell [ref=e1016]
+                  - gridcell [ref=e1020]
+                  - gridcell "Добавить в запрос на проверку приложения" [ref=e1024]:
+                    - button "Добавить в запрос на проверку приложения" [ref=e1029] [cursor=pointer]:
+                      - generic [ref=e1034]: Добавить в запрос на проверку приложения
+                - row "instagram_business_basic Разрешение instagram_business_basic позволяет вашему приложению читать информацию профиля и медиафайлы в профиле бизнес-аккаунта Instagram. … Подробное описание Требования 45 Приложение отклонено в результате проверки Действия" [ref=e1035]:
+                  - gridcell "instagram_business_basic Разрешение instagram_business_basic позволяет вашему приложению читать информацию профиля и медиафайлы в профиле бизнес-аккаунта Instagram. … Подробное описание Требования" [ref=e1036]:
+                    - generic [ref=e1038]:
+                      - generic [ref=e1039]:
+                        - heading "instagram_business_basic" [level=3] [ref=e1041]
+                        - generic [ref=e1043]:
+                          - generic [ref=e1045]: Разрешение instagram_business_basic позволяет вашему приложению читать информацию профиля и медиафайлы в профиле бизнес-аккаунта Instagram.
+                          - generic [ref=e1046]: …
+                      - generic [ref=e1047]:
+                        - generic [ref=e1052]: Подробное описание
+                        - generic [ref=e1058]: Требования
+                  - gridcell "45" [ref=e1059]:
+                    - generic [ref=e1061]: "45"
+                  - gridcell "Приложение отклонено в результате проверки" [ref=e1062]:
+                    - generic [ref=e1064]: Приложение отклонено в результате проверки
+                  - gridcell "Действия" [ref=e1065]:
+                    - button "Действия" [ref=e1068] [cursor=pointer]:
+                      - generic [ref=e1072]: Действия
+                - row "instagram_business_content_publish The instagram_business_content_publish permission allows an app to create organic feed photo and video posts on behalf of a business user. … Подробное описание Требования Добавить в запрос на проверку приложения" [ref=e1074]:
+                  - gridcell "instagram_business_content_publish The instagram_business_content_publish permission allows an app to create organic feed photo and video posts on behalf of a business user. … Подробное описание Требования" [ref=e1075]:
+                    - generic [ref=e1077]:
+                      - generic [ref=e1078]:
+                        - heading "instagram_business_content_publish" [level=3] [ref=e1080]
+                        - generic [ref=e1082]:
+                          - generic [ref=e1084]: The instagram_business_content_publish permission allows an app to create organic feed photo and video posts on behalf of a business user.
+                          - generic [ref=e1085]: …
+                      - generic [ref=e1086]:
+                        - generic [ref=e1091]: Подробное описание
+                        - generic [ref=e1097]: Требования
+                  - gridcell [ref=e1098]
+                  - gridcell [ref=e1102]
+                  - gridcell "Добавить в запрос на проверку приложения" [ref=e1106]:
+                    - button "Добавить в запрос на проверку приложения" [ref=e1111] [cursor=pointer]:
+                      - generic [ref=e1116]: Добавить в запрос на проверку приложения
+                - row "instagram_business_manage_comments Разрешение instagram_business_manage_comments позволяет приложениям получать доступ к комментариям в профессиональном аккаунте Instagram, а также к общедоступным публикациям и историям в Instagram, в которых этот аккаунт отмечен или упомянут в комментариях. … Подробное описание Требования Добавить в запрос на проверку приложения" [ref=e1117]:
+                  - gridcell "instagram_business_manage_comments Разрешение instagram_business_manage_comments позволяет приложениям получать доступ к комментариям в профессиональном аккаунте Instagram, а также к общедоступным публикациям и историям в Instagram, в которых этот аккаунт отмечен или упомянут в комментариях. … Подробное описание Требования" [ref=e1118]:
+                    - generic [ref=e1120]:
+                      - generic [ref=e1121]:
+                        - heading "instagram_business_manage_comments" [level=3] [ref=e1123]
+                        - generic [ref=e1125]:
+                          - generic [ref=e1127]: Разрешение instagram_business_manage_comments позволяет приложениям получать доступ к комментариям в профессиональном аккаунте Instagram, а также к общедоступным публикациям и историям в Instagram, в которых этот аккаунт отмечен или упомянут в комментариях.
+                          - generic [ref=e1128]: …
+                      - generic [ref=e1129]:
+                        - generic [ref=e1134]: Подробное описание
+                        - generic [ref=e1140]: Требования
+                  - gridcell [ref=e1141]
+                  - gridcell [ref=e1145]
+                  - gridcell "Добавить в запрос на проверку приложения" [ref=e1149]:
+                    - button "Добавить в запрос на проверку приложения" [ref=e1154] [cursor=pointer]:
+                      - generic [ref=e1159]: Добавить в запрос на проверку приложения
+                - row "instagram_business_manage_insights Разрешение instagram_business_manage_insights позволяет приложению получать статистику по метаданным, публикациям, фото и видео профессионального аккаунта Instagram пользователя приложения, а также статистику по метаданным и медиафайлам общедоступного профиля профессионального аккаунта Instagram. … Подробное описание Требования Добавить в запрос на проверку приложения" [ref=e1160]:
+                  - gridcell "instagram_business_manage_insights Разрешение instagram_business_manage_insights позволяет приложению получать статистику по метаданным, публикациям, фото и видео профессионального аккаунта Instagram пользователя приложения, а также статистику по метаданным и медиафайлам общедоступного профиля профессионального аккаунта Instagram. … Подробное описание Требования" [ref=e1161]:
+                    - generic [ref=e1163]:
+                      - generic [ref=e1164]:
+                        - heading "instagram_business_manage_insights" [level=3] [ref=e1166]
+                        - generic [ref=e1168]:
+                          - generic [ref=e1170]: Разрешение instagram_business_manage_insights позволяет приложению получать статистику по метаданным, публикациям, фото и видео профессионального аккаунта Instagram пользователя приложения, а также статистику по метаданным и медиафайлам общедоступного профиля профессионального аккаунта Instagram.
+                          - generic [ref=e1171]: …
+                      - generic [ref=e1172]:
+                        - generic [ref=e1177]: Подробное описание
+                        - generic [ref=e1183]: Требования
+                  - gridcell [ref=e1184]
+                  - gridcell [ref=e1188]
+                  - gridcell "Добавить в запрос на проверку приложения" [ref=e1192]:
+                    - button "Добавить в запрос на проверку приложения" [ref=e1197] [cursor=pointer]:
+                      - generic [ref=e1202]: Добавить в запрос на проверку приложения
+                - row "instagram_business_manage_messages Разрешение instagram_business_manage_messages позволяет приложению получать доступ к сообщениям в профессиональном аккаунте Instagram. … Подробное описание Требования 33 Приложение отклонено в результате проверки Действия" [ref=e1203]:
+                  - gridcell "instagram_business_manage_messages Разрешение instagram_business_manage_messages позволяет приложению получать доступ к сообщениям в профессиональном аккаунте Instagram. … Подробное описание Требования" [ref=e1204]:
+                    - generic [ref=e1206]:
+                      - generic [ref=e1207]:
+                        - heading "instagram_business_manage_messages" [level=3] [ref=e1209]
+                        - generic [ref=e1211]:
+                          - generic [ref=e1213]: Разрешение instagram_business_manage_messages позволяет приложению получать доступ к сообщениям в профессиональном аккаунте Instagram.
+                          - generic [ref=e1214]: …
+                      - generic [ref=e1215]:
+                        - generic [ref=e1220]: Подробное описание
+                        - generic [ref=e1226]: Требования
+                  - gridcell "33" [ref=e1227]:
+                    - generic [ref=e1229]: "33"
+                  - gridcell "Приложение отклонено в результате проверки" [ref=e1230]:
+                    - generic [ref=e1232]: Приложение отклонено в результате проверки
+                  - gridcell "Действия" [ref=e1233]:
+                    - button "Действия" [ref=e1236] [cursor=pointer]:
+                      - generic [ref=e1240]: Действия
+                - row "instagram_content_publish Разрешение instagram_content_publish позволяет вашему приложению создавать в ленте органические публикации с фото и видео от имени пользователя бизнес-аккаунта. … Подробное описание Требования Добавить в запрос на проверку приложения" [ref=e1242]:
+                  - gridcell "instagram_content_publish Разрешение instagram_content_publish позволяет вашему приложению создавать в ленте органические публикации с фото и видео от имени пользователя бизнес-аккаунта. … Подробное описание Требования" [ref=e1243]:
+                    - generic [ref=e1245]:
+                      - generic [ref=e1246]:
+                        - heading "instagram_content_publish" [level=3] [ref=e1248]
+                        - generic [ref=e1250]:
+                          - generic [ref=e1252]: Разрешение instagram_content_publish позволяет вашему приложению создавать в ленте органические публикации с фото и видео от имени пользователя бизнес-аккаунта.
+                          - generic [ref=e1253]: …
+                      - generic [ref=e1254]:
+                        - generic [ref=e1259]: Подробное описание
+                        - generic [ref=e1265]: Требования
+                  - gridcell [ref=e1266]
+                  - gridcell [ref=e1270]
+                  - gridcell "Добавить в запрос на проверку приложения" [ref=e1274]:
+                    - button "Добавить в запрос на проверку приложения" [ref=e1279] [cursor=pointer]:
+                      - generic [ref=e1284]: Добавить в запрос на проверку приложения
+                - row "instagram_creator_marketplace_discovery Разрешение instagram_creator_marketplace_discovery позволяет вашему приложению находить авторов контента в маркетплейсе для авторов Instagram и получать данные (например, биографию, количество подписчиков и охват аккаунта) для компаний в Instagram, пользующихся маркетплейсом для авторов. … Подробное описание Требования Добавить в запрос на проверку приложения" [ref=e1285]:
+                  - gridcell "instagram_creator_marketplace_discovery Разрешение instagram_creator_marketplace_discovery позволяет вашему приложению находить авторов контента в маркетплейсе для авторов Instagram и получать данные (например, биографию, количество подписчиков и охват аккаунта) для компаний в Instagram, пользующихся маркетплейсом для авторов. … Подробное описание Требования" [ref=e1286]:
+                    - generic [ref=e1288]:
+                      - generic [ref=e1289]:
+                        - heading "instagram_creator_marketplace_discovery" [level=3] [ref=e1291]
+                        - generic [ref=e1293]:
+                          - generic [ref=e1295]: Разрешение instagram_creator_marketplace_discovery позволяет вашему приложению находить авторов контента в маркетплейсе для авторов Instagram и получать данные (например, биографию, количество подписчиков и охват аккаунта) для компаний в Instagram, пользующихся маркетплейсом для авторов.
+                          - generic [ref=e1296]: …
+                      - generic [ref=e1297]:
+                        - generic [ref=e1302]: Подробное описание
+                        - generic [ref=e1308]: Требования
+                  - gridcell [ref=e1309]
+                  - gridcell [ref=e1313]
+                  - gridcell "Добавить в запрос на проверку приложения" [ref=e1317]:
+                    - button "Добавить в запрос на проверку приложения" [ref=e1322] [cursor=pointer]:
+                      - generic [ref=e1327]: Добавить в запрос на проверку приложения
+                - row "instagram_manage_comments Разрешение instagram_manage_comments позволяет вашему приложению создавать, удалять и скрывать комментарии от имени аккаунта Instagram, связанного со Страницей. Приложению также разрешается просматривать общедоступные медиафайлы и комментарии, которые содержат метки на фото или @упоминание вашей компании, а также отвечать на них. … Подробное описание Требования 6 Приложение отклонено в результате проверки Действия" [ref=e1328]:
+                  - gridcell "instagram_manage_comments Разрешение instagram_manage_comments позволяет вашему приложению создавать, удалять и скрывать комментарии от имени аккаунта Instagram, связанного со Страницей. Приложению также разрешается просматривать общедоступные медиафайлы и комментарии, которые содержат метки на фото или @упоминание вашей компании, а также отвечать на них. … Подробное описание Требования" [ref=e1329]:
+                    - generic [ref=e1331]:
+                      - generic [ref=e1332]:
+                        - heading "instagram_manage_comments" [level=3] [ref=e1334]
+                        - generic [ref=e1336]:
+                          - generic [ref=e1338]: Разрешение instagram_manage_comments позволяет вашему приложению создавать, удалять и скрывать комментарии от имени аккаунта Instagram, связанного со Страницей. Приложению также разрешается просматривать общедоступные медиафайлы и комментарии, которые содержат метки на фото или @упоминание вашей компании, а также отвечать на них.
+                          - generic [ref=e1339]: …
+                      - generic [ref=e1340]:
+                        - generic [ref=e1345]: Подробное описание
+                        - generic [ref=e1351]: Требования
+                  - gridcell "6" [ref=e1352]:
+                    - generic [ref=e1354]: "6"
+                  - gridcell "Приложение отклонено в результате проверки" [ref=e1355]:
+                    - generic [ref=e1357]: Приложение отклонено в результате проверки
+                  - gridcell "Действия" [ref=e1358]:
+                    - button "Действия" [ref=e1361] [cursor=pointer]:
+                      - generic [ref=e1365]: Действия
+                - row "instagram_manage_contents Разрешение instagram_manage_contents позволяет вашему приложению удалять публикации от имени аккаунта Instagram, связанного со Страницей Facebook. … Подробное описание Требования Добавить в запрос на проверку приложения" [ref=e1367]:
+                  - gridcell "instagram_manage_contents Разрешение instagram_manage_contents позволяет вашему приложению удалять публикации от имени аккаунта Instagram, связанного со Страницей Facebook. … Подробное описание Требования" [ref=e1368]:
+                    - generic [ref=e1370]:
+                      - generic [ref=e1371]:
+                        - heading "instagram_manage_contents" [level=3] [ref=e1373]
+                        - generic [ref=e1375]:
+                          - generic [ref=e1377]: Разрешение instagram_manage_contents позволяет вашему приложению удалять публикации от имени аккаунта Instagram, связанного со Страницей Facebook.
+                          - generic [ref=e1378]: …
+                      - generic [ref=e1379]:
+                        - generic [ref=e1384]: Подробное описание
+                        - generic [ref=e1390]: Требования
+                  - gridcell [ref=e1391]
+                  - gridcell [ref=e1395]
+                  - gridcell "Добавить в запрос на проверку приложения" [ref=e1399]:
+                    - button "Добавить в запрос на проверку приложения" [ref=e1404] [cursor=pointer]:
+                      - generic [ref=e1409]: Добавить в запрос на проверку приложения
+                - row "instagram_manage_insights Разрешение instagram_manage_insights позволяет вашему приложению просматривать статистику аккаунта Instagram, связанного со Страницей Facebook. Приложению также разрешается находить и просматривать информацию и медиафайлы в профилях других компаний. … Подробное описание Требования 22 Приложение отклонено в результате проверки Действия" [ref=e1410]:
+                  - gridcell "instagram_manage_insights Разрешение instagram_manage_insights позволяет вашему приложению просматривать статистику аккаунта Instagram, связанного со Страницей Facebook. Приложению также разрешается находить и просматривать информацию и медиафайлы в профилях других компаний. … Подробное описание Требования" [ref=e1411]:
+                    - generic [ref=e1413]:
+                      - generic [ref=e1414]:
+                        - heading "instagram_manage_insights" [level=3] [ref=e1416]
+                        - generic [ref=e1418]:
+                          - generic [ref=e1420]: Разрешение instagram_manage_insights позволяет вашему приложению просматривать статистику аккаунта Instagram, связанного со Страницей Facebook. Приложению также разрешается находить и просматривать информацию и медиафайлы в профилях других компаний.
+                          - generic [ref=e1421]: …
+                      - generic [ref=e1422]:
+                        - generic [ref=e1427]: Подробное описание
+                        - generic [ref=e1433]: Требования
+                  - gridcell "22" [ref=e1434]:
+                    - generic [ref=e1436]: "22"
+                  - gridcell "Приложение отклонено в результате проверки" [ref=e1437]:
+                    - generic [ref=e1439]: Приложение отклонено в результате проверки
+                  - gridcell "Действия" [ref=e1440]:
+                    - button "Действия" [ref=e1443] [cursor=pointer]:
+                      - generic [ref=e1447]: Действия
+                - row "instagram_manage_messages Разрешение instagram_manage_messages позволяет пользователям бизнес-аккаунтов просматривать сообщения в Instagram Direct и отвечать на них. … Подробное описание Требования 8 Приложение отклонено в результате проверки Действия" [ref=e1449]:
+                  - gridcell "instagram_manage_messages Разрешение instagram_manage_messages позволяет пользователям бизнес-аккаунтов просматривать сообщения в Instagram Direct и отвечать на них. … Подробное описание Требования" [ref=e1450]:
+                    - generic [ref=e1452]:
+                      - generic [ref=e1453]:
+                        - heading "instagram_manage_messages" [level=3] [ref=e1455]
+                        - generic [ref=e1457]:
+                          - generic [ref=e1459]: Разрешение instagram_manage_messages позволяет пользователям бизнес-аккаунтов просматривать сообщения в Instagram Direct и отвечать на них.
+                          - generic [ref=e1460]: …
+                      - generic [ref=e1461]:
+                        - generic [ref=e1466]: Подробное описание
+                        - generic [ref=e1472]: Требования
+                  - gridcell "8" [ref=e1473]:
+                    - generic [ref=e1475]: "8"
+                  - gridcell "Приложение отклонено в результате проверки" [ref=e1476]:
+                    - generic [ref=e1478]: Приложение отклонено в результате проверки
+                  - gridcell "Действия" [ref=e1479]:
+                    - button "Действия" [ref=e1482] [cursor=pointer]:
+                      - generic [ref=e1486]: Действия
+                - row "instagram_manage_upcoming_events The instagram_manage_upcoming_events permission allows an app to read, create, and update upcoming events on behalf of Instagram accounts administered by people using the app. … Подробное описание Требования Добавить в запрос на проверку приложения" [ref=e1488]:
+                  - gridcell "instagram_manage_upcoming_events The instagram_manage_upcoming_events permission allows an app to read, create, and update upcoming events on behalf of Instagram accounts administered by people using the app. … Подробное описание Требования" [ref=e1489]:
+                    - generic [ref=e1491]:
+                      - generic [ref=e1492]:
+                        - heading "instagram_manage_upcoming_events" [level=3] [ref=e1494]
+                        - generic [ref=e1496]:
+                          - generic [ref=e1498]: The instagram_manage_upcoming_events permission allows an app to read, create, and update upcoming events on behalf of Instagram accounts administered by people using the app.
+                          - generic [ref=e1499]: …
+                      - generic [ref=e1500]:
+                        - generic [ref=e1505]: Подробное описание
+                        - generic [ref=e1511]: Требования
+                  - gridcell [ref=e1512]
+                  - gridcell [ref=e1516]
+                  - gridcell "Добавить в запрос на проверку приложения" [ref=e1520]:
+                    - button "Добавить в запрос на проверку приложения" [ref=e1525] [cursor=pointer]:
+                      - generic [ref=e1530]: Добавить в запрос на проверку приложения
+                - row "instagram_shopping_tag_products Разрешение instagram_shopping_tag_products позволяет приложению отмечать медиафайлы Instagram с использованием меток товаров и обжаловать отклонения товаров. … Подробное описание Требования 6 Приложение отклонено в результате проверки Действия" [ref=e1531]:
+                  - gridcell "instagram_shopping_tag_products Разрешение instagram_shopping_tag_products позволяет приложению отмечать медиафайлы Instagram с использованием меток товаров и обжаловать отклонения товаров. … Подробное описание Требования" [ref=e1532]:
+                    - generic [ref=e1534]:
+                      - generic [ref=e1535]:
+                        - heading "instagram_shopping_tag_products" [level=3] [ref=e1537]
+                        - generic [ref=e1539]:
+                          - generic [ref=e1541]: Разрешение instagram_shopping_tag_products позволяет приложению отмечать медиафайлы Instagram с использованием меток товаров и обжаловать отклонения товаров.
+                          - generic [ref=e1542]: …
+                      - generic [ref=e1543]:
+                        - generic [ref=e1548]: Подробное описание
+                        - generic [ref=e1554]: Требования
+                  - gridcell "6" [ref=e1555]:
+                    - generic [ref=e1557]: "6"
+                  - gridcell "Приложение отклонено в результате проверки" [ref=e1558]:
+                    - generic [ref=e1560]: Приложение отклонено в результате проверки
+                  - gridcell "Действия" [ref=e1561]:
+                    - button "Действия" [ref=e1564] [cursor=pointer]:
+                      - generic [ref=e1568]: Действия
+                - row "pages_read_engagement Разрешение pages_read_engagement позволяет вашему приложению просматривать контент (публикации, фото, видео, события), опубликованный на Странице, данные подписчиков (включая имя и PSID) и их фото профиля, а также метаданные и другую статистику о Странице. … Подробное описание Найдено в 2 сценариях использования Требования 112 Приложение отклонено в результате проверки Действия" [ref=e1570]:
+                  - gridcell "pages_read_engagement Разрешение pages_read_engagement позволяет вашему приложению просматривать контент (публикации, фото, видео, события), опубликованный на Странице, данные подписчиков (включая имя и PSID) и их фото профиля, а также метаданные и другую статистику о Странице. … Подробное описание Найдено в 2 сценариях использования Требования" [ref=e1571]:
+                    - generic [ref=e1573]:
+                      - generic [ref=e1574]:
+                        - heading "pages_read_engagement" [level=3] [ref=e1576]
+                        - generic [ref=e1578]:
+                          - generic [ref=e1580]: Разрешение pages_read_engagement позволяет вашему приложению просматривать контент (публикации, фото, видео, события), опубликованный на Странице, данные подписчиков (включая имя и PSID) и их фото профиля, а также метаданные и другую статистику о Странице.
+                          - generic [ref=e1581]: …
+                      - generic [ref=e1582]:
+                        - generic [ref=e1587]: Подробное описание
+                        - link "Найдено в 2 сценариях использования" [ref=e1592] [cursor=pointer]:
+                          - /url: "#"
+                        - generic [ref=e1598]: Требования
+                  - gridcell "112" [ref=e1599]:
+                    - generic [ref=e1601]: "112"
+                  - gridcell "Приложение отклонено в результате проверки" [ref=e1602]:
+                    - generic [ref=e1604]: Приложение отклонено в результате проверки
+                  - gridcell "Действия" [ref=e1605]:
+                    - button "Действия" [ref=e1608] [cursor=pointer]:
+                      - generic [ref=e1612]: Действия
+                - row "pages_show_list Разрешение pages_show_list предоставляет приложению доступ к списку Страниц, которыми управляет пользователь. … Подробное описание Найдено в 2 сценариях использования Требования 101 Приложение отклонено в результате проверки Действия" [ref=e1614]:
+                  - gridcell "pages_show_list Разрешение pages_show_list предоставляет приложению доступ к списку Страниц, которыми управляет пользователь. … Подробное описание Найдено в 2 сценариях использования Требования" [ref=e1615]:
+                    - generic [ref=e1617]:
+                      - generic [ref=e1618]:
+                        - heading "pages_show_list" [level=3] [ref=e1620]
+                        - generic [ref=e1622]:
+                          - generic [ref=e1624]: Разрешение pages_show_list предоставляет приложению доступ к списку Страниц, которыми управляет пользователь.
+                          - generic [ref=e1625]: …
+                      - generic [ref=e1626]:
+                        - generic [ref=e1631]: Подробное описание
+                        - link "Найдено в 2 сценариях использования" [ref=e1636] [cursor=pointer]:
+                          - /url: "#"
+                        - generic [ref=e1642]: Требования
+                  - gridcell "101" [ref=e1643]:
+                    - generic [ref=e1645]: "101"
+                  - gridcell "Приложение отклонено в результате проверки" [ref=e1646]:
+                    - generic [ref=e1648]: Приложение отклонено в результате проверки
+                  - gridcell "Действия" [ref=e1649]:
+                    - button "Действия" [ref=e1652] [cursor=pointer]:
+                      - generic [ref=e1656]: Действия
+                - row "public_profile Разрешение public_profile позволяет приложению считывать поля общедоступного профиля по умолчанию в узле User . Это разрешение автоматически предоставляется всем приложениям. … Подробное описание Найдено в 2 сценариях использования Требования 0 Готов к публикации Действия" [ref=e1658]:
+                  - gridcell "public_profile Разрешение public_profile позволяет приложению считывать поля общедоступного профиля по умолчанию в узле User . Это разрешение автоматически предоставляется всем приложениям. … Подробное описание Найдено в 2 сценариях использования Требования" [ref=e1659]:
+                    - generic [ref=e1661]:
+                      - generic [ref=e1662]:
+                        - heading "public_profile" [level=3] [ref=e1664]
+                        - generic [ref=e1666]:
+                          - generic [ref=e1668]: Разрешение public_profile позволяет приложению считывать поля общедоступного профиля по умолчанию в узле User . Это разрешение автоматически предоставляется всем приложениям.
+                          - generic [ref=e1669]: …
+                      - generic [ref=e1670]:
+                        - generic [ref=e1675]: Подробное описание
+                        - link "Найдено в 2 сценариях использования" [ref=e1680] [cursor=pointer]:
+                          - /url: "#"
+                        - generic [ref=e1686]: Требования
+                  - gridcell "0" [ref=e1687]:
+                    - generic [ref=e1689]: "0"
+                  - gridcell "Готов к публикации" [ref=e1690]:
+                    - generic [ref=e1692]: Готов к публикации
+                  - gridcell "Действия" [ref=e1693]:
+                    - button "Действия" [ref=e1696] [cursor=pointer]:
+                      - generic [ref=e1700]: Действия
+  - generic [ref=e1705]: Разрешение ads_management позволяет вашему приложению просматривать рекламный аккаунт и управлять им (при условии, что вы или владелец аккаунта предоставили разрешение на это).

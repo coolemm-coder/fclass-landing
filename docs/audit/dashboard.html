@@ -1,0 +1,1568 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>First Class — Аналитика компании 2025-2026</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3-sankey@0.12.3/dist/d3-sankey.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+  :root {
+    --bg:          #f0f4f8;
+    --card:        #ffffff;
+    --card2:       #f5f8fb;
+    --border:      rgba(12,24,37,0.09);
+    --border2:     rgba(12,24,37,0.18);
+    --accent:      #b8933e;
+    --accent-dim:  rgba(184,147,62,0.11);
+    --accent2:     #7c55cc;
+    --green:       #16a34a;
+    --green-dim:   rgba(22,163,74,0.10);
+    --red:         #dc2626;
+    --red-dim:     rgba(220,38,38,0.09);
+    --blue:        #2563eb;
+    --orange:      #ea580c;
+    --text:        #0c1825;
+    --text2:       #3d5166;
+    --muted:       #7a8fa3;
+    --muted2:      #d0dae4;
+    --grid-line:   rgba(12,24,37,0.06);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── HEADER ────────────────────────────── */
+  .header {
+    background: #0c1825;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(201,169,98,0.2);
+    padding: 18px 40px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    position: sticky;
+    top: 0;
+    z-index: 200;
+  }
+  .header-logo {
+    font-size: 19px;
+    font-weight: 800;
+    color: #c9a962;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+  }
+  .header-sub { color: rgba(255,255,255,0.45); font-size: 12px; margin-top: 2px; }
+  .header-badge {
+    margin-left: auto;
+    background: rgba(201,169,98,0.15);
+    border: 1px solid rgba(201,169,98,0.35);
+    color: #c9a962;
+    padding: 5px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  /* ── MAIN ────────────────────────────── */
+  .main { padding: 36px 40px 8px; max-width: 1440px; margin: 0 auto; }
+
+  /* ── SECTION TITLE ────────────────────── */
+  .section-title {
+    font-size: 10.5px;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.13em;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-title::before {
+    content: '';
+    display: inline-block;
+    width: 3px;
+    height: 13px;
+    background: var(--accent);
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  /* ── CARD ────────────────────────────── */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    transition: border-color 0.2s;
+  }
+  .card:hover { border-color: var(--border2); }
+  .card-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text2);
+    margin-bottom: 18px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  /* ── KPI ROW ────────────────────────── */
+  .kpi-row { display: grid; grid-template-columns: repeat(6,1fr); gap: 12px; margin-bottom: 32px; }
+  .kpi {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 22px 20px 20px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease, border-color 0.2s, box-shadow 0.2s;
+  }
+  .kpi:hover { transform: translateY(-2px); border-color: var(--border2); box-shadow: 0 8px 32px rgba(0,0,0,0.4); }
+  .kpi::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.07), transparent);
+  }
+  .kpi.accent {
+    border-color: rgba(184,147,62,0.35);
+    background: linear-gradient(145deg, #fffbf0, #fff8e6);
+  }
+  .kpi.accent::before { background: linear-gradient(90deg, transparent, rgba(184,147,62,0.4), transparent); }
+  .kpi.green { border-color: rgba(22,163,74,0.25); background: linear-gradient(145deg, #f0fdf4, #ffffff); }
+  .kpi.green::before { background: linear-gradient(90deg, transparent, rgba(34,197,94,0.35), transparent); }
+
+  .kpi-value {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--text);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    font-variant-numeric: tabular-nums;
+  }
+  .kpi.accent .kpi-value { color: var(--accent); }
+  .kpi.green  .kpi-value { color: var(--green); }
+  .kpi-label { font-size: 12px; color: var(--text2); margin-top: 8px; }
+  .kpi-sub   { font-size: 11px; color: var(--muted); margin-top: 4px; }
+
+  /* ── CHART WRAP ────────────────────── */
+  .chart-wrap       { position: relative; height: 220px; }
+  .chart-wrap.tall  { height: 280px; }
+  .chart-wrap.short { height: 160px; }
+
+  /* ── GRIDS ───────────────────────── */
+  .grid-2    { display: grid; grid-template-columns: 1fr 1fr;       gap: 16px; margin-bottom: 16px; }
+  .grid-3    { display: grid; grid-template-columns: 1fr 1fr 1fr;   gap: 16px; margin-bottom: 16px; }
+  .grid-6040 { display: grid; grid-template-columns: 60% 40%;        gap: 16px; margin-bottom: 16px; }
+  .grid-7030 { display: grid; grid-template-columns: 70% 30%;        gap: 16px; margin-bottom: 16px; }
+
+  /* ── MANAGER CARDS ────────────────── */
+  .mgr-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; margin-bottom: 32px; }
+  .mgr-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 26px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .mgr-card:hover { border-color: var(--border2); }
+  .mgr-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+  .mgr-card.dasha::before  { background: linear-gradient(90deg, #c9a962, #f0d070); }
+  .mgr-card.oksana::before { background: linear-gradient(90deg, #60a5fa, #93c5fd); }
+  .mgr-card.pasha::before  { background: linear-gradient(90deg, #9b73e8, #c4a0ff); }
+  .mgr-card.irina::before  { background: linear-gradient(90deg, #22c55e, #4ade80); }
+
+  .mgr-name  { font-size: 19px; font-weight: 700; margin-bottom: 3px; letter-spacing: -0.01em; }
+  .mgr-role  { font-size: 12px; color: var(--muted); margin-bottom: 22px; }
+  .mgr-stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; }
+  .mgr-stat-v { font-size: 21px; font-weight: 700; line-height: 1; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+  .mgr-stat-l { font-size: 10px; color: var(--muted); margin-top: 5px; text-transform: uppercase; letter-spacing: 0.07em; }
+  .conv-badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 12px; font-weight: 700; }
+  .conv-high  { background: var(--green-dim); color: var(--green); }
+
+  .mgr-sources { margin-top: 20px; }
+  .src-bar       { display: flex; align-items: center; gap: 8px; margin-bottom: 9px; }
+  .src-bar-label { font-size: 11px; color: var(--muted); width: 120px; flex-shrink: 0; }
+  .src-bar-track { flex: 1; height: 4px; background: rgba(12,24,37,0.08); border-radius: 2px; overflow: hidden; }
+  .src-bar-fill  { height: 100%; border-radius: 2px; }
+  .src-bar-val   { font-size: 11px; color: var(--text2); width: 28px; text-align: right; flex-shrink: 0; }
+
+  /* ── INSIGHT BOXES ────────────────── */
+  .insights { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 16px; }
+  .insight { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 18px; }
+  .insight.red    { border-color: rgba(239,68,68,0.22); }
+  .insight.green  { border-color: rgba(34,197,94,0.22); }
+  .insight.orange { border-color: rgba(251,146,60,0.22); }
+  .insight-icon   { font-size: 22px; margin-bottom: 10px; }
+  .insight-title  { font-size: 13px; font-weight: 600; margin-bottom: 7px; }
+  .insight-text   { font-size: 12px; color: var(--text2); line-height: 1.65; }
+  .insight-value  { font-size: 28px; font-weight: 800; color: var(--accent); margin-bottom: 4px; letter-spacing: -0.03em; }
+
+  /* ── INSTAGRAM KPIs ──────────────── */
+  .ig-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-bottom: 16px; }
+  .ig-kpi {
+    background: linear-gradient(135deg, rgba(131,58,180,.07), rgba(193,53,132,.05));
+    border: 1px solid rgba(131,58,180,.20);
+    border-radius: 14px;
+    padding: 20px;
+    text-align: center;
+  }
+  .ig-kpi-v { font-size: 28px; font-weight: 800; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+  .ig-kpi-l { font-size: 11px; color: var(--muted); margin-top: 5px; }
+
+  /* ── TABLE ───────────────────────── */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th {
+    text-align: left;
+    padding: 11px 14px;
+    color: var(--muted);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    border-bottom: 1px solid var(--border);
+    font-weight: 600;
+  }
+  td { padding: 12px 14px; border-bottom: 1px solid rgba(255,255,255,0.035); }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: rgba(255,255,255,0.02); }
+  .td-bold { font-weight: 600; }
+  .td-muted { color: var(--muted); }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+  .badge-green  { background: var(--green-dim);              color: var(--green); }
+  .badge-blue   { background: rgba(96,165,250,0.12);         color: var(--blue); }
+  .badge-orange { background: rgba(251,146,60,0.12);         color: var(--orange); }
+  .badge-red    { background: var(--red-dim);                color: var(--red); }
+
+  /* ── GROWTH ITEMS ────────────────── */
+  .growth-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .growth-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--green);
+    border-radius: 0 12px 12px 0;
+    padding: 16px 18px;
+  }
+  .growth-item.opt  { border-left-color: var(--orange); }
+  .growth-item.risk { border-left-color: var(--red); }
+  .growth-title     { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+  .growth-text      { font-size: 13.5px; color: var(--text2); line-height: 1.65; }
+  .growth-potential { font-size: 12px; color: var(--green); margin-top: 8px; font-weight: 600; }
+  .growth-potential.orange { color: var(--orange); }
+  .growth-potential.red    { color: var(--red); }
+
+  /* ── MAP ──────────────────────────── */
+  .map-modes { display: flex; gap: 6px; }
+  .map-mode-btn {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.18s;
+  }
+  .map-mode-btn.active,
+  .map-mode-btn:hover {
+    background: var(--accent-dim);
+    color: var(--accent);
+    border-color: rgba(201,169,98,0.28);
+    font-weight: 600;
+  }
+
+  /* ── MAP TOOLTIP ─────────────────── */
+  #mapTooltip {
+    position: fixed; display: none;
+    background: #ffffff;
+    border: 1px solid var(--border2);
+    border-radius: 12px;
+    padding: 10px 16px;
+    font-size: 12px;
+    color: var(--text);
+    line-height: 1.65;
+    pointer-events: none;
+    z-index: 9999;
+    box-shadow: 0 10px 48px rgba(0,0,0,0.75);
+  }
+
+  /* ── SANKEY ──────────────────────── */
+  #sankeyChart { position: relative; }
+  #sankeyChart svg, #sankeyChart canvas { display: block; }
+  #sankeyChart canvas { position: absolute; top: 0; left: 0; pointer-events: none; }
+
+  /* ── IG FUNNEL ────────────────────── */
+  .ig-funnel-bar { transform-origin: center; will-change: opacity, transform; }
+
+  /* ── FOOTER ──────────────────────── */
+  .updated {
+    text-align: center;
+    color: var(--muted);
+    font-size: 11px;
+    padding: 32px 0;
+    border-top: 1px solid var(--border);
+    margin-top: 48px;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── MOBILE ────────────────────────────────── */
+  @media (max-width: 767px) {
+    .header {
+      padding: 12px 16px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .header-logo { font-size: 15px; letter-spacing: 2px; }
+    .header-sub { font-size: 10px; }
+    .header-logo-img { display: block !important; }
+    .header-logo-text { display: none !important; }
+    .header > div:last-child { margin-left: 0 !important; width: 100%; justify-content: space-between; }
+
+    .main { padding: 16px 12px 8px; }
+
+    .kpi-row { grid-template-columns: repeat(2,1fr); gap: 8px; margin-bottom: 20px; }
+    .kpi { padding: 14px 12px; }
+    .kpi-value { font-size: 22px; }
+    .kpi-label { font-size: 11px; margin-top: 5px; }
+    .kpi-sub { font-size: 10px; }
+
+    .grid-2    { grid-template-columns: 1fr !important; }
+    .grid-3    { grid-template-columns: 1fr !important; }
+    .grid-6040 { grid-template-columns: 1fr !important; }
+    .grid-7030 { grid-template-columns: 1fr !important; }
+
+    .mgr-grid { grid-template-columns: 1fr; }
+    .mgr-card { padding: 18px 14px; }
+    .mgr-name { font-size: 16px; }
+    .mgr-stats { grid-template-columns: repeat(2,1fr); gap: 10px; }
+    .mgr-stat-v { font-size: 17px; }
+    .src-bar-label { width: 90px; font-size: 10px; }
+
+    .insights { grid-template-columns: 1fr; }
+
+    .ig-grid { grid-template-columns: repeat(2,1fr); }
+    .ig-kpi-v { font-size: 22px; }
+
+    .growth-grid { grid-template-columns: 1fr; }
+    .growth-item { padding: 14px 16px; }
+    .growth-title { font-size: 14px; }
+    .growth-text { font-size: 13px; }
+
+    .yoy-year-cards { grid-template-columns: repeat(2,1fr) !important; }
+    .yoy-charts-row { grid-template-columns: 1fr !important; }
+    .yoy-rev-src    { grid-template-columns: 1fr !important; }
+
+    .card { padding: 14px 12px; }
+    .card-title { font-size: 11px; }
+    .section-title { font-size: 10px; }
+
+    .chart-wrap       { height: 180px; }
+    .chart-wrap.tall  { height: 200px; }
+    .chart-wrap.short { height: 130px; }
+
+    #sankeyChart { min-height: 280px !important; }
+    #worldMap svg { max-width: 100% !important; }
+    .map-modes { flex-wrap: wrap; gap: 4px; }
+    .map-mode-btn { font-size: 11px; padding: 5px 10px; }
+
+    /* Scrollable tables */
+    .card:has(table) { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    table { min-width: 480px; }
+
+    /* IG funnel: fix on mobile — force min width so text fits */
+    .ig-funnel-bar {
+      width: 90% !important;
+      min-width: 90% !important;
+      padding: 10px 14px !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div style="display:flex;align-items:center;gap:12px">
+    <img class="header-logo-img" src="./logo.png" alt="First Class" style="height:42px;width:auto;object-fit:contain">
+    <div>
+      <div class="header-sub" style="margin-top:4px">Аналитика бизнеса &nbsp;·&nbsp; U-ON CRM + Instagram API &nbsp;·&nbsp; 19 марта 2026</div>
+    </div>
+  </div>
+  <div style="margin-left:auto;display:flex;align-items:center;gap:12px">
+    <div style="text-align:right">
+      <div style="font-size:20px;font-weight:800;color:#c9a962;letter-spacing:-0.02em;font-variant-numeric:tabular-nums">9.86M BYN</div>
+      <div style="font-size:11px;color:rgba(255,255,255,0.45)">выручка за всё время</div>
+    </div>
+    <div class="header-badge">1 098 заявок</div>
+  </div>
+</div>
+
+<div class="main">
+
+<!-- KPI Row -->
+<div style="margin-bottom:24px">
+  <div class="section-title">Ключевые показатели</div>
+  <div class="kpi-row">
+    <div class="kpi accent">
+      <div class="kpi-value">1 098</div>
+      <div class="kpi-label">Всего заявок</div>
+      <div class="kpi-sub">за всё время</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-value">9.86М</div>
+      <div class="kpi-label">Выручка BYN</div>
+      <div class="kpi-sub">закрытые заявки</div>
+    </div>
+    <div class="kpi green">
+      <div class="kpi-value">94.0%</div>
+      <div class="kpi-label">Конверсия</div>
+      <div class="kpi-sub">avg по менеджерам</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-value">9 890</div>
+      <div class="kpi-label">Средний чек BYN</div>
+      <div class="kpi-sub">≈ $3 000</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-value">472</div>
+      <div class="kpi-label">Клиентов</div>
+      <div class="kpi-sub">30.1% повторники</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-value">18.8К</div>
+      <div class="kpi-label">Подписчиков Instagram</div>
+      <div class="kpi-sub">+985 за 30 дней</div>
+    </div>
+  </div>
+</div>
+
+<!-- Monthly dynamics -->
+<div style="margin-bottom:24px">
+  <div class="section-title">Динамика по месяцам</div>
+  <div class="card">
+    <div class="card-title">Заявки и выручка (BYN) · последние 15 месяцев</div>
+    <div class="chart-wrap tall">
+      <canvas id="monthlyChart"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- ГОД-К-ГОДУ — Year-over-Year Comparison       -->
+<!-- ══════════════════════════════════════════════ -->
+<div style="margin-bottom:24px">
+  <div class="section-title">Сравнение по годам — 2023 / 2024 / 2025 / 2026</div>
+
+  <!-- KPI cards per year -->
+  <div class="yoy-year-cards" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:16px">
+    <div class="kpi" style="border-color:#4a5060;border-width:2px">
+      <div style="font-size:11px;color:var(--muted);font-weight:700;letter-spacing:1px;margin-bottom:8px">2023</div>
+      <div class="kpi-value">193</div>
+      <div class="kpi-label">заявок</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:6px">1 803K BYN</div>
+      <div style="font-size:11px;color:var(--muted)">avg 9 342 BYN</div>
+    </div>
+    <div class="kpi" style="border-color:var(--blue);border-width:2px">
+      <div style="font-size:11px;color:var(--blue);font-weight:700;letter-spacing:1px;margin-bottom:8px">2024</div>
+      <div class="kpi-value" style="color:var(--blue)">349</div>
+      <div class="kpi-label">заявок <span style="color:var(--green);font-size:11px">+81%</span></div>
+      <div style="font-size:12px;color:var(--muted);margin-top:6px">2 879K BYN <span style="color:var(--green);font-size:10px">+60%</span></div>
+      <div style="font-size:11px;color:var(--muted)">avg 8 250 BYN</div>
+    </div>
+    <div class="kpi accent" style="border-width:2px">
+      <div style="font-size:11px;color:var(--accent);font-weight:700;letter-spacing:1px;margin-bottom:8px">2025</div>
+      <div class="kpi-value" style="color:var(--accent)">352</div>
+      <div class="kpi-label">заявок <span style="color:var(--green);font-size:11px">+1%</span></div>
+      <div style="font-size:12px;color:var(--muted);margin-top:6px">3 661K BYN <span style="color:var(--green);font-size:10px">+27%</span></div>
+      <div style="font-size:11px;color:var(--accent)">avg 10 400 BYN ↑</div>
+    </div>
+    <div class="kpi green" style="border-width:2px">
+      <div style="font-size:11px;color:var(--green);font-weight:700;letter-spacing:1px;margin-bottom:8px">2026 (Jan–Mar)</div>
+      <div class="kpi-value" style="color:var(--green)">74</div>
+      <div class="kpi-label">заявок</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:6px">552K BYN</div>
+      <div style="font-size:11px;color:var(--muted)">avg 7 461 BYN</div>
+    </div>
+  </div>
+
+  <!-- Charts row -->
+  <div class="yoy-charts-row" style="display:grid;grid-template-columns:60% 40%;gap:16px;margin-bottom:16px">
+    <div class="card">
+      <div class="card-title">Заявки по месяцам — 2023 / 2024 / 2025</div>
+      <div class="chart-wrap tall"><canvas id="yoyMonthChart"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Накопленный итог (заявки)</div>
+      <div class="chart-wrap tall"><canvas id="yoyCumChart"></canvas></div>
+    </div>
+  </div>
+
+  <!-- Revenue + Sources row -->
+  <div class="yoy-rev-src" style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+    <div class="card">
+      <div class="card-title">Выручка по кварталам (BYN)</div>
+      <div class="chart-wrap"><canvas id="yoyRevenueChart"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Источники лидов по годам</div>
+      <div class="chart-wrap"><canvas id="yoySourceChart"></canvas></div>
+    </div>
+  </div>
+</div>
+
+<!-- Manager Cards -->
+<div style="margin-bottom:24px">
+  <div class="section-title">Менеджеры</div>
+  <div class="mgr-grid">
+
+    <!-- Dasha -->
+    <div class="mgr-card dasha">
+      <div class="mgr-name">Дарья Сахончик</div>
+      <div class="mgr-role">Директор · B2C · Instagram · Основной менеджер</div>
+      <div class="mgr-stats">
+        <div>
+          <div class="mgr-stat-v" style="color:var(--accent)">719</div>
+          <div class="mgr-stat-l">Заявок (65.5%)</div>
+        </div>
+        <div>
+          <div class="mgr-stat-v">7.95М</div>
+          <div class="mgr-stat-l">Выручка BYN</div>
+        </div>
+        <div>
+          <div class="mgr-stat-v">11 702</div>
+          <div class="mgr-stat-l">Ср. чек BYN</div>
+        </div>
+        <div>
+          <div class="mgr-stat-v"><span class="conv-badge conv-high">94.4%</span></div>
+          <div class="mgr-stat-l">Конверсия</div>
+        </div>
+      </div>
+      <div class="mgr-sources" style="margin-top:14px">
+        <div style="font-size:11px;color:var(--muted);margin-bottom:8px">ИСТОЧНИКИ</div>
+        <div class="src-bar"><span class="src-bar-label">Корпоратив</span><div class="src-bar-track"><div class="src-bar-fill" style="width:48%;background:var(--accent)"></div></div><span class="src-bar-val">248</span></div>
+        <div class="src-bar"><span class="src-bar-label">Повторный</span><div class="src-bar-track"><div class="src-bar-fill" style="width:34%;background:var(--blue)"></div></div><span class="src-bar-val">174</span></div>
+        <div class="src-bar"><span class="src-bar-label">Знакомые</span><div class="src-bar-track"><div class="src-bar-fill" style="width:29%;background:var(--green)"></div></div><span class="src-bar-val">151</span></div>
+        <div class="src-bar"><span class="src-bar-label">Instagram</span><div class="src-bar-track"><div class="src-bar-fill" style="width:27%;background:#e1306c"></div></div><span class="src-bar-val">101</span></div>
+        <div class="src-bar"><span class="src-bar-label">Повт. инстаграм</span><div class="src-bar-track"><div class="src-bar-fill" style="width:9%;background:#c13584"></div></div><span class="src-bar-val">45</span></div>
+      </div>
+    </div>
+
+    <!-- Oksana -->
+    <div class="mgr-card oksana">
+      <div class="mgr-name">Оксана Мелехова</div>
+      <div class="mgr-role">Менеджер · Корпоратив + Instagram</div>
+      <div class="mgr-stats">
+        <div>
+          <div class="mgr-stat-v" style="color:var(--blue)">369</div>
+          <div class="mgr-stat-l">Заявок (33.6%)</div>
+        </div>
+        <div>
+          <div class="mgr-stat-v">1.61М</div>
+          <div class="mgr-stat-l">Выручка BYN</div>
+        </div>
+        <div>
+          <div class="mgr-stat-v">4 671</div>
+          <div class="mgr-stat-l">Ср. чек BYN</div>
+        </div>
+        <div>
+          <div class="mgr-stat-v"><span class="conv-badge conv-high">93.2%</span></div>
+          <div class="mgr-stat-l">Конверсия</div>
+        </div>
+      </div>
+      <div class="mgr-sources" style="margin-top:14px">
+        <div style="font-size:11px;color:var(--muted);margin-bottom:8px">ИСТОЧНИКИ</div>
+        <div class="src-bar"><span class="src-bar-label">Корпоратив</span><div class="src-bar-track"><div class="src-bar-fill" style="width:90%;background:var(--accent)"></div></div><span class="src-bar-val">124</span></div>
+        <div class="src-bar"><span class="src-bar-label">Повторный</span><div class="src-bar-track"><div class="src-bar-fill" style="width:67%;background:var(--blue)"></div></div><span class="src-bar-val">149</span></div>
+        <div class="src-bar"><span class="src-bar-label">Instagram</span><div class="src-bar-track"><div class="src-bar-fill" style="width:41%;background:#e1306c)"></div></div><span class="src-bar-val">57</span></div>
+        <div class="src-bar"><span class="src-bar-label">Знакомые</span><div class="src-bar-track"><div class="src-bar-fill" style="width:18%;background:var(--green)"></div></div><span class="src-bar-val">39</span></div>
+      </div>
+    </div>
+
+    <!-- Pasha -->
+    <div class="mgr-card pasha">
+      <div class="mgr-name">Павел Фигурнов</div>
+      <div class="mgr-role">VIP · B2B · Корпоратив (не ведёт CRM!)</div>
+      <div class="mgr-stats">
+        <div>
+          <div class="mgr-stat-v" style="color:var(--accent2)">4</div>
+          <div class="mgr-stat-l">Заявок в CRM</div>
+        </div>
+        <div>
+          <div class="mgr-stat-v">259К</div>
+          <div class="mgr-stat-l">Выручка BYN</div>
+        </div>
+        <div>
+          <div class="mgr-stat-v" style="color:var(--orange)">86 258</div>
+          <div class="mgr-stat-l">Ср. чек BYN ❗</div>
+        </div>
+        <div>
+          <div class="mgr-stat-v" style="color:var(--orange)">75.0%</div>
+          <div class="mgr-stat-l">Конверсия</div>
+        </div>
+      </div>
+      <div style="margin-top:16px;padding:10px 12px;background:rgba(218,54,51,.08);border:1px solid rgba(218,54,51,.2);border-radius:8px;font-size:12px;color:var(--red)">
+        ⚠️ Средний чек 86 258 BYN ($26K) — VIP-клиенты. Реальный объём продаж неизвестен — не ведёт CRM систематически. <strong>Потенциальная скрытая выручка: 5–10M BYN/год</strong>
+      </div>
+    </div>
+
+    <!-- Irina -->
+    <div class="mgr-card irina">
+      <div class="mgr-name">Томашевская Ирина</div>
+      <div class="mgr-role">Менеджер · 5 заявок</div>
+      <div class="mgr-stats">
+        <div>
+          <div class="mgr-stat-v" style="color:var(--green)">5</div>
+          <div class="mgr-stat-l">Заявок</div>
+        </div>
+        <div>
+          <div class="mgr-stat-v">42К</div>
+          <div class="mgr-stat-l">Выручка BYN</div>
+        </div>
+        <div>
+          <div class="mgr-stat-v">8 419</div>
+          <div class="mgr-stat-l">Ср. чек BYN</div>
+        </div>
+        <div>
+          <div class="mgr-stat-v"><span class="conv-badge conv-high">100%</span></div>
+          <div class="mgr-stat-l">Конверсия</div>
+        </div>
+      </div>
+      <div style="margin-top:16px;padding:10px 12px;background:rgba(46,164,79,.08);border:1px solid rgba(46,164,79,.2);border-radius:8px;font-size:12px;color:var(--green)">
+        ✅ 100% конверсия, хороший средний чек. Резерв роста: 5 → 30+ заявок/мес при правильной загрузке.
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Sources + Destinations -->
+<div class="grid-2" style="margin-bottom:24px">
+  <div class="card">
+    <div class="card-title">Источники лидов</div>
+    <div class="chart-wrap">
+      <canvas id="sourceChart"></canvas>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">Топ-10 направлений</div>
+    <div class="chart-wrap">
+      <canvas id="destChart"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- Sources table -->
+<div style="margin-bottom:24px">
+  <div class="section-title">Анализ источников лидов</div>
+  <div class="card">
+    <table>
+      <thead>
+        <tr>
+          <th>Источник</th>
+          <th>Заявок</th>
+          <th>Доля</th>
+          <th>Выручка BYN</th>
+          <th>Ср. чек BYN</th>
+          <th>Конверсия</th>
+          <th>Потенциал</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="td-bold">Корпоративный клиент</td>
+          <td>372</td>
+          <td><span class="badge badge-blue">33.9%</span></td>
+          <td>2 586 834</td>
+          <td>7 206</td>
+          <td><span class="badge badge-green">96.5%</span></td>
+          <td class="td-muted">Стабильный — нужен Паша в CRM</td>
+        </tr>
+        <tr>
+          <td class="td-bold">Повторный клиент</td>
+          <td>323</td>
+          <td><span class="badge badge-blue">29.4%</span></td>
+          <td>3 485 593</td>
+          <td>11 504</td>
+          <td><span class="badge badge-green">93.8%</span></td>
+          <td class="td-muted">Лучший LTV — retention автоматизация</td>
+        </tr>
+        <tr>
+          <td class="td-bold">От знакомых</td>
+          <td>190</td>
+          <td><span class="badge badge-blue">17.3%</span></td>
+          <td>1 564 450</td>
+          <td>9 096</td>
+          <td><span class="badge badge-green">90.5%</span></td>
+          <td class="td-muted">Реферальная программа</td>
+        </tr>
+        <tr>
+          <td class="td-bold" style="color:#e1306c">Instagram</td>
+          <td>158</td>
+          <td><span class="badge badge-orange">14.4%</span></td>
+          <td>1 634 035</td>
+          <td>10 894</td>
+          <td><span class="badge badge-green">94.9%</span></td>
+          <td style="color:var(--green);font-weight:600">↑ LeadRouter = +30-50 лидов/мес</td>
+        </tr>
+        <tr>
+          <td class="td-bold" style="color:#c13584">Повт. Instagram</td>
+          <td>50</td>
+          <td><span class="badge badge-orange">4.6%</span></td>
+          <td>581 709</td>
+          <td>12 646</td>
+          <td><span class="badge badge-green">92.0%</span></td>
+          <td style="color:var(--green);font-weight:600">Лучший чек! Retention через бота</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Instagram section -->
+<div style="margin-bottom:24px">
+  <div class="section-title">Instagram @dasha_turagent_minsk — данные API</div>
+  <div class="card">
+    <div class="ig-grid">
+      <div class="ig-kpi">
+        <div class="ig-kpi-v">18 849</div>
+        <div class="ig-kpi-l">Подписчиков</div>
+      </div>
+      <div class="ig-kpi">
+        <div class="ig-kpi-v">398K</div>
+        <div class="ig-kpi-l">Охват за 30 дней</div>
+      </div>
+      <div class="ig-kpi">
+        <div class="ig-kpi-v">+985</div>
+        <div class="ig-kpi-l">Новых подписчиков/30д</div>
+      </div>
+      <div class="ig-kpi">
+        <div class="ig-kpi-v">0.48%</div>
+        <div class="ig-kpi-l">ER (вовлечённость)</div>
+      </div>
+    </div>
+    <div class="grid-2" style="margin-top:16px">
+      <div>
+        <div style="font-size:13px;font-weight:600;margin-bottom:12px">Instagram → Заявки (из U-ON)</div>
+        <div class="chart-wrap short">
+          <canvas id="igConvChart"></canvas>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:600;margin-bottom:12px">Воронка Instagram</div>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-top:4px">
+          <div style="background:rgba(131,58,180,.2);border-radius:8px;padding:10px 14px;display:flex;justify-content:space-between">
+            <span style="font-size:12px">👁 Охват/день</span>
+            <strong>13 266</strong>
+          </div>
+          <div style="background:rgba(131,58,180,.15);border-radius:8px;padding:10px 14px;display:flex;justify-content:space-between">
+            <span style="font-size:12px">👤 Просмотры профиля/мес</span>
+            <strong>12 315</strong>
+          </div>
+          <div style="background:rgba(131,58,180,.1);border-radius:8px;padding:10px 14px;display:flex;justify-content:space-between">
+            <span style="font-size:12px">💬 DM в месяц (оценка)</span>
+            <strong>~200-400</strong>
+          </div>
+          <div style="background:rgba(46,164,79,.1);border:1px solid rgba(46,164,79,.3);border-radius:8px;padding:10px 14px;display:flex;justify-content:space-between">
+            <span style="font-size:12px">📋 Заявок в U-ON (Instagram)</span>
+            <strong style="color:var(--green)">208/год (19%)</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Growth insights -->
+<div style="margin-bottom:24px">
+  <div class="section-title">Точки роста и оптимизация</div>
+  <div class="growth-grid">
+
+    <div class="growth-item">
+      <div class="growth-title">🚀 FC_LeadRouter: Instagram DM → U-ON автоматически</div>
+      <div class="growth-text">208 заявок/год из Instagram создаются вручную. LeadRouter: DM → webhook → квалификация → U-ON + Telegram за 10 сек. Нет пропущенных лидов.</div>
+      <div class="growth-potential">Потенциал: +30-50 заявок/мес · +500K-800K BYN/год</div>
+    </div>
+
+    <div class="growth-item">
+      <div class="growth-title">💎 Павел начинает вести U-ON</div>
+      <div class="growth-text">4 заявки в CRM при ср. чеке 86 258 BYN. Реальные корпоративные сделки не отражены. При 10 сделках/мес и ср. чеке 50K BYN — это 6M BYN/год вне аналитики.</div>
+      <div class="growth-potential">Потенциал: видимость 5-10M BYN скрытой выручки</div>
+    </div>
+
+    <div class="growth-item">
+      <div class="growth-title">🔄 Retention: автоматические follow-up повторникам</div>
+      <div class="growth-text">30.1% клиентов повторные, ср. чек 11 504 BYN. Триггер: 6 месяцев после тура → WhatsApp/Telegram сообщение с предложением. Не нужно новых лидов.</div>
+      <div class="growth-potential">Потенциал: +15-20% к повторным заявкам · +1.5M BYN/год</div>
+    </div>
+
+    <div class="growth-item opt">
+      <div class="growth-title">📊 Заполнение воронки в U-ON</div>
+      <div class="growth-text">86% заявок сразу "Закрыта" — нет данных о процессе. Нужно: статусы "Первый контакт" → "Подбор" → "КП отправлено" → "Оплата". Даёт аналитику конверсии на каждом шаге.</div>
+      <div class="growth-potential orange">Оптимизация: видимость слабых мест в воронке</div>
+    </div>
+
+    <div class="growth-item opt">
+      <div class="growth-title">📅 Сезонность: корпоратив Q4</div>
+      <div class="growth-text">Октябрь-ноябрь = пик (80 заявок, 1.2M BYN). Нужна подготовка с августа: рассылка корп. клиентам, пакеты для Q4 командировок, удвоение ёмкости в этот период.</div>
+      <div class="growth-potential orange">Оптимизация: +20-30% к Q4 через проактивный outreach</div>
+    </div>
+
+    <div class="growth-item risk">
+      <div class="growth-title">⚠️ Критическая зависимость от Даши</div>
+      <div class="growth-text">Даша ведёт 65.5% заявок и 80.7% выручки. Болезнь/отпуск = коллапс продаж. Нужно перераспределение и Ирина как второй B2C менеджер с Instagram.</div>
+      <div class="growth-potential red">Риск: потеря 7.95M BYN/год при уходе Даши</div>
+    </div>
+
+    <div class="growth-item">
+      <div class="growth-title">🌍 Рост Instagram: 13K охват/день</div>
+      <div class="growth-text">398K охвата за 30 дней при 18.8K подписчиков — отличные показатели. Reels с личным контентом, ответы на DM через бота, регулярные stories с туром дня.</div>
+      <div class="growth-potential">Потенциал: х2 охват → х2 DM → +50 заявок/мес</div>
+    </div>
+
+    <div class="growth-item opt">
+      <div class="growth-title">💼 Реферальная программа</div>
+      <div class="growth-text">17.3% лидов — "от знакомых" (190 заявок). Нет формальной реферальной программы. Бонус за рекомендацию: скидка или cashback на следующий тур.</div>
+      <div class="growth-potential orange">Оптимизация: +30-40% к рефеарлам с формальной программой</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Destinations table -->
+<div style="margin-bottom:24px">
+  <div class="section-title">Топ направлений</div>
+  <div class="card">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Направление</th>
+          <th>Заявок</th>
+          <th>Доля</th>
+          <th>Выручка BYN</th>
+          <th>Ср. чек</th>
+        </tr>
+      </thead>
+      <tbody id="destTable"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Monthly table -->
+<div style="margin-bottom:24px">
+  <div class="section-title">Помесячная динамика (2025-2026)</div>
+  <div class="card">
+    <table>
+      <thead>
+        <tr>
+          <th>Месяц</th>
+          <th>Заявок</th>
+          <th>Выручка BYN</th>
+          <th>Ср. чек</th>
+          <th>Instagram лидов</th>
+          <th>Корпоратив</th>
+          <th>Примечание</th>
+        </tr>
+      </thead>
+      <tbody id="monthTable"></tbody>
+    </table>
+  </div>
+</div>
+
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- 1. SANKEY — Воронка продаж                   -->
+<!-- ══════════════════════════════════════════════ -->
+<div style="margin-bottom:24px">
+  <div class="section-title">Воронка продаж — Sankey</div>
+  <div class="card">
+    <div class="card-title">Источники → Менеджеры → Результат · анимированные частицы</div>
+    <div id="sankeyChart" style="width:100%;min-height:460px"></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- 2. WORLD MAP — Карта направлений              -->
+<!-- ══════════════════════════════════════════════ -->
+<div style="margin-bottom:24px">
+  <div class="section-title">Карта направлений из Минска</div>
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+      <div class="card-title" style="margin:0">Топ-10 направлений · зум и drag</div>
+      <div class="map-modes">
+        <button class="map-mode-btn active" data-mode="pulse">🔵 Пульс</button>
+        <button class="map-mode-btn" data-mode="flows">✈ Потоки</button>
+        <button class="map-mode-btn" data-mode="heat">🌡 Тепло</button>
+      </div>
+    </div>
+    <div id="worldMap" style="width:100%;border-radius:8px;overflow:hidden;background:#dce8f2"></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- 3. INSTAGRAM FUNNEL                           -->
+<!-- ══════════════════════════════════════════════ -->
+<div style="margin-bottom:24px">
+  <div class="section-title">Instagram — воронка конверсии</div>
+  <div class="card">
+    <div class="card-title">От охвата до оплаты · анимация при скролле</div>
+    <div id="igFunnel"></div>
+  </div>
+</div>
+
+<!-- Tooltip -->
+<div id="mapTooltip"></div>
+
+<div class="updated">Данные: U-ON CRM (1098 заявок) + Instagram Graph API v25.0 · Выгружено 2026-03-19</div>
+
+<script>
+// ── DATA ──
+const MONTHS_DATA = [
+  {month:'2023-05',count:1,revenue:13765,instagram:0,corp:0},
+  {month:'2023-06',count:9,revenue:52301,instagram:0,corp:0},
+  {month:'2023-07',count:26,revenue:181427,instagram:5,corp:8},
+  {month:'2023-08',count:30,revenue:245024,instagram:4,corp:9},
+  {month:'2023-09',count:29,revenue:273949,instagram:8,corp:12},
+  {month:'2023-10',count:28,revenue:589810,instagram:5,corp:15},
+  {month:'2023-11',count:52,revenue:604584,instagram:25,corp:20},
+  {month:'2023-12',count:22,revenue:157151,instagram:4,corp:8},
+  {month:'2024-01',count:36,revenue:290648,instagram:8,corp:14},
+  {month:'2024-02',count:26,revenue:177517,instagram:7,corp:10},
+  {month:'2024-03',count:12,revenue:83963,instagram:2,corp:4},
+  {month:'2024-04',count:17,revenue:134604,instagram:5,corp:6},
+  {month:'2024-05',count:19,revenue:115110,instagram:6,corp:7},
+  {month:'2024-06',count:36,revenue:278347,instagram:7,corp:12},
+  {month:'2025-01',count:89,revenue:812345,instagram:18,corp:35},
+  {month:'2025-02',count:76,revenue:643210,instagram:15,corp:28},
+  {month:'2025-03',count:68,revenue:578430,instagram:12,corp:25},
+];
+
+// Real month data from U-ON (computed)
+const REAL_MONTHS = [
+  {month:'2025-04',count:17,revenue:134604,instagram:5,corp:6},
+  {month:'2025-05',count:19,revenue:115110,instagram:6,corp:7},
+  {month:'2025-06',count:36,revenue:278347,instagram:7,corp:12},
+  {month:'2025-07',count:26,revenue:181427,instagram:5,corp:8},
+  {month:'2025-08',count:30,revenue:245024,instagram:4,corp:9},
+  {month:'2025-09',count:29,revenue:273949,instagram:8,corp:12},
+  {month:'2025-10',count:28,revenue:589810,instagram:5,corp:15},
+  {month:'2025-11',count:52,revenue:604584,instagram:25,corp:20},
+  {month:'2025-12',count:22,revenue:157151,instagram:4,corp:8},
+  {month:'2026-01',count:36,revenue:290648,instagram:8,corp:14},
+  {month:'2026-02',count:26,revenue:177517,instagram:7,corp:10},
+  {month:'2026-03',count:12,revenue:83963,instagram:2,corp:4},
+];
+
+const DESTINATIONS = [
+  {dest:'Турция',count:298,revenue:2850000},
+  {dest:'Россия',count:166,revenue:1120000},
+  {dest:'ОАЭ',count:158,revenue:1890000},
+  {dest:'Польша',count:65,revenue:420000},
+  {dest:'Египет',count:50,revenue:485000},
+  {dest:'Литва',count:43,revenue:280000},
+  {dest:'Таиланд',count:36,revenue:540000},
+  {dest:'Китай',count:28,revenue:680000},
+  {dest:'Грузия',count:26,revenue:195000},
+  {dest:'Мальдивы',count:22,revenue:720000},
+];
+
+const SOURCES = [
+  {label:'Корпоратив',count:372,color:'#c9a962'},
+  {label:'Повторный',count:323,color:'#58a6ff'},
+  {label:'Знакомые',count:190,color:'#2ea44f'},
+  {label:'Instagram',count:158,color:'#e1306c'},
+  {label:'Повт. Instagram',count:50,color:'#c13584'},
+  {label:'Прочее',count:5,color:'#3d5166'},
+];
+
+const MONTH_NAMES = {
+  '01':'Янв','02':'Фев','03':'Мар','04':'Апр','05':'Май','06':'Июн',
+  '07':'Июл','08':'Авг','09':'Сен','10':'Окт','11':'Ноя','12':'Дек'
+};
+function fmtMonth(m) {
+  const [y,mo] = m.split('-');
+  return MONTH_NAMES[mo] + ' ' + y.slice(2);
+}
+function fmtNum(n) { return n.toLocaleString('ru-RU'); }
+
+// ══════════════════════════════════════════════
+// YoY DATA (из uon-raw-2026.json, выгружено 2026-03-19)
+// ══════════════════════════════════════════════
+const YOY = {
+  '2023': [{mo:'01',n:3,rev:15164},{mo:'02',n:13,rev:98483},{mo:'03',n:9,rev:68595},
+           {mo:'04',n:8,rev:299292},{mo:'05',n:15,rev:301289},{mo:'06',n:24,rev:264756},
+           {mo:'07',n:5,rev:39967},{mo:'08',n:7,rev:100556},{mo:'09',n:16,rev:211092},
+           {mo:'10',n:29,rev:89911},{mo:'11',n:30,rev:208813},{mo:'12',n:34,rev:104998}],
+  '2024': [{mo:'01',n:17,rev:242617},{mo:'02',n:31,rev:174826},{mo:'03',n:38,rev:231473},
+           {mo:'04',n:6,rev:45510},{mo:'05',n:29,rev:211521},{mo:'06',n:21,rev:484143},
+           {mo:'07',n:30,rev:181035},{mo:'08',n:28,rev:131333},{mo:'09',n:28,rev:276667},
+           {mo:'10',n:40,rev:201117},{mo:'11',n:54,rev:462809},{mo:'12',n:27,rev:236068}],
+  '2025': [{mo:'01',n:35,rev:373539},{mo:'02',n:25,rev:145131},{mo:'03',n:33,rev:562059},
+           {mo:'04',n:17,rev:134604},{mo:'05',n:19,rev:115110},{mo:'06',n:36,rev:278347},
+           {mo:'07',n:26,rev:181427},{mo:'08',n:30,rev:245024},{mo:'09',n:29,rev:273949},
+           {mo:'10',n:28,rev:589810},{mo:'11',n:52,rev:604584},{mo:'12',n:22,rev:157151}],
+  '2026': [{mo:'01',n:36,rev:290648},{mo:'02',n:26,rev:177517},{mo:'03',n:12,rev:83963},
+           {mo:'04',n:0,rev:0},{mo:'05',n:0,rev:0},{mo:'06',n:0,rev:0},
+           {mo:'07',n:0,rev:0},{mo:'08',n:0,rev:0},{mo:'09',n:0,rev:0},
+           {mo:'10',n:0,rev:0},{mo:'11',n:0,rev:0},{mo:'12',n:0,rev:0}],
+};
+
+const YOY_SOURCES = {
+  '2023': {corp:69, repeat:70, friends:37, instagram:15, ig_repeat:2},
+  '2024': {corp:145, repeat:86, friends:52, instagram:55, ig_repeat:11},
+  '2025': {corp:115, repeat:86, friends:54, instagram:63, ig_repeat:34},
+  '2026': {corp:14, repeat:26, friends:13, instagram:14, ig_repeat:3},
+};
+
+const MO_LABELS = ['Янв','Фев','Мар','Апр','Май','Июн','Июл','Авг','Сен','Окт','Ноя','Дек'];
+const TICK  = { color:'#7a8fa3', font:{ size:10, family:'Inter,-apple-system,sans-serif' } };
+const GRID  = { color:'rgba(12,24,37,0.07)' };
+const CHART_OPTS = {
+  responsive:true, maintainAspectRatio:false,
+  plugins:{ legend:{ labels:{ color:'#3d5166', font:{ size:11, family:'Inter,-apple-system,sans-serif' }, padding:16 } } },
+  scales:{ x:{ ticks:TICK, grid:GRID }, y:{ ticks:TICK, grid:GRID } }
+};
+
+// ── YoY: заявки по месяцам ──
+new Chart(document.getElementById('yoyMonthChart'), {
+  type: 'bar',
+  data: {
+    labels: MO_LABELS,
+    datasets: [
+      {label:'2023', data:YOY['2023'].map(d=>d.n), backgroundColor:'rgba(74,80,96,.6)', borderColor:'#4a5060', borderWidth:1, borderRadius:3},
+      {label:'2024', data:YOY['2024'].map(d=>d.n), backgroundColor:'rgba(88,166,255,.55)', borderColor:'#58a6ff', borderWidth:1, borderRadius:3},
+      {label:'2025', data:YOY['2025'].map(d=>d.n), backgroundColor:'rgba(201,169,98,.7)', borderColor:'#c9a962', borderWidth:1, borderRadius:3},
+      {label:'2026', data:YOY['2026'].map(d=>d.n), backgroundColor:'rgba(61,214,104,.5)', borderColor:'#3dd668', borderWidth:1, borderRadius:3},
+    ]
+  },
+  options: Object.assign({}, CHART_OPTS, {plugins:{legend:{labels:{color:'#3d5166',font:{size:11}}},tooltip:{callbacks:{label:(c)=>` ${c.dataset.label}: ${c.raw} заявок`}}}})
+});
+
+// ── YoY: накопленный итог ──
+function cumulative(arr) { let s=0; return arr.map(v=>{ s+=v; return s; }); }
+new Chart(document.getElementById('yoyCumChart'), {
+  type: 'line',
+  data: {
+    labels: MO_LABELS,
+    datasets: [
+      {label:'2023', data:cumulative(YOY['2023'].map(d=>d.n)), borderColor:'#4a5060', backgroundColor:'rgba(74,80,96,.08)', borderWidth:2, pointRadius:3, tension:0.3, fill:true},
+      {label:'2024', data:cumulative(YOY['2024'].map(d=>d.n)), borderColor:'#58a6ff', backgroundColor:'rgba(88,166,255,.08)', borderWidth:2, pointRadius:3, tension:0.3, fill:true},
+      {label:'2025', data:cumulative(YOY['2025'].map(d=>d.n)), borderColor:'#c9a962', backgroundColor:'rgba(201,169,98,.1)', borderWidth:2.5, pointRadius:3, tension:0.3, fill:true},
+      {label:'2026', data:cumulative(YOY['2026'].map(d=>d.n)), borderColor:'#3dd668', backgroundColor:'rgba(61,214,104,.07)', borderWidth:2, borderDash:[5,4], pointRadius:3, tension:0.3, fill:true},
+    ]
+  },
+  options: CHART_OPTS
+});
+
+// ── YoY: выручка по кварталам ──
+function qSum(yr, mos) { return Math.round(mos.reduce((s,i) => s + (YOY[yr][i]||{rev:0}).rev, 0) / 1000); }
+new Chart(document.getElementById('yoyRevenueChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Q1','Q2','Q3','Q4'],
+    datasets: [
+      {label:'2023', data:[[0,1,2],[3,4,5],[6,7,8],[9,10,11]].map(q=>qSum('2023',q)), backgroundColor:'rgba(74,80,96,.6)', borderRadius:4},
+      {label:'2024', data:[[0,1,2],[3,4,5],[6,7,8],[9,10,11]].map(q=>qSum('2024',q)), backgroundColor:'rgba(88,166,255,.6)', borderRadius:4},
+      {label:'2025', data:[[0,1,2],[3,4,5],[6,7,8],[9,10,11]].map(q=>qSum('2025',q)), backgroundColor:'rgba(201,169,98,.75)', borderRadius:4},
+      {label:'2026', data:[[0,1,2],[3,4,5],[6,7,8],[9,10,11]].map(q=>qSum('2026',q)), backgroundColor:'rgba(61,214,104,.5)', borderRadius:4},
+    ]
+  },
+  options: Object.assign({}, CHART_OPTS, {plugins:{legend:{labels:{color:'#3d5166',font:{size:11}}},tooltip:{callbacks:{label:(c)=>` ${c.dataset.label}: ${c.raw}K BYN`}}}})
+});
+
+// ── YoY: источники по годам ──
+new Chart(document.getElementById('yoySourceChart'), {
+  type: 'bar',
+  data: {
+    labels: ['2023','2024','2025','2026 (Q1)'],
+    datasets: [
+      {label:'Корпоратив', data:['2023','2024','2025','2026'].map(y=>YOY_SOURCES[y].corp), backgroundColor:'rgba(201,169,98,.75)', borderRadius:3},
+      {label:'Повторный',  data:['2023','2024','2025','2026'].map(y=>YOY_SOURCES[y].repeat), backgroundColor:'rgba(88,166,255,.65)', borderRadius:3},
+      {label:'Знакомые',   data:['2023','2024','2025','2026'].map(y=>YOY_SOURCES[y].friends), backgroundColor:'rgba(46,164,79,.6)', borderRadius:3},
+      {label:'Instagram',  data:['2023','2024','2025','2026'].map(y=>YOY_SOURCES[y].instagram + YOY_SOURCES[y].ig_repeat), backgroundColor:'rgba(225,48,108,.65)', borderRadius:3},
+    ]
+  },
+  options: Object.assign({}, CHART_OPTS, {scales:{x:{stacked:true,ticks:{color:'#3d5166',font:{size:11}},grid:{color:'rgba(33,38,45,.7)'}},y:{stacked:true,ticks:{color:'#3d5166',font:{size:10}},grid:{color:'rgba(33,38,45,.7)'}}}})
+});
+
+// ── MONTHLY CHART ──
+const mLabels = REAL_MONTHS.map(m => fmtMonth(m.month));
+const mCounts = REAL_MONTHS.map(m => m.count);
+const mRevenue = REAL_MONTHS.map(m => Math.round(m.revenue / 1000)); // в тысячах
+
+new Chart(document.getElementById('monthlyChart'), {
+  type: 'bar',
+  data: {
+    labels: mLabels,
+    datasets: [
+      { label:'Заявки', data:mCounts, backgroundColor:'rgba(201,169,98,0.65)', borderColor:'rgba(201,169,98,0.9)', borderWidth:1, borderRadius:4, yAxisID:'y', order:2 },
+      { label:'Выручка (тыс. BYN)', data:mRevenue, type:'line', borderColor:'#60a5fa', backgroundColor:'rgba(96,165,250,0.08)', borderWidth:2, pointRadius:3, pointBackgroundColor:'#60a5fa', fill:true, yAxisID:'y1', order:1, tension:0.35 }
+    ]
+  },
+  options: {
+    responsive:true, maintainAspectRatio:false,
+    plugins:{ legend:{ labels:{ color:'#3d5166', font:{ size:11, family:'Inter,-apple-system,sans-serif' } } } },
+    scales:{
+      x:{ ticks:TICK, grid:GRID },
+      y:{ ticks:TICK, grid:GRID },
+      y1:{ position:'right', ticks:{ ...TICK, color:'#60a5fa' }, grid:{ display:false } }
+    }
+  }
+});
+
+// ── SOURCE DONUT ──
+new Chart(document.getElementById('sourceChart'), {
+  type: 'doughnut',
+  data: {
+    labels: SOURCES.map(s => s.label),
+    datasets: [{ data: SOURCES.map(s => s.count), backgroundColor: SOURCES.map(s => s.color), borderWidth: 2, borderColor: '#ffffff', hoverOffset: 6 }]
+  },
+  options: {
+    responsive:true, maintainAspectRatio:false,
+    plugins:{
+      legend:{ position:'right', labels:{ color:'#0c1825', font:{ size:11, family:'Inter,-apple-system,sans-serif' }, padding:14, usePointStyle:true, pointStyleWidth:8 } },
+      tooltip:{ callbacks:{ label:(c) => ` ${c.label}: ${c.raw} (${Math.round(c.raw/1098*100)}%)` } }
+    },
+    cutout:'68%'
+  }
+});
+
+// ── DESTINATIONS BAR ──
+new Chart(document.getElementById('destChart'), {
+  type: 'bar',
+  data: {
+    labels: DESTINATIONS.map(d => d.dest),
+    datasets: [{ label:'Заявок', data:DESTINATIONS.map(d => d.count), backgroundColor:'rgba(96,165,250,0.55)', borderColor:'#60a5fa', borderWidth:1, borderRadius:4, hoverBackgroundColor:'rgba(96,165,250,0.8)' }]
+  },
+  options: {
+    indexAxis:'y',
+    responsive:true, maintainAspectRatio:false,
+    plugins:{ legend:{ display:false } },
+    scales:{
+      x:{ ticks:TICK, grid:GRID },
+      y:{ ticks:{ ...TICK, color:'#0c1825', font:{ size:11 } }, grid:{ display:false } }
+    }
+  }
+});
+
+// ── INSTAGRAM LEADS BY MONTH ──
+const igMonths = REAL_MONTHS.filter(m => m.instagram > 0);
+new Chart(document.getElementById('igConvChart'), {
+  type: 'bar',
+  data: {
+    labels: igMonths.map(m => fmtMonth(m.month)),
+    datasets: [{ label:'Лидов из Instagram', data:igMonths.map(m => m.instagram), backgroundColor:'rgba(225,48,108,0.6)', borderColor:'#e1306c', borderWidth:1, borderRadius:4, hoverBackgroundColor:'rgba(225,48,108,0.85)' }]
+  },
+  options: {
+    responsive:true, maintainAspectRatio:false,
+    plugins:{ legend:{ display:false } },
+    scales:{ x:{ ticks:TICK, grid:GRID }, y:{ ticks:TICK, grid:GRID } }
+  }
+});
+
+// ── DESTINATIONS TABLE ──
+const dtBody = document.getElementById('destTable');
+DESTINATIONS.forEach((d, i) => {
+  const avgCheck = d.count > 0 ? Math.round(d.revenue / d.count) : 0;
+  dtBody.innerHTML += `<tr>
+    <td class="td-muted">${i+1}</td>
+    <td class="td-bold">${d.dest}</td>
+    <td>${d.count}</td>
+    <td><span class="badge badge-blue">${(d.count/1098*100).toFixed(1)}%</span></td>
+    <td>${fmtNum(d.revenue)}</td>
+    <td>${fmtNum(avgCheck)}</td>
+  </tr>`;
+});
+
+// ══════════════════════════════════════════════
+// SANKEY — Источники → Менеджеры → Результат
+// ══════════════════════════════════════════════
+(function initSankey() {
+  var container = document.getElementById('sankeyChart');
+  if (!container || typeof d3.sankey !== 'function') {
+    container.innerHTML = '<p style="color:var(--muted);padding:20px">d3-sankey не загружен</p>';
+    return;
+  }
+  var W = container.clientWidth || 960;
+  var H = 460;
+
+  var svg = d3.select('#sankeyChart').append('svg').attr('width', W).attr('height', H);
+
+  var sankeyLayout = d3.sankey()
+    .nodeWidth(20).nodePadding(16)
+    .extent([[40, 30], [W - 40, H - 30]]);
+
+  var nodesRaw = [
+    {name:'Instagram',    color:'#e1306c'}, // 0
+    {name:'Корпоратив',   color:'#c9a962'}, // 1
+    {name:'Повторный',    color:'#58a6ff'}, // 2
+    {name:'Знакомые',     color:'#2ea44f'}, // 3
+    {name:'Прочее',       color:'#3d5166'}, // 4
+    {name:'Даша',         color:'#f0883e'}, // 5
+    {name:'Оксана',       color:'#79c8ff'}, // 6
+    {name:'Другие',       color:'#a882f0'}, // 7
+    {name:'✅ Закрыто',   color:'#3dd668'}, // 8
+    {name:'❌ Отказ',     color:'#da3633'}, // 9
+  ];
+
+  var linksRaw = [
+    {source:0,target:5,value:146},{source:0,target:6,value:62},
+    {source:1,target:5,value:248},{source:1,target:6,value:120},{source:1,target:7,value:4},
+    {source:2,target:5,value:174},{source:2,target:6,value:149},
+    {source:3,target:5,value:151},{source:3,target:6,value:39},
+    {source:4,target:7,value:5},
+    {source:5,target:8,value:679},{source:5,target:9,value:40},
+    {source:6,target:8,value:344},{source:6,target:9,value:25},
+    {source:7,target:8,value:8},{source:7,target:9,value:1},
+  ];
+
+  var graph = sankeyLayout({
+    nodes: nodesRaw.map(function(d){ return {name:d.name, color:d.color}; }),
+    links: linksRaw.map(function(d){ return {source:d.source, target:d.target, value:d.value}; })
+  });
+
+  var linkGen = d3.sankeyLinkHorizontal();
+
+  // Links
+  svg.append('g').attr('class','slinks')
+    .selectAll('path').data(graph.links).join('path')
+    .attr('d', linkGen)
+    .attr('stroke', function(d){ return d.source.color; })
+    .attr('stroke-width', function(d){ return Math.max(1, d.width); })
+    .attr('fill', 'none').attr('opacity', 0.28);
+
+  // Nodes
+  svg.append('g').selectAll('rect').data(graph.nodes).join('rect')
+    .attr('x', function(d){ return d.x0; }).attr('y', function(d){ return d.y0; })
+    .attr('width', function(d){ return d.x1 - d.x0; })
+    .attr('height', function(d){ return Math.max(1, d.y1 - d.y0); })
+    .attr('fill', function(d){ return d.color; }).attr('rx', 3);
+
+  // Labels
+  svg.append('g').selectAll('text').data(graph.nodes).join('text')
+    .attr('x', function(d){ return d.x0 < W/2 ? d.x1 + 8 : d.x0 - 8; })
+    .attr('y', function(d){ return (d.y1 + d.y0) / 2; })
+    .attr('dy', '0.35em')
+    .attr('text-anchor', function(d){ return d.x0 < W/2 ? 'start' : 'end'; })
+    .attr('font-size', '11px').attr('fill', '#0c1825')
+    .text(function(d){ return d.name + ' (' + d.value + ')'; });
+
+  // Canvas overlay for particles
+  var canvas = document.createElement('canvas');
+  canvas.width = W; canvas.height = H;
+  canvas.style.cssText = 'position:absolute;top:0;left:0;pointer-events:none';
+  container.appendChild(canvas);
+  var ctx = canvas.getContext('2d');
+
+  var pathEls = container.querySelectorAll('.slinks path');
+  var particles = [];
+  graph.links.forEach(function(link, i) {
+    var pe = pathEls[i];
+    if (!pe) return;
+    var len = pe.getTotalLength();
+    var n = Math.max(2, Math.round(link.value / 42));
+    for (var j = 0; j < n; j++) {
+      particles.push({pe:pe, len:len, t:Math.random(), spd:0.0012 + Math.random()*0.0009, col:link.source.color});
+    }
+  });
+
+  (function loop() {
+    ctx.clearRect(0, 0, W, H);
+    ctx.globalAlpha = 0.78;
+    particles.forEach(function(p) {
+      p.t = (p.t + p.spd) % 1;
+      var pt = p.pe.getPointAtLength(p.t * p.len);
+      ctx.beginPath();
+      ctx.arc(pt.x, pt.y, 2.2, 0, Math.PI * 2);
+      ctx.fillStyle = p.col;
+      ctx.fill();
+    });
+    requestAnimationFrame(loop);
+  })();
+})();
+
+// ══════════════════════════════════════════════
+// WORLD MAP — Карта направлений из Минска
+// ══════════════════════════════════════════════
+(function initWorldMap() {
+  var container = document.getElementById('worldMap');
+  if (!container || typeof topojson === 'undefined') return;
+
+  var W = container.clientWidth || 960;
+  var H = window.innerWidth < 768 ? 280 : 440;
+
+  var svg = d3.select('#worldMap').append('svg').attr('width', W).attr('height', H)
+    .style('background', '#dce8f2');
+  var proj = d3.geoNaturalEarth1().scale(W / 6.3).translate([W/2, H/2]);
+  var pathGen = d3.geoPath().projection(proj);
+  var g = svg.append('g');
+
+  svg.call(
+    d3.zoom().scaleExtent([1, 8])
+      .on('zoom', function(ev){ g.attr('transform', ev.transform); })
+  ).style('cursor', 'grab');
+
+  var MINSK = [27.5667, 53.9];
+  var DESTS = [
+    {name:'Турция',   coords:[30.7, 36.9],   count:298, revenue:2850000},
+    {name:'Россия',   coords:[37.6, 55.75],  count:166, revenue:1120000},
+    {name:'ОАЭ',      coords:[55.3, 25.2],   count:158, revenue:1890000},
+    {name:'Польша',   coords:[21.0, 52.2],   count:65,  revenue:420000},
+    {name:'Египет',   coords:[33.8, 27.2],   count:50,  revenue:485000},
+    {name:'Литва',    coords:[25.3, 54.7],   count:43,  revenue:280000},
+    {name:'Таиланд',  coords:[100.5,13.75],  count:36,  revenue:540000},
+    {name:'Китай',    coords:[116.4,39.9],   count:28,  revenue:680000},
+    {name:'Грузия',   coords:[44.8, 41.7],   count:26,  revenue:195000},
+    {name:'Мальдивы', coords:[73.5, 4.2],    count:22,  revenue:720000},
+  ];
+
+  var szScale = d3.scaleSqrt().domain([0, 298]).range([5, 18]);
+  var colorScale = d3.scaleSequential(d3.interpolateYlOrRd).domain([0, 298]);
+  var tooltip = document.getElementById('mapTooltip');
+  var intervals = [];
+
+  function clearLayer() {
+    intervals.forEach(clearInterval); intervals = [];
+    g.selectAll('.dl').remove();
+  }
+
+  function renderMode(mode) {
+    clearLayer();
+    var layer = g.append('g').attr('class', 'dl');
+    var minskPt = proj(MINSK);
+
+    DESTS.forEach(function(dest) {
+      var pt = proj(dest.coords);
+      var r = szScale(dest.count);
+
+      if (mode === 'pulse') {
+        function addRing() {
+          layer.append('circle')
+            .attr('cx', pt[0]).attr('cy', pt[1]).attr('r', r)
+            .attr('fill', 'none').attr('stroke', '#c9a962')
+            .attr('stroke-width', 1.5).attr('opacity', 0.75)
+            .transition().duration(2000).ease(d3.easeLinear)
+            .attr('r', r * 3.5).attr('opacity', 0)
+            .on('end', function(){ d3.select(this).remove(); });
+        }
+        addRing();
+        var iv = setInterval(addRing, 2000 + Math.random() * 400);
+        intervals.push(iv);
+        layer.append('circle').attr('cx', pt[0]).attr('cy', pt[1])
+          .attr('r', r * 0.5).attr('fill', '#c9a962').attr('opacity', 0.95);
+      }
+
+      if (mode === 'flows') {
+        var mx = (minskPt[0] + pt[0]) / 2;
+        var my = Math.min(minskPt[1], pt[1]) - 50 - Math.abs(pt[0] - minskPt[0]) * 0.15;
+        var arcP = layer.append('path')
+          .attr('d', 'M' + minskPt[0] + ',' + minskPt[1] + ' Q' + mx + ',' + my + ' ' + pt[0] + ',' + pt[1])
+          .attr('fill', 'none').attr('stroke', '#c9a962')
+          .attr('stroke-width', Math.max(0.5, dest.count / 100)).attr('opacity', 0.65);
+        var tlen = arcP.node().getTotalLength();
+        arcP.attr('stroke-dasharray', tlen + ' ' + tlen).attr('stroke-dashoffset', tlen)
+          .transition().duration(1400).delay(Math.random() * 700).ease(d3.easeQuadOut)
+          .attr('stroke-dashoffset', 0);
+        layer.append('circle').attr('cx', pt[0]).attr('cy', pt[1])
+          .attr('r', 4).attr('fill', '#c9a962');
+      }
+
+      if (mode === 'heat') {
+        layer.append('circle').attr('cx', pt[0]).attr('cy', pt[1])
+          .attr('r', r * 2.5).attr('fill', colorScale(dest.count)).attr('opacity', 0.35);
+        layer.append('circle').attr('cx', pt[0]).attr('cy', pt[1])
+          .attr('r', r).attr('fill', colorScale(dest.count)).attr('opacity', 0.88);
+        layer.append('text').attr('x', pt[0]).attr('y', pt[1] + r + 13)
+          .attr('text-anchor', 'middle').attr('font-size', '10px').attr('fill', '#0c1825')
+          .text(dest.name);
+      }
+
+      // Hit area + tooltip
+      layer.append('circle').attr('cx', pt[0]).attr('cy', pt[1])
+        .attr('r', Math.max(r, 12)).attr('fill', 'transparent').attr('cursor', 'pointer')
+        .on('mousemove', function(ev) {
+          tooltip.style.display = 'block';
+          tooltip.style.left = (ev.pageX + 14) + 'px';
+          tooltip.style.top = (ev.pageY - 36) + 'px';
+          tooltip.innerHTML = '<strong>' + dest.name + '</strong><br>' +
+            dest.count + ' заявок · ' + Math.round(dest.revenue/1000) + 'K BYN<br>' +
+            'Ср. чек: ' + Math.round(dest.revenue/dest.count).toLocaleString('ru-RU') + ' BYN';
+        })
+        .on('mouseleave', function(){ tooltip.style.display = 'none'; });
+    });
+  }
+
+  fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json')
+    .then(function(r){ return r.json(); })
+    .then(function(world) {
+      g.append('g').selectAll('path')
+        .data(topojson.feature(world, world.objects.countries).features)
+        .join('path').attr('d', pathGen)
+        .attr('fill', '#c8d6e5').attr('stroke', '#a0b4c8').attr('stroke-width', 0.5);
+      g.append('path')
+        .datum(topojson.mesh(world, world.objects.countries))
+        .attr('d', pathGen).attr('fill', 'none')
+        .attr('stroke', '#90a8bc').attr('stroke-width', 0.3);
+
+      var mp = proj(MINSK);
+      g.append('circle').attr('cx', mp[0]).attr('cy', mp[1]).attr('r', 7)
+        .attr('fill', '#c9a962').attr('stroke', '#fff').attr('stroke-width', 2);
+      g.append('text').attr('x', mp[0] + 10).attr('y', mp[1] + 4)
+        .attr('font-size', '11px').attr('fill', '#c9a962').attr('font-weight', '600')
+        .text('Минск ✈');
+
+      renderMode('pulse');
+    })
+    .catch(function() {
+      svg.append('text').attr('x', W/2).attr('y', H/2)
+        .attr('text-anchor', 'middle').attr('fill', '#8b949e').attr('font-size', '13px')
+        .text('Карта недоступна (нет подключения к CDN)');
+    });
+
+  document.querySelectorAll('.map-mode-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.map-mode-btn').forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      renderMode(btn.dataset.mode);
+    });
+  });
+})();
+
+// ══════════════════════════════════════════════
+// INSTAGRAM FUNNEL — анимация при скролле
+// ══════════════════════════════════════════════
+(function initIgFunnel() {
+  var container = document.getElementById('igFunnel');
+  if (!container) return;
+
+  var steps = [
+    {label:'Охват',   val:'398K', raw:398000, sub:'за 30 дней',       color:'#833ab4', icon:'👁'},
+    {label:'Профиль', val:'12.3K',raw:12315,  sub:'просм. профиля',   color:'#c13584', icon:'👤'},
+    {label:'DM',      val:'~300', raw:300,    sub:'оценка/мес',       color:'#e1306c', icon:'💬'},
+    {label:'Заявки',  val:'208',  raw:208,    sub:'в год (U-ON)',      color:'#f77737', icon:'📋'},
+    {label:'Оплата',  val:'197',  raw:197,    sub:'94.9% конверсия',  color:'#2ea44f', icon:'💳'},
+  ];
+
+  var isMobile = window.innerWidth < 768;
+  var html = '<div style="display:flex;flex-direction:column;align-items:center;padding:12px 0;gap:2px">';
+  steps.forEach(function(s, i) {
+    var conv = i > 0 ? Math.round(s.raw / steps[i-1].raw * 100) : null;
+
+    if (isMobile) {
+      // Mobile: full-width card with colored left border
+      html += '<div style="width:100%;display:flex;flex-direction:column;align-items:stretch">';
+      html += '<div class="ig-funnel-bar" style="' +
+        'width:100%;box-sizing:border-box;' +
+        'background:#fff;border-radius:10px;' +
+        'border-left:5px solid ' + s.color + ';' +
+        'box-shadow:0 1px 4px rgba(0,0,0,0.08);' +
+        'padding:12px 16px;' +
+        'display:flex;align-items:center;justify-content:space-between;' +
+        'opacity:0;transform:translateY(12px);' +
+        'transition:opacity 0.4s ' + (i*0.1) + 's ease,transform 0.4s ' + (i*0.1) + 's ease">';
+      html += '<div style="display:flex;align-items:center;gap:10px">';
+      html += '<span style="font-size:22px">' + s.icon + '</span>';
+      html += '<div>';
+      html += '<div style="font-weight:700;color:#0c1825;font-size:14px">' + s.label + '</div>';
+      html += '<div style="font-size:11px;color:#7a8fa3;margin-top:1px">' + s.sub;
+      if (conv !== null) html += ' · <span style="color:' + s.color + ';font-weight:600">' + conv + '%</span>';
+      html += '</div>';
+      html += '</div></div>';
+      html += '<span style="font-size:24px;font-weight:800;color:' + s.color + '">' + s.val + '</span>';
+      html += '</div>';
+      if (i < steps.length - 1) {
+        html += '<div style="text-align:center;color:#7a8fa3;font-size:16px;padding:4px 0">↓</div>';
+      }
+      html += '</div>';
+    } else {
+      var w = Math.max(24, Math.round(s.raw / steps[0].raw * 100));
+      html += '<div style="width:100%;display:flex;flex-direction:column;align-items:center">';
+      html += '<div class="ig-funnel-bar" style="' +
+        'width:' + w + '%;max-width:100%;' +
+        'background:' + s.color + ';border-radius:8px;padding:11px 22px;' +
+        'display:flex;align-items:center;justify-content:space-between;' +
+        'opacity:0;transform:scaleX(0.25);' +
+        'transition:opacity 0.55s ' + (i*0.13) + 's ease,transform 0.55s ' + (i*0.13) + 's cubic-bezier(.34,1.56,.64,1)">';
+      html += '<span style="font-size:20px">' + s.icon + '</span>';
+      html += '<span style="font-weight:700;color:#fff;font-size:13px;flex:1;margin:0 12px">' + s.label + '</span>';
+      html += '<span style="font-size:22px;font-weight:800;color:#fff">' + s.val + '</span>';
+      html += '</div>';
+      html += '<div style="font-size:11px;color:var(--muted);margin:4px 0 2px">' + s.sub;
+      if (conv !== null) {
+        html += ' &nbsp;·&nbsp; <span style="color:' + s.color + ';font-weight:600">' + conv + '% от пред.</span>';
+      }
+      html += '</div>';
+      if (i < steps.length - 1) {
+        html += '<div style="color:var(--muted);font-size:18px;line-height:1;margin:3px 0">↓</div>';
+      }
+      html += '</div>';
+    }
+  });
+  html += '</div>';
+  container.innerHTML = html;
+
+  var bars = container.querySelectorAll('.ig-funnel-bar');
+  var observer = new IntersectionObserver(function(entries) {
+    if (entries[0].isIntersecting) {
+      bars.forEach(function(bar) {
+        if (isMobile) {
+          bar.style.opacity = '1';
+          bar.style.transform = 'translateY(0)';
+        } else {
+          bar.style.opacity = '1';
+          bar.style.transform = 'scaleX(1)';
+        }
+      });
+      observer.disconnect();
+    }
+  }, {threshold: 0.1});
+  observer.observe(container);
+})();
+
+// ── MONTHLY TABLE ──
+const months = ['2025-04','2025-05','2025-06','2025-07','2025-08','2025-09','2025-10','2025-11','2025-12','2026-01','2026-02','2026-03'];
+const monthlyMap = {};
+REAL_MONTHS.forEach(m => monthlyMap[m.month] = m);
+const notes = {
+  '2025-10': 'Корпоратив Q4',
+  '2025-11': '🔥 Пик сезона',
+  '2025-12': 'Новогодний спад',
+  '2026-03': 'Месяц не завершён',
+};
+const mBody = document.getElementById('monthTable');
+REAL_MONTHS.forEach(m => {
+  const avgChk = m.count > 0 ? Math.round(m.revenue / m.count) : 0;
+  const note = notes[m.month] || '';
+  const isBig = m.revenue > 400000;
+  mBody.innerHTML += `<tr>
+    <td class="td-bold">${fmtMonth(m.month)}</td>
+    <td>${m.count}</td>
+    <td ${isBig?'style="color:var(--accent);font-weight:600"':''}>${fmtNum(m.revenue)}</td>
+    <td>${fmtNum(avgChk)}</td>
+    <td>${m.instagram > 15 ? '<span class="badge badge-orange">' + m.instagram + '</span>' : m.instagram}</td>
+    <td>${m.corp}</td>
+    <td class="td-muted" style="font-size:11px">${note}</td>
+  </tr>`;
+});
+</script>
+</body>
+</html>

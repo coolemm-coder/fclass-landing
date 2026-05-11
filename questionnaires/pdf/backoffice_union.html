@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Анкета — Бэкофис (Union)</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #4776E6 0%, #8E54E9 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            color: #1a1a2e;
+            line-height: 1.6;
+        }
+
+        .container { max-width: 800px; margin: 0 auto; }
+
+        .header {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            text-align: center;
+        }
+
+        .logo { font-size: 14px; color: #4776E6; font-weight: 600; letter-spacing: 2px; margin-bottom: 20px; }
+        h1 { font-size: 32px; font-weight: 700; color: #1a1a2e; margin-bottom: 10px; }
+        .subtitle { font-size: 18px; color: #666; margin-bottom: 20px; }
+
+        .meta { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
+        .meta-item { display: flex; align-items: center; gap: 8px; font-size: 14px; color: #888; }
+        .meta-item svg { width: 18px; height: 18px; }
+
+        .section {
+            background: white;
+            border-radius: 20px;
+            padding: 35px 40px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .section-header {
+            display: flex; align-items: center; gap: 15px;
+            margin-bottom: 25px; padding-bottom: 15px; border-bottom: 2px solid #f0f0f0;
+        }
+
+        .section-number {
+            width: 45px; height: 45px;
+            background: linear-gradient(135deg, #4776E6 0%, #8E54E9 100%);
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-weight: 700; font-size: 18px;
+        }
+
+        .section-title { font-size: 22px; font-weight: 600; color: #1a1a2e; }
+        .question { margin-bottom: 30px; }
+        .question:last-child { margin-bottom: 0; }
+        .question-text { font-size: 16px; font-weight: 500; color: #1a1a2e; margin-bottom: 15px; }
+        .question-number { color: #4776E6; font-weight: 600; }
+        .options { display: flex; flex-direction: column; gap: 10px; }
+
+        .option {
+            display: flex; align-items: center; gap: 12px;
+            padding: 14px 18px; background: #f8f9fc; border-radius: 12px;
+            cursor: pointer; transition: all 0.2s; border: 2px solid transparent;
+        }
+        .option:hover { background: #ede7f6; border-color: #4776E6; }
+
+        .checkbox, .radio { width: 22px; height: 22px; border: 2px solid #ccc; flex-shrink: 0; }
+        .checkbox { border-radius: 6px; }
+        .radio { border-radius: 50%; }
+        .option-text { font-size: 15px; color: #444; }
+
+        .text-input {
+            width: 100%; padding: 16px 20px; border: 2px solid #e0e0e0;
+            border-radius: 12px; font-size: 15px; font-family: inherit;
+            transition: border-color 0.2s; background: #fafafa;
+        }
+        .text-input:focus { outline: none; border-color: #4776E6; background: white; }
+        textarea.text-input { min-height: 100px; resize: vertical; }
+
+        .table-input { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        .table-input th, .table-input td { padding: 12px 15px; text-align: left; border: 1px solid #e0e0e0; }
+        .table-input th { background: #f8f9fc; font-weight: 600; font-size: 14px; color: #666; }
+        .table-input input { width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; }
+
+        .critical {
+            background: linear-gradient(135deg, #ff6b6b20 0%, #feca5720 100%);
+            border: 2px solid #ff6b6b;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+        .critical-title { color: #d63031; font-weight: 600; font-size: 16px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+        .critical-text { color: #636e72; font-size: 14px; }
+
+        .footer {
+            background: white; border-radius: 20px; padding: 35px 40px;
+            text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        .footer-text { font-size: 18px; color: #1a1a2e; margin-bottom: 15px; }
+        .footer-subtext { font-size: 14px; color: #888; }
+        .highlight {
+            background: linear-gradient(135deg, #4776E6 0%, #8E54E9 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 600;
+        }
+
+        @media print {
+            body { background: white; padding: 20px; }
+            .section, .header, .footer { box-shadow: none; border: 1px solid #eee; break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">FIRST CLASS TRAVEL</div>
+            <h1>Анкета: Бэкофис</h1>
+            <p class="subtitle">Работа с системой Union и документооборот</p>
+            <div class="meta">
+                <div class="meta-item">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <span>~20 минут</span>
+                </div>
+                <div class="meta-item">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    <span>Конфиденциально</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="critical">
+            <div class="critical-title">⭐ Ключевая анкета для интеграции Union ↔ 1С</div>
+            <div class="critical-text">Ваши ответы напрямую влияют на проектирование автоматизации. Пожалуйста, заполните максимально подробно.</div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">1</div>
+                <div class="section-title">Объем работы</div>
+            </div>
+
+            <div class="question">
+                <p class="question-text"><span class="question-number">1.1</span> Сколько заявок/бронирований обрабатываете в месяц?</p>
+                <input type="text" class="text-input" placeholder="Количество заявок...">
+            </div>
+
+            <div class="question">
+                <p class="question-text"><span class="question-number">1.2</span> Сколько заявок в день (в среднем)?</p>
+                <div class="options">
+                    <label class="option"><div class="radio"></div><span class="option-text">Менее 5</span></label>
+                    <label class="option"><div class="radio"></div><span class="option-text">5-10</span></label>
+                    <label class="option"><div class="radio"></div><span class="option-text">10-20</span></label>
+                    <label class="option"><div class="radio"></div><span class="option-text">20-30</span></label>
+                    <label class="option"><div class="radio"></div><span class="option-text">Более 30</span></label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p class="question-text"><span class="question-number">1.3</span> Сколько времени занимает обработка одной заявки?</p>
+                <div class="options">
+                    <label class="option"><div class="radio"></div><span class="option-text">До 15 минут</span></label>
+                    <label class="option"><div class="radio"></div><span class="option-text">15-30 минут</span></label>
+                    <label class="option"><div class="radio"></div><span class="option-text">30-60 минут</span></label>
+                    <label class="option"><div class="radio"></div><span class="option-text">Более 1 часа</span></label>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">2</div>
+                <div class="section-title">Система Union</div>
+            </div>
+
+            <div class="question">
+                <p class="question-text"><span class="question-number">2.1</span> Какие модули/функции Union используете?</p>
+                <div class="options">
+                    <label class="option"><div class="checkbox"></div><span class="option-text">Бронирование туров</span></label>
+                    <label class="option"><div class="checkbox"></div><span class="option-text">Работа с клиентами</span></label>
+                    <label class="option"><div class="checkbox"></div><span class="option-text">Документооборот</span></label>
+                    <label class="option"><div class="checkbox"></div><span class="option-text">Отчеты</span></label>
+                    <label class="option"><div class="checkbox"></div><span class="option-text">Финансы</span></label>
+                    <label class="option"><div class="checkbox"></div><span class="option-text">Справочники</span></label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p class="question-text"><span class="question-number">2.2</span> Какие операции выполняете в Union чаще всего?</p>
+                <table class="table-input">
+                    <tr><th>Операция</th><th>Раз в день</th></tr>
+                    <tr><td>Создание заявки</td><td><input type="text" placeholder="___"></td></tr>
+                    <tr><td>Редактирование заявки</td><td><input type="text" placeholder="___"></td></tr>
+                    <tr><td>Печать документов</td><td><input type="text" placeholder="___"></td></tr>
+                    <tr><td>Поиск по базе</td><td><input type="text" placeholder="___"></td></tr>
+                    <tr><td>Формирование отчетов</td><td><input type="text" placeholder="___"></td></tr>
+                </table>
+            </div>
+
+            <div class="question">
+                <p class="question-text"><span class="question-number">2.3</span> Какие документы формируете через Union?</p>
+                <div class="options">
+                    <label class="option"><div class="checkbox"></div><span class="option-text">Договор с клиентом</span></label>
+                    <label class="option"><div class="checkbox"></div><span class="option-text">Счет на оплату</span></label>
+                    <label class="option"><div class="checkbox"></div><span class="option-text">Акт выполненных работ</span></label>
+                    <label class="option"><div class="checkbox"></div><span class="option-text">Ваучер</span></label>
+                    <label class="option"><div class="checkbox"></div><span class="option-text">Путевка</span></label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p class="question-text"><span class="question-number">2.4</span> Что НЕ получается делать в Union?</p>
+                <textarea class="text-input" placeholder="Опишите ограничения системы..."></textarea>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">3</div>
+                <div class="section-title">Передача данных в 1С ⭐</div>
+            </div>
+
+            <div class="question">
+                <p class="question-text"><span class="question-number">3.1</span> Какие данные передаете в бухгалтерию (1С)?</p>
+                <div class="options">
+                    <label class="option"><div class="checkbox"></div><span class="option-text">Данные о клиенте (ФИО, паспорт)</span></label>
+                    <label class="option"><div class="checkbox"></div><span class="option-text">Сумма сделки</span></label>
+                    <label class="option"><div class="checkbox"></div><span class="option-text">Даты тура</span></label>
+                    <label class="option"><div class="checkbox"></div><span class="option-text">Информация о туре</span></label>
+                    <label class="option"><div class="checkbox"></div><span class="option-text">Документы (сканы)</span></label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p class="question-text"><span class="question-number">3.2</span> КАК передаете данные в 1С?</p>
+                <div class="options">
+                    <label class="option"><div class="radio"></div><span class="option-text">Вручную переношу в Excel</span></label>
+                    <label class="option"><div class="radio"></div><span class="option-text">Отправляю по email</span></label>
+                    <label class="option"><div class="radio"></div><span class="option-text">Печатаю и передаю бумажные документы</span></label>
+                    <label class="option"><div class="radio"></div><span class="option-text">Через общую папку на сервере</span></label>
+                    <label class="option"><div class="radio"></div><span class="option-text">Бухгалтер смотрит в Union сам</span></label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p class="question-text"><span class="question-number">3.3</span> Как ЧАСТО передаете данные?</p>
+                <div class="options">
+                    <label class="option"><div class="radio"></div><span class="option-text">После каждой сделки</span></label>
+                    <label class="option"><div class="radio"></div><span class="option-text">Раз в день</span></label>
+                    <label class="option"><div class="radio"></div><span class="option-text">Раз в неделю</span></label>
+                    <label class="option"><div class="radio"></div><span class="option-text">По запросу бухгалтера</span></label>
+                    <label class="option"><div class="radio"></div><span class="option-text">В конце месяца</span></label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p class="question-text"><span class="question-number">3.4</span> Сколько времени уходит на передачу данных в 1С?</p>
+                <table class="table-input">
+                    <tr><th>Период</th><th>Часов</th></tr>
+                    <tr><td>В день</td><td><input type="text" placeholder="___"></td></tr>
+                    <tr><td>В неделю</td><td><input type="text" placeholder="___"></td></tr>
+                    <tr><td>В конце месяца (дополнительно)</td><td><input type="text" placeholder="___"></td></tr>
+                </table>
+            </div>
+
+            <div class="question">
+                <p class="question-text"><span class="question-number">3.5</span> Какие проблемы возникают при передаче?</p>
+                <div class="options">
+                    <label class="option"><div class="checkbox"></div><span class="option-text">Ошибки при ручном вводе</span></label>
+                    <label class="option"><div class="checkbox"></div><span class="option-text">Долго</span></label>
+                    <label class="option"><div class="checkbox"></div><span class="option-text">Путаница в документах</span></label>
+                    <label class="option"><div class="checkbox"></div><span class="option-text">Расхождения в данных</span></label>
+                    <label class="option"><div class="checkbox"></div><span class="option-text">Бухгалтер требует доп. информацию</span></label>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">4</div>
+                <div class="section-title">Боли и желания</div>
+            </div>
+
+            <div class="question">
+                <p class="question-text"><span class="question-number">4.1</span> Что отнимает больше всего времени?</p>
+                <table class="table-input">
+                    <tr><th>Задача</th><th>% рабочего времени</th></tr>
+                    <tr><td>Работа в Union</td><td><input type="text" placeholder="___%"></td></tr>
+                    <tr><td>Передача данных в бухгалтерию</td><td><input type="text" placeholder="___%"></td></tr>
+                    <tr><td>Общение с менеджерами</td><td><input type="text" placeholder="___%"></td></tr>
+                    <tr><td>Исправление ошибок</td><td><input type="text" placeholder="___%"></td></tr>
+                    <tr><td>Отчеты</td><td><input type="text" placeholder="___%"></td></tr>
+                </table>
+            </div>
+
+            <div class="question">
+                <p class="question-text"><span class="question-number">4.2</span> Бывает ли расхождение данных между Union и 1С?</p>
+                <div class="options">
+                    <label class="option"><div class="radio"></div><span class="option-text">Да, регулярно</span></label>
+                    <label class="option"><div class="radio"></div><span class="option-text">Иногда</span></label>
+                    <label class="option"><div class="radio"></div><span class="option-text">Редко</span></label>
+                    <label class="option"><div class="radio"></div><span class="option-text">Никогда не проверяли</span></label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p class="question-text"><span class="question-number">4.3</span> Если бы Union автоматически передавал данные в 1С, сколько времени это бы сэкономило?</p>
+                <div class="options">
+                    <label class="option"><div class="radio"></div><span class="option-text">До 1 часа в день</span></label>
+                    <label class="option"><div class="radio"></div><span class="option-text">1-2 часа в день</span></label>
+                    <label class="option"><div class="radio"></div><span class="option-text">2-4 часа в день</span></label>
+                    <label class="option"><div class="radio"></div><span class="option-text">Более 4 часов в день</span></label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p class="question-text"><span class="question-number">4.4</span> Какие задачи хотели бы автоматизировать?</p>
+                <textarea class="text-input" placeholder="Опишите, что делаете вручную, хотя система могла бы делать автоматически..."></textarea>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">5</div>
+                <div class="section-title">Техническое</div>
+            </div>
+
+            <div class="question">
+                <p class="question-text"><span class="question-number">5.1</span> Можем ли получить демо-доступ к Union для анализа?</p>
+                <div class="options">
+                    <label class="option"><div class="radio"></div><span class="option-text">Да, это возможно</span></label>
+                    <label class="option"><div class="radio"></div><span class="option-text">Нужно согласовать с руководством</span></label>
+                    <label class="option"><div class="radio"></div><span class="option-text">Нет</span></label>
+                    <label class="option"><div class="radio"></div><span class="option-text">Не знаю</span></label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p class="question-text"><span class="question-number">5.2</span> Готовы ли к 30-минутному созвону с демонстрацией экрана?</p>
+                <div class="options">
+                    <label class="option"><div class="radio"></div><span class="option-text">Да</span></label>
+                    <label class="option"><div class="radio"></div><span class="option-text">По необходимости</span></label>
+                    <label class="option"><div class="radio"></div><span class="option-text">Нет</span></label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p class="question-text"><span class="question-number">5.3</span> Есть ли что-то важное, о чем мы не спросили?</p>
+                <textarea class="text-input" placeholder="Любые дополнения..."></textarea>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p class="footer-text">Спасибо за ответы! 🙏</p>
+            <p class="footer-subtext">Ваши ответы — <span class="highlight">основа для проектирования интеграции</span> Union ↔ 1С.</p>
+        </div>
+    </div>
+</body>
+</html>

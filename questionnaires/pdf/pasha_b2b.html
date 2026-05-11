@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Анкета — Паша (B2B и VIP)</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            color: #1a1a2e;
+            line-height: 1.6;
+        }
+
+        .container { max-width: 800px; margin: 0 auto; }
+
+        .header {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            text-align: center;
+        }
+
+        .logo { font-size: 14px; color: #11998e; font-weight: 600; letter-spacing: 2px; margin-bottom: 20px; }
+        h1 { font-size: 32px; font-weight: 700; color: #1a1a2e; margin-bottom: 10px; }
+        .subtitle { font-size: 18px; color: #666; margin-bottom: 20px; }
+
+        .meta { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
+        .meta-item { display: flex; align-items: center; gap: 8px; font-size: 14px; color: #888; }
+        .meta-item svg { width: 18px; height: 18px; }
+
+        .section {
+            background: white;
+            border-radius: 20px;
+            padding: 35px 40px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .section-number {
+            width: 45px; height: 45px;
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-weight: 700; font-size: 18px;
+        }
+
+        .section-title { font-size: 22px; font-weight: 600; color: #1a1a2e; }
+        .question { margin-bottom: 30px; }
+        .question:last-child { margin-bottom: 0; }
+        .question-text { font-size: 16px; font-weight: 500; color: #1a1a2e; margin-bottom: 15px; }
+        .question-number { color: #11998e; font-weight: 600; }
+        .options { display: flex; flex-direction: column; gap: 10px; }
+
+        .option {
+            display: flex; align-items: center; gap: 12px;
+            padding: 14px 18px; background: #f8f9fc; border-radius: 12px;
+            cursor: pointer; transition: all 0.2s; border: 2px solid transparent;
+        }
+        .option:hover { background: #e8f5e9; border-color: #11998e; }
+
+        .checkbox, .radio {
+            width: 22px; height: 22px; border: 2px solid #ccc; flex-shrink: 0;
+        }
+        .checkbox { border-radius: 6px; }
+        .radio { border-radius: 50%; }
+        .option-text { font-size: 15px; color: #444; }
+
+        .text-input {
+            width: 100%; padding: 16px 20px; border: 2px solid #e0e0e0;
+            border-radius: 12px; font-size: 15px; font-family: inherit;
+            transition: border-color 0.2s; background: #fafafa;
+        }
+        .text-input:focus { outline: none; border-color: #11998e; background: white; }
+        .text-input::placeholder { color: #aaa; }
+        textarea.text-input { min-height: 100px; resize: vertical; }
+
+        .table-input { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        .table-input th, .table-input td { padding: 12px 15px; text-align: left; border: 1px solid #e0e0e0; }
+        .table-input th { background: #f8f9fc; font-weight: 600; font-size: 14px; color: #666; }
+        .table-input td { background: white; }
+        .table-input input { width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; }
+
+        .footer {
+            background: white; border-radius: 20px; padding: 35px 40px;
+            text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        .footer-text { font-size: 18px; color: #1a1a2e; margin-bottom: 15px; }
+        .footer-subtext { font-size: 14px; color: #888; }
+        .highlight {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 600;
+        }
+
+        .tip {
+            background: #e8f5e9; border-left: 4px solid #11998e;
+            padding: 15px 20px; border-radius: 0 12px 12px 0;
+            margin-bottom: 25px; font-size: 14px; color: #2e7d32;
+        }
+
+        @media print {
+            body { background: white; padding: 20px; }
+            .section, .header, .footer { box-shadow: none; border: 1px solid #eee; break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">FIRST CLASS TRAVEL</div>
+            <h1>Анкета: B2B и VIP</h1>
+            <p class="subtitle">Паша — корпоративные клиенты и премиум-сегмент</p>
+            <div class="meta">
+                <div class="meta-item">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <span>~15 минут</span>
+                </div>
+                <div class="meta-item">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    <span>Конфиденциально</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="tip">💡 B2B — главная точка роста First Class. Ваши ответы особенно важны для стратегии развития.</div>
+
+            <div class="section-header">
+                <div class="section-number">1</div>
+                <div class="section-title">Клиентская база</div>
+            </div>
+
+            <div class="question">
+                <p class="question-text"><span class="question-number">1.1</span> Сколько у вас активных корпоративных клиентов?</p>
+                <input type="text" class="text-input" placeholder="Количество компаний...">
+            </div>
+
+            <div class="question">
+                <p class="question-text"><span class="question-number">1.2</span> Сколько VIP-клиентов (физлица с высоким чеком)?</p>
+                <input type="text" class="text-input" placeholder="Количество VIP...">
+            </div>
+
+            <div class="question">
+                <p class="question-text"><span class="question-number">1.3</span> Какие типы компаний чаще всего работают с вами?</p>
+                <div class="options">
+                    <label class="option"><div class="checkbox"></div><span class="option-text">IT-компании</span></label>
+                    <label class="option"><div class="checkbox"></div><span class="option-text">Производство</span></label>
+                    <label class="option"><div class="checkbox"></div><span class="option-text">Торговля</span></label>
+                    <label class="option"><div class="checkbox"></div><span class="option-text">Банки / финансы</span></label>
+                    <label class="option"><div class="checkbox"></div><span class="option-text">Госструктуры</span></label>
+                    <label class="option"><div class="checkbox"></div><span class="option-text">Строительство</span></label>
+                    <label class="option"><div class="checkbox"></div><span class="option-text">Логистика</span></label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p class="question-text"><span class="question-number">1.4</span> Как нашли своих текущих корпоративных клиентов?</p>
+                <div class="options">
+                    <label class="option"><div class="checkbox"></div><span class="option-text">Личные связи / нетворкинг</span></label>
+                    <label class="option"><div class="checkbox"></div><span class="option-text">Рекомендации от клиентов</span></label>
+                    <label class="option"><div class="checkbox"></div><span class="option-text">Холодные звонки / письма</span></label>
+                    <label class="option"><div class="checkbox"></div><span class="option-text">Тендеры (icetrade.by)</span></label>
+                    <label class="option"><div class="checkbox"></div><span class="option-text">Бизнес-мероприятия</span></label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p class="question-text"><span class="question-number">1.5</span> Где хранится информация о клиентах?</p>
+                <div class="options">
+                    <label class="option"><div class="radio"></div><span class="option-text">В телефоне (контакты)</span></label>
+                    <label class="option"><div class="radio"></div><span class="option-text">Excel / Google Sheets</span></label>
+                    <label class="option"><div class="radio"></div><span class="option-text">CRM</span></label>
+                    <label class="option"><div class="radio"></div><span class="option-text">В голове</span></label>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">2</div>
+                <div class="section-title">Услуги и финансы</div>
+            </div>
+
+            <div class="question">
+                <p class="question-text"><span class="question-number">2.1</span> Какие услуги оказываете корпоративным клиентам?</p>
+                <div class="options">
+                    <label class="option"><div class="checkbox"></div><span class="option-text">Командировки (авиа + отель)</span></label>
+                    <label class="option"><div class="checkbox"></div><span class="option-text">MICE (конференции, тимбилдинги)</span></label>
+                    <label class="option"><div class="checkbox"></div><span class="option-text">Визовая поддержка</span></label>
+                    <label class="option"><div class="checkbox"></div><span class="option-text">Трансферы</span></label>
+                    <label class="option"><div class="checkbox"></div><span class="option-text">VIP-туры для руководства</span></label>
+                    <label class="option"><div class="checkbox"></div><span class="option-text">Поощрительные туры для сотрудников</span></label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p class="question-text"><span class="question-number">2.2</span> Средний чек на корпоративную командировку (1 человек)?</p>
+                <div class="options">
+                    <label class="option"><div class="radio"></div><span class="option-text">До $300</span></label>
+                    <label class="option"><div class="radio"></div><span class="option-text">$300-500</span></label>
+                    <label class="option"><div class="radio"></div><span class="option-text">$500-800</span></label>
+                    <label class="option"><div class="radio"></div><span class="option-text">$800-1500</span></label>
+                    <label class="option"><div class="radio"></div><span class="option-text">Более $1500</span></label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p class="question-text"><span class="question-number">2.3</span> Средний чек на VIP-тур (на человека)?</p>
+                <div class="options">
+                    <label class="option"><div class="radio"></div><span class="option-text">До $1000</span></label>
+                    <label class="option"><div class="radio"></div><span class="option-text">$1000-2000</span></label>
+                    <label class="option"><div class="radio"></div><span class="option-text">$2000-5000</span></label>
+                    <label class="option"><div class="radio"></div><span class="option-text">$5000-10000</span></label>
+                    <label class="option"><div class="radio"></div><span class="option-text">Более $10000</span></label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p class="question-text"><span class="question-number">2.4</span> Сколько командировок делает один корп. клиент в год?</p>
+                <div class="options">
+                    <label class="option"><div class="radio"></div><span class="option-text">Менее 10</span></label>
+                    <label class="option"><div class="radio"></div><span class="option-text">10-30</span></label>
+                    <label class="option"><div class="radio"></div><span class="option-text">30-50</span></label>
+                    <label class="option"><div class="radio"></div><span class="option-text">50-100</span></label>
+                    <label class="option"><div class="radio"></div><span class="option-text">Более 100</span></label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p class="question-text"><span class="question-number">2.5</span> Какая комиссия по корпоративным клиентам?</p>
+                <div class="options">
+                    <label class="option"><div class="radio"></div><span class="option-text">До 5%</span></label>
+                    <label class="option"><div class="radio"></div><span class="option-text">5-8%</span></label>
+                    <label class="option"><div class="radio"></div><span class="option-text">8-10%</span></label>
+                    <label class="option"><div class="radio"></div><span class="option-text">10-15%</span></label>
+                    <label class="option"><div class="radio"></div><span class="option-text">Договорная / разная</span></label>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">3</div>
+                <div class="section-title">VIP-сегмент</div>
+            </div>
+
+            <div class="question">
+                <p class="question-text"><span class="question-number">3.1</span> Какие дополнительные услуги заказывают VIP?</p>
+                <div class="options">
+                    <label class="option"><div class="checkbox"></div><span class="option-text">Трансферы на премиум-авто (Maybach, V-Class)</span></label>
+                    <label class="option"><div class="checkbox"></div><span class="option-text">Частные туры / экскурсии</span></label>
+                    <label class="option"><div class="checkbox"></div><span class="option-text">Консьерж-сервис</span></label>
+                    <label class="option"><div class="checkbox"></div><span class="option-text">Бизнес-джеты</span></label>
+                    <label class="option"><div class="checkbox"></div><span class="option-text">Особые отели / виллы</span></label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p class="question-text"><span class="question-number">3.2</span> Работаете ли с iTravelClub (трансферы)?</p>
+                <div class="options">
+                    <label class="option"><div class="radio"></div><span class="option-text">Да, регулярно</span></label>
+                    <label class="option"><div class="radio"></div><span class="option-text">Иногда</span></label>
+                    <label class="option"><div class="radio"></div><span class="option-text">Нет</span></label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p class="question-text"><span class="question-number">3.3</span> Чем отличается работа с VIP от обычных клиентов?</p>
+                <textarea class="text-input" placeholder="Опишите особенности..."></textarea>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">4</div>
+                <div class="section-title">Проблемы и рост</div>
+            </div>
+
+            <div class="question">
+                <p class="question-text"><span class="question-number">4.1</span> Что занимает больше всего времени?</p>
+                <table class="table-input">
+                    <tr><th>Задача</th><th>Часов в неделю</th></tr>
+                    <tr><td>Поиск и подбор вариантов</td><td><input type="text" placeholder="___"></td></tr>
+                    <tr><td>Переписка с клиентами</td><td><input type="text" placeholder="___"></td></tr>
+                    <tr><td>Оформление документов</td><td><input type="text" placeholder="___"></td></tr>
+                    <tr><td>Согласования</td><td><input type="text" placeholder="___"></td></tr>
+                    <tr><td>Отчетность</td><td><input type="text" placeholder="___"></td></tr>
+                </table>
+            </div>
+
+            <div class="question">
+                <p class="question-text"><span class="question-number">4.2</span> Что мешает привлекать больше корп. клиентов?</p>
+                <div class="options">
+                    <label class="option"><div class="checkbox"></div><span class="option-text">Нет времени на продажи</span></label>
+                    <label class="option"><div class="checkbox"></div><span class="option-text">Нет маркетинговых материалов</span></label>
+                    <label class="option"><div class="checkbox"></div><span class="option-text">Сложно выходить на ЛПР</span></label>
+                    <label class="option"><div class="checkbox"></div><span class="option-text">Конкуренция</span></label>
+                    <label class="option"><div class="checkbox"></div><span class="option-text">Не знаю где искать</span></label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p class="question-text"><span class="question-number">4.3</span> Участвуете ли в тендерах (icetrade.by)?</p>
+                <div class="options">
+                    <label class="option"><div class="radio"></div><span class="option-text">Да, регулярно</span></label>
+                    <label class="option"><div class="radio"></div><span class="option-text">Иногда</span></label>
+                    <label class="option"><div class="radio"></div><span class="option-text">Нет, но хотел бы</span></label>
+                    <label class="option"><div class="radio"></div><span class="option-text">Нет, не интересно</span></label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p class="question-text"><span class="question-number">4.4</span> Есть ли коммерческое предложение для компаний?</p>
+                <div class="options">
+                    <label class="option"><div class="radio"></div><span class="option-text">Да, актуальное</span></label>
+                    <label class="option"><div class="radio"></div><span class="option-text">Есть, но устаревшее</span></label>
+                    <label class="option"><div class="radio"></div><span class="option-text">Нет</span></label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p class="question-text"><span class="question-number">4.5</span> Сколько корпоративных клиентов хотите иметь через год?</p>
+                <input type="text" class="text-input" placeholder="Количество...">
+            </div>
+
+            <div class="question">
+                <p class="question-text"><span class="question-number">4.6</span> Какой идеальный результат через 1 год?</p>
+                <textarea class="text-input" placeholder="Опишите вашу цель..."></textarea>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p class="footer-text">Спасибо за ответы! 🙏</p>
+            <p class="footer-subtext">B2B — <span class="highlight">главная точка роста</span>. Ваши ответы помогут выстроить систему для масштабирования.</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,420 @@
+- generic [active]:
+  - generic:
+    - generic:
+      - iframe
+    - generic:
+      - iframe
+    - generic:
+      - iframe
+    - generic:
+      - iframe
+    - generic [ref=e1]:
+      - generic [ref=e4]:
+        - generic [ref=e5]:
+          - link "Логотип Meta" [ref=e7] [cursor=pointer]:
+            - /url: /?no_redirect=true
+            - img "Логотип Meta" [ref=e9]
+          - tablist [ref=e18]:
+            - link "Мои приложения" [ref=e19] [cursor=pointer]:
+              - /url: /apps/
+              - generic [ref=e22]: Мои приложения
+            - link "Требуются действия" [ref=e23] [cursor=pointer]:
+              - /url: /required-actions/
+              - generic [ref=e26]: Требуются действия
+            - tab "Документы" [ref=e27] [cursor=pointer]:
+              - generic [ref=e30]: Документы
+            - tab "Инструменты" [ref=e32] [cursor=pointer]:
+              - generic [ref=e35]: Инструменты
+            - tab "Поддержка" [ref=e37] [cursor=pointer]:
+              - generic [ref=e40]: Поддержка
+        - generic [ref=e42]:
+          - generic [ref=e43]:
+            - generic [ref=e49]: Поле для ввода
+            - textbox "Поле для ввода" [ref=e60]:
+              - /placeholder: Поиск...
+          - link "1" [ref=e63] [cursor=pointer]:
+            - /url: "#"
+            - generic [ref=e66]:
+              - generic [ref=e68]: "1"
+              - status [ref=e69]: Notification count
+          - link "Facebook" [ref=e72] [cursor=pointer]:
+            - /url: "#"
+            - img "Facebook" [ref=e77]
+      - generic [ref=e78]:
+        - generic [ref=e121]:
+          - generic [ref=e124]:
+            - generic [ref=e127]:
+              - generic [ref=e133]: Searchable selector for all apps
+              - combobox "Searchable selector for all apps First Class" [ref=e138] [cursor=pointer]:
+                - generic [ref=e143]:
+                  - generic:
+                    - generic: First Class
+            - navigation [ref=e147]:
+              - list [ref=e148]:
+                - listitem [ref=e149]:
+                  - button "Панель" [ref=e151] [cursor=pointer]
+                  - generic:
+                    - listitem:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic: Панель
+                - listitem [ref=e157]:
+                  - button "Требуемые действия" [ref=e159] [cursor=pointer]
+                  - generic:
+                    - listitem:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic: Требуемые действия
+                - listitem [ref=e165]:
+                  - button "Сценарии использования" [ref=e167] [cursor=pointer]
+                  - generic:
+                    - listitem:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic: Сценарии использования
+                - listitem [ref=e173]:
+                  - generic [ref=e174]:
+                    - button "Вход через Facebook для компаний" [ref=e176] [cursor=pointer]
+                    - generic:
+                      - listitem:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic: Вход через Facebook для компаний
+                          - button "Развернуть/свернуть группу" [disabled] [ref=e182]:
+                            - generic [ref=e185]: Развернуть/свернуть группу
+                  - list [ref=e188]:
+                    - generic [ref=e189]:
+                      - button "Настройки" [ref=e191] [cursor=pointer]
+                      - generic:
+                        - listitem:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: Настройки
+                    - generic [ref=e196]:
+                      - button "Быстрое начало работы" [ref=e198] [cursor=pointer]
+                      - generic:
+                        - listitem:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: Быстрое начало работы
+                    - generic [ref=e203]:
+                      - button "Конфигурации" [ref=e205] [cursor=pointer]
+                      - generic:
+                        - listitem:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: Конфигурации
+                    - generic [ref=e210]:
+                      - button "Шаблоны" [ref=e212] [cursor=pointer]
+                      - generic:
+                        - listitem:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: Шаблоны
+                - listitem [ref=e217]:
+                  - generic [ref=e218]:
+                    - button "Проверка" [ref=e220] [cursor=pointer]
+                    - generic:
+                      - listitem:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic: Проверка
+                          - button "Развернуть/свернуть группу" [disabled] [ref=e226]:
+                            - generic [ref=e229]: Развернуть/свернуть группу
+                  - list [ref=e232]:
+                    - generic [ref=e233]:
+                      - button "Тестирование" [ref=e235] [cursor=pointer]
+                      - generic:
+                        - listitem:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: Тестирование
+                    - generic [ref=e240]:
+                      - button "Подтверждение" [ref=e242] [cursor=pointer]
+                      - generic:
+                        - listitem:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: Подтверждение
+                    - generic [ref=e247]:
+                      - button "Проверка приложения" [ref=e249] [cursor=pointer]
+                      - generic:
+                        - listitem:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: Проверка приложения
+                - listitem [ref=e254]:
+                  - button "Опубликовать" [ref=e256] [cursor=pointer]
+                  - generic:
+                    - listitem:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic: Опубликовать
+          - generic [ref=e262]:
+            - navigation [ref=e263]:
+              - list [ref=e264]:
+                - listitem [ref=e265]:
+                  - generic [ref=e266]:
+                    - button "Настройки приложения" [ref=e268] [cursor=pointer]
+                    - generic:
+                      - listitem:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic: Настройки приложения
+                          - button "Развернуть/свернуть группу" [disabled] [ref=e274]:
+                            - generic [ref=e277]: Развернуть/свернуть группу
+                  - list [ref=e280]:
+                    - generic [ref=e281]:
+                      - button "Основное" [ref=e283] [cursor=pointer]
+                      - generic:
+                        - listitem:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: Основное
+                    - generic [ref=e288]:
+                      - button "Дополнительно" [ref=e290] [cursor=pointer]
+                      - generic:
+                        - listitem:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: Дополнительно
+                - listitem [ref=e295]:
+                  - generic [ref=e296]:
+                    - button "Роли в приложении" [ref=e298] [cursor=pointer]
+                    - generic:
+                      - listitem:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic: Роли в приложении
+                          - button "Развернуть/свернуть группу" [disabled] [ref=e304]:
+                            - generic [ref=e307]: Развернуть/свернуть группу
+                  - list [ref=e310]:
+                    - generic [ref=e311]:
+                      - button "Роли" [ref=e313] [cursor=pointer]
+                      - generic:
+                        - listitem:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: Роли
+                    - generic [ref=e318]:
+                      - button "Тестовые пользователи" [ref=e320] [cursor=pointer]
+                      - generic:
+                        - listitem:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: Тестовые пользователи
+                - listitem [ref=e325]:
+                  - button "Оповещения" [ref=e327] [cursor=pointer]:
+                    - generic [ref=e334]:
+                      - generic [ref=e336]: "2"
+                      - status [ref=e337]: 2 непрочитанных оповещений
+                  - generic:
+                    - listitem:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic: Оповещения
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic: "2"
+                            - status: 2 непрочитанных оповещений
+            - separator [ref=e338]
+            - generic [ref=e339]:
+              - button "Журнал действий" [ref=e340] [cursor=pointer]:
+                - generic [ref=e343]: Журнал действий
+              - button "Помощь" [ref=e347] [cursor=pointer]:
+                - generic [ref=e350]: Помощь
+              - button "Открыть/закрыть боковую навигацию" [ref=e355] [cursor=pointer]:
+                - generic [ref=e358]: Открыть/закрыть боковую навигацию
+        - generic [ref=e364]:
+          - navigation "Навигационная цепочка" [ref=e366]:
+            - generic [ref=e367]:
+              - link "Сценарии использования" [ref=e368] [cursor=pointer]:
+                - /url: "#"
+                - heading "Сценарии использования" [level=4] [ref=e369]
+              - heading "Настройка" [level=4] [ref=e371]
+          - generic [ref=e375]:
+            - heading "Настройка сценария использования" [level=2] [ref=e376]
+            - generic [ref=e377]: Настройте параметры и разрешения для сценариев использования, чтобы приложение работало так, как вам нужно.
+          - generic [ref=e378]:
+            - generic [ref=e384]:
+              - generic [ref=e386]:
+                - generic [ref=e392]: Переключатель сценариев использования
+                - combobox "Переключатель сценариев использования Instagram API" [ref=e397] [cursor=pointer]:
+                  - generic [ref=e406]: Instagram API
+              - navigation "Основные сценарии использования" [ref=e413]:
+                - list [ref=e414]:
+                  - generic [ref=e415]:
+                    - listitem [ref=e417]:
+                      - button "Разрешения и функции" [ref=e419] [cursor=pointer]
+                      - generic:
+                        - listitem:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: Разрешения и функции
+                    - listitem [ref=e423]:
+                      - button "Настройка API для входа в Instagram" [ref=e425] [cursor=pointer]
+                      - generic:
+                        - listitem:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: Настройка API для входа в Instagram
+                    - listitem [ref=e429]:
+                      - button "Помощник по интеграции с API" [ref=e431] [cursor=pointer]
+                      - generic:
+                        - listitem:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: Помощник по интеграции с API
+                    - listitem [ref=e435]:
+                      - button "Настройка API для входа на Facebook" [ref=e437] [cursor=pointer]
+                      - generic:
+                        - listitem:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: Настройка API для входа на Facebook
+                    - listitem [ref=e441]:
+                      - button "Webhooks" [ref=e443] [cursor=pointer]
+                      - generic:
+                        - listitem:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: Webhooks
+            - generic [ref=e450]:
+              - generic [ref=e454]:
+                - generic [ref=e458]:
+                  - generic [ref=e461]:
+                    - heading "Добро пожаловать в API Instagram" [level=3] [ref=e465]
+                    - button "Закрыть" [expanded] [ref=e467] [cursor=pointer]:
+                      - generic [ref=e470]: Закрыть
+                  - generic "Добро пожаловать в API Instagram" [ref=e473]:
+                    - generic [ref=e474]:
+                      - generic [ref=e475]:
+                        - text: Начните использовать API Instagram для создания и публикации контента, а также для управления им. Кроме этого, вы можете взаимодействовать с пользователями, отправляя и получая сообщения, а также модерируя комментарии.
+                        - link "Подробнее" [ref=e476] [cursor=pointer]:
+                          - /url: https://developers.facebook.com/docs/instagram-platform/
+                      - generic [ref=e477]:
+                        - text: Если вам необходимо отслеживать хэштеги и статистику, переключитесь на
+                        - link "API setup with Facebook login." [ref=e478] [cursor=pointer]:
+                          - /url: "#"
+                - generic [ref=e486]:
+                  - generic [ref=e487]:
+                    - heading "Название приложения Instagram" [level=4] [ref=e488]
+                    - generic [ref=e489]: First Class-IG
+                  - generic [ref=e490]:
+                    - heading "ID приложения Instagram" [level=4] [ref=e491]
+                    - link "937912789179255" [ref=e492] [cursor=pointer]:
+                      - /url: "#"
+                      - button "937912789179255" [ref=e493]:
+                        - generic [ref=e494]: "937912789179255"
+                  - generic [ref=e497]:
+                    - generic [ref=e503]: Секрет приложения Instagram
+                    - generic [ref=e507]:
+                      - generic [ref=e508]:
+                        - generic [ref=e514]: Секрет приложения Instagram
+                        - textbox "Секрет приложения Instagram Секрет приложения Instagram" [disabled] [ref=e523]: •••••••••
+                      - button "Показать" [ref=e525] [cursor=pointer]:
+                        - generic [ref=e529]: Показать
+                - generic [ref=e532]:
+                  - generic [ref=e535]:
+                    - heading "1. Добавьте необходимые разрешения для обмена сообщениями" [level=3] [ref=e539]
+                    - button "Закрыть" [expanded] [ref=e541] [cursor=pointer]:
+                      - generic [ref=e544]: Закрыть
+                  - generic "1. Добавьте необходимые разрешения для обмена сообщениями" [ref=e547]:
+                    - generic [ref=e548]:
+                      - text: Добавьте указанные ниже разрешения на управление контентом и обмен сообщениями, чтобы создавать контент, публиковать его и управлять им, а также отвечать на сообщения и отправлять личные ответы с помощью аккаунта Instagram. Обязательные и дополнительные разрешения и функции можно настроить на странице "Разрешения и функции".
+                      - list [ref=e549]:
+                        - listitem [ref=e550]: instagram_business_basic
+                        - listitem [ref=e551]: instagram_manage_comments
+                        - listitem [ref=e552]: instagram_business_manage_messages
+                    - button "Go to permissions and features" [ref=e554] [cursor=pointer]:
+                      - generic [ref=e558]: Go to permissions and features
+                - generic [ref=e565]:
+                  - generic [ref=e568]:
+                    - heading "2. Сгенерируйте маркеры доступа" [level=3] [ref=e569]
+                    - generic [ref=e570]:
+                      - text: Добавьте аккаунт Instagram, чтобы сгенерировать маркеры доступа и настроить подписки на Webhooks. Прежде чем начать, назначьте аккаунту роль тестировщика Instagram на вкладке "
+                      - link "Роли" [ref=e571] [cursor=pointer]:
+                        - /url: /apps/987255807812535/roles/roles/
+                      - text: "\"."
+                  - button "Ещё" [ref=e573] [cursor=pointer]:
+                    - generic [ref=e576]: Ещё
+                - generic [ref=e585]:
+                  - generic [ref=e588]:
+                    - heading "3. Настройте Webhooks" [level=3] [ref=e589]
+                    - generic [ref=e590]:
+                      - text: Настройте пользовательский URL с Webhooks или используйте сервисы, помогающие настроить конечную точку.
+                      - link "Подробнее" [ref=e591] [cursor=pointer]:
+                        - /url: https://developers.facebook.com/docs/instagram/platform/instagram-api/webhooks/
+                  - button "Ещё" [ref=e593] [cursor=pointer]:
+                    - generic [ref=e596]: Ещё
+                - generic [ref=e602]:
+                  - generic [ref=e605]:
+                    - generic [ref=e608]:
+                      - heading "4. Настройте вход в Instagram от имени компании" [level=3] [ref=e609]
+                      - generic [ref=e610]: Обеспечьте компаниям безопасный способ предоставлять вашим приложениям разрешения на доступ к данным благодаря входу от имени компании.
+                    - button "Закрыть" [expanded] [ref=e612] [cursor=pointer]:
+                      - generic [ref=e615]: Закрыть
+                  - generic "4. Настройте вход в Instagram от имени компании" [ref=e618]:
+                    - button "Настроить" [ref=e619] [cursor=pointer]:
+                      - generic [ref=e623]: Настроить
+                - generic [ref=e630]:
+                  - generic [ref=e633]:
+                    - heading "5. Пройдите проверку приложения" [level=3] [ref=e634]
+                    - generic [ref=e635]: Для Instagram необходимо пройти процесс проверки приложения, прежде чем оно получит доступ к данным в режиме реального времени. Чтобы получить расширенный доступ к разрешениям Instagram, пройдите процесс проверки приложения, отправив соответствующий запрос, когда будете готовы.
+                  - button "Ещё" [ref=e637] [cursor=pointer]:
+                    - generic [ref=e640]: Ещё
+              - generic [ref=e646]:
+                - generic [ref=e652]:
+                  - heading "О компании" [level=3] [ref=e653]
+                  - text: C помощью Instagram API можно создавать приложения для публикации контента и взаимодействия с ним, а также для управления сообщениями в Instagram...
+                  - link "Ещё" [ref=e654] [cursor=pointer]:
+                    - /url: "#"
+                - generic [ref=e660]:
+                  - heading "Ресурсы" [level=3] [ref=e661]
+                  - generic [ref=e662]:
+                    - generic [ref=e663]: Мы подобрали несколько ресурсов, которые помогут вам начать работу.
+                    - link "Документация для разработчиков" [ref=e664] [cursor=pointer]:
+                      - /url: https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/
+                      - generic [ref=e667]: Документация для разработчиков
+                    - link "С чего начать" [ref=e668] [cursor=pointer]:
+                      - /url: https://developers.facebook.com/docs/instagram/platform/instagram-api/get-started/
+                      - generic [ref=e671]: С чего начать
+                    - link "Сообщество разработчиков" [ref=e672] [cursor=pointer]:
+                      - /url: /community
+                      - generic [ref=e675]: Сообщество разработчиков
+                - generic [ref=e681]:
+                  - heading "Правила" [level=3] [ref=e682]
+                  - generic [ref=e683]:
+                    - generic [ref=e684]: Доступ к платформе и ее использование регулируются Условиями использования платформы и Правилами для разработчиков, а также другими применимыми условиями и правилами.
+                    - link "Условия использования платформы" [ref=e685] [cursor=pointer]:
+                      - /url: https://developers.facebook.com/terms/#messengerplatform
+                      - generic [ref=e688]: Условия использования платформы
+                    - link "Правила для разработчиков" [ref=e689] [cursor=pointer]:
+                      - /url: https://developers.facebook.com/devpolicy/
+                      - generic [ref=e692]: Правила для разработчиков

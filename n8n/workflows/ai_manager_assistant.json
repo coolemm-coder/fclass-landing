@@ -1,0 +1,233 @@
+{
+  "name": "AI Manager Assistant - Tour Search",
+  "nodes": [
+    {
+      "id": "webhook",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [0, 300],
+      "webhookId": "ai-agent",
+      "parameters": {
+        "path": "ai-agent",
+        "httpMethod": "POST",
+        "options": {
+          "allowedOrigins": "*"
+        },
+        "responseMode": "responseNode"
+      }
+    },
+    {
+      "id": "agent",
+      "name": "Tour Manager Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [300, 300],
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.body.message || $json.body.text || $json.message || '' }}",
+        "options": {
+          "systemMessage": "Ты — AI-помощник для менеджеров турагентства First Class Travel (Минск). Помогаешь быстро находить и сравнивать туры для клиентов.\n\n## Твои инструменты:\n\n1. **searchTours** — поиск туров по параметрам\n   - Основной инструмент. Ищет по 2 источникам: FunSun (EUR) и ABS Tour (USD)\n   - Обязательно: country. Остальное по умолчанию: 7 ночей, 2 взрослых, из Минска\n   - ОАЭ (uae) — минимум 10 ночей!\n\n2. **hotelSearch** — поиск отеля по названию\n   - Используй когда менеджер называет конкретный отель (Rixos, Regnum, Address и т.д.)\n   - Возвращает hotelId → передай его в searchTours для точного поиска\n\n3. **compareHotels** — сравнение двух отелей\n   - Ищет туры в оба отеля и показывает разницу в ценах\n   - Используй когда менеджер хочет сравнить варианты\n\n4. **getDestinations** — список доступных направлений с ценовыми ориентирами\n   - Используй когда спрашивают \"куда можно\" или \"какие страны\"\n\n## Правила работы:\n\n- Отвечай КРАТКО и по делу — менеджеры ценят скорость\n- Показывай ТОП-3 варианта, не больше (если не просят)\n- Всегда указывай источник: FunSun или ABS\n- Цены FunSun в EUR, ABS в USD — НЕ конвертируй, показывай как есть\n- Если параметры неполные — подставь умные дефолты, не спрашивай лишнего\n- Дата вылета: если не указана → +14 дней от сегодня\n- Если туры не найдены — предложи расширить даты или бюджет\n\n## Формат ответа:\n\n🏨 **Отель** ⭐⭐⭐⭐⭐\n📅 Даты | 🌙 Ночей | 🍽 Питание\n💰 Цена (источник)\n\n## Примеры запросов:\n- \"Турция 5* AI до 1500€\" → searchTours\n- \"Найди Rixos Premium Belek\" → hotelSearch → searchTours с hotelId\n- \"Сравни Rixos и Regnum\" → compareHotels\n- \"Куда можно на февраль?\" → getDestinations\n- \"А подешевле?\" → searchTours с увеличенным диапазоном\n- \"Покажи ещё варианты\" → searchTours с другими параметрами\n\n## Контекст диалога:\nТы помнишь предыдущие сообщения. Если менеджер говорит \"а на 10 ночей?\" — используй страну и параметры из предыдущего поиска, поменяв только ночи.",
+          "maxIterations": 5
+        }
+      }
+    },
+    {
+      "id": "search_tours_tool",
+      "name": "Search Tours Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [0, 540],
+      "parameters": {
+        "name": "searchTours",
+        "description": "Поиск туров по параметрам. Ищет по двум источникам: FunSun (цены в EUR) и ABS Tour (цены в USD). Возвращает список туров отсортированных по цене.",
+        "method": "POST",
+        "url": "https://emikss.host/webhook/tour-search-unified",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ country: $fromAI.item.country || 'turkey', nights: $fromAI.item.nights || 7, adults: $fromAI.item.adults || 2, children: $fromAI.item.children || 0, stars: $fromAI.item.stars || null, meal: $fromAI.item.meal || null, maxPrice: $fromAI.item.maxPrice || null, hotel: $fromAI.item.hotel || null, hotelId: $fromAI.item.hotelId || null, dateFrom: $fromAI.item.dateFrom || null, searchDays: $fromAI.item.searchDays || 30 }) }}",
+        "placeholderDefinitions": {
+          "parameters": [
+            {"name": "country", "description": "Код страны: turkey, egypt, uae, thailand, maldives, vietnam, srilanka, greece, cyprus, spain, india, cuba, georgia, china, montenegro", "type": "string"},
+            {"name": "nights", "description": "Количество ночей (по умолчанию 7). Для ОАЭ минимум 10!", "type": "number"},
+            {"name": "adults", "description": "Количество взрослых (по умолчанию 2)", "type": "number"},
+            {"name": "children", "description": "Количество детей (по умолчанию 0)", "type": "number"},
+            {"name": "stars", "description": "Звёздность отеля: 3, 4 или 5. Пусто = любая", "type": "number"},
+            {"name": "meal", "description": "Тип питания: BB (завтраки), HB (полупансион), FB (полный пансион), AI (всё включено), UAI (ультра всё включено). Пусто = любое", "type": "string"},
+            {"name": "maxPrice", "description": "Максимальная цена в EUR. Пусто = без ограничения", "type": "number"},
+            {"name": "hotel", "description": "Название отеля для фильтрации (подстрока)", "type": "string"},
+            {"name": "hotelId", "description": "Точный ID отеля из hotelSearch. Используй для премиум-отелей", "type": "string"},
+            {"name": "dateFrom", "description": "Дата начала поиска в формате DD.MM.YYYY. Пусто = +14 дней от сегодня", "type": "string"},
+            {"name": "searchDays", "description": "Диапазон поиска в днях (по умолчанию 30)", "type": "number"}
+          ]
+        },
+        "options": {
+          "timeout": 60000,
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "hotel_search_tool",
+      "name": "Hotel Search Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [200, 540],
+      "parameters": {
+        "name": "hotelSearch",
+        "description": "Поиск отеля по названию. Возвращает список отелей с hotelId (key). Используй hotelId в searchTours для точного поиска конкретного отеля. Пример: query='rixos', country='turkey' → вернёт список Rixos отелей с ID.",
+        "method": "GET",
+        "url": "=https://emikss.host/webhook/hotel-search?q={{ encodeURIComponent($fromAI.item.query) }}&country={{ $fromAI.item.country || 'turkey' }}",
+        "placeholderDefinitions": {
+          "parameters": [
+            {"name": "query", "description": "Название отеля для поиска (латиницей). Примеры: rixos, regnum, address, calista, gloria", "type": "string"},
+            {"name": "country", "description": "Код страны: turkey, egypt, uae, thailand, maldives и др.", "type": "string"}
+          ]
+        },
+        "options": {
+          "timeout": 15000,
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "compare_hotels_tool",
+      "name": "Compare Hotels Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolCode",
+      "typeVersion": 1,
+      "position": [400, 540],
+      "parameters": {
+        "name": "compareHotels",
+        "description": "Сравнение двух отелей по цене. Ищет туры в оба отеля и показывает разницу. Используй когда менеджер хочет сравнить два конкретных отеля.",
+        "jsCode": "const hotel1 = $fromAI.item.hotel1;\nconst hotel2 = $fromAI.item.hotel2;\nconst country = $fromAI.item.country || 'turkey';\nconst nights = $fromAI.item.nights || 7;\nconst adults = $fromAI.item.adults || 2;\n\nconst baseUrl = 'https://emikss.host/webhook/tour-search-unified';\nconst params = { country, nights, adults, children: 0, searchDays: 30 };\n\ntry {\n  const [res1, res2] = await Promise.all([\n    fetch(baseUrl, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({...params, hotel: hotel1}) }).then(r => r.json()),\n    fetch(baseUrl, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({...params, hotel: hotel2}) }).then(r => r.json())\n  ]);\n\n  const tours1 = res1.results || [];\n  const tours2 = res2.results || [];\n\n  const best1 = tours1.length > 0 ? tours1.reduce((min, t) => t.price < min.price ? t : min, tours1[0]) : null;\n  const best2 = tours2.length > 0 ? tours2.reduce((min, t) => t.price < min.price ? t : min, tours2[0]) : null;\n\n  const comparison = {\n    hotel1: {\n      name: hotel1,\n      totalTours: tours1.length,\n      bestPrice: best1 ? `${best1.price} ${best1.currency || 'EUR'}` : 'нет туров',\n      bestDate: best1 ? best1.date : null,\n      bestMeal: best1 ? best1.meal : null,\n      stars: best1 ? best1.stars : null,\n      source: best1 ? best1.source : null\n    },\n    hotel2: {\n      name: hotel2,\n      totalTours: tours2.length,\n      bestPrice: best2 ? `${best2.price} ${best2.currency || 'EUR'}` : 'нет туров',\n      bestDate: best2 ? best2.date : null,\n      bestMeal: best2 ? best2.meal : null,\n      stars: best2 ? best2.stars : null,\n      source: best2 ? best2.source : null\n    },\n    priceDifference: (best1 && best2) ? Math.abs(best1.price - best2.price) : null,\n    cheaperHotel: (best1 && best2) ? (best1.price < best2.price ? hotel1 : hotel2) : null\n  };\n\n  return JSON.stringify(comparison, null, 2);\n} catch (e) {\n  return JSON.stringify({ error: 'Ошибка сравнения: ' + e.message });\n}",
+        "placeholderDefinitions": {
+          "parameters": [
+            {"name": "hotel1", "description": "Название первого отеля (латиницей)", "type": "string"},
+            {"name": "hotel2", "description": "Название второго отеля (латиницей)", "type": "string"},
+            {"name": "country", "description": "Код страны (по умолчанию turkey)", "type": "string"},
+            {"name": "nights", "description": "Количество ночей (по умолчанию 7)", "type": "number"},
+            {"name": "adults", "description": "Количество взрослых (по умолчанию 2)", "type": "number"}
+          ]
+        }
+      }
+    },
+    {
+      "id": "destinations_tool",
+      "name": "Get Destinations Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolCode",
+      "typeVersion": 1,
+      "position": [600, 540],
+      "parameters": {
+        "name": "getDestinations",
+        "description": "Список всех доступных направлений (стран) с сезонами и примерными ценами. Используй когда менеджер спрашивает куда можно полететь или какие страны доступны.",
+        "jsCode": "const destinations = {\n  popular: [\n    { name: 'Турция', code: 'turkey', season: 'Апрель-Октябрь', fromPrice: '~400€', notes: 'Самое популярное, All Inclusive' },\n    { name: 'Египет', code: 'egypt', season: 'Круглый год', fromPrice: '~500€', notes: 'Зимой особенно популярен' },\n    { name: 'ОАЭ', code: 'uae', season: 'Октябрь-Апрель', fromPrice: '~800€', notes: 'Минимум 10 ночей!' },\n    { name: 'Таиланд', code: 'thailand', season: 'Ноябрь-Март', fromPrice: '~900€', notes: 'Экзотика, долгий перелёт' }\n  ],\n  beach: [\n    { name: 'Мальдивы', code: 'maldives', season: 'Ноябрь-Апрель', fromPrice: '~2000€', notes: 'Премиум' },\n    { name: 'Шри-Ланка', code: 'srilanka', season: 'Ноябрь-Март', fromPrice: '~1000€' },\n    { name: 'Вьетнам', code: 'vietnam', season: 'Ноябрь-Март', fromPrice: '~900€' },\n    { name: 'Индия (Гоа)', code: 'india', season: 'Октябрь-Март', fromPrice: '~800€' },\n    { name: 'Куба', code: 'cuba', season: 'Ноябрь-Апрель', fromPrice: '~1200€' }\n  ],\n  europe: [\n    { name: 'Греция', code: 'greece', season: 'Май-Октябрь', fromPrice: '~600€' },\n    { name: 'Кипр', code: 'cyprus', season: 'Апрель-Октябрь', fromPrice: '~550€' },\n    { name: 'Испания', code: 'spain', season: 'Май-Октябрь', fromPrice: '~700€' },\n    { name: 'Черногория', code: 'montenegro', season: 'Июнь-Сентябрь', fromPrice: '~500€' }\n  ],\n  other: [\n    { name: 'Грузия', code: 'georgia', season: 'Круглый год', fromPrice: '~350€' },\n    { name: 'Китай (Хайнань)', code: 'china', season: 'Ноябрь-Март', fromPrice: '~800€' },\n    { name: 'Индонезия (Бали)', code: 'indonesia', season: 'Апрель-Октябрь', fromPrice: '~1100€' }\n  ]\n};\n\nreturn JSON.stringify(destinations, null, 2);"
+      }
+    },
+    {
+      "id": "openai",
+      "name": "OpenAI Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [200, 120],
+      "parameters": {
+        "model": "gpt-4o-mini",
+        "options": {
+          "temperature": 0.4,
+          "maxTokens": 1500
+        }
+      },
+      "credentials": {
+        "openAiApi": {
+          "id": "W9eJhkZNMK5nCkw1",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "id": "memory",
+      "name": "Window Buffer Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.2,
+      "position": [400, 120],
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $json.body.sessionId || $json.body.session_id || $json.sessionId || 'default' }}",
+        "contextWindowLength": 10
+      }
+    },
+    {
+      "id": "format_response",
+      "name": "Format Response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [540, 300],
+      "parameters": {
+        "jsCode": "const agentOutput = $json.output || $json.text || 'Извините, произошла ошибка. Попробуйте ещё раз.';\nconst webhookData = $('Webhook').first().json;\nconst sessionId = webhookData.body?.sessionId || webhookData.body?.session_id || 'default';\n\nreturn [{\n  json: {\n    ok: true,\n    response: agentOutput,\n    sessionId: sessionId\n  }\n}];"
+      }
+    },
+    {
+      "id": "respond",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [760, 300],
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}"
+      }
+    },
+    {
+      "id": "error_handler",
+      "name": "Error Response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [540, 500],
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ { ok: false, response: 'Извините, произошла техническая ошибка. Попробуйте переформулировать запрос.', error: $json.error?.message || 'Unknown error' } }}"
+      }
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [[{"node": "Tour Manager Agent", "type": "main", "index": 0}]]
+    },
+    "Tour Manager Agent": {
+      "main": [[{"node": "Format Response", "type": "main", "index": 0}]],
+      "error": [[{"node": "Error Response", "type": "main", "index": 0}]]
+    },
+    "Format Response": {
+      "main": [[{"node": "Respond", "type": "main", "index": 0}]]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [[{"node": "Tour Manager Agent", "type": "ai_languageModel", "index": 0}]]
+    },
+    "Window Buffer Memory": {
+      "ai_memory": [[{"node": "Tour Manager Agent", "type": "ai_memory", "index": 0}]]
+    },
+    "Search Tours Tool": {
+      "ai_tool": [[{"node": "Tour Manager Agent", "type": "ai_tool", "index": 0}]]
+    },
+    "Hotel Search Tool": {
+      "ai_tool": [[{"node": "Tour Manager Agent", "type": "ai_tool", "index": 0}]]
+    },
+    "Compare Hotels Tool": {
+      "ai_tool": [[{"node": "Tour Manager Agent", "type": "ai_tool", "index": 0}]]
+    },
+    "Get Destinations Tool": {
+      "ai_tool": [[{"node": "Tour Manager Agent", "type": "ai_tool", "index": 0}]]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "errorWorkflow": ""
+  }
+}

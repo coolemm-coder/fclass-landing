@@ -30,11 +30,19 @@ __pycache__/
 venv/
 .venv/
 
-# Data (sensitive)
+# Data (sensitive — leads, contacts, exporters)
 data/clients/
 data/exports/
+data/all_contacts.csv
+data/cci_exporters.*
+data/*.csv
+data/*.json
 *.xlsx
 *.xls
+
+# Vercel project links
+.vercel/
+**/.vercel/
 
 # MCP Cache
 .playwright-mcp/
@@ -73,3 +81,10 @@ upload-data.json
 
 # FTP deploy state
 .ftp-deploy-sync-state.json
+
+# CRM dumps — PII (clients, managers, passports)
+docs/audit/uon-raw*.json
+docs/audit/uon-*.json
+**/uon-raw*.json
+docs/audit/uon-audit*.json
+docs/audit/uon-*.json

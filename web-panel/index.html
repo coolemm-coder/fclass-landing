@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Class — Аудит</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <div class="logo">FIRST CLASS</div>
+            <div class="tagline">Your Travel Concierge</div>
+            <div style="margin-top: 15px; display: flex; align-items: center; justify-content: center; gap: 12px;">
+                <div style="width: 40px; height: 1px; background: linear-gradient(90deg, transparent, var(--accent));"></div>
+                <div style="font-size: 10px; color: var(--accent); opacity: 0.7;">✦</div>
+                <div style="width: 40px; height: 1px; background: linear-gradient(90deg, var(--accent), transparent);"></div>
+            </div>
+        </header>
+
+        <main class="main">
+            <div class="hero">
+                <h1>Аудит процессов</h1>
+                <p class="subtitle">Помогите нам понять, как улучшить вашу работу.<br>Выберите свою роль, чтобы начать.</p>
+            </div>
+
+            <details class="instruction-block" style="background: var(--bg-card); border-radius: 16px; padding: 20px; margin-bottom: 30px; cursor: pointer;">
+                <summary style="font-weight: 600; font-size: 16px; display: flex; align-items: center; gap: 10px;">
+                    <span style="font-size: 20px;">📋</span> Как это работает? <span style="color: var(--text-muted); font-size: 14px; margin-left: auto;">нажмите чтобы развернуть</span>
+                </summary>
+                <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border);">
+                    <div style="display: grid; gap: 15px;">
+                        <div style="display: flex; gap: 12px; align-items: flex-start;">
+                            <div style="background: linear-gradient(135deg, #667eea, #764ba2); min-width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px;">1</div>
+                            <div>
+                                <div style="font-weight: 600;">Заполните анкету</div>
+                                <div style="color: var(--text-muted); font-size: 14px;">Один раз, ~10 минут. Выберите роль ниже и ответьте на вопросы.</div>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 12px; align-items: flex-start;">
+                            <div style="background: linear-gradient(135deg, #38ef7d, #11998e); min-width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px;">2</div>
+                            <div>
+                                <div style="font-weight: 600;">Ведите дневник времени</div>
+                                <div style="color: var(--text-muted); font-size: 14px;">2 минуты в день, 5-7 рабочих дней. Отмечайте чем занимались каждый час.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-top: 20px; padding: 15px; background: rgba(102, 126, 234, 0.1); border-radius: 10px; font-size: 14px;">
+                        <div style="color: var(--text-muted);">
+                            <strong style="color: var(--text);">💡 Советы:</strong> Отвечайте быстро, не думая долго. Если не знаете точно — примерно. Можно пропускать необязательные вопросы.
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+            <div class="roles">
+                <a href="pages/dasha.html" class="role-card" style="--accent: #667eea">
+                    <div class="role-icon">👩‍💼</div>
+                    <div class="role-info">
+                        <h3>Даша</h3>
+                    </div>
+                    <div class="role-time">~10 мин</div>
+                    <div class="role-arrow">→</div>
+                </a>
+
+                <a href="pages/pasha.html" class="role-card" style="--accent: #11998e">
+                    <div class="role-icon">👔</div>
+                    <div class="role-info">
+                        <h3>Паша (собственник)</h3>
+                    </div>
+                    <div class="role-time">~12 мин</div>
+                    <div class="role-arrow">→</div>
+                </a>
+
+                <a href="pages/backoffice.html" class="role-card" style="--accent: #4776E6">
+                    <div class="role-icon">📋</div>
+                    <div class="role-info">
+                        <h3>Бэкофис</h3>
+                    </div>
+                    <div class="role-time">~12 мин</div>
+                    <div class="role-arrow">→</div>
+                </a>
+
+                <a href="pages/accountant.html" class="role-card" style="--accent: #f5576c">
+                    <div class="role-icon">📊</div>
+                    <div class="role-info">
+                        <h3>Надя</h3>
+                    </div>
+                    <div class="role-time">~10 мин</div>
+                    <div class="role-arrow">→</div>
+                </a>
+
+                <a href="pages/time-diary.html" class="role-card" style="--accent: #38ef7d; border: 2px dashed #38ef7d55;">
+                    <div class="role-icon">⏱️</div>
+                    <div class="role-info">
+                        <h3>Дневник времени</h3>
+                    </div>
+                    <div class="role-time">ежедневно</div>
+                    <div class="role-arrow">→</div>
+                </a>
+            </div>
+
+            <div class="info-box">
+                <div class="info-icon">🔒</div>
+                <div class="info-text">
+                    <strong>Конфиденциально</strong>
+                    <span>Ваши ответы видны только консультанту проекта</span>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>First Class Travel Automation © 2026</p>
+        </footer>
+    </div>
+</body>
+</html>

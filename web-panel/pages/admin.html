@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админ-панель | First Class Audit</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Password Modal -->
+    <div id="password-modal" style="
+        position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+        background: var(--bg); z-index: 1000;
+        display: flex; align-items: center; justify-content: center;
+    ">
+        <div style="
+            background: var(--bg-card); padding: 40px; border-radius: 20px;
+            text-align: center; max-width: 400px; width: 90%;
+        ">
+            <div style="font-size: 48px; margin-bottom: 20px;">🔐</div>
+            <h2 style="margin-bottom: 10px;">Админ-панель</h2>
+            <p style="color: var(--text-muted); margin-bottom: 25px;">Введите пароль для доступа</p>
+            <input type="password" id="password-input" placeholder="Пароль" style="
+                width: 100%; padding: 16px 20px; background: var(--bg-input);
+                border: 2px solid var(--border); border-radius: 10px;
+                font-size: 16px; color: var(--text); margin-bottom: 15px;
+            " onkeypress="if(event.key==='Enter')checkPassword()">
+            <button onclick="checkPassword()" style="
+                width: 100%; padding: 16px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                border: none; border-radius: 10px; color: white;
+                font-size: 16px; font-weight: 600; cursor: pointer;
+            ">Войти</button>
+            <p id="password-error" style="color: #ff6b6b; margin-top: 15px; display: none;">Неверный пароль</p>
+        </div>
+    </div>
+
+    <div class="app" id="admin-content" style="display: none;">
+        <header class="header">
+            <div class="logo">FIRST CLASS</div>
+            <div class="tagline">Админ-панель</div>
+        </header>
+
+        <main class="main" style="max-width: 900px;">
+            <div class="admin-header">
+                <h1>📊 Ответы на анкеты</h1>
+                <div>
+                    <button class="btn btn-primary" onclick="copyForClaude()" style="padding: 10px 20px; font-size: 14px;">
+                        🤖 Копировать для Claude
+                    </button>
+                    <button class="btn btn-secondary" onclick="exportData()" style="padding: 10px 20px; font-size: 14px; margin-left: 10px;">
+                        📥 JSON
+                    </button>
+                    <button class="btn btn-secondary" onclick="clearData()" style="padding: 10px 20px; font-size: 14px; margin-left: 10px;">
+                        🗑️
+                    </button>
+                </div>
+            </div>
+
+            <div class="stats" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 30px;">
+                <div class="stat-card" style="background: var(--bg-card); padding: 20px; border-radius: var(--radius); text-align: center;">
+                    <div style="font-size: 32px; font-weight: 700; color: #667eea;" id="stat-dasha">0</div>
+                    <div style="font-size: 13px; color: var(--text-muted);">Даша</div>
+                </div>
+                <div class="stat-card" style="background: var(--bg-card); padding: 20px; border-radius: var(--radius); text-align: center;">
+                    <div style="font-size: 32px; font-weight: 700; color: #11998e;" id="stat-pasha">0</div>
+                    <div style="font-size: 13px; color: var(--text-muted);">Паша</div>
+                </div>
+                <div class="stat-card" style="background: var(--bg-card); padding: 20px; border-radius: var(--radius); text-align: center;">
+                    <div style="font-size: 32px; font-weight: 700; color: #4776E6;" id="stat-backoffice">0</div>
+                    <div style="font-size: 13px; color: var(--text-muted);">Бэкофис</div>
+                </div>
+                <div class="stat-card" style="background: var(--bg-card); padding: 20px; border-radius: var(--radius); text-align: center;">
+                    <div style="font-size: 32px; font-weight: 700; color: #f5576c;" id="stat-accountant">0</div>
+                    <div style="font-size: 13px; color: var(--text-muted);">Надя</div>
+                </div>
+            </div>
+
+            <div id="responses-container">
+                <div class="info-box">
+                    <div class="info-icon">📭</div>
+                    <div class="info-text">
+                        <strong>Пока нет ответов</strong>
+                        <span>Ответы появятся здесь после заполнения анкет</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>First Class Travel Automation © 2026</p>
+        </footer>
+    </div>
+
+    <script>
+        const roleIcons = {
+            dasha: '👩‍💼',
+            pasha: '👨‍💼',
+            backoffice: '📋',
+            accountant: '📊'
+        };
+
+        const roleNames = {
+            dasha: 'Даша (опер.дир)',
+            pasha: 'Паша (B2B)',
+            backoffice: 'Бэкофис',
+            accountant: 'Надя (дир/бух)'
+        };
+
+        const roleColors = {
+            dasha: '#667eea',
+            pasha: '#11998e',
+            backoffice: '#4776E6',
+            accountant: '#f5576c'
+        };
+
+        function loadResponses() {
+            const responses = JSON.parse(localStorage.getItem('fc_audit_responses') || '[]');
+
+            // Update stats
+            const stats = { dasha: 0, pasha: 0, backoffice: 0, accountant: 0 };
+            responses.forEach(r => {
+                if (stats[r.role] !== undefined) stats[r.role]++;
+            });
+
+            Object.keys(stats).forEach(role => {
+                document.getElementById(`stat-${role}`).textContent = stats[role];
+            });
+
+            // Render responses
+            const container = document.getElementById('responses-container');
+
+            if (responses.length === 0) {
+                container.innerHTML = `
+                    <div class="info-box">
+                        <div class="info-icon">📭</div>
+                        <div class="info-text">
+                            <strong>Пока нет ответов</strong>
+                            <span>Ответы появятся здесь после заполнения анкет</span>
+                        </div>
+                    </div>`;
+                return;
+            }
+
+            container.innerHTML = responses.map((response, index) => {
+                const date = new Date(response.timestamp);
+                const dateStr = date.toLocaleDateString('ru-RU') + ' ' + date.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
+
+                const answersHtml = Object.entries(response.answers).map(([key, value]) => {
+                    let displayValue = value;
+                    if (Array.isArray(value)) {
+                        displayValue = value.join(', ') || '—';
+                    } else if (typeof value === 'object' && value !== null) {
+                        displayValue = Object.entries(value)
+                            .filter(([k, v]) => v)
+                            .map(([k, v]) => `${k}: ${v}`)
+                            .join('; ') || '—';
+                    }
+                    displayValue = displayValue || '—';
+
+                    return `
+                        <div class="response-answer">
+                            <span class="response-answer-label">${key}</span>
+                            <span class="response-answer-value">${displayValue}</span>
+                        </div>`;
+                }).join('');
+
+                return `
+                    <div class="response-card" style="border-left: 4px solid ${roleColors[response.role] || '#666'}">
+                        <div class="response-header">
+                            <div class="response-role">
+                                <span class="response-role-icon">${roleIcons[response.role] || '👤'}</span>
+                                <span class="response-role-name">${roleNames[response.role] || response.role}</span>
+                            </div>
+                            <span class="response-date">${dateStr}</span>
+                        </div>
+                        <details style="cursor: pointer;">
+                            <summary style="color: var(--text-muted); font-size: 14px; margin-bottom: 15px;">
+                                Показать ответы (${Object.keys(response.answers).length} вопросов)
+                            </summary>
+                            <div class="response-answers">${answersHtml}</div>
+                        </details>
+                    </div>`;
+            }).reverse().join('');
+        }
+
+        function exportData() {
+            const responses = localStorage.getItem('fc_audit_responses') || '[]';
+            const blob = new Blob([responses], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `fc-audit-responses-${new Date().toISOString().split('T')[0]}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function clearData() {
+            if (confirm('Удалить все ответы? Это действие нельзя отменить.')) {
+                localStorage.removeItem('fc_audit_responses');
+                loadResponses();
+            }
+        }
+
+        // Password protection
+        const ADMIN_PASSWORD = 'fc2026';
+
+        function checkPassword() {
+            const input = document.getElementById('password-input');
+            const error = document.getElementById('password-error');
+
+            if (input.value === ADMIN_PASSWORD) {
+                document.getElementById('password-modal').style.display = 'none';
+                document.getElementById('admin-content').style.display = 'block';
+                sessionStorage.setItem('fc_admin_auth', 'true');
+                loadResponses();
+            } else {
+                error.style.display = 'block';
+                input.value = '';
+                input.focus();
+            }
+        }
+
+        // Check if already authenticated
+        if (sessionStorage.getItem('fc_admin_auth') === 'true') {
+            document.getElementById('password-modal').style.display = 'none';
+            document.getElementById('admin-content').style.display = 'block';
+            loadResponses();
+        }
+
+        // Focus password input
+        document.getElementById('password-input').focus();
+
+        // Auto-refresh every 30 seconds
+        setInterval(() => {
+            if (sessionStorage.getItem('fc_admin_auth') === 'true') {
+                loadResponses();
+            }
+        }, 30000);
+    </script>
+</body>
+</html>

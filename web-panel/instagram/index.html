@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Class — Instagram Business Inbox</title>
+    <style>
+        :root {
+            --primary: #0c1825;
+            --accent: #c9a962;
+            --bg: #f5f7fa;
+            --bg-card: #ffffff;
+            --border: #e2e8f0;
+            --text: #1a202c;
+            --text-muted: #718096;
+            --blue: #4299e1;
+            --green: #48bb78;
+            --red: #f56565;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            background: var(--primary);
+            color: #fff;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .header-logo {
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: var(--accent);
+        }
+
+        .header-title {
+            font-size: 14px;
+            color: #a0aec0;
+        }
+
+        .header-user {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            color: #a0aec0;
+        }
+
+        .header-user img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+        }
+
+        /* Login Screen */
+        .login-screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: calc(100vh - 60px);
+            padding: 40px;
+        }
+
+        .login-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 48px;
+            max-width: 480px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+        }
+
+        .login-card h1 {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .login-card p {
+            color: var(--text-muted);
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        .login-card .app-icon {
+            width: 72px;
+            height: 72px;
+            background: var(--primary);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: 0.5px;
+        }
+
+        .btn-facebook {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #1877F2;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 14px 28px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .btn-facebook:hover { background: #1565d8; }
+
+        .btn-facebook svg {
+            width: 20px;
+            height: 20px;
+            fill: #fff;
+        }
+
+        .login-permissions {
+            margin-top: 24px;
+            text-align: left;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .login-permissions h4 {
+            font-size: 13px;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        .login-permissions ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .login-permissions li {
+            padding: 4px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .login-permissions li::before {
+            content: "\2713";
+            color: var(--green);
+            font-weight: 700;
+        }
+
+        /* Dashboard Layout */
+        .dashboard {
+            display: none;
+            height: calc(100vh - 60px);
+        }
+
+        .dashboard.active { display: flex; }
+
+        /* Sidebar — Conversations */
+        .sidebar {
+            width: 360px;
+            border-right: 1px solid var(--border);
+            background: var(--bg-card);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-header {
+            padding: 16px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .sidebar-header h2 {
+            font-size: 16px;
+        }
+
+        .badge {
+            background: var(--blue);
+            color: #fff;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 10px;
+        }
+
+        .conversation-list {
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .conversation-item {
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--border);
+            cursor: pointer;
+            transition: background 0.15s;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .conversation-item:hover { background: #f7fafc; }
+        .conversation-item.active { background: #ebf8ff; border-left: 3px solid var(--blue); }
+        .conversation-item.unread { background: #fffff0; }
+
+        .conv-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 16px;
+            color: var(--text-muted);
+            flex-shrink: 0;
+        }
+
+        .conv-info { flex: 1; min-width: 0; }
+
+        .conv-name {
+            font-weight: 600;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .conv-time {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .conv-preview {
+            font-size: 13px;
+            color: var(--text-muted);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-top: 2px;
+        }
+
+        .conv-status {
+            display: inline-block;
+            font-size: 11px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-top: 4px;
+            font-weight: 500;
+        }
+
+        .status-new { background: #fefcbf; color: #975a16; }
+        .status-open { background: #c6f6d5; color: #276749; }
+        .status-replied { background: #bee3f8; color: #2a4365; }
+
+        /* Chat Area */
+        .chat-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
+            background: var(--bg-card);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .chat-header-info h3 {
+            font-size: 15px;
+        }
+
+        .chat-header-info p {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .chat-header-meta {
+            margin-left: auto;
+            text-align: right;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .message {
+            max-width: 70%;
+            padding: 10px 14px;
+            border-radius: 12px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .message-incoming {
+            background: #edf2f7;
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
+
+        .message-outgoing {
+            background: var(--blue);
+            color: #fff;
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+        }
+
+        .message-time {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        .message-outgoing .message-time { color: rgba(255,255,255,0.7); }
+
+        .message-system {
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-muted);
+            padding: 8px;
+        }
+
+        /* Reply Box */
+        .reply-box {
+            padding: 16px 20px;
+            border-top: 1px solid var(--border);
+            background: var(--bg-card);
+            display: flex;
+            gap: 12px;
+            align-items: flex-end;
+        }
+
+        .reply-input {
+            flex: 1;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px 14px;
+            font-size: 14px;
+            resize: none;
+            min-height: 42px;
+            max-height: 120px;
+            font-family: inherit;
+            outline: none;
+        }
+
+        .reply-input:focus { border-color: var(--blue); }
+
+        .btn-send {
+            background: var(--blue);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .btn-send:hover { background: #3182ce; }
+        .btn-send:disabled { opacity: 0.5; cursor: default; }
+
+        /* Empty state */
+        .empty-state {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+        }
+
+        .empty-state svg {
+            width: 64px;
+            height: 64px;
+            margin-bottom: 16px;
+            opacity: 0.3;
+        }
+
+        /* Contact Panel */
+        .contact-panel {
+            width: 280px;
+            border-left: 1px solid var(--border);
+            background: var(--bg-card);
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .contact-panel h4 {
+            font-size: 12px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-field {
+            margin-bottom: 16px;
+        }
+
+        .contact-field label {
+            font-size: 12px;
+            color: var(--text-muted);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .contact-field span {
+            font-size: 14px;
+        }
+
+        .tag {
+            display: inline-block;
+            font-size: 12px;
+            padding: 3px 8px;
+            border-radius: 4px;
+            background: #edf2f7;
+            margin-right: 4px;
+            margin-bottom: 4px;
+        }
+
+        /* Notification toast */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: var(--primary);
+            color: #fff;
+            padding: 14px 20px;
+            border-radius: 10px;
+            font-size: 14px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            display: none;
+            z-index: 100;
+            animation: slideIn 0.3s ease;
+        }
+
+        .toast.show { display: flex; align-items: center; gap: 10px; }
+
+        @keyframes slideIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Footer note */
+        .footer-note {
+            text-align: center;
+            padding: 12px;
+            font-size: 12px;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+        }
+
+        /* Loading spinner */
+        .spinner {
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+            display: inline-block;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+
+<!-- LOGIN SCREEN -->
+<div id="loginScreen" class="login-screen">
+    <div class="login-card">
+        <div class="app-icon">FC</div>
+        <h1>First Class Inbox</h1>
+        <p>Instagram Direct Message management platform for First Class travel agency. Connect your Instagram Business account to manage customer conversations.</p>
+
+        <button class="btn-facebook" id="btnFacebookLogin" onclick="startFacebookLogin()">
+            <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            Continue with Facebook
+        </button>
+
+        <div class="login-permissions">
+            <h4>This app will request access to:</h4>
+            <ul>
+                <li>Your Instagram Business account profile</li>
+                <li>Instagram Direct Messages (read & reply)</li>
+                <li>Connected Facebook Pages list</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- HEADER (shown after login) -->
+<header class="header" id="appHeader" style="display:none">
+    <div class="header-left">
+        <span class="header-logo">FIRST CLASS</span>
+        <span class="header-title">Instagram Business Inbox</span>
+    </div>
+    <div class="header-user">
+        <span id="connectedAccount">@firstclass_travel</span>
+        <img id="accountAvatar" src="" alt="avatar" style="display:none">
+        <button onclick="handleLogout()" style="background:none;border:1px solid #4a5568;color:#a0aec0;padding:6px 12px;border-radius:6px;cursor:pointer;font-size:12px;">Logout</button>
+    </div>
+</header>
+
+<!-- DASHBOARD -->
+<div class="dashboard" id="dashboard">
+    <!-- Sidebar: Conversations -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h2>Conversations</h2>
+            <span class="badge" id="convCount">3</span>
+        </div>
+        <div class="conversation-list" id="convList">
+            <!-- Populated by JS -->
+        </div>
+    </div>
+
+    <!-- Chat Area -->
+    <div class="chat-area" id="chatArea">
+        <div class="empty-state" id="emptyState">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <p>Select a conversation to start messaging</p>
+        </div>
+
+        <!-- Active Chat (hidden until selected) -->
+        <div id="activeChat" style="display:none;flex:1;display:none;flex-direction:column;">
+            <div class="chat-header">
+                <div class="conv-avatar" id="chatAvatar">A</div>
+                <div class="chat-header-info">
+                    <h3 id="chatName">Customer Name</h3>
+                    <p id="chatIgHandle">@instagram_handle</p>
+                </div>
+                <div class="chat-header-meta">
+                    <div id="chatStatus" class="conv-status status-new">New</div>
+                    <div id="chatSource" style="margin-top:4px;">via Instagram DM</div>
+                </div>
+            </div>
+
+            <div class="chat-messages" id="chatMessages">
+                <!-- Messages populated by JS -->
+            </div>
+
+            <div class="reply-box">
+                <textarea class="reply-input" id="replyInput" placeholder="Type your reply..." rows="1"></textarea>
+                <button class="btn-send" id="btnSend" onclick="sendReply()">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Panel -->
+    <div class="contact-panel" id="contactPanel" style="display:none">
+        <h4>Contact Details</h4>
+        <div class="contact-field">
+            <label>Instagram</label>
+            <span id="contactIg">—</span>
+        </div>
+        <div class="contact-field">
+            <label>Instagram ID</label>
+            <span id="contactIgId">—</span>
+        </div>
+        <div class="contact-field">
+            <label>Name</label>
+            <span id="contactName">—</span>
+        </div>
+        <div class="contact-field">
+            <label>CRM Status</label>
+            <span id="contactCRM">—</span>
+        </div>
+
+        <h4 style="margin-top:24px;">Classification</h4>
+        <div class="contact-field">
+            <label>Request Type</label>
+            <span id="contactType">—</span>
+        </div>
+        <div class="contact-field">
+            <label>Priority</label>
+            <span id="contactPriority">—</span>
+        </div>
+        <div class="contact-field">
+            <label>Tags</label>
+            <div id="contactTags">—</div>
+        </div>
+
+        <h4 style="margin-top:24px;">Telegram Notification</h4>
+        <div class="contact-field">
+            <label>Sent to</label>
+            <span id="contactTelegram">—</span>
+        </div>
+    </div>
+</div>
+
+<!-- Toast Notification -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ============================================
+// Facebook SDK Integration
+// ============================================
+var FB_APP_ID = '987255807812535';
+var FB_API_VERSION = 'v21.0';
+
+// Load Facebook SDK
+(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = 'https://connect.facebook.net/en_US/sdk.js';
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+window.fbAsyncInit = function() {
+    FB.init({
+        appId: FB_APP_ID,
+        cookie: true,
+        xfbml: true,
+        version: FB_API_VERSION
+    });
+
+    // Check if already logged in
+    FB.getLoginStatus(function(response) {
+        if (response.status === 'connected') {
+            onFacebookLogin(response);
+        }
+    });
+};
+
+function startFacebookLogin() {
+    FB.login(function(response) {
+        if (response.authResponse) {
+            onFacebookLogin(response);
+        }
+    }, {
+        scope: 'instagram_business_basic,instagram_business_manage_messages,pages_show_list,pages_read_engagement',
+        config_id: '',
+        auth_type: 'rerequest'
+    });
+}
+
+function onFacebookLogin(response) {
+    var accessToken = response.authResponse.accessToken;
+
+    // Get user pages
+    FB.api('/me/accounts', { access_token: accessToken }, function(pagesResponse) {
+        if (pagesResponse && pagesResponse.data && pagesResponse.data.length > 0) {
+            var page = pagesResponse.data[0];
+            var pageAccessToken = page.access_token;
+            var pageId = page.id;
+
+            // Get Instagram Business Account
+            FB.api('/' + pageId + '?fields=instagram_business_account', {
+                access_token: pageAccessToken
+            }, function(igResponse) {
+                if (igResponse && igResponse.instagram_business_account) {
+                    var igAccountId = igResponse.instagram_business_account.id;
+
+                    // Get IG account info
+                    FB.api('/' + igAccountId + '?fields=username,profile_picture_url,name,id', {
+                        access_token: pageAccessToken
+                    }, function(profile) {
+                        showDashboard({
+                            igId: igAccountId,
+                            username: profile.username || 'firstclass_travel',
+                            avatar: profile.profile_picture_url || '',
+                            name: profile.name || 'First Class',
+                            pageAccessToken: pageAccessToken
+                        });
+                    });
+
+                    // Fetch real conversations
+                    fetchConversations(igAccountId, pageAccessToken);
+                } else {
+                    // No IG account linked — show with demo data
+                    showDashboard({
+                        igId: '0',
+                        username: 'firstclass_travel',
+                        avatar: '',
+                        name: 'First Class'
+                    });
+                    loadDemoConversations();
+                }
+            });
+        } else {
+            showDashboard({
+                igId: '0',
+                username: 'firstclass_travel',
+                avatar: '',
+                name: 'First Class'
+            });
+            loadDemoConversations();
+        }
+    });
+}
+
+function fetchConversations(igAccountId, pageAccessToken) {
+    FB.api('/' + igAccountId + '/conversations', {
+        access_token: pageAccessToken,
+        fields: 'participants,messages{message,from,created_time}',
+        platform: 'instagram'
+    }, function(convResponse) {
+        if (convResponse && convResponse.data && convResponse.data.length > 0) {
+            renderRealConversations(convResponse.data, pageAccessToken);
+        } else {
+            loadDemoConversations();
+        }
+    });
+}
+
+function renderRealConversations(conversations, token) {
+    appState.conversations = conversations.map(function(conv, i) {
+        var msgs = conv.messages ? conv.messages.data : [];
+        var lastMsg = msgs[0] || {};
+        var participant = conv.participants ? conv.participants.data[0] : {};
+        return {
+            id: conv.id,
+            name: participant.name || 'Instagram User',
+            username: participant.username || 'user_' + (i + 1),
+            igId: participant.id || '',
+            avatar: '',
+            lastMessage: lastMsg.message || '',
+            time: lastMsg.created_time ? new Date(lastMsg.created_time).toLocaleTimeString('en', {hour:'2-digit',minute:'2-digit'}) : '',
+            status: 'open',
+            messages: msgs.map(function(m) {
+                return {
+                    text: m.message,
+                    from: m.from ? m.from.name : 'Unknown',
+                    time: m.created_time ? new Date(m.created_time).toLocaleTimeString('en', {hour:'2-digit',minute:'2-digit'}) : '',
+                    incoming: m.from && m.from.id !== participant.id
+                };
+            }),
+            classification: { type: 'Travel inquiry', priority: 'Normal', tags: ['instagram'] },
+            crm: 'Not in CRM',
+            telegramSent: false
+        };
+    });
+    renderConversationList();
+}
+
+// ============================================
+// App State & Demo Data
+// ============================================
+var appState = {
+    loggedIn: false,
+    selectedConv: null,
+    conversations: [],
+    pageAccessToken: null
+};
+
+function loadDemoConversations() {
+    appState.conversations = [
+        {
+            id: 'conv_1',
+            name: 'Alexei Petrov',
+            username: 'alexei_petrov',
+            igId: '17841400123456',
+            avatar: '',
+            lastMessage: 'Hi! I need flights to Istanbul for a business trip, 3 people, May 15-20',
+            time: '10:32',
+            status: 'new',
+            unread: true,
+            messages: [
+                { text: 'Hi! I need flights to Istanbul for a business trip, 3 people, May 15-20. Can you help with corporate rates?', from: 'Alexei Petrov', time: '10:32', incoming: true }
+            ],
+            classification: { type: 'Corporate travel', priority: 'High', tags: ['business', 'flights', 'istanbul'] },
+            crm: 'Not found in U-ON',
+            telegramSent: true,
+            telegramTo: 'Team chat + Dasha'
+        },
+        {
+            id: 'conv_2',
+            name: 'Marina Kovaleva',
+            username: 'marina.kovaleva',
+            igId: '17841400789012',
+            avatar: '',
+            lastMessage: 'Hello! We talked about Maldives last month...',
+            time: '09:15',
+            status: 'open',
+            unread: false,
+            messages: [
+                { text: 'Hello! We talked about Maldives last month. Is the offer still valid? We want to book for June.', from: 'Marina Kovaleva', time: '09:15', incoming: true },
+                { text: 'Hi Marina! Yes, the offer is still available. Let me check the latest prices for June and get back to you.', from: 'First Class', time: '09:28', incoming: false }
+            ],
+            classification: { type: 'Beach vacation', priority: 'Medium', tags: ['maldives', 'returning client'] },
+            crm: 'Found in U-ON (ID: 4521) — Returning client, last trip: Turkey 2025',
+            telegramSent: true,
+            telegramTo: 'Dasha (personal)'
+        },
+        {
+            id: 'conv_3',
+            name: 'Viktor Sokolov',
+            username: 'vik.sokolov.official',
+            igId: '17841400345678',
+            avatar: '',
+            lastMessage: 'Need a visa to UK urgently, can you help?',
+            time: 'Yesterday',
+            status: 'new',
+            unread: true,
+            messages: [
+                { text: 'Need a visa to UK urgently, can you help? Departure in 2 weeks.', from: 'Viktor Sokolov', time: 'Yesterday 18:45', incoming: true }
+            ],
+            classification: { type: 'Visa support', priority: 'Urgent', tags: ['visa', 'uk', 'urgent'] },
+            crm: 'Not found in U-ON',
+            telegramSent: true,
+            telegramTo: 'Team chat'
+        }
+    ];
+    renderConversationList();
+}
+
+// ============================================
+// UI Rendering
+// ============================================
+function showDashboard(account) {
+    appState.loggedIn = true;
+    document.getElementById('loginScreen').style.display = 'none';
+    document.getElementById('appHeader').style.display = 'flex';
+    document.getElementById('dashboard').classList.add('active');
+    document.getElementById('connectedAccount').textContent = '@' + account.username;
+
+    if (account.avatar) {
+        var avatarEl = document.getElementById('accountAvatar');
+        avatarEl.src = account.avatar;
+        avatarEl.style.display = 'block';
+    }
+
+    showToast('Connected: @' + account.username + ' (ID: ' + account.igId + ')');
+}
+
+function renderConversationList() {
+    var list = document.getElementById('convList');
+    var html = '';
+
+    appState.conversations.forEach(function(conv, index) {
+        var initial = conv.name.charAt(0).toUpperCase();
+        var statusClass = conv.status === 'new' ? 'status-new' : (conv.status === 'replied' ? 'status-replied' : 'status-open');
+        var statusLabel = conv.status.charAt(0).toUpperCase() + conv.status.slice(1);
+        var unreadClass = conv.unread ? ' unread' : '';
+
+        html += '<div class="conversation-item' + unreadClass + '" onclick="selectConversation(' + index + ')" id="conv-' + index + '">'
+            + '<div class="conv-avatar">' + initial + '</div>'
+            + '<div class="conv-info">'
+            + '<div class="conv-name">' + conv.name + ' <span class="conv-time">' + conv.time + '</span></div>'
+            + '<div class="conv-preview">' + conv.lastMessage + '</div>'
+            + '<span class="conv-status ' + statusClass + '">' + statusLabel + '</span>'
+            + '</div></div>';
+    });
+
+    list.innerHTML = html;
+    document.getElementById('convCount').textContent = appState.conversations.length;
+}
+
+function selectConversation(index) {
+    appState.selectedConv = index;
+    var conv = appState.conversations[index];
+
+    // Update sidebar active state
+    var items = document.querySelectorAll('.conversation-item');
+    items.forEach(function(item) { item.classList.remove('active'); });
+    document.getElementById('conv-' + index).classList.add('active');
+    document.getElementById('conv-' + index).classList.remove('unread');
+
+    // Show chat
+    document.getElementById('emptyState').style.display = 'none';
+    var chatEl = document.getElementById('activeChat');
+    chatEl.style.display = 'flex';
+
+    // Header
+    document.getElementById('chatAvatar').textContent = conv.name.charAt(0);
+    document.getElementById('chatName').textContent = conv.name;
+    document.getElementById('chatIgHandle').textContent = '@' + conv.username;
+
+    var statusEl = document.getElementById('chatStatus');
+    statusEl.textContent = conv.status.charAt(0).toUpperCase() + conv.status.slice(1);
+    statusEl.className = 'conv-status status-' + conv.status;
+
+    // Messages
+    var msgsHtml = '<div class="message-system">Conversation started via Instagram DM</div>';
+    conv.messages.forEach(function(msg) {
+        var cls = msg.incoming ? 'message-incoming' : 'message-outgoing';
+        msgsHtml += '<div class="message ' + cls + '">'
+            + msg.text
+            + '<div class="message-time">' + msg.time + '</div>'
+            + '</div>';
+    });
+    document.getElementById('chatMessages').innerHTML = msgsHtml;
+
+    // Scroll to bottom
+    var msgsContainer = document.getElementById('chatMessages');
+    msgsContainer.scrollTop = msgsContainer.scrollHeight;
+
+    // Contact panel
+    var panel = document.getElementById('contactPanel');
+    panel.style.display = 'block';
+    document.getElementById('contactIg').textContent = '@' + conv.username;
+    document.getElementById('contactIgId').textContent = conv.igId;
+    document.getElementById('contactName').textContent = conv.name;
+    document.getElementById('contactCRM').textContent = conv.crm || '—';
+    document.getElementById('contactType').textContent = conv.classification.type;
+    document.getElementById('contactPriority').textContent = conv.classification.priority;
+
+    var tagsHtml = '';
+    conv.classification.tags.forEach(function(tag) {
+        tagsHtml += '<span class="tag">' + tag + '</span>';
+    });
+    document.getElementById('contactTags').innerHTML = tagsHtml;
+    document.getElementById('contactTelegram').textContent = conv.telegramSent ? (conv.telegramTo || 'Sent') : 'Not sent';
+
+    // Focus reply
+    document.getElementById('replyInput').focus();
+}
+
+function sendReply() {
+    if (appState.selectedConv === null) return;
+
+    var input = document.getElementById('replyInput');
+    var text = input.value.trim();
+    if (!text) return;
+
+    var conv = appState.conversations[appState.selectedConv];
+
+    // Add message to UI
+    var msgsContainer = document.getElementById('chatMessages');
+    var now = new Date();
+    var timeStr = now.toLocaleTimeString('en', { hour: '2-digit', minute: '2-digit' });
+
+    var msgDiv = document.createElement('div');
+    msgDiv.className = 'message message-outgoing';
+    msgDiv.innerHTML = text + '<div class="message-time">' + timeStr + ' &#10003;</div>';
+    msgsContainer.appendChild(msgDiv);
+    msgsContainer.scrollTop = msgsContainer.scrollHeight;
+
+    // Update conversation state
+    conv.messages.push({ text: text, from: 'First Class', time: timeStr, incoming: false });
+    conv.status = 'replied';
+    conv.lastMessage = text;
+    conv.time = timeStr;
+
+    // If we have real API access, send via Instagram API
+    if (appState.pageAccessToken && conv.id && conv.id.indexOf('conv_') !== 0) {
+        sendInstagramReply(conv.igId, text, appState.pageAccessToken);
+    }
+
+    // Update sidebar
+    renderConversationList();
+    document.getElementById('conv-' + appState.selectedConv).classList.add('active');
+
+    // Update status in header
+    var statusEl = document.getElementById('chatStatus');
+    statusEl.textContent = 'Replied';
+    statusEl.className = 'conv-status status-replied';
+
+    // Clear input
+    input.value = '';
+
+    showToast('Reply sent via Instagram DM');
+}
+
+function sendInstagramReply(recipientId, messageText, accessToken) {
+    // Send message via Instagram Messaging API
+    FB.api('/me/messages', 'POST', {
+        recipient: { id: recipientId },
+        message: { text: messageText },
+        access_token: accessToken
+    }, function(response) {
+        if (response && !response.error) {
+            console.log('Message sent successfully:', response);
+        } else {
+            console.error('Failed to send message:', response);
+        }
+    });
+}
+
+// ============================================
+// Utilities
+// ============================================
+function handleLogout() {
+    FB.logout(function() {
+        appState.loggedIn = false;
+        appState.selectedConv = null;
+        appState.conversations = [];
+        document.getElementById('loginScreen').style.display = 'flex';
+        document.getElementById('appHeader').style.display = 'none';
+        document.getElementById('dashboard').classList.remove('active');
+    });
+}
+
+function showToast(message) {
+    var toast = document.getElementById('toast');
+    toast.innerHTML = '<span style="font-size:16px;">&#10003;</span> ' + message;
+    toast.classList.add('show');
+    setTimeout(function() { toast.classList.remove('show'); }, 3000);
+}
+
+// Textarea auto-resize
+document.addEventListener('DOMContentLoaded', function() {
+    var textarea = document.getElementById('replyInput');
+    if (textarea) {
+        textarea.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = Math.min(this.scrollHeight, 120) + 'px';
+        });
+        textarea.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendReply();
+            }
+        });
+    }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Анкета — Паша | First Class</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>:root { --accent: #11998e; --accent-secondary: #38ef7d; }</style>
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <div class="logo">FIRST CLASS</div>
+            <div class="tagline">Аудит процессов</div>
+        </header>
+
+        <main class="main">
+            <div class="form-header">
+                <a href="../index.html" style="color: var(--text-muted); text-decoration: none; font-size: 14px;">← Назад</a>
+                <h1 style="margin-top: 15px;">👨‍💼 Анкета: Паша (собственник)</h1>
+                <p>B2B, корпоративные клиенты, стратегия и приоритеты</p>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill" style="width: 20%"></div>
+            </div>
+            <div class="progress-text" id="progress-text">Раздел 1 из 5</div>
+
+            <div id="form-container"></div>
+
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" id="btn-prev" style="display: none;">← Назад</button>
+                <button class="btn btn-primary" id="btn-next">Далее →</button>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>🔒 Ваши ответы конфиденциальны</p>
+        </footer>
+    </div>
+
+    <script src="../js/form.js"></script>
+    <script>
+        const formConfig = {
+            role: 'pasha',
+            sections: [
+                {
+                    title: 'Клиентская база',
+                    questions: [
+                        {
+                            type: 'text',
+                            text: 'Сколько у вас активных корпоративных клиентов?',
+                            placeholder: 'Количество компаний...'
+                        },
+                        {
+                            type: 'text',
+                            text: 'Сколько VIP-клиентов (физлица с высоким чеком)?',
+                            placeholder: 'Количество...'
+                        },
+                        {
+                            type: 'checkbox',
+                            text: 'Какие типы компаний чаще всего работают с вами?',
+                            options: ['IT-компании', 'Производство', 'Торговля', 'Банки/финансы', 'Госструктуры', 'Строительство', 'Логистика']
+                        },
+                        {
+                            type: 'checkbox',
+                            text: 'Как нашли своих корпоративных клиентов?',
+                            options: ['Личные связи', 'Рекомендации', 'Холодные звонки', 'Тендеры (icetrade.by)', 'Бизнес-мероприятия']
+                        },
+                        {
+                            type: 'radio',
+                            text: 'Где хранится информация о клиентах?',
+                            options: ['В телефоне', 'Excel/Google Sheets', 'CRM', 'В голове']
+                        }
+                    ]
+                },
+                {
+                    title: 'Услуги и финансы',
+                    questions: [
+                        {
+                            type: 'checkbox',
+                            text: 'Какие услуги оказываете корпоративным клиентам?',
+                            options: ['Командировки (авиа+отель)', 'MICE (конференции)', 'Визовая поддержка', 'Трансферы', 'VIP-туры для руководства', 'Поощрительные туры']
+                        },
+                        {
+                            type: 'radio',
+                            text: 'Средний чек на командировку (1 человек)?',
+                            options: ['До $300', '$300-500', '$500-800', '$800-1500', 'Более $1500']
+                        },
+                        {
+                            type: 'radio',
+                            text: 'Средний чек на VIP-тур?',
+                            options: ['До $1000', '$1000-2000', '$2000-5000', '$5000-10000', 'Более $10000']
+                        },
+                        {
+                            type: 'radio',
+                            text: 'Сколько командировок делает один клиент в год?',
+                            options: ['Менее 10', '10-30', '30-50', '50-100', 'Более 100']
+                        },
+                        {
+                            type: 'radio',
+                            text: 'Какая обычно комиссия?',
+                            options: ['До 5%', '5-8%', '8-10%', '10-15%', 'Договорная']
+                        }
+                    ]
+                },
+                {
+                    title: 'VIP-сегмент',
+                    questions: [
+                        {
+                            type: 'checkbox',
+                            text: 'Какие доп. услуги заказывают VIP?',
+                            options: ['Трансферы на премиум-авто', 'Частные туры', 'Консьерж-сервис', 'Бизнес-джеты', 'Особые отели/виллы']
+                        },
+                        {
+                            type: 'radio',
+                            text: 'Работаете ли с iTravelClub (трансферы)?',
+                            options: ['Да, регулярно', 'Иногда', 'Нет']
+                        },
+                        {
+                            type: 'textarea',
+                            text: 'Чем отличается работа с VIP от обычных клиентов?',
+                            placeholder: 'Опишите особенности...'
+                        }
+                    ]
+                },
+                {
+                    title: 'Проблемы и рост',
+                    questions: [
+                        {
+                            type: 'table',
+                            text: 'Что занимает больше всего времени?',
+                            rows: ['Поиск вариантов', 'Переписка', 'Документы', 'Согласования', 'Отчетность'],
+                            placeholder: 'ч/неделю'
+                        },
+                        {
+                            type: 'checkbox',
+                            text: 'Что мешает привлекать больше корп. клиентов?',
+                            options: ['Нет времени на продажи', 'Нет маркетинговых материалов', 'Сложно выходить на ЛПР', 'Конкуренция', 'Не знаю где искать']
+                        },
+                        {
+                            type: 'radio',
+                            text: 'Участвуете ли в тендерах (icetrade.by)?',
+                            options: ['Да, регулярно', 'Иногда', 'Нет, но хотел бы', 'Нет, не интересно']
+                        },
+                        {
+                            type: 'radio',
+                            text: 'Есть ли коммерческое предложение для компаний?',
+                            options: ['Да, актуальное', 'Есть, но устаревшее', 'Нет']
+                        }
+                    ]
+                },
+                {
+                    title: 'Стратегия и приоритеты',
+                    questions: [
+                        {
+                            type: 'table',
+                            text: 'Какую долю выручки приносит каждое направление?',
+                            rows: ['Туры (пакетные)', 'Авиабилеты', 'Корп. клиенты (командировки)', 'VIP/индивидуальные'],
+                            placeholder: '____%'
+                        },
+                        {
+                            type: 'radio',
+                            text: 'Почему корп. сегмент НЕ растёт?',
+                            options: ['Нет времени искать клиентов', 'Не умеем продавать B2B', 'Конкуренты дешевле/быстрее', 'Нет понятного предложения', 'Клиенты не знают о нас', 'Другое']
+                        },
+                        {
+                            type: 'checkbox',
+                            text: 'Что было бы САМЫМ полезным для роста B2B?',
+                            options: ['Быстрые ответы на запросы', 'CRM для ведения клиентов', 'Лендинг для корп. клиентов', 'Продажник (человек)', 'Понятное КП/прайс', 'Автоматизация рутины']
+                        },
+                        {
+                            type: 'radio',
+                            text: 'Главная цель на год?',
+                            options: ['Увеличить продажи туров', 'Развить корп. сегмент', 'Автоматизировать рутину', 'Нанять людей', 'Увеличить прибыль']
+                        },
+                        {
+                            type: 'table',
+                            text: 'Расставьте приоритеты (1 = самое важное)',
+                            rows: ['Рост туров', 'Рост корп. клиентов', 'Автоматизация', 'Найм', 'Маркетинг'],
+                            placeholder: '1-5'
+                        },
+                        {
+                            type: 'textarea',
+                            text: 'Если бы была волшебная палочка — что бы исправили в бизнесе?',
+                            placeholder: 'Опишите идеальную картину...'
+                        },
+                        {
+                            type: 'text',
+                            text: 'Сколько корп. клиентов хотите через год?',
+                            placeholder: 'Количество...'
+                        }
+                    ]
+                }
+            ]
+        };
+
+        new AuditForm(formConfig);
+    </script>
+</body>
+</html>
