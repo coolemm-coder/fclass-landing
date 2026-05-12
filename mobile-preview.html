@@ -184,31 +184,34 @@ body.menu-open{overflow:hidden}
 .ymaps-info .ttl{font-size:14px;font-weight:500;color:var(--primary);line-height:1.2}
 .ymaps-info .addr{font-size:12px;color:var(--gray);line-height:1.3}
 .ymaps-info .meta{font-size:11px;color:var(--accent);font-weight:500;letter-spacing:.3px;margin-top:2px}
-.footer{background:var(--primary);color:#a8b3bf;padding:36px 14px calc(96px + env(safe-area-inset-bottom));font-size:13px;border-top:0.5px solid rgba(201,169,98,.15)}
+.footer{background:var(--primary);color:#a8b3bf;padding:40px 16px calc(96px + env(safe-area-inset-bottom));font-size:13px;border-top:0.5px solid rgba(201,169,98,.15)}
 .footer a{color:#c8d0d9;transition:color .2s var(--ease)}
-.footer a:active{color:var(--accent)}
-.footer-top{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:22px;padding-bottom:22px;border-bottom:0.5px solid rgba(255,255,255,.08)}
-.footer-top img{height:56px;width:auto;filter:brightness(1.05);flex-shrink:0}
-.footer-tag{font-size:11px;color:#7d8893;line-height:1.4;text-align:right}
-.footer-tag b{color:var(--accent);font-weight:500;display:block;margin-bottom:2px;letter-spacing:.5px;text-transform:uppercase;font-size:10px}
-.footer-cols{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:22px}
-.footer-col h4{font-size:10px;letter-spacing:1.8px;text-transform:uppercase;color:var(--accent);font-weight:500;margin:0 0 10px}
-.footer-col ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+.footer a:active{color:var(--accent-light)}
+.footer-brand{text-align:center;margin-bottom:28px;padding-bottom:28px;border-bottom:0.5px solid rgba(255,255,255,.08)}
+.footer-brand img{height:48px;width:auto;margin:0 auto 10px;filter:brightness(1.05)}
+.footer-tag{font-size:12px;color:#7d8893;margin:0;letter-spacing:.2px}
+.footer-cols{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:28px}
+.footer-col h4{font-size:10px;letter-spacing:1.8px;text-transform:uppercase;color:var(--accent);font-weight:500;margin:0 0 12px}
+.footer-col ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:9px}
+.footer-col li{font-size:13px;color:#a8b3bf;line-height:1.3}
 .footer-col a{font-size:13px;color:#c8d0d9}
 .footer-col a:active{color:var(--accent-light)}
-.footer-certs{margin-bottom:22px;padding:14px;background:rgba(255,255,255,.03);border:0.5px solid rgba(201,169,98,.15);border-radius:10px}
-.footer-certs .ttl{font-size:10px;letter-spacing:1.8px;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:6px}
-.footer-certs .docs{font-size:12px;color:#a8b3bf;line-height:1.6}
-.footer-social{display:flex;gap:8px;justify-content:center;margin-bottom:20px}
-.footer-social a{width:38px;height:38px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,.06);border:0.5px solid rgba(255,255,255,.12);color:#fff;transition:background .2s var(--ease),transform .15s var(--ease)}
+.footer-certs{display:flex;flex-direction:column;gap:8px;margin-bottom:24px;padding-bottom:24px;border-bottom:0.5px solid rgba(255,255,255,.08)}
+.cert-link{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;background:rgba(255,255,255,.03);border:0.5px solid rgba(201,169,98,.15);font-size:12px;color:#c8d0d9;line-height:1.35;transition:background .2s var(--ease),transform .15s var(--ease)}
+.cert-link:active{background:rgba(201,169,98,.10);transform:scale(.99)}
+.cert-link svg{width:16px;height:16px;stroke:var(--accent);flex-shrink:0}
+.footer-social{display:flex;gap:10px;justify-content:center;margin-bottom:22px}
+.footer-social a{width:40px;height:40px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,.06);border:0.5px solid rgba(255,255,255,.12);color:#fff;transition:background .2s var(--ease),transform .15s var(--ease),border-color .2s var(--ease)}
 .footer-social a:active{transform:scale(.9)}
-.footer-social a.wa:active{background:#25D366}
-.footer-social a.tg:active{background:#0088cc}
+.footer-social a.wa:active{background:#25D366;border-color:#25D366}
+.footer-social a.tg:active{background:#0088cc;border-color:#0088cc}
 .footer-social svg{width:18px;height:18px;fill:currentColor}
-.footer-bottom{text-align:center;padding-top:18px;border-top:0.5px solid rgba(255,255,255,.06);font-size:11px;color:#7d8893;line-height:1.6}
-.footer-bottom a{color:var(--accent-light);font-weight:500}
-.footer-bottom .row{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:6px}
-.footer-bottom .dev{font-size:10px;color:#5a6d7e;margin-top:10px;letter-spacing:.3px}
+.footer-bottom{text-align:center;padding-top:20px;border-top:0.5px solid rgba(255,255,255,.06);font-size:11px;color:#7d8893;line-height:1.7}
+.footer-bottom a{color:#c8d0d9}
+.footer-bottom a:active{color:var(--accent)}
+.footer-bottom .row{display:inline-flex;align-items:center;gap:8px;margin-top:6px;flex-wrap:wrap;justify-content:center}
+.footer-bottom .sep{opacity:.4}
+.footer-bottom .dev{font-size:10px;color:#5a6d7e;margin-top:10px}
 .footer-bottom .dev a{color:var(--accent);text-decoration:none}
 .sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(12,24,37,.96);backdrop-filter:blur(12px);padding:10px 12px calc(10px + env(safe-area-inset-bottom));display:flex;gap:8px;border-top:0.5px solid var(--line-dark);width:100%;margin:0 auto}
 @media (min-width:720px){.sticky-cta{max-width:720px}}
@@ -280,7 +283,7 @@ body.menu-open{overflow:hidden}
         <span class="arr">→</span>
       </a>
     </div>
-    <div class="drawer-footer">пн–пт, 09:00–19:00 · Минск, пр. Победителей 11<br>© 2018–2026 · УП «Ферст Класс»</div>
+    <div class="drawer-footer">пн–пт, 09:00–19:00 · Минск, пр. Победителей 11<br>© 2018–2026 First Class Travel</div>
   </aside>
 
   <section class="hero">
@@ -406,12 +409,9 @@ body.menu-open{overflow:hidden}
   </section>
 
   <footer class="footer">
-    <div class="footer-top">
+    <div class="footer-brand">
       <img src="/logo.png" alt="First Class">
-      <div class="footer-tag">
-        <b>С 2018 года</b>
-        Авиакасса GDS<br>+ командировки B2B
-      </div>
+      <p class="footer-tag">Авиакасса и командировки в Минске · с 2018</p>
     </div>
 
     <div class="footer-cols">
@@ -422,26 +422,29 @@ body.menu-open{overflow:hidden}
           <li><a href="/visa-support/">Визовая поддержка</a></li>
           <li><a href="/concierge/">Консьерж 24/7</a></li>
           <li><a href="/komandirovochnye-kalkulyator/">Калькулятор</a></li>
+          <li><a href="/blog/">Блог</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Компания</h4>
+        <h4>Контакты</h4>
         <ul>
-          <li><a href="/blog/">Блог</a></li>
-          <li><a href="#services">Все услуги</a></li>
-          <li><a href="#contact">Контакты</a></li>
           <li><a href="tel:+375447725266">+375 44 772-52-66</a></li>
+          <li><a href="mailto:marketing@fclass.by">marketing@fclass.by</a></li>
+          <li>Пн–Пт: 9:00–19:00</li>
+          <li>Минск, пр. Победителей 11</li>
         </ul>
       </div>
     </div>
 
     <div class="footer-certs">
-      <div class="ttl">Документы</div>
-      <div class="docs">
-        Аккредитованный агент Belavia<br>
-        Сертификат Департамента авиации РБ<br>
-        УНП 193260185
-      </div>
+      <a class="cert-link" href="/cert-aviation.pdf" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+        <span>Сертификат авиационного агентства № СА-94</span>
+      </a>
+      <a class="cert-link" href="/cert-registration.pdf" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/></svg>
+        <span>Свидетельство о регистрации ООО «Первый класс»</span>
+      </a>
     </div>
 
     <div class="footer-social">
@@ -457,13 +460,13 @@ body.menu-open{overflow:hidden}
     </div>
 
     <div class="footer-bottom">
-      © 2018–2026 · УП «Ферст Класс»<br>
-      УНП 193260185 · Минск, пр. Победителей 11
+      © 2018–2026 First Class Travel · ООО «Первый класс» · УНП 193582943
       <div class="row">
         <a href="/privacy/">Политика конфиденциальности</a>
+        <span class="sep">·</span>
         <a href="/sitemap.xml">Карта сайта</a>
       </div>
-      <div class="dev">Дизайн и разработка — <a href="https://landingpro.by" target="_blank" rel="noopener">LandingPro</a></div>
+      <div class="dev">Разработка — <a href="https://landingpro.by" target="_blank" rel="noopener">LandingPro.by</a></div>
     </div>
   </footer>
 
