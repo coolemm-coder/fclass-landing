@@ -12,7 +12,7 @@
 <meta name="yandex-verification" content="4e81328b8fa39540" />
 <link rel="canonical" href="https://fclass.by/">
 <meta property="og:title" content="Авиабилеты и командировки в Минске — авиакасса GDS | First Class">
-<meta property="og:description" content="Авиакасса GDS в Минске: 5 GDS-систем, 400+ авиакомпаний, билеты в любую точку мира.">
+<meta property="og:description" content="Авиакасса GDS в Минске: 5 GDS-систем, 400+ авиакомпаний.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://fclass.by/">
 <meta property="og:image" content="https://fclass.by/hero-bg.jpg">
@@ -50,7 +50,7 @@ button{font:inherit;cursor:pointer;border:0;background:transparent;color:inherit
 .section p.lead{color:var(--gray);font-size:15px;margin:0 0 20px}
 .nav{position:sticky;top:0;z-index:50;background:rgba(12,24,37,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:14px 12px;border-bottom:0.5px solid var(--line-dark)}
 .nav .logo{display:inline-flex;align-items:center;gap:8px;position:relative;overflow:hidden;border-radius:4px;padding:2px}
-.nav .logo img{height:38px;width:auto;display:block;filter:brightness(1.05);animation:logoIn .7s var(--ease) both}
+.nav .logo img{height:56px;width:auto;display:block;filter:brightness(1.05);animation:logoIn .7s var(--ease) both}
 .nav .logo::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.35) 50%,transparent 70%);pointer-events:none;animation:logoShine 3.2s ease-in-out 1.2s 1}
 @keyframes logoIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
 @keyframes logoShine{from{left:-60%}to{left:160%}}
@@ -174,28 +174,21 @@ body.menu-open{overflow:hidden}
 .contact-meta{display:grid;grid-template-columns:auto 1fr;gap:10px 14px;margin-top:24px;padding-top:24px;border-top:0.5px solid var(--line-dark);font-size:13px}
 .contact-meta .k{color:#7d8893}
 .contact-meta .v{color:#fff;font-weight:500}
-.map-wrap{padding:0 10px 40px;background:#fff}
-.map-card{position:relative;background:var(--primary);border-radius:var(--radius-lg);overflow:hidden;border:0.5px solid var(--line-dark)}
-.map-preview{height:160px;position:relative;background:radial-gradient(circle at 30% 40%,rgba(201,169,98,.12) 0,transparent 50%),radial-gradient(circle at 70% 70%,rgba(26,58,92,.4) 0,transparent 50%),linear-gradient(135deg,#0c1825,#1a3a5c);overflow:hidden}
-.map-preview::before{content:"";position:absolute;inset:0;background-image:linear-gradient(0deg,rgba(201,169,98,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(201,169,98,.08) 1px,transparent 1px);background-size:24px 24px;opacity:.6}
-.map-pin{position:absolute;top:50%;left:50%;width:44px;height:44px;border-radius:50% 50% 50% 0;background:var(--accent);transform:translate(-50%,-100%) rotate(-45deg);box-shadow:0 8px 24px rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center}
-.map-pin::before{content:"";position:absolute;width:14px;height:14px;border-radius:50%;background:var(--primary)}
-.map-info{padding:18px 16px;background:rgba(255,255,255,.02);border-top:0.5px solid rgba(201,169,98,.15)}
-.map-info .ttl{font-family:var(--font-serif);font-size:17px;font-weight:700;color:#fff;margin-bottom:4px}
-.map-info .addr{font-size:13px;color:#a8b3bf;margin-bottom:14px;display:flex;align-items:center;gap:6px}
-.map-info .addr::before{content:"📍";font-size:13px}
-.map-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.map-actions a{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:11px 12px;border-radius:10px;font-size:13px;font-weight:500;transition:transform .15s var(--ease),background .2s var(--ease);min-height:42px}
-.map-actions a:active{transform:scale(.97)}
-.map-actions .ya{background:var(--accent);color:var(--primary)}
-.map-actions .ya:active{background:var(--accent-light)}
-.map-actions .go{background:rgba(255,255,255,.06);color:#fff;border:0.5px solid rgba(255,255,255,.2)}
-.map-actions .go:active{background:rgba(255,255,255,.12)}
+.ymaps-wrap{padding:0 10px 40px;background:#fff}
+.ymaps-badge{display:flex;align-items:center;gap:12px;background:#fff;border:0.5px solid var(--line);border-radius:14px;padding:14px;transition:transform .15s var(--ease),border-color .2s var(--ease),box-shadow .2s var(--ease);box-shadow:0 2px 12px rgba(12,24,37,.05)}
+.ymaps-badge:active{transform:scale(.99);border-color:var(--accent);box-shadow:0 4px 20px rgba(201,169,98,.15)}
+.ymaps-logo{width:44px;height:44px;border-radius:11px;flex-shrink:0;background:#FC3F1D;display:flex;align-items:center;justify-content:center;position:relative;box-shadow:0 4px 12px rgba(252,63,29,.25)}
+.ymaps-logo svg{width:24px;height:24px;fill:#fff}
+.ymaps-logo::after{content:"";position:absolute;bottom:-2px;right:-2px;width:14px;height:14px;border-radius:50%;background:var(--accent);border:2px solid #fff}
+.ymaps-info{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.ymaps-info .ttl{font-size:14px;font-weight:500;color:var(--primary);line-height:1.2}
+.ymaps-info .addr{font-size:12px;color:var(--gray);line-height:1.3}
+.ymaps-info .meta{font-size:11px;color:var(--accent);font-weight:500;letter-spacing:.3px;margin-top:2px}
 .footer{background:var(--primary);color:#a8b3bf;padding:36px 14px calc(96px + env(safe-area-inset-bottom));font-size:13px;border-top:0.5px solid rgba(201,169,98,.15)}
 .footer a{color:#c8d0d9;transition:color .2s var(--ease)}
 .footer a:active{color:var(--accent)}
 .footer-top{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:22px;padding-bottom:22px;border-bottom:0.5px solid rgba(255,255,255,.08)}
-.footer-top img{height:42px;width:auto;filter:brightness(1.05);flex-shrink:0}
+.footer-top img{height:56px;width:auto;filter:brightness(1.05);flex-shrink:0}
 .footer-tag{font-size:11px;color:#7d8893;line-height:1.4;text-align:right}
 .footer-tag b{color:var(--accent);font-weight:500;display:block;margin-bottom:2px;letter-spacing:.5px;text-transform:uppercase;font-size:10px}
 .footer-cols{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:22px}
@@ -203,10 +196,9 @@ body.menu-open{overflow:hidden}
 .footer-col ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
 .footer-col a{font-size:13px;color:#c8d0d9}
 .footer-col a:active{color:var(--accent-light)}
-.footer-certs{display:flex;flex-direction:column;gap:6px;margin-bottom:22px;padding:14px;background:rgba(255,255,255,.03);border:0.5px solid rgba(201,169,98,.15);border-radius:10px}
+.footer-certs{margin-bottom:22px;padding:14px;background:rgba(255,255,255,.03);border:0.5px solid rgba(201,169,98,.15);border-radius:10px}
 .footer-certs .ttl{font-size:10px;letter-spacing:1.8px;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:6px}
-.footer-certs a{font-size:12px;color:#c8d0d9;display:inline-flex;align-items:center;gap:8px;padding:6px 0}
-.footer-certs a::before{content:"📄";font-size:14px}
+.footer-certs .docs{font-size:12px;color:#a8b3bf;line-height:1.6}
 .footer-social{display:flex;gap:8px;justify-content:center;margin-bottom:20px}
 .footer-social a{width:38px;height:38px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,.06);border:0.5px solid rgba(255,255,255,.12);color:#fff;transition:background .2s var(--ease),transform .15s var(--ease)}
 .footer-social a:active{transform:scale(.9)}
@@ -342,7 +334,7 @@ body.menu-open{overflow:hidden}
   <section class="steps-section">
     <p class="eyebrow">Как мы работаем</p>
     <h2>Командировка за <em>4 шага</em></h2>
-    <p class="lead">Ваше время — на бизнесе. Логистика — наша работа.</p>
+    <p class="lead">От заявки до закрывающих документов — полное сопровождение.</p>
     <div class="steps">
       <div class="step reveal"><div class="n">01</div><div class="body"><strong>Заявка</strong><span>Перезвоним за 15 минут</span></div></div>
       <div class="step reveal"><div class="n">02</div><div class="body"><strong>Подбор</strong><span>Лучшие варианты по цене и качеству</span></div></div>
@@ -400,21 +392,17 @@ body.menu-open{overflow:hidden}
     </div>
   </section>
 
-  <section class="map-wrap" aria-label="Адрес офиса">
-    <div class="map-card">
-      <div class="map-preview" aria-hidden="true"><div class="map-pin"></div></div>
-      <div class="map-info">
-        <div class="ttl">Офис First Class</div>
-        <div class="addr">Минск, пр. Победителей 11, оф. 12 · BC «Royal Plaza»</div>
-        <div class="map-actions">
-          <a class="ya" href="https://yandex.by/maps/157/minsk/?ll=27.548200%2C53.909200&mode=routes&rtext=~53.909200%2C27.548200&rtt=auto" target="_blank" rel="noopener">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 11 22 2 13 21 11 13 3 11"/></svg>
-            Маршрут
-          </a>
-          <a class="go" href="https://yandex.by/maps/157/minsk/?ll=27.548200%2C53.909200&mode=search&text=%D0%9C%D0%B8%D0%BD%D1%81%D0%BA%2C+%D0%BF%D1%80.+%D0%9F%D0%BE%D0%B1%D0%B5%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D0%B5%D0%B9+11&z=17" target="_blank" rel="noopener">На карте →</a>
-        </div>
-      </div>
-    </div>
+  <section class="ymaps-wrap" aria-label="Адрес офиса">
+    <a class="ymaps-badge" href="https://yandex.by/maps/157/minsk/?ll=27.548200%2C53.909200&mode=search&text=%D0%9C%D0%B8%D0%BD%D1%81%D0%BA%2C+%D0%BF%D1%80.+%D0%9F%D0%BE%D0%B1%D0%B5%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D0%B5%D0%B9+11&z=17" target="_blank" rel="noopener" aria-label="Открыть в Яндекс.Картах">
+      <span class="ymaps-logo" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M14.4 21h-2.2l3.4-9.4-5.8-9h2.6L19 11l-4.6 10zM5 21V3h2.2v18H5z"/></svg>
+      </span>
+      <span class="ymaps-info">
+        <span class="ttl">пр. Победителей 11, оф. 12</span>
+        <span class="addr">Минск · BC «Royal Plaza» · с 2018</span>
+        <span class="meta">ОТКРЫТЬ В ЯНДЕКС.КАРТАХ →</span>
+      </span>
+    </a>
   </section>
 
   <footer class="footer">
@@ -449,8 +437,11 @@ body.menu-open{overflow:hidden}
 
     <div class="footer-certs">
       <div class="ttl">Документы</div>
-      <a href="/cert-aviation.pdf" target="_blank" rel="noopener">Сертификат Департамента авиации РБ</a>
-      <a href="/cert-registration.pdf" target="_blank" rel="noopener">Свидетельство о регистрации</a>
+      <div class="docs">
+        Аккредитованный агент Belavia<br>
+        Сертификат Департамента авиации РБ<br>
+        УНП 193260185
+      </div>
     </div>
 
     <div class="footer-social">
