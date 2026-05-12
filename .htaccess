@@ -1,9 +1,17 @@
 # fclass.by .htaccess
-# Created 2026-04-22 to fix GSC Soft 404 warning (email from sc-noreply@google.com 2026-04-20)
-# Problem: blog/{post}/ trailing-slash URLs return stub index.html while canonical content lives at blog/{post}.html
-# Solution: server-level 301 redirect all trailing-slash blog URLs to their .html counterparts
+# Created 2026-04-22 to fix GSC Soft 404 warning
+# Updated 2026-05-12 — added UA-based mobile redirect to mobile-preview.html
 
 RewriteEngine On
+
+# === MOBILE USER-AGENT REWRITE (2026-05-12) ===
+# Mobile phones on / → silently serve mobile-preview.html (URL stays as /)
+# Tablets explicitly excluded (iPad, Android tablet) so they keep desktop UX
+RewriteCond %{HTTP_USER_AGENT} (iPhone|Android.*Mobile|Windows\ Phone|BlackBerry|Opera\ Mini|webOS) [NC]
+RewriteCond %{HTTP_USER_AGENT} !iPad [NC]
+RewriteCond %{REQUEST_URI} ^/$ [OR]
+RewriteCond %{REQUEST_URI} ^/index\.html$
+RewriteRule ^(index\.html)?$ /mobile-preview.html [L]
 
 # === BLOG STUB DIRECTORY REDIRECTS ===
 
