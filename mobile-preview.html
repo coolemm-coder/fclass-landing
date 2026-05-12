@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Авиабилеты и командировки в Минске — авиакасса GDS | First Class</title>
+<meta name="description" content="Авиакасса в Минске: билеты в любую точку мира через 5 GDS и 400+ авиакомпаний. Командировки под ключ, визы, документы для бухгалтерии.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary:#0c1825;--primary-light:#1a3a5c;--primary-dark:#060d14;--charcoal:#0c1825;
+  --accent:#c9a962;--accent-light:#dfc78a;--accent-glow:rgba(201,169,98,0.3);
+  --cream:#ffffff;--sand:#f7f8fa;--map-cream:#f7f5f0;--gray:#5a6d7e;--white:#ffffff;
+  --line:rgba(12,24,37,.08);--line-dark:rgba(255,255,255,.10);
+  --radius:12px;--radius-lg:18px;--ease:cubic-bezier(.16,1,.3,1);
+  --font-sans:'DM Sans',system-ui,-apple-system,sans-serif;
+  --font-serif:'Playfair Display',Georgia,serif;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{font-family:var(--font-sans);color:var(--primary);background:#fff;font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:transparent;color:inherit;padding:0}
+.shell{max-width:480px;margin:0 auto;background:#fff;position:relative;overflow-x:hidden}
+.section{padding:48px 20px}
+.eyebrow{font-size:11px;letter-spacing:2.6px;text-transform:uppercase;color:var(--accent);font-weight:500;margin:0 0 14px}
+.section h2{font-family:var(--font-serif);font-size:28px;line-height:1.15;font-weight:700;margin:0 0 14px;letter-spacing:-.01em}
+.section h2 em{color:var(--primary-light);font-style:italic;font-weight:600}
+.section p.lead{color:var(--gray);font-size:15px;margin:0 0 20px}
+.nav{position:sticky;top:0;z-index:50;background:rgba(12,24,37,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:0.5px solid var(--line-dark)}
+.nav .logo{display:inline-flex;align-items:center;gap:8px;position:relative;overflow:hidden;border-radius:4px;padding:2px}
+.nav .logo img{height:38px;width:auto;display:block;filter:brightness(1.05);animation:logoIn .7s var(--ease) both}
+.nav .logo::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.35) 50%,transparent 70%);pointer-events:none;animation:logoShine 3.2s ease-in-out 1.2s 1}
+@keyframes logoIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+@keyframes logoShine{from{left:-60%}to{left:160%}}
+@media (prefers-reduced-motion: reduce){.nav .logo img{animation:none}.nav .logo::after{display:none}}
+.nav .call{background:#25D366;color:#fff;font-size:12px;font-weight:500;padding:8px 14px;border-radius:10px;display:inline-flex;align-items:center;gap:6px}
+.nav .call:active{background:#1fb558}
+.hero{background:linear-gradient(180deg,#0c1825 0%,#0e1d2e 60%,#0c1825 100%);color:#fff;padding:36px 20px 44px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:auto -20% -30% -20%;height:60%;background:radial-gradient(ellipse at 50% 0%,rgba(201,169,98,.18),transparent 60%);pointer-events:none}
+.hero .eyebrow{color:var(--accent-light);margin-bottom:18px}
+.hero h1{font-family:var(--font-serif);font-size:38px;line-height:1.02;font-weight:700;margin:0 0 14px;letter-spacing:-.02em}
+.hero h1 em{color:var(--accent);font-style:italic;font-weight:600}
+.hero .sub{color:#c8d0d9;font-size:15px;margin:0 0 24px;max-width:34ch}
+.hero-cta{display:flex;flex-direction:column;gap:10px;margin-bottom:22px;position:relative;z-index:1}
+.hero-cta-dual .btn .i{font-style:normal;font-size:14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:500;font-size:14px;letter-spacing:.02em;padding:14px 20px;border-radius:12px;transition:transform .2s var(--ease),background .2s var(--ease);min-height:48px}
+.btn-primary{background:var(--accent);color:var(--primary)}
+.btn-primary:active{transform:scale(.98);background:var(--accent-light)}
+.btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.25)}
+.btn-ghost:active{transform:scale(.98);background:rgba(255,255,255,.08)}
+.trust-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;position:relative;z-index:1}
+.chip{font-size:11px;padding:6px 10px;background:rgba(201,169,98,.10);color:var(--accent-light);border:0.5px solid rgba(201,169,98,.25);border-radius:8px;font-weight:500}
+.tickets{background:linear-gradient(135deg,var(--primary) 0%,var(--primary-light) 100%);color:#fff;padding:48px 20px 52px;position:relative;overflow:hidden}
+.tickets::before{content:"";position:absolute;inset:auto -20% -30% -20%;height:60%;background:radial-gradient(ellipse at 50% 100%,rgba(201,169,98,.14),transparent 60%);pointer-events:none}
+.tickets .eyebrow{color:var(--accent)}
+.tickets h2{color:#fff;font-size:30px;line-height:1.1;margin-bottom:14px;position:relative;z-index:1}
+.tickets h2 em{color:var(--accent);font-style:normal}
+.tickets .lead{color:rgba(255,255,255,.78);margin-bottom:22px;position:relative;z-index:1}
+.tickets-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:18px 0;margin-bottom:20px;border-top:0.5px solid rgba(201,169,98,.25);border-bottom:0.5px solid rgba(201,169,98,.25);position:relative;z-index:1}
+.tickets-meta>div{text-align:center}
+.t-num{font-family:var(--font-serif);font-size:26px;font-weight:700;color:var(--accent);line-height:1;margin-bottom:4px}
+.t-lbl{font-size:10px;color:rgba(255,255,255,.6);letter-spacing:.5px;text-transform:uppercase}
+.tickets-btn{width:100%;position:relative;z-index:1}
+.tickets-foot{font-size:12px;color:rgba(255,255,255,.55);margin:14px 0 0;letter-spacing:.3px;position:relative;z-index:1}
+.services-grid{display:grid;gap:8px}
+.svc{background:#fff;border:0.5px solid var(--line);border-radius:var(--radius);padding:14px;display:flex;gap:14px;align-items:center;transition:transform .2s var(--ease),border-color .2s var(--ease)}
+.svc:active{transform:scale(.99);border-color:var(--accent)}
+.svc .icon{width:40px;height:40px;border-radius:10px;background:var(--sand);color:var(--primary);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.svc .icon svg{stroke:var(--primary)}
+.svc:active .icon svg{stroke:var(--accent)}
+.svc-compact{align-items:center;min-height:64px}
+.svc-compact>div{flex:1;display:flex;flex-direction:column;gap:2px;min-width:0}
+.svc-compact h3{font-family:var(--font-serif);font-size:15px;font-weight:700;margin:0;line-height:1.2}
+.svc-compact span{font-size:12px;color:var(--gray);line-height:1.35}
+.arrow-icon{color:var(--accent);font-size:18px;font-weight:500;flex-shrink:0}
+.steps-section{background:var(--primary);color:#fff;padding:48px 20px 52px}
+.steps-section .eyebrow{color:var(--accent-light)}
+.steps-section h2{color:#fff}
+.steps-section h2 em{color:var(--accent)}
+.steps-section .lead{color:#a8b3bf}
+.steps{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.step{background:rgba(255,255,255,.04);border:0.5px solid rgba(201,169,98,.18);border-radius:var(--radius);padding:14px;display:flex;flex-direction:column;gap:6px;min-height:108px}
+.step .n{font-family:var(--font-serif);font-size:22px;font-weight:700;color:var(--accent);line-height:1}
+.step .body strong{display:block;font-size:14px;font-weight:500;margin-bottom:2px;color:#fff}
+.step .body span{font-size:11px;color:#a8b3bf;line-height:1.4}
+.rating-strip{padding:24px 20px;background:var(--sand)}
+.rating-card{display:flex;align-items:center;gap:14px;background:#fff;border:0.5px solid var(--line);border-radius:var(--radius-lg);padding:14px 16px;transition:transform .2s var(--ease),border-color .2s var(--ease)}
+.rating-card:active{transform:scale(.99);border-color:var(--accent)}
+.rating-num{font-family:var(--font-serif);font-size:32px;font-weight:700;color:var(--primary);line-height:1;flex-shrink:0}
+.rating-mid{flex:1;display:flex;flex-direction:column;gap:4px;min-width:0}
+.rating-mid .stars{color:var(--accent);font-size:14px;letter-spacing:2px;line-height:1}
+.rating-meta{font-size:11px;color:var(--gray);letter-spacing:.2px}
+.rating-src{display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex-shrink:0}
+.rating-src-label{font-size:10px;letter-spacing:1.4px;text-transform:uppercase;color:var(--gray);font-weight:500}
+.rating-arrow{color:var(--accent);font-size:16px}
+.faq-list{display:flex;flex-direction:column;gap:0;margin-top:6px}
+.faq-item{border-bottom:0.5px solid var(--line)}
+.faq-q{width:100%;text-align:left;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px 0;font-size:15px;font-weight:500;color:var(--primary);min-height:48px}
+.faq-q .ico{width:22px;height:22px;border-radius:50%;border:1px solid var(--accent);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:16px;line-height:1;flex-shrink:0;transition:transform .25s var(--ease)}
+.faq-item[open] .faq-q .ico{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;font-size:14px;color:var(--gray);line-height:1.6;transition:max-height .35s var(--ease),padding .35s var(--ease)}
+.faq-item[open] .faq-a{max-height:400px;padding:0 0 18px}
+.contact{background:var(--primary);color:#fff;padding:48px 20px}
+.contact .eyebrow{color:var(--accent-light)}
+.contact h2{color:#fff}
+.contact h2 em{color:var(--accent)}
+.contact .lead{color:#a8b3bf}
+.form{display:flex;flex-direction:column;gap:10px;margin-top:18px}
+.form input,.form textarea{background:rgba(255,255,255,.04);border:0.5px solid rgba(255,255,255,.15);color:#fff;font-family:inherit;font-size:15px;padding:14px 16px;border-radius:12px;min-height:50px;width:100%;outline:none;transition:border-color .2s,background .2s}
+.form input::placeholder,.form textarea::placeholder{color:#7d8893}
+.form input:focus,.form textarea:focus{border-color:var(--accent);background:rgba(255,255,255,.06)}
+.form textarea{min-height:96px;resize:vertical}
+.form .btn-primary{margin-top:6px}
+.contact-meta{display:grid;grid-template-columns:auto 1fr;gap:10px 14px;margin-top:24px;padding-top:24px;border-top:0.5px solid var(--line-dark);font-size:13px}
+.contact-meta .k{color:#7d8893}
+.contact-meta .v{color:#fff;font-weight:500}
+.map-wrap{background:var(--map-cream);padding:0 20px 48px}
+.map-btn{width:100%;background:#fff;border:0.5px solid var(--line);border-radius:var(--radius-lg);padding:22px;display:flex;align-items:center;gap:14px;text-align:left}
+.map-btn .icon{width:46px;height:46px;border-radius:50%;background:var(--primary);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.map-btn .ttl{font-family:var(--font-serif);font-size:17px;font-weight:700;margin-bottom:2px}
+.map-btn .addr{font-size:12px;color:var(--gray)}
+.map-frame{display:none;width:100%;height:280px;border:0;border-radius:var(--radius-lg);margin-top:14px;background:#eee}
+.map-wrap.open .map-btn{display:none}
+.map-wrap.open .map-frame{display:block}
+.footer{background:var(--primary-light);color:#a8b3bf;padding:30px 20px calc(96px + env(safe-area-inset-bottom));font-size:12px;text-align:center}
+.footer a{color:var(--accent-light)}
+.sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(12,24,37,.96);backdrop-filter:blur(12px);padding:10px 14px calc(10px + env(safe-area-inset-bottom));display:flex;gap:8px;border-top:0.5px solid var(--line-dark);max-width:480px;margin:0 auto}
+.sticky-cta .btn{flex:1;font-size:13px;padding:12px 14px;min-height:44px}
+.float-social{position:fixed;right:14px;bottom:calc(76px + env(safe-area-inset-bottom));z-index:55;display:flex;flex-direction:column;gap:10px;animation:floatIn .5s var(--ease) .3s both}
+@keyframes floatIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.float-btn{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 6px 20px rgba(0,0,0,.18);transition:transform .2s var(--ease);position:relative}
+.float-btn:active{transform:scale(.92)}
+.float-btn.wa{background:#25D366}
+.float-btn.tg{background:#0088cc}
+.float-btn svg{width:24px;height:24px;fill:currentColor}
+.float-btn::after{content:"";position:absolute;top:0;left:0;width:48px;height:48px;border-radius:50%;background:inherit;opacity:.35;animation:pulse 2.4s var(--ease) infinite;z-index:-1}
+@keyframes pulse{0%{transform:scale(1);opacity:.35}70%{transform:scale(1.6);opacity:0}100%{transform:scale(1.6);opacity:0}}
+@media (prefers-reduced-motion: reduce){.float-social{animation:none}.float-btn::after{display:none}}
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .55s var(--ease),transform .55s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){.reveal{opacity:1;transform:none;transition:none}*{animation:none!important;transition:none!important}}
+.i{font-style:normal;display:inline-block}
+</style>
+</head>
+<body>
+<div class="shell">
+  <header class="nav">
+    <a href="/" class="logo" aria-label="First Class — главная"><img src="/logo.png" alt="First Class"></a>
+    <a href="tel:+375447725266" class="call" aria-label="Позвонить"><span class="i">📞</span> Позвонить</a>
+  </header>
+
+  <section class="hero">
+    <p class="eyebrow">Авиакасса · Минск · с 2018</p>
+    <h1>Авиабилеты<br>и&nbsp;<em>командировки</em></h1>
+    <p class="sub">Вы говорите куда и когда — мы делаем всё остальное. Билеты, отели, визы, трансферы и закрывающие документы.</p>
+    <div class="hero-cta hero-cta-dual">
+      <a href="#tickets" class="btn btn-primary"><span class="i">✈</span> Подобрать билет</a>
+      <a href="#contact" class="btn btn-ghost">Командировка под ключ</a>
+    </div>
+    <div class="trust-chips">
+      <span class="chip">5 GDS-систем</span>
+      <span class="chip">400+ авиакомпаний</span>
+      <span class="chip">Ответ за 15 мин</span>
+      <span class="chip">B2B и B2C</span>
+    </div>
+  </section>
+
+  <section class="tickets" id="tickets">
+    <p class="eyebrow">Авиакасса · своя касса с 2018</p>
+    <h2>Авиабилеты — <em>в любую точку мира</em></h2>
+    <p class="lead">5 GDS-систем, 400+ авиакомпаний, билеты с любого города вылета и сложные транзитные маршруты. Не только из Минска.</p>
+    <div class="tickets-meta">
+      <div><div class="t-num">5</div><div class="t-lbl">GDS-систем</div></div>
+      <div><div class="t-num">400+</div><div class="t-lbl">авиакомпаний</div></div>
+      <div><div class="t-num">15 мин</div><div class="t-lbl">ответ менеджера</div></div>
+    </div>
+    <a href="#contact" class="btn btn-primary tickets-btn">Подобрать билет →</a>
+    <p class="tickets-foot">Европа · Азия · СНГ · США · спецбагаж · возврат и обмен</p>
+  </section>
+
+  <section class="section" id="services">
+    <p class="eyebrow reveal">B2B · для компаний</p>
+    <h2 class="reveal">Командировки <em>под ключ</em></h2>
+    <div class="services-grid">
+      <a href="#contact" class="svc svc-compact reveal">
+        <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.4-.1.9.3 1.1L11 12l-2 3H6l-1 1 3 2 2 3 1-1v-3l3-2 3.7 7.3c.2.4.7.6 1.1.3l.5-.3c.4-.2.6-.6.5-1.1z"/></svg></div>
+        <div><h3>Транспорт и проживание</h3><span>Авиа, ж/д, отели в 190+ странах</span></div>
+        <span class="arrow-icon">→</span>
+      </a>
+      <a href="#contact" class="svc svc-compact reveal">
+        <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="18" rx="3"/><path d="M2 9h20"/><circle cx="9" cy="15" r="2.5"/><path d="M14 13h4"/><path d="M14 16h3"/></svg></div>
+        <div><h3>Визовая поддержка</h3><span>Шенген · UK · Китай</span></div>
+        <span class="arrow-icon">→</span>
+      </a>
+      <a href="#contact" class="svc svc-compact reveal">
+        <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div><h3>MICE и консьерж 24/7</h3><span>Конференции, VIP-залы, fast track</span></div>
+        <span class="arrow-icon">→</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="steps-section">
+    <p class="eyebrow">Как мы работаем</p>
+    <h2>Командировка за <em>4 шага</em></h2>
+    <p class="lead">Ваше время — на бизнесе. Логистика — наша работа.</p>
+    <div class="steps">
+      <div class="step reveal"><div class="n">01</div><div class="body"><strong>Заявка</strong><span>Перезвоним за 15 минут</span></div></div>
+      <div class="step reveal"><div class="n">02</div><div class="body"><strong>Подбор</strong><span>Лучшие варианты по цене и качеству</span></div></div>
+      <div class="step reveal"><div class="n">03</div><div class="body"><strong>Бронирование</strong><span>Документы, подтверждение</span></div></div>
+      <div class="step reveal"><div class="n">04</div><div class="body"><strong>Поддержка</strong><span>На связи 24/7 до, во время и после</span></div></div>
+    </div>
+  </section>
+
+  <section class="rating-strip">
+    <a href="https://www.google.com/maps/place/First+Class" target="_blank" rel="noopener" class="rating-card">
+      <div class="rating-num">5.0</div>
+      <div class="rating-mid">
+        <div class="stars">★★★★★</div>
+        <div class="rating-meta">39 отзывов · 44 оценки</div>
+      </div>
+      <div class="rating-src">
+        <span class="rating-src-label">Google Maps</span>
+        <span class="rating-arrow">→</span>
+      </div>
+    </a>
+  </section>
+
+  <section class="section">
+    <p class="eyebrow reveal">FAQ</p>
+    <h2 class="reveal">Частые <em>вопросы</em></h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary class="faq-q"><span>Сколько стоит организация командировки?</span><span class="ico">+</span></summary>
+        <div class="faq-a">Стоимость зависит от направления, сроков и набора услуг. Мы подбираем оптимальные варианты по цене и качеству. Оставьте заявку — подготовим персональное предложение за 15 минут.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q"><span>Как вы помогаете с оформлением виз?</span><span class="ico">+</span></summary>
+        <div class="faq-a">Берём на себя весь процесс: подбор оптимального консульства, подготовку документов, запись в визовый центр и сопровождение до выдачи. Шенген — помогаем выбрать страну с минимальными сроками. Великобритания — от 6 недель. Китай — безвизовый режим до 30 дней.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q"><span>С какими авиакомпаниями вы работаете?</span><span class="ico">+</span></summary>
+        <div class="faq-a">Аккредитованный агент Belavia, сертификат Департамента авиации РБ. Работаем через все основные GDS — Amadeus, Sabre, Travelport, Sirena, ТКП — это доступ к 400+ авиакомпаниям мира.</div>
+      </details>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <p class="eyebrow">Обсудим сотрудничество</p>
+    <h2>Оставьте <em>заявку</em></h2>
+    <p class="lead">Расскажите о маршруте — пришлём расчёт за 15 минут.</p>
+    <form class="form" onsubmit="event.preventDefault();this.querySelector('button').textContent='Отправлено ✓';this.querySelector('button').style.background='#dfc78a'">
+      <input type="text" placeholder="Имя" required>
+      <input type="tel" placeholder="Телефон" required>
+      <textarea placeholder="Маршрут, даты, количество сотрудников"></textarea>
+      <button type="submit" class="btn btn-primary">Отправить заявку →</button>
+    </form>
+    <div class="contact-meta">
+      <span class="k">Телефон</span><a class="v" href="tel:+375447725266">+375 44 772-52-66</a>
+      <span class="k">Email</span><a class="v" href="mailto:marketing@fclass.by">marketing@fclass.by</a>
+      <span class="k">Адрес</span><span class="v">Минск, пр. Победителей 11, оф. 12</span>
+      <span class="k">Часы</span><span class="v">пн–пт, 09:00–19:00</span>
+    </div>
+  </section>
+
+  <div class="map-wrap" id="mapWrap">
+    <button class="map-btn" onclick="document.getElementById('mapWrap').classList.add('open');document.getElementById('mapFrame').src=this.dataset.src" data-src="https://yandex.ru/map-widget/v1/?text=%D0%9C%D0%B8%D0%BD%D1%81%D0%BA%2C%20%D0%BF%D1%80.%20%D0%9F%D0%BE%D0%B1%D0%B5%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D0%B5%D0%B9%2011&z=17&l=map">
+      <div class="icon"><span class="i">📍</span></div>
+      <div>
+        <div class="ttl">Показать на карте</div>
+        <div class="addr">Минск, пр. Победителей 11, оф. 12</div>
+      </div>
+    </button>
+    <iframe id="mapFrame" class="map-frame" loading="lazy" title="First Class на карте"></iframe>
+  </div>
+
+  <footer class="footer">
+    <img src="/logo.png" alt="First Class" style="height:48px;margin:0 auto 14px;filter:brightness(1.1)">
+    <div>© 2018–2026 · УП «Ферст Класс» · УНП 193260185</div>
+    <div style="margin-top:8px"><a href="/privacy/">Политика конфиденциальности</a></div>
+  </footer>
+
+  <div class="float-social" role="complementary" aria-label="Связаться">
+    <a href="https://wa.me/375447725266?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82%20%D0%B0%D0%B2%D0%B8%D0%B0%D0%B1%D0%B8%D0%BB%D0%B5%D1%82" class="float-btn wa" target="_blank" rel="noopener" aria-label="WhatsApp">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+    <a href="https://t.me/+375447725266" class="float-btn tg" target="_blank" rel="noopener" aria-label="Telegram">
+      <svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+    </a>
+  </div>
+
+  <div class="sticky-cta">
+    <a href="#contact" class="btn btn-primary">Оставить заявку →</a>
+  </div>
+</div>
+
+<script>
+(function(){
+  if(!('IntersectionObserver' in window)){
+    document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in');});
+    return;
+  }
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+    });
+  },{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+})();
+</script>
+</body>
+</html>
