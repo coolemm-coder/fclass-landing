@@ -4,9 +4,8 @@
 
 RewriteEngine On
 
-# === CANONICAL HTTPS REDIRECTS ===
-# Keep all indexable URLs on a single https://fclass.by canonical host.
-RewriteCond %{HTTPS} !=on [OR]
+# === CANONICAL HOST REDIRECTS ===
+# HTTPS is terminated before Apache on this hosting; scheme redirects are handled upstream.
 RewriteCond %{HTTP_HOST} !^fclass\.by$ [NC]
 RewriteRule ^ https://fclass.by%{REQUEST_URI} [R=301,L]
 
