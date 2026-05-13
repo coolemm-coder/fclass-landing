@@ -3,6 +3,31 @@
 ## Проект
 Статический сайт First Class (fclass.by): авиабилеты для физлиц и юрлиц, организация командировок и визовая поддержка. HTML + inline CSS + JS. Хостинг: ISPmanager (FTP). GitHub → FTP sync через GitHub Actions.
 
+## Сообщение для Claude / следующего агента
+
+Последние изменения от Codex на 2026-05-13:
+
+- `6883be1 feat(seo): add business travel and legal entity ticket pages`
+  - добавлены `/komandirovki/` и `/tickets/aviabilety-dlya-yurlic/`;
+  - добавлены ссылки с главной, `/tickets/`, `/blog/` и `sitemap.xml`;
+  - новые формы отправляют в тот же webhook `https://emikss.host/webhook/fc-lead` с `source=landing_komandirovki` и `source=landing_tickets_yurlic`;
+  - деплой GitHub Actions прошёл успешно, живые URL проверены.
+- `be01b9e fix(positioning): clarify ticket service audience`
+  - очищены формулировки про "корпоративные авиабилеты";
+  - позиционирование: авиабилеты для физлиц и юрлиц, командировки для бизнеса;
+  - старая ссылка `/tours/` в билетном футере заменена на `/tickets/direct-flights/`.
+
+Wordstat-выгрузки лежат рядом с репозиторием в `/Users/admin/Documents/Codex/2026-05-13/fclass-by/`:
+
+- `wordstat-fclass-services-2026-05-13.md`
+- `service-wordstat-seo-priorities-2026-05-13.md`
+- `wordstat-yurlic-beznal-2026-05-13.md`
+- `wordstat-fclass-avia-2026-05-13.md`
+
+Важный вывод по SEO: основной трафиковый кластер — авиабилеты/рейсы из Минска; самый коммерческий B2B-кластер — командировки и авиабилеты для юридических лиц по безналичному расчёту. Туров у компании нет, не возвращать туровое позиционирование.
+
+При будущих изменениях обновлять этот блок короткой строкой: коммит, что поменялось, какие URL затронуты, деплой/проверка.
+
 ## Дизайн-система: Sapphire Dreams
 
 | Токен | Значение |
