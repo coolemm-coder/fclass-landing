@@ -1,0 +1,2 @@
+RedirectMatch 301 ^/tours/?$ https://fclass.by/tickets/
+RedirectMatch 301 ^/tours/.*$ https://fclass.by/tickets/
