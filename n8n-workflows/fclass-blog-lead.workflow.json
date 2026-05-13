@@ -1,0 +1,132 @@
+{
+  "name": "fclass-blog-lead",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "fclass-blog-lead",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "1",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [240, 300],
+      "webhookId": "fclass-blog-lead"
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "tg_text",
+              "value": "🔥 <b>Новый лид из БЛОГ fclass.by</b>\n\n📍 <b>Источник:</b> {{$json.body.source || $json.body.page || 'unknown'}}\n🏢 <b>Компания:</b> {{$json.body.company || '—'}}\n📞 <b>Телефон:</b> {{$json.body.phone || '—'}}\n✉️ <b>Email:</b> {{$json.body.email || '—'}}\n🌐 <b>Страница:</b> https://fclass.by{{$json.body.page || ''}}\n\n⏰ {{$now.format('dd.MM.yyyy HH:mm')}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "2",
+      "name": "Format message",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "chatId": "543428212",
+        "text": "={{$json.tg_text}}",
+        "additionalFields": {
+          "parse_mode": "HTML",
+          "disable_web_page_preview": true
+        }
+      },
+      "id": "3",
+      "name": "Send to Telegram",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.1,
+      "position": [680, 300],
+      "credentials": {
+        "telegramApi": {
+          "id": "REPLACE_WITH_BOT_CREDS_ID",
+          "name": "Telegram @travelangelby_bot"
+        }
+      },
+      "notes": "ВАЖНО: подставь credentials своего Telegram-бота (@travelangelby_bot предпочтительно, или @landingproby_bot)"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={ \"ok\": true, \"received\": true }",
+        "options": {
+          "responseCode": 200,
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Access-Control-Allow-Origin",
+                "value": "*"
+              }
+            ]
+          }
+        }
+      },
+      "id": "4",
+      "name": "Respond 200 OK",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [900, 300]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Format message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format message": {
+      "main": [
+        [
+          {
+            "node": "Send to Telegram",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send to Telegram": {
+      "main": [
+        [
+          {
+            "node": "Respond 200 OK",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "active": false,
+  "versionId": "1",
+  "id": "fclass-blog-lead",
+  "tags": [
+    {
+      "name": "fclass",
+      "id": "fclass"
+    },
+    {
+      "name": "lead-capture",
+      "id": "lead-capture"
+    }
+  ]
+}
