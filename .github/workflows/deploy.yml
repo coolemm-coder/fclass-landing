@@ -43,6 +43,10 @@ jobs:
             **/.env
             **/.env.*
             **/.DS_Store
+            **/.claude/**
+            **/.claude/**/*
+            **/.claudeignore
+            **/.mcp.json
             **/CLAUDE.md
             **/README.md
             **/PROJECT_LOG.md
