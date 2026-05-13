@@ -4,10 +4,17 @@
 
 RewriteEngine On
 
+# Redirect plain HTTP only when nginx forwards the original scheme explicitly.
+RewriteCond %{HTTP:X-Forwarded-Proto} =http [NC]
+RewriteRule ^ https://fclass.by%{REQUEST_URI} [R=301,L]
+
 # === CANONICAL HOST REDIRECTS ===
 # HTTPS is terminated before Apache on this hosting; scheme redirects are handled upstream.
 RewriteCond %{HTTP_HOST} !^fclass\.by$ [NC]
 RewriteRule ^ https://fclass.by%{REQUEST_URI} [R=301,L]
+
+# Retired B2C tours directory — keep crawlers and old links on an active service page.
+RedirectMatch 301 ^/tours/?$ https://fclass.by/tickets/
 
 # === MOBILE USER-AGENT REWRITE (2026-05-12) ===
 # Mobile phones on / → silently serve mobile-preview.html (URL stays as /)
@@ -27,9 +34,6 @@ RewriteRule ^blog/belavia-nha-trang-2026/?$ /blog/ [R=301,L]
 # Trailing-slash duplicates — 301 to canonical .html
 # Matches blog/{slug}/ where slug has no inner slash → redirect to blog/{slug}.html
 RewriteRule ^blog/([^/]+)/$ https://fclass.by/blog/$1.html [R=301,L]
-
-# Retired B2C tours directory — keep crawlers and old links on an active service page.
-RewriteRule ^tours/?$ https://fclass.by/tickets/ [R=301,L]
 
 # === STATIC ASSET COMPRESSION ===
 
