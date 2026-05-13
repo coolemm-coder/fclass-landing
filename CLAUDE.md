@@ -1,7 +1,7 @@
 # fclass-landing — fclass.by
 
 ## Проект
-Статический сайт турагентства First Class (fclass.by). HTML + inline CSS + JS. Хостинг: ISPmanager (FTP). GitHub → FTP sync через GitHub Actions.
+Статический сайт First Class (fclass.by): командировки, корпоративные авиабилеты и визовая поддержка. HTML + inline CSS + JS. Хостинг: ISPmanager (FTP). GitHub → FTP sync через GitHub Actions.
 
 ## Дизайн-система: Sapphire Dreams
 
