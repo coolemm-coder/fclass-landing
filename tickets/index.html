@@ -180,6 +180,7 @@
         .floating-btn.whatsapp { background: #25D366; }
         .floating-btn.telegram { background: #0088cc; }
         .floating-btn svg { width: 28px; height: 28px; }
+        .business-entry-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:24px; max-width:900px; margin:0 auto; }
 
         /* Mobile */
         @media (max-width: 768px) {
@@ -197,6 +198,7 @@
             .form-container { padding: 30px 20px; }
             .form-row { grid-template-columns: 1fr; }
             .footer-inner { grid-template-columns: 1fr; }
+            .business-entry-grid { grid-template-columns: 1fr; }
         }
     </style>
 
@@ -299,6 +301,8 @@
         <ul class="nav-links">
             <li><a href="/#services">Услуги</a></li>
             <li><a href="/tickets/" class="active">Билеты</a></li>
+            <li><a href="/tickets/aviabilety-dlya-yurlic/">Юрлицам</a></li>
+            <li><a href="/komandirovki/">Командировки</a></li>
             <li><a href="/visa-support/">Визы</a></li>
             <li><a href="/#expertise">О нас</a></li>
             <li><a href="/blog/">Блог</a></li>
@@ -368,6 +372,23 @@
             </a>
         </div>
         <p style="text-align:center; margin-top:40px; font-size:14px; color:#5a6d7e;">Не видите своё направление? <a href="#form" style="color:#c9a962; font-weight:600;">Оставьте заявку</a> — соберём билет в любую точку мира через GDS.</p>
+    </section>
+
+    <!-- Business ticket entry -->
+    <section class="section section-alt">
+        <div class="section-eyebrow">Для компаний</div>
+        <h2 class="section-title">Авиабилеты для юрлиц и командировок</h2>
+        <p class="section-subtitle">Если нужна оплата по безналу, договор, счета, акты и маршрутные квитанции — оформим билет так, чтобы бухгалтерии было удобно закрыть поездку.</p>
+        <div class="business-entry-grid">
+            <a href="/tickets/aviabilety-dlya-yurlic/" style="display:block; text-decoration:none; color:inherit; background:#fff; border:1px solid rgba(0,0,0,0.08); border-radius:12px; padding:30px;">
+                <h3 style="font-family:'Playfair Display',serif; font-size:24px; margin-bottom:10px;">Билеты для юрлиц</h3>
+                <p style="color:#5a6d7e; font-size:15px;">Безналичная оплата, договор, счет, акты и документы для бухгалтерии.</p>
+            </a>
+            <a href="/komandirovki/" style="display:block; text-decoration:none; color:inherit; background:#fff; border:1px solid rgba(0,0,0,0.08); border-radius:12px; padding:30px;">
+                <h3 style="font-family:'Playfair Display',serif; font-size:24px; margin-bottom:10px;">Организация командировок</h3>
+                <p style="color:#5a6d7e; font-size:15px;">Билеты, отели, визы, трансферы, поддержка 24/7 и закрывающие документы.</p>
+            </a>
+        </div>
     </section>
 
     <!-- Why not Aviasales -->
@@ -661,6 +682,8 @@
                 <h4>Услуги</h4>
                 <div class="footer-links">
                     <a href="/tickets/">Билеты</a>
+                    <a href="/tickets/aviabilety-dlya-yurlic/">Билеты для юрлиц</a>
+                    <a href="/komandirovki/">Командировки</a>
                     <a href="/visa-support/">Визовая поддержка</a>
                     <a href="/tickets/direct-flights/">Прямые рейсы</a>
                     <a href="/concierge/">Консьерж-сервис</a>
