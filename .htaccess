@@ -4,6 +4,12 @@
 
 RewriteEngine On
 
+# === CANONICAL HTTPS REDIRECTS ===
+# Keep all indexable URLs on a single https://fclass.by canonical host.
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} !^fclass\.by$ [NC]
+RewriteRule ^ https://fclass.by%{REQUEST_URI} [R=301,L]
+
 # === MOBILE USER-AGENT REWRITE (2026-05-12) ===
 # Mobile phones on / → silently serve mobile-preview.html (URL stays as /)
 # Tablets explicitly excluded (iPad, Android tablet) so they keep desktop UX
@@ -21,7 +27,10 @@ RewriteRule ^blog/belavia-nha-trang-2026/?$ /blog/ [R=301,L]
 
 # Trailing-slash duplicates — 301 to canonical .html
 # Matches blog/{slug}/ where slug has no inner slash → redirect to blog/{slug}.html
-RewriteRule ^blog/([^/]+)/$ /blog/$1.html [R=301,L]
+RewriteRule ^blog/([^/]+)/$ https://fclass.by/blog/$1.html [R=301,L]
+
+# Retired B2C tours directory — keep crawlers and old links on an active service page.
+RewriteRule ^tours/?$ https://fclass.by/tickets/ [R=301,L]
 
 # === STATIC ASSET COMPRESSION ===
 

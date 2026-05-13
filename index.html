@@ -1753,8 +1753,14 @@
                     method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data)
                 });
                 if (typeof ym !== 'undefined') ym(107237229, 'reachGoal', 'LEAD');
-                btn.textContent = 'Отправлено!'; e.target.reset();
-                setTimeout(() => { btn.textContent = orig; btn.disabled = false; }, 3000);
+                if (typeof gtag === 'function') {
+                    gtag('event', 'generate_lead', { event_category: 'form', event_label: 'contact_form' });
+                }
+                const thankYou = document.getElementById('form-thank-you');
+                btn.textContent = 'Отправлено!';
+                e.target.reset();
+                e.target.style.display = 'none';
+                if (thankYou) thankYou.style.display = 'block';
             } catch (err) {
                 btn.textContent = 'Ошибка';
                 setTimeout(() => { btn.textContent = orig; btn.disabled = false; }, 3000);
@@ -2121,10 +2127,6 @@
     </div>
     <script>
     (function(){var cta=document.getElementById('sticky-cta');if(!cta||window.innerWidth>768)return;window.addEventListener('scroll',function(){cta.style.display=window.scrollY>600?'flex':'none'})})();
-    </script>
-
-    <script>
-    (function(){var f=document.getElementById('contact-form');if(!f)return;f.addEventListener('submit',function(e){e.preventDefault();if(typeof gtag==='function'){gtag('event','generate_lead',{event_category:'form',event_label:'contact_form'})}f.style.display='none';var ty=document.getElementById('form-thank-you');if(ty)ty.style.display='block'})})();
     </script>
 
     <script>
