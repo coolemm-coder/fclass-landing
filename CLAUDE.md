@@ -7,6 +7,10 @@
 
 Последние изменения от Codex на 2026-05-13:
 
+- `6c5d63f fix(seo): sharpen legal entity ticket terms`
+  - усилена `/tickets/aviabilety-dlya-yurlic/` под Wordstat-запросы `авиабилеты для юридических лиц`, `авиабилеты по безналичному расчету`, `авиабилеты с ндс для юридических лиц`, `купить авиабилеты по безналу`;
+  - добавлены блоки про покупку по безналу, документы по НДС/ЭСЧФ с аккуратной оговоркой "если применимо", FAQ и внутренний переход из старой статьи `/blog/korporativnye-aviabilety-minsk.html`;
+  - не обещать НДС для каждого билета: состав документов зависит от маршрута, перевозчика, поставщика и типа услуги.
 - `6883be1 feat(seo): add business travel and legal entity ticket pages`
   - добавлены `/komandirovki/` и `/tickets/aviabilety-dlya-yurlic/`;
   - добавлены ссылки с главной, `/tickets/`, `/blog/` и `sitemap.xml`;
