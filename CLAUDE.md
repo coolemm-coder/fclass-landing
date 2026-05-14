@@ -7,6 +7,11 @@
 
 Последние изменения от Codex на 2026-05-14:
 
+- `fix(conversion): route main contacts through Telegram bot`
+  - на главной основной контактный сценарий переведен с формы на `@travelangelby_bot`: nav CTA, hero secondary CTA, contact section, final CTA, floating Telegram, footer/social и mobile sticky Telegram получают `start=lead_*`;
+  - старый `contact-form` на главной заменен на карточку Telegram-бота с квалификацией заявки: тип запроса, даты/маршрут/пассажиры, контакт и уведомление менеджеров;
+  - JS отправки формы на главной оставлен с guard на случай возврата формы, но сейчас не ломает страницу без `#contact-form`;
+  - для реальной отправки квалифицированных лидов в группу нужно, чтобы логика `@travelangelby_bot` передавала ответы в группу/CRM; в n8n уже есть webhook `fc-lead`, но текущий chatId в файле workflow — персональный `543428212`, group chat id нужно подставить отдельно.
 - `fix(local): correct Yandex location and calculator rate`
   - главная переведена на точную карточку Яндекс Карт `pervy_klass/68945387734`: отзывы ведут на `/reviews/`, карта использует `oid=68945387734`, адрес в видимом тексте и Schema.org — `г. Минск, просп. Победителей, 11`;
   - в FAQ главной заменено `рейтинг 5.0 на Google Maps` на `рейтинг 5.0 на Яндекс Картах`, чтобы не смешивать источники отзывов;
