@@ -7,6 +7,11 @@
 
 Последние изменения от Codex на 2026-05-14:
 
+- `fix(conversion): tighten Telegram and lead tracking`
+  - заменены нерабочие/неоднородные Telegram-ссылки `t.me/+375447725266`, `firstclass_by`, `firstclassby` на единый `travelangelby_bot`;
+  - на внутренних страницах исправлены битые якоря `#services`, `#contact`, `#expertise` на ссылки к главной `/#...`;
+  - на старых маршрутных страницах добавлен трекинг успешной отправки формы в Метрику (`LEAD`) и GA (`generate_lead`).
+  - в `/resources/dogovor-template/` публичная формулировка `договор с турагентством` заменена на `договор с агентством`.
 - `fix(copy): remove remaining passport and tourism wording`
   - после live-проверки дополнительно очищены регистрозависимые остатки `Загранпаспорт` на `/blog/vizovaya-podderzhka-minsk.html`;
   - в `/blog/komandirovka-v-kitay.html`, `/blog/komandirovka-v-uzbekistan-2026.html`, `/blog/komandirovka-v-gruziyu-2026.html` заменены лишние упоминания `туризм` на частные поездки/сервис там, где это не визовый тип;
