@@ -13,6 +13,14 @@ RewriteRule ^ https://fclass.by%{REQUEST_URI} [R=301,L]
 RewriteCond %{HTTP_HOST} !^fclass\.by$ [NC]
 RewriteRule ^ https://fclass.by%{REQUEST_URI} [R=301,L]
 
+# Drop crawler traps from external failed callbacks and tokenized root URLs.
+RewriteCond %{QUERY_STRING} (^|&)(?:token|uid|status)= [NC]
+RewriteRule ^(?:index\.html)?$ https://fclass.by/? [R=301,L]
+
+# Keep the mobile HTML implementation private while still allowing the internal mobile rewrite below.
+RewriteCond %{THE_REQUEST} \s/+mobile-preview\.html[?\s] [NC]
+RewriteRule ^mobile-preview\.html$ https://fclass.by/ [R=301,L]
+
 # === PUBLIC SURFACE GUARDRAILS ===
 # These directories and files are workspace/internal artifacts and must not be public landing pages.
 RewriteRule ^(?:api|docs|web-panel|questionnaires|content|scripts|fclass-landing|n8n-workflows)(?:/|$) - [G,L]
