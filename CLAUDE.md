@@ -7,6 +7,10 @@
 
 Последние изменения от Codex на 2026-05-14:
 
+- `fix(copy): remove remaining passport and tourism wording`
+  - после live-проверки дополнительно очищены регистрозависимые остатки `Загранпаспорт` на `/blog/vizovaya-podderzhka-minsk.html`;
+  - в `/blog/komandirovka-v-kitay.html`, `/blog/komandirovka-v-uzbekistan-2026.html`, `/blog/komandirovka-v-gruziyu-2026.html` заменены лишние упоминания `туризм` на частные поездки/сервис там, где это не визовый тип;
+  - обновлены `dateModified` и `sitemap.xml` для затронутых страниц.
 - `fix(content): clean legacy travel positioning`
   - очищены старые страницы `/blog/delovoy-turizm-belarus-2026.html` и `/blog/mice-belarus-2026.html`: вместо туров/инсентив-туров теперь деловые поездки, MICE-мероприятия, логистика участников и документы;
   - на `/blog/delovoy-turizm-belarus-2026.html` удалены неподтвержденные рейтинги/прогнозы, добавлены canonical, Open Graph и JSON-LD;
