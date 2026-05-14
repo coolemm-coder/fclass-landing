@@ -7,6 +7,11 @@
 
 Последние изменения от Codex на 2026-05-14:
 
+- `fix(deploy): exclude internal runtime artifacts from FTP`
+  - после push `d4a8924` GitHub Actions упал на FTP `502 Command not implemented` при создании `/api/`;
+  - дополнительно исключены из FTP deploy: `/api/`, `/n8n-workflows/`, `package*.json`, `vercel.json`, `robots-vercel.txt`, `meta-*.md`, `firstclass-growth-playbook.html`, `firstclass-gtm-plan.html`;
+  - эти же внутренние/служебные URL закрыты через `.htaccess` с HTTP 410;
+  - verify deploy теперь проверяет, что внутренние URL не отдают публичный 200.
 - `fix(seo): close public artifacts and tighten ticket pages`
   - закрыты публичные внутренние URL через `.htaccess`: `/docs/`, `/web-panel/`, `/questionnaires/`, `/content/`, `/scripts/`, вложенный `/fclass-landing/`, `/blog/_template.html`;
   - эти же внутренние папки исключены из FTP deploy в `.github/workflows/deploy.yml`, чтобы они не публиковались повторно;

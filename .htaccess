@@ -14,9 +14,11 @@ RewriteCond %{HTTP_HOST} !^fclass\.by$ [NC]
 RewriteRule ^ https://fclass.by%{REQUEST_URI} [R=301,L]
 
 # === PUBLIC SURFACE GUARDRAILS ===
-# These directories are workspace/internal artifacts and must not be public landing pages.
-RewriteRule ^(?:docs|web-panel|questionnaires|content|scripts|fclass-landing)(?:/|$) - [G,L]
+# These directories and files are workspace/internal artifacts and must not be public landing pages.
+RewriteRule ^(?:api|docs|web-panel|questionnaires|content|scripts|fclass-landing|n8n-workflows)(?:/|$) - [G,L]
 RewriteRule ^blog/_template\.html$ - [G,L]
+RewriteRule ^(?:firstclass-growth-playbook|firstclass-gtm-plan)\.html$ - [G,L]
+RewriteRule ^(?:meta-[^/]+\.md|package(?:-lock)?\.json|vercel\.json|robots-vercel\.txt)$ - [G,L]
 
 # Keep one canonical route URL for Minsk-Stambul to avoid cannibalization.
 RewriteRule ^tickets/minsk-istanbul/?$ https://fclass.by/tickets/minsk-stambul/ [R=301,L]

@@ -47,6 +47,8 @@ jobs:
             **/.claude/**/*
             **/.claudeignore
             **/.mcp.json
+            **/api/**
+            **/api/**/*
             **/docs/**
             **/docs/**/*
             **/web-panel/**
@@ -59,11 +61,20 @@ jobs:
             **/scripts/**/*
             **/n8n/**
             **/n8n/**/*
+            **/n8n-workflows/**
+            **/n8n-workflows/**/*
             **/data/**
             **/data/**/*
             **/fclass-landing/**
             **/fclass-landing/**/*
             **/blog/_template.html
+            **/*.md
+            **/package.json
+            **/package-lock.json
+            **/vercel.json
+            **/robots-vercel.txt
+            **/firstclass-growth-playbook.html
+            **/firstclass-gtm-plan.html
             **/CLAUDE.md
             **/README.md
             **/PROJECT_LOG.md
@@ -81,7 +92,7 @@ jobs:
           done
 
           echo "Verifying internal URLs are blocked..."
-          for path in "/docs/audit/dashboard.html" "/web-panel/" "/questionnaires/pdf/pasha_b2b.html" "/fclass-landing/blog/index.html" "/blog/_template.html"; do
+          for path in "/api/lead-magnet.php" "/docs/audit/dashboard.html" "/web-panel/" "/questionnaires/pdf/pasha_b2b.html" "/fclass-landing/blog/index.html" "/n8n-workflows/lp-lead.workflow.json" "/blog/_template.html" "/firstclass-growth-playbook.html"; do
             STATUS=$(curl -s -o /dev/null -w "%{http_code}" "https://fclass.by${path}")
             echo "  ${path} -> HTTP ${STATUS}"
           done
