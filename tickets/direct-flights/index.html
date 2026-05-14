@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Прямые рейсы из Минска 2026 — расписание, цены, авиакомпании | First Class</title>
-<meta name="description" content="Полный список прямых рейсов из Минска в 2026: Belavia, Turkish Airlines, FlyDubai, Аэрофлот. Россия, Турция, ОАЭ, Грузия, Казахстан, Египет. Бронирование через GDS.">
+<title>Прямые рейсы из Минска 2026 — расписание и цены | First Class</title>
+<meta name="description" content="Прямые рейсы из Минска в 2026: Belavia, Turkish Airlines, FlyDubai, Аэрофлот. Россия, Турция, ОАЭ, Грузия, Казахстан. Подбор билета через GDS.">
 <meta name="keywords" content="прямые рейсы из Минска 2026, куда летать из Минска, Belavia направления, авиабилеты Минск прямой рейс, расписание рейсов Минск">
 <link rel="canonical" href="https://fclass.by/tickets/direct-flights/">
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -64,6 +64,13 @@ body{font-family:var(--font-sans);background:var(--white);color:var(--primary);l
 .cta-block{background:var(--primary);color:var(--white);padding:48px 40px;border-radius:16px;text-align:center;margin:48px 0}
 .cta-block h3{font-family:var(--font-serif);font-size:26px;margin-bottom:12px}
 .cta-block p{color:rgba(255,255,255,.7);margin-bottom:24px;font-size:16px}
+.direct-form{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:720px;margin:26px auto 0;text-align:left}
+.direct-form .full{grid-column:1/-1}
+.direct-form input,.direct-form textarea{width:100%;padding:14px 15px;border:1px solid rgba(255,255,255,.16);border-radius:6px;background:rgba(255,255,255,.08);color:var(--white);font:inherit}
+.direct-form textarea{min-height:88px;resize:vertical}
+.direct-form input::placeholder,.direct-form textarea::placeholder{color:rgba(255,255,255,.58)}
+.direct-form input:focus,.direct-form textarea:focus{outline:0;border-color:var(--accent);background:rgba(255,255,255,.12)}
+.direct-form button{grid-column:1/-1;border:0;cursor:pointer;justify-content:center}
 .btn{display:inline-flex;align-items:center;gap:10px;padding:16px 32px;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;text-decoration:none;border-radius:6px;transition:var(--transition)}
 .btn-gold{background:var(--accent);color:var(--primary)}
 .btn-gold:hover{background:var(--accent-light);transform:translateY(-2px)}
@@ -85,6 +92,7 @@ body{font-family:var(--font-sans);background:var(--white);color:var(--primary);l
 .content{padding:40px 16px}
 .route-table{font-size:13px}.route-table th,.route-table td{padding:10px 12px}
 .cta-block{padding:32px 20px}
+.direct-form{grid-template-columns:1fr}
 .links-grid{grid-template-columns:1fr}
 }
 </style>
@@ -163,7 +171,15 @@ body{font-family:var(--font-sans);background:var(--white);color:var(--primary);l
 <div class="cta-block">
 <h3>Подберём лучший рейс за 15 минут</h3>
 <p>Укажите маршрут и даты — предложим варианты с ценами</p>
-<a href="/tickets/#form" class="btn btn-gold">Оставить заявку</a>
+<form id="directFlightsForm" class="direct-form">
+<input type="hidden" name="source" value="tickets/direct-flights">
+<input type="text" name="route" placeholder="Маршрут: Минск — Стамбул" required maxlength="120">
+<input type="text" name="dates" placeholder="Даты вылета" required maxlength="80">
+<input type="tel" name="phone" placeholder="+375..." required maxlength="30">
+<input type="text" name="passengers" placeholder="Пассажиров" maxlength="40">
+<textarea class="full" name="comment" placeholder="Комментарий: багаж, безнал, юрлицо, бюджет"></textarea>
+<button type="submit" class="btn btn-gold">Оставить заявку</button>
+</form>
 </div>
 
 <div class="faq-section">
@@ -188,5 +204,8 @@ body{font-family:var(--font-sans);background:var(--white);color:var(--primary);l
 
 <div class="footer-mini">&copy; 2026 <a href="/">First Class Travel</a> | <a href="/privacy/">Политика конфиденциальности</a></div>
 
+<script>
+document.getElementById('directFlightsForm').addEventListener('submit',async function(e){e.preventDefault();var form=e.target;var btn=form.querySelector('button');var original=btn.textContent;btn.textContent='Отправка...';btn.disabled=true;var data=Object.fromEntries(new FormData(form));data.timestamp=new Date().toISOString();try{await fetch('https://emikss.host/webhook/fc-ticket-request',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});if(window.ym)ym(107237229,'reachGoal','LEAD');if(window.gtag)gtag('event','generate_lead',{event_category:'lead',event_label:'direct_flights'});btn.textContent='Отправлено';btn.style.background='#22c55e';form.reset()}catch(err){btn.textContent='Ошибка - позвоните нам'}setTimeout(function(){btn.textContent=original;btn.style.background='';btn.disabled=false},4000)});
+</script>
 </body>
 </html>

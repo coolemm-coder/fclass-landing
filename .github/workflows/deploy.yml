@@ -47,6 +47,23 @@ jobs:
             **/.claude/**/*
             **/.claudeignore
             **/.mcp.json
+            **/docs/**
+            **/docs/**/*
+            **/web-panel/**
+            **/web-panel/**/*
+            **/questionnaires/**
+            **/questionnaires/**/*
+            **/content/**
+            **/content/**/*
+            **/scripts/**
+            **/scripts/**/*
+            **/n8n/**
+            **/n8n/**/*
+            **/data/**
+            **/data/**/*
+            **/fclass-landing/**
+            **/fclass-landing/**/*
+            **/blog/_template.html
             **/CLAUDE.md
             **/README.md
             **/PROJECT_LOG.md
@@ -58,7 +75,13 @@ jobs:
         run: |
           echo "Deploy completed at $(date -u)"
           echo "Verifying live URLs..."
-          for path in "/" "/komandirovochnye-kalkulyator/" "/tickets/" "/visa-support/" "/blog/" "/sitemap.xml"; do
+          for path in "/" "/komandirovochnye-kalkulyator/" "/tickets/" "/tickets/direct-flights/" "/tickets/aviabilety-dlya-yurlic/" "/komandirovki/" "/sitemap.xml"; do
+            STATUS=$(curl -s -o /dev/null -w "%{http_code}" "https://fclass.by${path}")
+            echo "  ${path} -> HTTP ${STATUS}"
+          done
+
+          echo "Verifying internal URLs are blocked..."
+          for path in "/docs/audit/dashboard.html" "/web-panel/" "/questionnaires/pdf/pasha_b2b.html" "/fclass-landing/blog/index.html" "/blog/_template.html"; do
             STATUS=$(curl -s -o /dev/null -w "%{http_code}" "https://fclass.by${path}")
             echo "  ${path} -> HTTP ${STATUS}"
           done

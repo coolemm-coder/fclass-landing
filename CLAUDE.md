@@ -5,9 +5,20 @@
 
 ## Сообщение для Claude / следующего агента
 
-Последние изменения от Codex на 2026-05-13:
+Последние изменения от Codex на 2026-05-14:
 
-- `pending fix(copy): clean up VAT wording on legal entity tickets`
+- `fix(seo): close public artifacts and tighten ticket pages`
+  - закрыты публичные внутренние URL через `.htaccess`: `/docs/`, `/web-panel/`, `/questionnaires/`, `/content/`, `/scripts/`, вложенный `/fclass-landing/`, `/blog/_template.html`;
+  - эти же внутренние папки исключены из FTP deploy в `.github/workflows/deploy.yml`, чтобы они не публиковались повторно;
+  - `/tickets/minsk-istanbul/` канонизирован 301-редиректом на основной `/tickets/minsk-stambul/`;
+  - в `sitemap.xml` добавлены `/tickets/direct-flights/`, `/tickets/minsk-dubai/` и новые статьи про командировки в Москву, Санкт-Петербург и Калининград;
+  - на `/tickets/direct-flights/` добавлена форма заявки прямо в CTA-блок, отправка идет в `https://emikss.host/webhook/fc-ticket-request`, цель Метрики `LEAD`, GA event `generate_lead` с `event_label=direct_flights`;
+  - битые/неверсионируемые OG-картинки в блоге, `/cases/` и `/resources/` заменены на `/hero-bg.jpg`;
+  - в репозиторий возвращены публичные ассеты из live/локальных копий: `logo.png`, `hero-bg.jpg`, `hero-bg.webp`, `about-bg.jpg`, `about-bg.webp`, `favicon.ico`, `favicon.png`, изображения блога в `images/blog/`;
+  - сокращены meta description/title на `/tickets/` и `/tickets/aviabilety-dlya-yurlic/`;
+  - старая статья `/blog/korporativnye-aviabilety-minsk.html` частично смещена в сторону "договор/авиабилеты для юрлиц", без усиления термина "корпоративные авиабилеты" в title/H1;
+  - `blog/_template.html` переведен в `noindex,nofollow` как дополнительная страховка, хотя он также закрыт через `.htaccess` и исключен из deploy.
+- `08918ed fix(copy): clean up VAT wording on legal entity tickets`
   - на `/tickets/aviabilety-dlya-yurlic/` убрать любые внутренние SEO-формулировки вроде `Wordstat`;
   - формулировать НДС клиентски: "состав документов согласуем заранее", "ЭСЧФ по услугам, где НДС предусмотрен";
   - не писать на публичной странице фразы вроде "лучше уточнять" или "в Wordstat есть спрос".

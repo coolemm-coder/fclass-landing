@@ -1,6 +1,6 @@
 # fclass.by .htaccess
 # Created 2026-04-22 to fix GSC Soft 404 warning
-# Updated 2026-05-12 — added UA-based mobile redirect to mobile-preview.html
+# Updated 2026-05-14 — block internal artifacts and canonicalize duplicate route URLs
 
 RewriteEngine On
 
@@ -12,6 +12,14 @@ RewriteRule ^ https://fclass.by%{REQUEST_URI} [R=301,L]
 # HTTPS is terminated before Apache on this hosting; scheme redirects are handled upstream.
 RewriteCond %{HTTP_HOST} !^fclass\.by$ [NC]
 RewriteRule ^ https://fclass.by%{REQUEST_URI} [R=301,L]
+
+# === PUBLIC SURFACE GUARDRAILS ===
+# These directories are workspace/internal artifacts and must not be public landing pages.
+RewriteRule ^(?:docs|web-panel|questionnaires|content|scripts|fclass-landing)(?:/|$) - [G,L]
+RewriteRule ^blog/_template\.html$ - [G,L]
+
+# Keep one canonical route URL for Minsk-Stambul to avoid cannibalization.
+RewriteRule ^tickets/minsk-istanbul/?$ https://fclass.by/tickets/minsk-stambul/ [R=301,L]
 
 # Retired B2C tours directory — keep crawlers and old links on an active service page.
 RedirectMatch 301 ^/tours/?$ https://fclass.by/tickets/
