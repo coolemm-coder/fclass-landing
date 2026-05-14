@@ -11,6 +11,10 @@
   - по данным Метрики прямые формы добавлены в две SEO-страницы с основным трафиком: `/blog/komandirovka-v-rossiyu-2026.html` и `/blog/sutochnye-komandirovka-2026.html`;
   - формы отправляют заявки в `https://emikss.host/webhook/fc-lead`, цель Метрики `LEAD`, GA event `generate_lead`, источники `blog_komandirovka_rossiya`, `blog_komandirovka_rossiya_bottom`, `blog_sutochnye_komandirovka`;
   - в этих же местах очищены публичные формулировки `корпоративные авиабилеты` в пользу `авиабилеты для юрлиц`/`договор для юрлиц`.
+- `fix(conversion): clean direct flights CTA`
+  - в `/blog/pryamye-reysy-iz-minska-2026.html` заменен CTA-ссылка на прямую форму подбора билета с `source=blog_pryamye_reysy`;
+  - убраны публичные обещания скидки `15–25%` и жесткие обещания документов по НДС; формулировка теперь: документы по НДС/ЭСЧФ согласуются до оплаты там, где они предусмотрены поставщиком и типом услуги;
+  - очищены видимые `корпоративные авиабилеты`/`корпоративный договор` в перелинковке и футере этой статьи.
 - `fix(seo): shorten commercial metadata`
   - по sitemap-аудиту сокращены слишком длинные `<title>` и meta description на коммерческих страницах: `/tickets/`, маршрутные посадочные `/tickets/minsk-*`, `/komandirovochnye-kalkulyator/`, `/resources/dogovor-template/`, `/resources/calculator/`, `/cases/`;
   - в OG-описаниях старых маршрутных страниц убраны быстро устаревающие цены/частоты рейсов, оставлены устойчивые формулировки про GDS, оплату для физлиц/юрлиц и подбор тарифа.
