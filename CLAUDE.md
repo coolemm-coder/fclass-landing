@@ -7,6 +7,10 @@
 
 Последние изменения от Codex на 2026-05-14:
 
+- `fix(seo): shorten commercial metadata`
+  - по sitemap-аудиту сокращены слишком длинные `<title>` и meta description на коммерческих страницах: `/tickets/`, маршрутные посадочные `/tickets/minsk-*`, `/komandirovochnye-kalkulyator/`, `/resources/dogovor-template/`, `/resources/calculator/`, `/cases/`;
+  - в OG-описаниях старых маршрутных страниц убраны быстро устаревающие цены/частоты рейсов, оставлены устойчивые формулировки про GDS, оплату для физлиц/юрлиц и подбор тарифа.
+  - тем же проходом сокращены длинные title/description в блоговых страницах из sitemap; публичные факты не расширялись, наоборот убраны лишние быстро устаревающие цифры из сниппетов.
 - `fix(conversion): tighten Telegram and lead tracking`
   - заменены нерабочие/неоднородные Telegram-ссылки `t.me/+375447725266`, `firstclass_by`, `firstclassby` на единый `travelangelby_bot`;
   - на внутренних страницах исправлены битые якоря `#services`, `#contact`, `#expertise` на ссылки к главной `/#...`;
