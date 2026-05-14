@@ -69,7 +69,7 @@
 
                 <div class="result-breakdown">
                     <div class="breakdown-row">
-                        <span class="breakdown-label">На тарифах (15% скидка)</span>
+                        <span class="breakdown-label">Тарифные условия</span>
                         <span class="breakdown-value" id="result-tariff">—</span>
                     </div>
                     <div class="breakdown-row">
@@ -96,7 +96,7 @@
 
         <div class="form-section" id="form-section">
             <h2>Получить персональный расчёт условий договора</h2>
-            <p class="sub">Цифры выше — общая модель. Для вашей компании рассчитаем индивидуально: какая скидка по объёму, какие сроки отсрочки платежа, какие маршруты выгоднее. Это бесплатно и без обязательств.</p>
+            <p class="sub">Цифры выше — общая модель. Для вашей компании рассчитаем индивидуально: какие тарифы доступны, какие сроки оплаты возможны и какие маршруты выгоднее. Это бесплатно и без обязательств.</p>
             <form class="lead-form" id="calc-form" action="https://emikss.host/webhook/fclass-blog-lead" method="POST">
                 <input type="hidden" name="source" value="calculator">
                 <input type="hidden" name="page" value="/resources/calculator/">
@@ -124,8 +124,8 @@
             <li><strong>Часы бухгалтера на одну командировку:</strong> сотрудник покупает сам = 1.5 часа (компенсация + проверка чеков + ЭСЧФ + авансовый отчёт), разовые счета = 1.0 час (счёт + платёж + ЭСЧФ + закрытие), уже есть другой договор = 0.2 часа (только акцепт акта в конце месяца).</li>
             <li><strong>С корп.договором</strong> любой модели = 0.2 часа на командировку (приём билета + закрытие в конце месяца).</li>
             <li><strong>Ставка бухгалтера</strong> — брутто-зарплата ÷ 168 рабочих часов в месяце. По умолчанию 25 BYN/ч (≈ зарплата 4 200 BYN до налогов).</li>
-            <li><strong>Не учитывается:</strong> потеря НДС-вычета при покупке сотрудником (это ещё +5-15% к экономии), время руководителя на согласование разовых платежей, риск налоговой проверки разовых счетов.</li>
-            <li>Подробнее о механике корп.договора — в материале <a href="/blog/korporativnye-aviabilety-minsk.html">Корпоративный договор на авиабилеты в Минске</a> или в <a href="/resources/dogovor-template/">бесплатном PDF-шаблоне</a>.</li>
+            <li><strong>Не учитывается:</strong> потеря НДС-вычета при покупке сотрудником, время руководителя на согласование разовых платежей, риск налоговой проверки разовых счетов.</li>
+            <li>Подробнее о механике договора — в материале <a href="/blog/korporativnye-aviabilety-minsk.html">договор на авиабилеты для юрлиц</a> или в <a href="/resources/dogovor-template/">бесплатном PDF-шаблоне</a>.</li>
         </ul>
     </div>
 </div>
@@ -144,8 +144,8 @@ function calc() {
     // Total spend per month: round-trip (×2) × trips × price
     var totalSpend = trips * price * 2;
 
-    // Tariff savings: 15% discount on tickets
-    var tariffSavings = Math.round(totalSpend * 0.15);
+    // Tariff conditions vary by route and supplier, so we do not estimate a fixed discount.
+    var tariffSavings = 0;
 
     // Time savings depends on current mode
     var hoursPerTrip;
@@ -164,7 +164,7 @@ function calc() {
     var equivalentTrips = totalYearly > 0 ? Math.floor(totalYearly / (price * 2)) : 0;
 
     document.getElementById('result-year').textContent = totalYearly.toLocaleString('ru-RU') + ' BYN';
-    document.getElementById('result-tariff').textContent = tariffSavings.toLocaleString('ru-RU') + ' BYN/мес';
+    document.getElementById('result-tariff').textContent = 'по запросу';
     document.getElementById('result-hours').textContent = Math.round(hoursSaved) + ' часов';
     document.getElementById('result-time-money').textContent = timeSavings.toLocaleString('ru-RU') + ' BYN/мес';
     document.getElementById('result-total-month').textContent = totalMonthly.toLocaleString('ru-RU') + ' BYN/мес';
