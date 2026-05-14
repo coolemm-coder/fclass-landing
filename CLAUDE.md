@@ -12,6 +12,7 @@
   - на внутренних страницах исправлены битые якоря `#services`, `#contact`, `#expertise` на ссылки к главной `/#...`;
   - на старых маршрутных страницах добавлен трекинг успешной отправки формы в Метрику (`LEAD`) и GA (`generate_lead`).
   - в `/resources/dogovor-template/` публичная формулировка `договор с турагентством` заменена на `договор с агентством`.
+  - по sitemap-аудиту исправлены критичные SEO-пропуски: добавлен `<title>` на `/blog/visa-guide-2026.html`, canonical/OG URL на `/blog/komandirovka-v-kazahstan-2026.html` и `/blog/komandirovka-v-kitay.html`.
 - `fix(copy): remove remaining passport and tourism wording`
   - после live-проверки дополнительно очищены регистрозависимые остатки `Загранпаспорт` на `/blog/vizovaya-podderzhka-minsk.html`;
   - в `/blog/komandirovka-v-kitay.html`, `/blog/komandirovka-v-uzbekistan-2026.html`, `/blog/komandirovka-v-gruziyu-2026.html` заменены лишние упоминания `туризм` на частные поездки/сервис там, где это не визовый тип;
