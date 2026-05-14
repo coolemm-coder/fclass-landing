@@ -7,6 +7,15 @@
 
 Последние изменения от Codex на 2026-05-14:
 
+- `fix(content): clean legacy travel positioning`
+  - очищены старые страницы `/blog/delovoy-turizm-belarus-2026.html` и `/blog/mice-belarus-2026.html`: вместо туров/инсентив-туров теперь деловые поездки, MICE-мероприятия, логистика участников и документы;
+  - на `/blog/delovoy-turizm-belarus-2026.html` удалены неподтвержденные рейтинги/прогнозы, добавлены canonical, Open Graph и JSON-LD;
+  - переписана спорная статья `/blog/viza-v-oae-dlya-belorusov-2026.html`: убраны обещания фиксированных сроков/стоимости визы, старый телефон и фейковый офис, добавлена проверка актуальных правил въезда до оплаты билета;
+  - на `/tickets/minsk-dubai/` убраны утверждения про гарантированную визу по прилёту и `загранпаспорт`, оставлена аккуратная проверка правил въезда;
+  - на `/tickets/minsk-istanbul/` убраны неподтвержденные утверждения про топ-5/загрузку рейса; на этой же странице, `/blog/komandirovka-v-moskvu-iz-minska.html`, `/blog/komandirovka-v-sankt-peterburg-iz-minska.html` заменены некорректные для РБ формулировки `загранпаспорт`/`внутренний паспорт` на `паспорт гражданина РБ`;
+  - дополнительно вычищены остатки `турагентство`/`туристические` там, где это выглядело как продажа туров: `/blog/korporativnye-aviabilety-minsk.html`, `/blog/organizaciya-komandirovok.html`, `/blog/belavia-novye-reysy-2026.html`, `/blog/komandirovka-v-gruziyu-2026.html`, `/blog/komandirovki-belarus-2026.html`, `/blog/loukostery-iz-minska-2026.html`, `/blog/pryamye-reysy-iz-minska-2026.html`, `/blog/aviabilety-minsk-stambul.html`;
+  - в `/blog/komandirovka-v-rossiyu-2026.html`, `/blog/komandirovka-v-kazahstan-2026.html`, `/blog/visa-guide-2026.html`, `/blog/vizovaya-podderzhka-minsk.html` очищены публичные формулировки про паспорт гражданина РБ;
+  - обновлены `dateModified`/`sitemap.xml` для затронутых страниц.
 - `feat(seo): add route landing pages and clean business travel copy`
   - добавлены посадочные страницы `/tickets/minsk-kaliningrad/`, `/tickets/minsk-sochi/`, `/tickets/minsk-baku/`, `/tickets/minsk-sharm-el-sheikh/`;
   - для новых route pages вынесены общие стили и JS в `/tickets/route-page.css` и `/tickets/route-page.js`, формы отправляют заявки в `https://emikss.host/webhook/fc-ticket-request`;
