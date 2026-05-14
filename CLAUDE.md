@@ -19,6 +19,9 @@
   - в старой статье `/blog/korporativnye-aviabilety-minsk.html` оставлен SEO-URL, но видимое позиционирование переписано как `договор на авиабилеты для юрлиц`/`договор для юрлиц`;
   - удалены гарантированные скидки `15–25%`, точные обещания отсрочки/НДС/ЭСЧФ и неподтвержденные цифры; условия оплаты, спецтарифы и состав документов теперь описаны как согласуемые до выписки билета;
   - финальный CTA заменен на форму заявки `source=blog_yurlic_contract` в `https://emikss.host/webhook/fc-lead`.
+- `fix(copy): remove legacy discount claims`
+  - публичные остатки `корпоративные авиабилеты`, `корпоративный договор`, `скидка 15–25%`, фиксированная отсрочка и автоматические документы очищены в: `/blog/belavia-novye-reysy-2026.html`, `/blog/komandirovka-v-moskvu-iz-minska.html`, `/blog/komandirovka-v-sankt-peterburg-iz-minska.html`, `/blog/komandirovka-v-gruziyu-2026.html`, `/blog/komandirovki-belarus-2026.html`, `/blog/organizaciya-komandirovok.html`, `/blog/aviabilety-minsk-stambul.html`, `/blog/komandirovka-v-polshu-2026.html`, `/tickets/minsk-dubai/`, `/tickets/minsk-istanbul/` (редиректный legacy-файл), `/concierge/`, `/resources/calculator/`, `/cases/`;
+  - новое правило: не обещать фиксированный процент экономии; писать `договор для юрлиц`, `безналичная оплата`, `условия и документы согласуем до оплаты`.
 - `fix(seo): shorten commercial metadata`
   - по sitemap-аудиту сокращены слишком длинные `<title>` и meta description на коммерческих страницах: `/tickets/`, маршрутные посадочные `/tickets/minsk-*`, `/komandirovochnye-kalkulyator/`, `/resources/dogovor-template/`, `/resources/calculator/`, `/cases/`;
   - в OG-описаниях старых маршрутных страниц убраны быстро устаревающие цены/частоты рейсов, оставлены устойчивые формулировки про GDS, оплату для физлиц/юрлиц и подбор тарифа.
