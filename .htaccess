@@ -23,6 +23,9 @@ RewriteRule ^(?:meta-[^/]+\.md|package(?:-lock)?\.json|vercel\.json|robots-verce
 # Keep one canonical route URL for Minsk-Stambul to avoid cannibalization.
 RewriteRule ^tickets/minsk-istanbul/?$ https://fclass.by/tickets/minsk-stambul/ [R=301,L]
 
+# Legacy nav URL without a standalone landing page.
+RewriteRule ^visa-support/?$ https://fclass.by/blog/vizovaya-podderzhka-minsk.html [R=301,L]
+
 # Retired B2C tours directory — keep crawlers and old links on an active service page.
 RedirectMatch 301 ^/tours/?$ https://fclass.by/tickets/
 

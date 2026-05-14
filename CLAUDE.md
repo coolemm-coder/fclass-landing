@@ -7,6 +7,16 @@
 
 Последние изменения от Codex на 2026-05-14:
 
+- `feat(seo): add route landing pages and clean business travel copy`
+  - добавлены посадочные страницы `/tickets/minsk-kaliningrad/`, `/tickets/minsk-sochi/`, `/tickets/minsk-baku/`, `/tickets/minsk-sharm-el-sheikh/`;
+  - для новых route pages вынесены общие стили и JS в `/tickets/route-page.css` и `/tickets/route-page.js`, формы отправляют заявки в `https://emikss.host/webhook/fc-ticket-request`;
+  - обновлена перелинковка в `/tickets/`, `/tickets/direct-flights/` и `sitemap.xml`;
+  - в GitHub Actions verify deploy добавлены проверки новых route pages;
+  - `/visa-support/` добавлен как 301-редирект на актуальную статью `/blog/vizovaya-podderzhka-minsk.html`, чтобы старые nav-ссылки не вели в 404;
+  - добавлена техническая страница `/privacy/` для старых футерных ссылок и форм заявок (`noindex,follow`);
+  - старая статья `/blog/komandirovka-v-kaliningrad-iz-minska.html` обновлена под актуальную логику: сначала прямой рейс, стыковка через Москву/СПб только запасной вариант;
+  - в `/blog/organizaciya-komandirovok.html` убраны туровые формулировки из текста про командировки (`туристическая страховка`, `деловые встречи + туризм`, `застраховывают туристов`);
+  - в старом футере `/blog/aviabilety-minsk-stambul.html` ссылка `B2C туры` заменена на авиабилеты для частных клиентов.
 - `fix(deploy): exclude internal runtime artifacts from FTP`
   - после push `d4a8924` GitHub Actions упал на FTP `502 Command not implemented` при создании `/api/`;
   - дополнительно исключены из FTP deploy: `/api/`, `/n8n-workflows/`, `package*.json`, `vercel.json`, `robots-vercel.txt`, `meta-*.md`, `firstclass-growth-playbook.html`, `firstclass-gtm-plan.html`;
