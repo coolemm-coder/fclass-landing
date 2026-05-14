@@ -43,7 +43,7 @@
         "headline": "Суточные при командировке за рубеж в 2026 году: нормы, расчёт, учёт",
         "description": "Нормы суточных при загранкомандировке в 2026 году для организаций Беларуси. Расчёт, налоговые последствия, авансовый отчёт.",
         "datePublished": "2026-03-23",
-        "dateModified": "2026-03-23",
+        "dateModified": "2026-05-14",
         "author": {"@type": "Organization", "name": "First Class"},
         "publisher": {
             "@type": "Organization",
@@ -98,7 +98,7 @@
 <section class="article-hero">
     <div class="article-tag">Командировки</div>
     <h1>Суточные при командировке за рубеж в 2026 году: нормы, расчёт, учёт</h1>
-    <div class="article-meta">23 марта 2026 · 8 мин чтения</div>
+    <div class="article-meta">23 марта 2026 · обновлено 14 мая 2026 · 8 мин чтения</div>
 </section>
 
 <div class="breadcrumbs">
@@ -231,10 +231,19 @@
     <h3>Выплачиваются ли суточные при однодневной командировке за рубеж?</h3>
     <p>Да, но в уменьшенном размере. При однодневной загранкомандировке без ночлега за рубежом суточные выплачиваются в размере 50% от установленной нормы. Это правило рекомендуется прямо закрепить во внутреннем положении о командировках.</p>
 
-    <div class="cta-box">
-        <h3>Организовать командировку под ключ</h3>
-        <p>Авиабилеты, гостиница, трансфер, визы — и полный пакет документов для бухгалтерии. Связаться с менеджером First Class.</p>
-        <a href="/#contact" class="cta-btn">Оставить заявку</a>
+    <div class="cta-b2b">
+        <h3>Нужно закрыть командировку документами?</h3>
+        <p>Подберем билеты, проживание, трансфер и визовую поддержку, а затем подготовим пакет документов для бухгалтерии.</p>
+        <form class="b2b-form" data-lead-form>
+            <input type="text" name="name" placeholder="Имя" required>
+            <input type="tel" name="phone" placeholder="+375 29 000-00-00" required>
+            <input type="text" name="company" placeholder="Компания / УНП, если есть">
+            <input type="hidden" name="destination" value="Командировка и суточные">
+            <input type="hidden" name="source" value="blog_sutochnye_komandirovka">
+            <button type="submit" class="cta-submit">Оставить заявку</button>
+        </form>
+        <p class="cta-alt">Или напишите в <a href="https://t.me/travelangelby_bot?start=blog_sutochnye_komandirovka" target="_blank" rel="noopener">Telegram</a></p>
+        <div class="cta-thanks">Спасибо. Менеджер свяжется с вами.</div>
     </div>
 
     <div class="related">
@@ -245,8 +254,8 @@
                 <p>Как организовать служебную командировку: чек-лист для бухгалтера</p>
             </a>
             <a href="/blog/korporativnye-aviabilety-minsk.html" class="related-card">
-                <span>Корпоратив</span>
-                <p>Корпоративные авиабилеты из Минска: как сократить расходы на перелёты</p>
+                <span>Билеты</span>
+                <p>Авиабилеты для юрлиц из Минска: договор, безнал и документы</p>
             </a>
         </div>
     </div>
@@ -270,7 +279,7 @@
             <div class="footer-col">
                 <h4>Для бизнеса</h4>
                 <ul class="footer-links">
-                    <li><a href="/blog/korporativnye-aviabilety-minsk.html">Корпоративный договор</a></li>
+                    <li><a href="/blog/korporativnye-aviabilety-minsk.html">Договор для юрлиц</a></li>
                     <li><a href="/#contact">Гибкие условия оплаты</a></li>
                     <li><a href="/#contact">Документы для бухгалтерии</a></li>
                     <li><a href="/#contact">Персональный менеджер</a></li>
@@ -290,6 +299,38 @@
 <script>
 document.querySelector('.nav-mobile').addEventListener('click', function() {
     document.querySelector('.nav-links').classList.toggle('mobile-open');
+});
+</script>
+<script>
+document.querySelectorAll('[data-lead-form]').forEach(function(form){
+    form.addEventListener('submit', async function(event){
+        event.preventDefault();
+        var button = form.querySelector('button');
+        var original = button.textContent;
+        button.textContent = 'Отправка...';
+        button.disabled = true;
+        var data = Object.fromEntries(new FormData(form));
+        data.timestamp = new Date().toISOString();
+        try {
+            await fetch('https://emikss.host/webhook/fc-lead', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(data)
+            });
+            if (window.ym) ym(107237229, 'reachGoal', 'LEAD');
+            if (window.gtag) gtag('event', 'generate_lead', {event_category: 'lead', event_label: data.source || 'blog_sutochnye_komandirovka'});
+            form.reset();
+            form.style.display = 'none';
+            var thanks = form.parentElement.querySelector('.cta-thanks');
+            if (thanks) thanks.style.display = 'block';
+        } catch (err) {
+            button.textContent = 'Ошибка - позвоните нам';
+            setTimeout(function(){
+                button.textContent = original;
+                button.disabled = false;
+            }, 4000);
+        }
+    });
 });
 </script>
 

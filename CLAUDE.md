@@ -7,6 +7,10 @@
 
 Последние изменения от Codex на 2026-05-14:
 
+- `fix(conversion): add lead forms to top SEO articles`
+  - по данным Метрики прямые формы добавлены в две SEO-страницы с основным трафиком: `/blog/komandirovka-v-rossiyu-2026.html` и `/blog/sutochnye-komandirovka-2026.html`;
+  - формы отправляют заявки в `https://emikss.host/webhook/fc-lead`, цель Метрики `LEAD`, GA event `generate_lead`, источники `blog_komandirovka_rossiya`, `blog_komandirovka_rossiya_bottom`, `blog_sutochnye_komandirovka`;
+  - в этих же местах очищены публичные формулировки `корпоративные авиабилеты` в пользу `авиабилеты для юрлиц`/`договор для юрлиц`.
 - `fix(seo): shorten commercial metadata`
   - по sitemap-аудиту сокращены слишком длинные `<title>` и meta description на коммерческих страницах: `/tickets/`, маршрутные посадочные `/tickets/minsk-*`, `/komandirovochnye-kalkulyator/`, `/resources/dogovor-template/`, `/resources/calculator/`, `/cases/`;
   - в OG-описаниях старых маршрутных страниц убраны быстро устаревающие цены/частоты рейсов, оставлены устойчивые формулировки про GDS, оплату для физлиц/юрлиц и подбор тарифа.
