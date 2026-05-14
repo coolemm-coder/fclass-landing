@@ -13,6 +13,7 @@
   - на старых маршрутных страницах добавлен трекинг успешной отправки формы в Метрику (`LEAD`) и GA (`generate_lead`).
   - в `/resources/dogovor-template/` публичная формулировка `договор с турагентством` заменена на `договор с агентством`.
   - по sitemap-аудиту исправлены критичные SEO-пропуски: добавлен `<title>` на `/blog/visa-guide-2026.html`, canonical/OG URL на `/blog/komandirovka-v-kazahstan-2026.html` и `/blog/komandirovka-v-kitay.html`.
+  - в `.github/workflows/deploy.yml` включен `FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true`, чтобы заранее проверить деплой на Node 24 до принудительного перехода GitHub Actions.
 - `fix(copy): remove remaining passport and tourism wording`
   - после live-проверки дополнительно очищены регистрозависимые остатки `Загранпаспорт` на `/blog/vizovaya-podderzhka-minsk.html`;
   - в `/blog/komandirovka-v-kitay.html`, `/blog/komandirovka-v-uzbekistan-2026.html`, `/blog/komandirovka-v-gruziyu-2026.html` заменены лишние упоминания `туризм` на частные поездки/сервис там, где это не визовый тип;
