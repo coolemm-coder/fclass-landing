@@ -30,12 +30,18 @@
         .form-wrap{max-width:650px;margin:0 auto;background:#fff;padding:46px;border-radius:14px;box-shadow:var(--shadow)}.form-title{font-family:var(--font-serif);font-size:30px;text-align:center;margin-bottom:8px}.form-subtitle{text-align:center;color:var(--gray);margin-bottom:30px}.row{display:grid;grid-template-columns:1fr 1fr;gap:16px}.group{margin-bottom:18px}label{display:block;margin-bottom:8px;color:var(--gray);font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase}input,select,textarea{width:100%;padding:14px 15px;border:1px solid transparent;border-radius:6px;background:var(--sand);font:inherit}textarea{min-height:104px;resize:vertical}input:focus,select:focus,textarea:focus{outline:0;border-color:var(--primary);background:#fff}.form-submit{width:100%;margin-top:6px}
         .footer{padding:46px 60px;background:var(--primary);color:#fff}.footer-inner{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px}.footer p,.footer a{color:rgba(255,255,255,.68);font-size:14px}.footer a{text-decoration:none}.footer h4{color:var(--accent);font-size:12px;text-transform:uppercase;letter-spacing:2px;margin-bottom:14px}.footer-links{display:flex;flex-direction:column;gap:8px}
         @media(max-width:820px){.nav{padding:0 20px}.nav-links{display:none}.nav-cta{display:none}.hero,.section{padding-left:22px;padding-right:22px}.grid,.process,.dark-grid,.footer-inner{grid-template-columns:1fr}.row{grid-template-columns:1fr}.form-wrap{padding:28px 20px}.hero-metrics{display:grid;grid-template-columns:1fr 1fr}}
-    </style>
+    
+.tg-bubble{position:fixed;right:20px;bottom:20px;z-index:999}
+.tg-bubble a{display:flex;align-items:center;gap:10px;background:#0088cc;color:white;padding:14px 22px;border-radius:50px;text-decoration:none;box-shadow:0 4px 20px rgba(0,136,204,.4);transition:transform .2s,box-shadow .2s;font-weight:600;font-size:14px;font-family:'DM Sans',sans-serif}
+.tg-bubble a:hover{transform:translateY(-3px);box-shadow:0 6px 24px rgba(0,136,204,.5)}
+.tg-bubble svg{flex-shrink:0}
+@media(max-width:600px){.tg-bubble-text{display:none}.tg-bubble a{padding:14px}}
+</style>
     <script type="application/ld+json">
     {"@context":"https://schema.org","@type":"Service","name":"Организация командировок","serviceType":"Организация служебных командировок сотрудников","description":"Организация командировок для компаний: билеты, отели, визы, трансферы, закрывающие документы и поддержка 24/7.","provider":{"@type":"TravelAgency","name":"First Class","url":"https://fclass.by","telephone":"+375447725266"},"areaServed":{"@type":"Country","name":"Belarus"},"url":"https://fclass.by/komandirovki/"}
     </script>
     <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Что входит в организацию командировки сотрудников?","acceptedAnswer":{"@type":"Answer","text":"First Class подбирает и оформляет авиабилеты, отели, визовую поддержку, трансферы, страховку, закрывающие документы и сопровождение сотрудника в поездке."}},{"@type":"Question","name":"Работаете ли вы с юрлицами по договору?","acceptedAnswer":{"@type":"Answer","text":"Да. Заключаем договор, работаем по безналичному расчету, предоставляем счета, акты, маршрутные квитанции и документы для бухгалтерии."}},{"@type":"Question","name":"Можно ли поручить срочную командировку?","acceptedAnswer":{"@type":"Answer","text":"Да. Менеджер подбирает варианты за 15 минут в рабочее время, а для постоянных клиентов доступна поддержка 24/7."}}]}
+    {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Что входит в организацию командировки сотрудников?","acceptedAnswer":{"@type":"Answer","text":"First Class подбирает и оформляет авиабилеты, отели, визовую поддержку, трансферы, страховку, закрывающие документы и сопровождение сотрудника в поездке."}},{"@type":"Question","name":"Работаете ли вы с юрлицами по договору?","acceptedAnswer":{"@type":"Answer","text":"Да. Заключаем договор, работаем по безналичному расчету, предоставляем счета, акты, маршрутные квитанции и документы для бухгалтерии."}},{"@type":"Question","name":"Можно ли поручить срочную командировку?","acceptedAnswer":{"@type":"Answer","text":"Да. Менеджер подбирает варианты за 15 минут в рабочее время, а для постоянных клиентов доступна поддержка 24/7."},{"@type":"Question","name":"Сколько стоят командировки через турагентство?","acceptedAnswer":{"@type":"Answer","text":"Стандартная агентская комиссия — 3-7% от стоимости пакета (билеты + отель + трансферы). При работе по корпоративному договору комиссия включается в общий счёт. Клиенты с месячным оборотом от 3 000 BYN получают скидку по объёму 15-25% от опубликованных тарифов авиакомпаний, что обычно покрывает агентскую комиссию."}},{"@type":"Question","name":"Какие документы я получу для бухгалтерии?","acceptedAnswer":{"@type":"Answer","text":"Договор, счёт на оплату, акт оказанных услуг, маршрут-квитанция электронного билета, реестр перелётов за месяц, ЭСЧФ через Портал электронных счетов-фактур МНС. По итогам отчётного месяца документы направляются на e-mail Заказчика не позднее 5-го числа следующего месяца."}},{"@type":"Question","name":"Можно ли получить отсрочку платежа?","acceptedAnswer":{"@type":"Answer","text":"Да, отсрочка платежа доступна для постоянных клиентов: стандартная 7 дней с даты вылета, до 14 или 30 дней — по дополнительному соглашению при месячном обороте от 3 000 BYN. Условия фиксируются в приложении к рамочному договору."}}]}
     </script>
     <script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");ym(107237229,"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});</script>
 </head>
@@ -116,6 +122,17 @@
         </div>
     </section>
 
+    
+    <section class="section section-alt">
+        <div class="eyebrow">Полезное</div>
+        <h2 class="title">Калькулятор и материалы для бухгалтера</h2>
+        <div class="grid" style="grid-template-columns:repeat(3,1fr)">
+            <div class="card"><h3>Калькулятор экономии</h3><p>Введите 3 числа — увидите экономию BYN/год и часов бухгалтера с корпоративным договором.</p><a href="/resources/calculator/" class="btn btn-primary" style="margin-top:14px;display:inline-block" onclick="try{ym(107237229,'reachGoal','komandirovki_to_calc');}catch(e){}">Рассчитать</a></div>
+            <div class="card"><h3>Шаблон договора + чек-лист</h3><p>PDF на 9 страниц: универсальный рамочный договор с турагентством и чек-лист главбуха.</p><a href="/resources/dogovor-template/" class="btn btn-primary" style="margin-top:14px;display:inline-block" onclick="try{ym(107237229,'reachGoal','komandirovki_to_pdf');}catch(e){}">Скачать PDF</a></div>
+            <div class="card"><h3>Кейсы клиентов</h3><p>3 реальных кейса с цифрами: IT-компания, производство, консалтинг. Окупаемость 1-2 мес.</p><a href="/cases/" class="btn btn-primary" style="margin-top:14px;display:inline-block" onclick="try{ym(107237229,'reachGoal','komandirovki_to_cases');}catch(e){}">Смотреть кейсы</a></div>
+        </div>
+    </section>
+
     <section class="form-section section-alt" id="form">
         <div class="form-wrap">
             <h2 class="form-title">Рассчитать командировку</h2>
@@ -131,10 +148,12 @@
                 </div>
                 <div class="row">
                     <div class="group"><label>Имя</label><input name="name" placeholder="Контактное лицо" required></div>
+                    <div class="group"><label>Компания</label><input name="company" placeholder="Название компании / ИП"></div>
                     <div class="group"><label>Телефон</label><input name="phone" placeholder="+375..." required></div>
                 </div>
                 <div class="group"><label>Что нужно</label><textarea name="comment" placeholder="Билеты, отель, виза, трансфер, документы, ограничения по бюджету"></textarea></div>
                 <input type="hidden" name="destination" value="Командировки">
+                <input type="hidden" name="page" value="/komandirovki/">
                 <input type="hidden" name="source" value="landing_komandirovki">
                 <button class="btn btn-primary form-submit" type="submit">Отправить заявку</button>
             </form>
@@ -152,5 +171,6 @@
     <script>
         document.getElementById('lead-form').addEventListener('submit',async function(e){e.preventDefault();var btn=e.target.querySelector('button');var original=btn.textContent;btn.textContent='Отправка...';btn.disabled=true;var data=Object.fromEntries(new FormData(e.target));data.timestamp=new Date().toISOString();try{await fetch('https://emikss.host/webhook/fc-lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});if(window.ym)ym(107237229,'reachGoal','LEAD');if(window.gtag)gtag('event','generate_lead',{event_category:'lead',event_label:'komandirovki'});btn.textContent='Отправлено';btn.style.background='#22c55e';e.target.reset()}catch(err){btn.textContent='Ошибка - позвоните нам'}setTimeout(function(){btn.textContent=original;btn.style.background='';btn.disabled=false},4000)});
     </script>
+<div class="tg-bubble" data-bubble="v1"><a href="https://t.me/travelangelby_bot?start=bubble_komandirovki" target="_blank" rel="noopener" title="Спросить нашего Telegram-бота за 30 секунд" onclick="try{ym(107237229,'reachGoal','tg_bubble_click');gtag('event','click',{outbound:'telegram_bubble'});}catch(e){}"><svg viewBox="0 0 24 24" fill="white" width="22" height="22" aria-hidden="true"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.7L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg><span class="tg-bubble-text">Спросить за 30 сек</span></a></div>
 </body>
 </html>
