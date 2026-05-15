@@ -5,8 +5,12 @@
 
 ## Сообщение для Claude / следующего агента
 
-Последние изменения от Codex на 2026-05-14:
+Последние изменения от Codex на 2026-05-15:
 
+- `fix(seo): repair FAQ structured data`
+  - после конкурентного SEO-аудита Topavia проверена JSON-LD разметка на ключевых коммерческих страницах;
+  - исправлен битый `FAQPage` JSON-LD на `/komandirovki/` и `/tickets/aviabilety-dlya-yurlic/`: теперь все `application/ld+json` блоки парсятся валидно;
+  - видимый текст страниц не менялся, правка только техническая для поисковой разметки.
 - `fix(conversion): route main contacts through Telegram bot`
   - на главной основной контактный сценарий переведен с формы на `@travelangelby_bot`: nav CTA, hero secondary CTA, contact section, final CTA, floating Telegram, footer/social и mobile sticky Telegram получают `start=lead_*`;
   - старый `contact-form` на главной заменен на карточку Telegram-бота с квалификацией заявки: тип запроса, даты/маршрут/пассажиры, контакт и уведомление менеджеров;
