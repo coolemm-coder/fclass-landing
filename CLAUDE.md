@@ -15,6 +15,7 @@
   - после повторных падений `SamKirkland/FTP-Deploy-Action` с `FTPError: 502 Command not implemented` и зависания `lftp mirror` workflow переведен на прямую загрузку файлов через `curl --ftp-create-dirs`;
   - новый деплой не зависит от `.ftp-deploy-sync-state.json`, который action периодически не видел на FTP-сервере и из-за этого пытался выполнить "первую публикацию";
   - деплой загружает публичные файлы по allow/exclude-списку без удаления старых файлов; публичные внутренние URL по-прежнему закрывает `.htaccess`.
+  - после первого curl-деплоя добавлена блокировка dotfiles в `.htaccess`, а `.gitignore` исключен из будущих загрузок.
 - `fix(conversion): route main contacts through Telegram bot`
   - на главной основной контактный сценарий переведен с формы на `@travelangelby_bot`: nav CTA, hero secondary CTA, contact section, final CTA, floating Telegram, footer/social и mobile sticky Telegram получают `start=lead_*`;
   - старый `contact-form` на главной заменен на карточку Telegram-бота с квалификацией заявки: тип запроса, даты/маршрут/пассажиры, контакт и уведомление менеджеров;

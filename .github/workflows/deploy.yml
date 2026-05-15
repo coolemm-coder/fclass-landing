@@ -40,6 +40,7 @@ jobs:
               ! -name '.env' \
               ! -name '.env.*' \
               ! -name '.DS_Store' \
+              ! -name '.gitignore' \
               ! -name '.claudeignore' \
               ! -name '.mcp.json' \
               ! -name '*.md' \
