@@ -88,3 +88,7 @@ docs/audit/uon-*.json
 **/uon-raw*.json
 docs/audit/uon-audit*.json
 docs/audit/uon-*.json
+
+# n8n workflow backups (created by patch scripts)
+scripts/backup_*.json
+scripts/wf_*.json
