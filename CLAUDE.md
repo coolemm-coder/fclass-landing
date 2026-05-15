@@ -11,6 +11,10 @@
   - после конкурентного SEO-аудита Topavia проверена JSON-LD разметка на ключевых коммерческих страницах;
   - исправлен битый `FAQPage` JSON-LD на `/komandirovki/` и `/tickets/aviabilety-dlya-yurlic/`: теперь все `application/ld+json` блоки парсятся валидно;
   - видимый текст страниц не менялся, правка только техническая для поисковой разметки.
+- `fix(deploy): update FTP action for Node 24`
+  - после повторных падений FTP sync с `FTPError: 502 Command not implemented` workflow переведен с `SamKirkland/FTP-Deploy-Action@v4.3.5` на `v4.4.0`, где action нативно работает на `node24`;
+  - удален `FORCE_JAVASCRIPT_ACTIONS_TO_NODE24`, больше не нужен;
+  - из `exclude` убран `.ftp-deploy-sync-state.json`, чтобы action не конфликтовал со своим state-файлом для дифф-деплоя.
 - `fix(conversion): route main contacts through Telegram bot`
   - на главной основной контактный сценарий переведен с формы на `@travelangelby_bot`: nav CTA, hero secondary CTA, contact section, final CTA, floating Telegram, footer/social и mobile sticky Telegram получают `start=lead_*`;
   - старый `contact-form` на главной заменен на карточку Telegram-бота с квалификацией заявки: тип запроса, даты/маршрут/пассажиры, контакт и уведомление менеджеров;
@@ -53,7 +57,7 @@
   - на старых маршрутных страницах добавлен трекинг успешной отправки формы в Метрику (`LEAD`) и GA (`generate_lead`).
   - в `/resources/dogovor-template/` публичная формулировка `договор с турагентством` заменена на `договор с агентством`.
   - по sitemap-аудиту исправлены критичные SEO-пропуски: добавлен `<title>` на `/blog/visa-guide-2026.html`, canonical/OG URL на `/blog/komandirovka-v-kazahstan-2026.html` и `/blog/komandirovka-v-kitay.html`.
-  - в `.github/workflows/deploy.yml` включен `FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true`, чтобы заранее проверить деплой на Node 24 до принудительного перехода GitHub Actions.
+  - исторически в `.github/workflows/deploy.yml` включался `FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true`; затем workflow переведен на `FTP-Deploy-Action@v4.4.0` с native Node 24.
 - `fix(copy): remove remaining passport and tourism wording`
   - после live-проверки дополнительно очищены регистрозависимые остатки `Загранпаспорт` на `/blog/vizovaya-podderzhka-minsk.html`;
   - в `/blog/komandirovka-v-kitay.html`, `/blog/komandirovka-v-uzbekistan-2026.html`, `/blog/komandirovka-v-gruziyu-2026.html` заменены лишние упоминания `туризм` на частные поездки/сервис там, где это не визовый тип;

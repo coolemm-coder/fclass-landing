@@ -16,14 +16,12 @@ jobs:
   deploy:
     name: FTP Deploy
     runs-on: ubuntu-latest
-    env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
       - name: FTP Sync
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
         with:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USERNAME }}
@@ -82,7 +80,6 @@ jobs:
             **/PROJECT_LOG.md
             **/ROADMAP.md
             **/VISION.md
-            **/.ftp-deploy-sync-state.json
 
       - name: Verify deploy
         run: |
