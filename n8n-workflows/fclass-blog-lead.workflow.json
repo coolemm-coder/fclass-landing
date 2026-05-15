@@ -21,7 +21,7 @@
           "string": [
             {
               "name": "tg_text",
-              "value": "🔥 <b>Новый лид из БЛОГ fclass.by</b>\n\n📍 <b>Источник:</b> {{$json.body.source || $json.body.page || 'unknown'}}\n🏢 <b>Компания:</b> {{$json.body.company || '—'}}\n📞 <b>Телефон:</b> {{$json.body.phone || '—'}}\n✉️ <b>Email:</b> {{$json.body.email || '—'}}\n🌐 <b>Страница:</b> https://fclass.by{{$json.body.page || ''}}\n\n⏰ {{$now.format('dd.MM.yyyy HH:mm')}}"
+              "value": "🔥 <b>Новый лид fclass.by</b>\n\n📍 <b>Источник:</b> {{$json.body.source || $json.body.page || 'unknown'}}\n🏢 <b>Компания:</b> {{$json.body.company || '—'}}\n👤 <b>Имя:</b> {{$json.body.name || '—'}}\n📞 <b>Телефон:</b> {{$json.body.phone || '—'}}\n✉️ <b>Email:</b> {{$json.body.email || '—'}}\n🧭 <b>Услуга:</b> {{$json.body.service || $json.body.task || 'авиабилеты / командировка'}}\n✈️ <b>Маршрут:</b> {{$json.body.route || $json.body.direction || $json.body.destination || '—'}}\n📅 <b>Дата:</b> {{$json.body.date || $json.body.travel_date || '—'}}\n👥 <b>Пассажиры:</b> {{$json.body.pax || $json.body.passengers || '—'}}\n💬 <b>Комментарий:</b> {{$json.body.comment || $json.body.message || '—'}}\n🌐 <b>Страница:</b> https://fclass.by{{$json.body.page || ''}}\n\n⏰ {{$now.format('dd.MM.yyyy HH:mm')}}\n\n#fclass_lead #site_lead"
             }
           ]
         },
@@ -35,7 +35,7 @@
     },
     {
       "parameters": {
-        "chatId": "543428212",
+        "chatId": "={{$env.FCLASS_LEADS_CHAT_ID || '-100REPLACE_WITH_GROUP_ID'}}",
         "text": "={{$json.tg_text}}",
         "additionalFields": {
           "parse_mode": "HTML",
@@ -53,7 +53,7 @@
           "name": "Telegram @travelangelby_bot"
         }
       },
-      "notes": "ВАЖНО: подставь credentials своего Telegram-бота (@travelangelby_bot предпочтительно, или @landingproby_bot)"
+      "notes": "ВАЖНО: credentials @travelangelby_bot; chatId берётся из FCLASS_LEADS_CHAT_ID или подставляется ID группы вручную."
     },
     {
       "parameters": {

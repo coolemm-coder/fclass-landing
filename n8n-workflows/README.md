@@ -6,9 +6,10 @@
 
 1. Открой https://emikss.host
 2. Каждый файл `*.workflow.json` импортируй: **Workflows → + → Import from File**
-3. **ВАЖНО:** в node «Telegram уведомление» подставь credentials своего @landingproby_bot
-4. Активируй workflow (toggle справа сверху)
-5. Скопируй Webhook URL из node «Webhook» (он автоматически будет вида https://emikss.host/webhook/X)
+3. **ВАЖНО:** в node «Telegram уведомление» подставь credentials `@travelangelby_bot` для fclass и `@landingproby_bot` для LandingPro
+4. Для fclass укажи групповой chat_id через env `FCLASS_LEADS_CHAT_ID` или замени `-100REPLACE_WITH_GROUP_ID` в Telegram node
+5. Активируй workflow (toggle справа сверху)
+6. Скопируй Webhook URL из node «Webhook» (он автоматически будет вида https://emikss.host/webhook/X)
 
 ## После импорта
 
@@ -23,6 +24,15 @@ Webhook'и должны быть **именно с этими paths** (это в
 
 1. Webhook принимает POST с полями (company / phone / email / source / page / [task])
 2. Set node форматирует красивое сообщение
-3. Telegram node отправляет тебе в чат (chat_id из CLAUDE.md = 543428212)
+3. Telegram node отправляет квалифицированную заявку в группу лидов First Class
 4. Опционально: HTTP node добавляет в U-ON CRM (отключён по умолчанию, нужно добавить API token)
 5. Webhook возвращает 200 OK
+
+## Как получить chat_id группы
+
+1. Добавь `@travelangelby_bot` в нужную Telegram-группу.
+2. Напиши любое сообщение в группе.
+3. Получи `chat.id` через `getUpdates` у бота или временно добавь `@RawDataBot`.
+4. В n8n задай env `FCLASS_LEADS_CHAT_ID=-100...` либо вставь этот ID в Telegram node.
+
+Не возвращать личный `543428212` как основной канал: заявки должны уходить в рабочую группу, чтобы менеджеры не теряли лиды.

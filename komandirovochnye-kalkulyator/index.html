@@ -63,7 +63,7 @@
 
 <div class="row2">
 <div class="field"><label for="suti-foreign">Суточные за границей (USD/день, для коммерческих и ИП)</label><input type="number" id="suti-foreign" min="0" value="40"></div>
-<div class="field"><label for="rate">Курс USD к BYN</label><input type="number" id="rate" step="0.01" min="0" value="2.80" inputmode="decimal"><div class="field-note" id="rate-note">Пробуем загрузить курс Нацбанка РБ. Значение можно изменить вручную.</div></div>
+<div class="field"><label for="rate">Курс USD к BYN</label><input type="number" id="rate" step="0.01" min="0" value="2.80" inputmode="decimal"><div class="field-note" id="rate-note">Пробуем загрузить официальный курс Нацбанка РБ. Значение можно изменить вручную.</div></div>
 </div>
 
 <div class="row2">
@@ -168,9 +168,11 @@
 const RATES_USD={by:0,ru:40,kz:35,tr:50,ae:60,cn:50,'other-cis':35,'other-eu':55};
 const BUDGET_USD={by:0,ru:30,kz:25,tr:35,ae:40,cn:35,'other-cis':25,'other-eu':40};
 const FALLBACK_USD_BYN=2.8;
+const RATE_CACHE_KEY='fclass_usd_byn_rate_v1';
+const RATE_CACHE_TTL_MS=12*60*60*1000;
 const NBRB_USD_RATE_URLS=[
-  'https://api.nbrb.by/exrates/rates/431',
-  'https://www.nbrb.by/api/exrates/rates/431'
+  'https://api.nbrb.by/exrates/rates/431?periodicity=0',
+  'https://www.nbrb.by/api/exrates/rates/431?periodicity=0'
 ];
 
 function calc(){
@@ -222,9 +224,36 @@ function updateRateNote(text){
   if(note)note.textContent=text;
 }
 
+function readCachedUsdRate(){
+  try{
+    const raw=localStorage.getItem(RATE_CACHE_KEY);
+    if(!raw)return null;
+    const cached=JSON.parse(raw);
+    const value=Number(cached.value);
+    const savedAt=Number(cached.savedAt);
+    if(!Number.isFinite(value)||value<=0||!Number.isFinite(savedAt))return null;
+    if(Date.now()-savedAt>RATE_CACHE_TTL_MS)return null;
+    return cached;
+  }catch(err){
+    return null;
+  }
+}
+
+function writeCachedUsdRate(value,date){
+  try{
+    localStorage.setItem(RATE_CACHE_KEY,JSON.stringify({value:value,date:date||'',savedAt:Date.now()}));
+  }catch(err){}
+}
+
 async function loadUsdRate(){
   const input=document.getElementById('rate');
   if(!input)return;
+  const cached=readCachedUsdRate();
+  if(cached){
+    input.value=Number(cached.value).toFixed(2);
+    updateRateNote(`Последний сохранённый курс Нацбанка РБ${cached.date?' на '+formatNbrbDate(cached.date):''}: ${Number(cached.value).toFixed(2)} BYN за 1 USD. Проверяем обновление.`);
+    calc();
+  }
   for(const url of NBRB_USD_RATE_URLS){
     const controller=new AbortController();
     const timeout=setTimeout(()=>controller.abort(),3500);
@@ -236,6 +265,7 @@ async function loadUsdRate(){
       const value=Number(data.Cur_OfficialRate);
       if(!Number.isFinite(value)||value<=0)throw new Error('rate value missing');
       input.value=value.toFixed(2);
+      writeCachedUsdRate(value,data.Date);
       updateRateNote(`Курс Нацбанка РБ${data.Date?' на '+formatNbrbDate(data.Date):''}: ${value.toFixed(2)} BYN за 1 USD. Можно изменить вручную.`);
       calc();
       return;
@@ -243,8 +273,14 @@ async function loadUsdRate(){
       clearTimeout(timeout);
     }
   }
-  input.value=FALLBACK_USD_BYN.toFixed(2);
-  updateRateNote(`Курс Нацбанка не загрузился. Используем ${FALLBACK_USD_BYN.toFixed(2)} BYN за 1 USD, значение можно изменить вручную.`);
+  const latest=readCachedUsdRate();
+  if(latest){
+    input.value=Number(latest.value).toFixed(2);
+    updateRateNote(`Нацбанк РБ не ответил, используем последний сохранённый курс${latest.date?' на '+formatNbrbDate(latest.date):''}: ${Number(latest.value).toFixed(2)} BYN за 1 USD. Значение можно изменить вручную.`);
+  }else{
+    input.value=FALLBACK_USD_BYN.toFixed(2);
+    updateRateNote(`Курс Нацбанка РБ не загрузился. Используем резервное значение ${FALLBACK_USD_BYN.toFixed(2)} BYN за 1 USD, его можно изменить вручную.`);
+  }
   calc();
 }
 

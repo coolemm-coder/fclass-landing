@@ -1,0 +1,99 @@
+{
+  "name": "FC Ticket Request - Route Pages",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "fc-ticket-request",
+        "options": {
+          "allowedOrigins": "*"
+        },
+        "responseMode": "responseNode"
+      },
+      "id": "webhook",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [250, 300],
+      "webhookId": "fc-ticket-request"
+    },
+    {
+      "parameters": {
+        "jsCode": "var raw = $input.first().json;\nvar body = raw.body || raw;\n\nfunction pick() {\n  for (var i = 0; i < arguments.length; i++) {\n    var key = arguments[i];\n    if (body[key] !== undefined && body[key] !== null && String(body[key]).trim() !== '') {\n      return String(body[key]).trim();\n    }\n  }\n  return '—';\n}\n\nfunction safe(value) {\n  return String(value || '—')\n    .replace(/&/g, '&amp;')\n    .replace(/</g, '&lt;')\n    .replace(/>/g, '&gt;');\n}\n\nvar name = pick('name', 'contact_name');\nvar phone = pick('phone', 'tel');\nvar email = pick('email');\nvar route = pick('route', 'direction', 'destination');\nvar date = pick('date', 'travel_date', 'departure_date');\nvar passengers = pick('pax', 'passengers', 'people');\nvar comment = pick('comment', 'message', 'details');\nvar source = pick('source');\nvar page = pick('page', 'url', 'path');\n\nvar now = new Date();\nvar minsk = now.toLocaleString('ru-RU', { timeZone: 'Europe/Minsk' });\n\nvar text = '<b>Заявка на авиабилет fclass.by</b>\\n\\n';\ntext += '<b>Контакт</b>\\n';\ntext += '👤 ' + safe(name) + '\\n';\ntext += '📞 ' + safe(phone) + '\\n';\ntext += '📧 ' + safe(email) + '\\n\\n';\ntext += '<b>Поездка</b>\\n';\ntext += '✈️ Маршрут: ' + safe(route) + '\\n';\ntext += '📅 Дата: ' + safe(date) + '\\n';\ntext += '👥 Пассажиры: ' + safe(passengers) + '\\n';\ntext += '📍 Источник: ' + safe(source) + '\\n';\n\nif (comment && comment !== '—') {\n  text += '\\n💬 ' + safe(comment) + '\\n';\n}\n\nif (page && page !== '—') {\n  text += '\\n🌐 https://fclass.by' + safe(page).replace(/^https?:\\/\\/fclass\\.by/, '') + '\\n';\n}\n\ntext += '\\n🕐 ' + minsk;\ntext += '\\n\\n#fclass_lead #ticket_request';\n\nreturn {\n  json: {\n    text: text,\n    name: name,\n    phone: phone,\n    email: email,\n    route: route,\n    date: date,\n    passengers: passengers,\n    comment: comment,\n    source: source,\n    page: page,\n    timestamp: now.toISOString()\n  }\n};"
+      },
+      "id": "code",
+      "name": "Format Ticket Request",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [450, 300]
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $env.FCLASS_LEADS_CHAT_ID || '-100REPLACE_WITH_GROUP_ID' }}",
+        "text": "={{ $json.text }}",
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "id": "telegram",
+      "name": "Send to Telegram Group",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [650, 300],
+      "credentials": {
+        "telegramApi": {
+          "id": "k4d0qASGIxEm3iYy",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ success: true, message: 'Заявка принята' }) }}",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Access-Control-Allow-Origin",
+                "value": "*"
+              }
+            ]
+          }
+        }
+      },
+      "id": "respond",
+      "name": "Respond Success",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [850, 300]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          { "node": "Format Ticket Request", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Format Ticket Request": {
+      "main": [
+        [
+          { "node": "Send to Telegram Group", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Send to Telegram Group": {
+      "main": [
+        [
+          { "node": "Respond Success", "type": "main", "index": 0 }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

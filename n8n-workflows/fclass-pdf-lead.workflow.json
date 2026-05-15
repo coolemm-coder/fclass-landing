@@ -21,7 +21,7 @@
           "string": [
             {
               "name": "tg_text",
-              "value": "📄 <b>PDF lead: договор + чек-лист</b>\n\n👤 <b>Имя:</b> {{$json.body.name || '—'}}\n✉️ <b>Email:</b> {{$json.body.email || '—'}}\n🏢 <b>Компания:</b> {{$json.body.company || '—'}}\n🌐 <b>Откуда:</b> https://fclass.by{{$json.body.page || '/resources/dogovor-template/'}}\n\n⏰ {{$now.format('dd.MM.yyyy HH:mm')}}\n\n💡 Этот лид скачал шаблон договора и чек-лист. TOFU-стадия, нужен nurture (через 3-7 дней — email с follow-up или Telegram-сообщение)."
+              "value": "📄 <b>Лид fclass.by: шаблон договора</b>\n\n👤 <b>Имя:</b> {{$json.body.name || '—'}}\n✉️ <b>Email:</b> {{$json.body.email || '—'}}\n🏢 <b>Компания:</b> {{$json.body.company || '—'}}\n📞 <b>Телефон:</b> {{$json.body.phone || '—'}}\n🧭 <b>Интерес:</b> договор для юрлиц / авиабилеты в командировку\n🌐 <b>Откуда:</b> https://fclass.by{{$json.body.page || '/resources/dogovor-template/'}}\n\n⏰ {{$now.format('dd.MM.yyyy HH:mm')}}\n\nЗадача: уточнить частоту командировок, направления, способ оплаты и нужный пакет документов.\n\n#fclass_lead #pdf_lead"
             }
           ]
         },
@@ -35,7 +35,7 @@
     },
     {
       "parameters": {
-        "chatId": "543428212",
+        "chatId": "={{$env.FCLASS_LEADS_CHAT_ID || '-100REPLACE_WITH_GROUP_ID'}}",
         "text": "={{$json.tg_text}}",
         "additionalFields": {
           "parse_mode": "HTML",
@@ -53,7 +53,7 @@
           "name": "Telegram @travelangelby_bot"
         }
       },
-      "notes": "Опционально: добавь Email node с автоответом — отправить email с PDF приветствием и ссылкой на PDF"
+      "notes": "Credentials @travelangelby_bot; chatId берётся из FCLASS_LEADS_CHAT_ID или подставляется ID группы вручную. Опционально: добавь Email node с автоответом и ссылкой на PDF."
     },
     {
       "parameters": {
