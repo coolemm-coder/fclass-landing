@@ -11,10 +11,10 @@
   - после конкурентного SEO-аудита Topavia проверена JSON-LD разметка на ключевых коммерческих страницах;
   - исправлен битый `FAQPage` JSON-LD на `/komandirovki/` и `/tickets/aviabilety-dlya-yurlic/`: теперь все `application/ld+json` блоки парсятся валидно;
   - видимый текст страниц не менялся, правка только техническая для поисковой разметки.
-- `fix(deploy): replace FTP action with lftp mirror`
-  - после повторных падений `SamKirkland/FTP-Deploy-Action` с `FTPError: 502 Command not implemented` workflow переведен на прямой `lftp mirror -R`;
+- `fix(deploy): replace FTP action with curl uploads`
+  - после повторных падений `SamKirkland/FTP-Deploy-Action` с `FTPError: 502 Command not implemented` и зависания `lftp mirror` workflow переведен на прямую загрузку файлов через `curl --ftp-create-dirs`;
   - новый деплой не зависит от `.ftp-deploy-sync-state.json`, который action периодически не видел на FTP-сервере и из-за этого пытался выполнить "первую публикацию";
-  - `lftp` запускается без `--delete`, чтобы не удалить лишнее на FTP при ошибке exclude; публичные внутренние URL по-прежнему закрывает `.htaccess`.
+  - деплой загружает публичные файлы по allow/exclude-списку без удаления старых файлов; публичные внутренние URL по-прежнему закрывает `.htaccess`.
 - `fix(conversion): route main contacts through Telegram bot`
   - на главной основной контактный сценарий переведен с формы на `@travelangelby_bot`: nav CTA, hero secondary CTA, contact section, final CTA, floating Telegram, footer/social и mobile sticky Telegram получают `start=lead_*`;
   - старый `contact-form` на главной заменен на карточку Telegram-бота с квалификацией заявки: тип запроса, даты/маршрут/пассажиры, контакт и уведомление менеджеров;
@@ -57,7 +57,7 @@
   - на старых маршрутных страницах добавлен трекинг успешной отправки формы в Метрику (`LEAD`) и GA (`generate_lead`).
   - в `/resources/dogovor-template/` публичная формулировка `договор с турагентством` заменена на `договор с агентством`.
   - по sitemap-аудиту исправлены критичные SEO-пропуски: добавлен `<title>` на `/blog/visa-guide-2026.html`, canonical/OG URL на `/blog/komandirovka-v-kazahstan-2026.html` и `/blog/komandirovka-v-kitay.html`.
-  - исторически в `.github/workflows/deploy.yml` включался `FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true`; затем workflow переведен с FTP-Deploy-Action на `lftp mirror`.
+  - исторически в `.github/workflows/deploy.yml` включался `FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true`; затем workflow переведен с FTP-Deploy-Action на прямой `curl` upload.
 - `fix(copy): remove remaining passport and tourism wording`
   - после live-проверки дополнительно очищены регистрозависимые остатки `Загранпаспорт` на `/blog/vizovaya-podderzhka-minsk.html`;
   - в `/blog/komandirovka-v-kitay.html`, `/blog/komandirovka-v-uzbekistan-2026.html`, `/blog/komandirovka-v-gruziyu-2026.html` заменены лишние упоминания `туризм` на частные поездки/сервис там, где это не визовый тип;

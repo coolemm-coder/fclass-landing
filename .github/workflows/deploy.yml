@@ -20,18 +20,39 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install lftp
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y lftp
-
       - name: FTP Sync
         env:
           FTP_HOST: ${{ secrets.FTP_HOST }}
           FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
           FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
         run: |
-          lftp -c "set ftp:ssl-allow no; set ftp:passive-mode yes; set net:timeout 30; set net:max-retries 3; set net:reconnect-interval-base 5; open -u \"$FTP_USERNAME\",\"$FTP_PASSWORD\" \"$FTP_HOST\"; mirror -R --verbose=2 --only-newer --parallel=2 --exclude-glob .git/ --exclude-glob .git/** --exclude-glob .github/ --exclude-glob .github/** --exclude-glob node_modules/ --exclude-glob node_modules/** --exclude-glob .env --exclude-glob .env.* --exclude-glob .DS_Store --exclude-glob .claude/ --exclude-glob .claude/** --exclude-glob .claudeignore --exclude-glob .mcp.json --exclude-glob api/ --exclude-glob api/** --exclude-glob docs/ --exclude-glob docs/** --exclude-glob web-panel/ --exclude-glob web-panel/** --exclude-glob questionnaires/ --exclude-glob questionnaires/** --exclude-glob content/ --exclude-glob content/** --exclude-glob scripts/ --exclude-glob scripts/** --exclude-glob n8n/ --exclude-glob n8n/** --exclude-glob n8n-workflows/ --exclude-glob n8n-workflows/** --exclude-glob data/ --exclude-glob data/** --exclude-glob fclass-landing/ --exclude-glob fclass-landing/** --exclude-glob blog/_template.html --exclude-glob '*.md' --exclude-glob package.json --exclude-glob package-lock.json --exclude-glob vercel.json --exclude-glob robots-vercel.txt --exclude-glob firstclass-growth-playbook.html --exclude-glob firstclass-gtm-plan.html --exclude-glob CLAUDE.md --exclude-glob README.md --exclude-glob PROJECT_LOG.md --exclude-glob ROADMAP.md --exclude-glob VISION.md ./ ./"
+          set -euo pipefail
+          upload_count=0
+          while IFS= read -r -d '' file; do
+            remote="${file#./}"
+            echo "Uploading ${remote}"
+            curl --fail --silent --show-error --ftp-create-dirs --connect-timeout 20 --max-time 120 --retry 2 --retry-delay 3 -T "$file" "ftp://${FTP_HOST}/${remote}" --user "${FTP_USERNAME}:${FTP_PASSWORD}"
+            upload_count=$((upload_count + 1))
+          done < <(
+            find . \
+              \( -path './.git' -o -path './.github' -o -path './node_modules' -o -path './.claude' -o -path './api' -o -path './docs' -o -path './web-panel' -o -path './questionnaires' -o -path './content' -o -path './scripts' -o -path './n8n' -o -path './n8n-workflows' -o -path './data' -o -path './fclass-landing' \) -prune -o \
+              -type f \
+              ! -name '.env' \
+              ! -name '.env.*' \
+              ! -name '.DS_Store' \
+              ! -name '.claudeignore' \
+              ! -name '.mcp.json' \
+              ! -name '*.md' \
+              ! -name 'package.json' \
+              ! -name 'package-lock.json' \
+              ! -name 'vercel.json' \
+              ! -name 'robots-vercel.txt' \
+              ! -name 'firstclass-growth-playbook.html' \
+              ! -name 'firstclass-gtm-plan.html' \
+              ! -path './blog/_template.html' \
+              -print0
+          )
+          echo "Uploaded ${upload_count} files"
 
       - name: Verify deploy
         run: |
