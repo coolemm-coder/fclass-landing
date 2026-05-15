@@ -1,7 +1,7 @@
 name: Deploy to fclass.by
 
 # Этот workflow заменяет сломанный fclass-ftp-sync (sandbox blocked).
-# Триггерится на push в main → автодеплой на ISPmanager FTP за ~30 секунд.
+# Триггерится на push в main → автодеплой на ISPmanager FTP.
 
 on:
   push:
@@ -20,66 +20,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Install lftp
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y lftp
+
       - name: FTP Sync
-        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
-        with:
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          port: 21
-          protocol: ftp
-          local-dir: ./
-          server-dir: ./
-          state-name: .ftp-deploy-sync-state.json
-          log-level: standard
-          dry-run: false
-          dangerous-clean-slate: false
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/.github/**
-            **/.github/**/*
-            **/node_modules/**
-            **/.env
-            **/.env.*
-            **/.DS_Store
-            **/.claude/**
-            **/.claude/**/*
-            **/.claudeignore
-            **/.mcp.json
-            **/api/**
-            **/api/**/*
-            **/docs/**
-            **/docs/**/*
-            **/web-panel/**
-            **/web-panel/**/*
-            **/questionnaires/**
-            **/questionnaires/**/*
-            **/content/**
-            **/content/**/*
-            **/scripts/**
-            **/scripts/**/*
-            **/n8n/**
-            **/n8n/**/*
-            **/n8n-workflows/**
-            **/n8n-workflows/**/*
-            **/data/**
-            **/data/**/*
-            **/fclass-landing/**
-            **/fclass-landing/**/*
-            **/blog/_template.html
-            **/*.md
-            **/package.json
-            **/package-lock.json
-            **/vercel.json
-            **/robots-vercel.txt
-            **/firstclass-growth-playbook.html
-            **/firstclass-gtm-plan.html
-            **/CLAUDE.md
-            **/README.md
-            **/PROJECT_LOG.md
-            **/ROADMAP.md
-            **/VISION.md
+        env:
+          FTP_HOST: ${{ secrets.FTP_HOST }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        run: |
+          lftp -c "set ftp:ssl-allow no; set ftp:passive-mode yes; set net:timeout 30; set net:max-retries 3; set net:reconnect-interval-base 5; open -u \"$FTP_USERNAME\",\"$FTP_PASSWORD\" \"$FTP_HOST\"; mirror -R --verbose=2 --only-newer --parallel=2 --exclude-glob .git/ --exclude-glob .git/** --exclude-glob .github/ --exclude-glob .github/** --exclude-glob node_modules/ --exclude-glob node_modules/** --exclude-glob .env --exclude-glob .env.* --exclude-glob .DS_Store --exclude-glob .claude/ --exclude-glob .claude/** --exclude-glob .claudeignore --exclude-glob .mcp.json --exclude-glob api/ --exclude-glob api/** --exclude-glob docs/ --exclude-glob docs/** --exclude-glob web-panel/ --exclude-glob web-panel/** --exclude-glob questionnaires/ --exclude-glob questionnaires/** --exclude-glob content/ --exclude-glob content/** --exclude-glob scripts/ --exclude-glob scripts/** --exclude-glob n8n/ --exclude-glob n8n/** --exclude-glob n8n-workflows/ --exclude-glob n8n-workflows/** --exclude-glob data/ --exclude-glob data/** --exclude-glob fclass-landing/ --exclude-glob fclass-landing/** --exclude-glob blog/_template.html --exclude-glob '*.md' --exclude-glob package.json --exclude-glob package-lock.json --exclude-glob vercel.json --exclude-glob robots-vercel.txt --exclude-glob firstclass-growth-playbook.html --exclude-glob firstclass-gtm-plan.html --exclude-glob CLAUDE.md --exclude-glob README.md --exclude-glob PROJECT_LOG.md --exclude-glob ROADMAP.md --exclude-glob VISION.md ./ ./"
 
       - name: Verify deploy
         run: |
