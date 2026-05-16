@@ -63,7 +63,13 @@
 .footer-col ul{list-style:none}
 .footer-col li{margin-bottom:12px}
 .footer-col a{color:rgba(255,255,255,.6);text-decoration:none;font-size:14px}
-@media(max-width:768px){.nav{padding:0 20px;height:70px}.nav-links{display:none}.nav-cta{display:none}.hero{padding:100px 20px 40px}.hero-container{grid-template-columns:1fr;gap:30px}.form-section{padding:0 20px 60px}.form-card{padding:24px}.content-block{padding:0 20px}.footer{padding:40px 20px}.footer-content{grid-template-columns:1fr;gap:30px}.tg-bubble-text{display:none}}</style>
+@media(max-width:768px){.nav{padding:0 20px;height:70px}.nav-links{display:none}.nav-cta{display:none}.hero{padding:100px 20px 40px}.hero-container{grid-template-columns:1fr;gap:30px}.form-section{padding:0 20px 60px}.form-card{padding:24px}.content-block{padding:0 20px}.footer{padding:40px 20px}.footer-content{grid-template-columns:1fr;gap:30px}.tg-bubble-text{display:none}}
+.sticky-mobile-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:99;padding:12px 16px;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-top:1px solid rgba(0,0,0,.08);gap:8px}
+@media(max-width:768px){.sticky-mobile-cta{display:flex}.tg-bubble{bottom:80px}}
+.sticky-mobile-cta a{flex:1;text-align:center;padding:12px;border-radius:8px;font-weight:600;font-size:14px;text-decoration:none}
+.sticky-mobile-cta .smc-call{background:#c9a962;color:#fff}
+.sticky-mobile-cta .smc-tg{background:#f1f5f9;color:#1e293b}
+</style>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"DigitalDocument","name":"Шаблон договора на авиабилеты для юрлиц + чек-лист главбуха","description":"Готовый шаблон договора на авиабилеты для юрлиц в Беларуси (9 разделов) и чек-лист главбуха по командировочным документам.","fileFormat":"application/pdf","publisher":{"@type":"Organization","name":"First Class","url":"https://fclass.by"},"datePublished":"2026-05-13"}</script>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная","item":"https://fclass.by/"},{"@type":"ListItem","position":2,"name":"Ресурсы","item":"https://fclass.by/resources/"},{"@type":"ListItem","position":3,"name":"Шаблон договора","item":"https://fclass.by/resources/dogovor-template/"}]}</script>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Что входит в этот PDF?","acceptedAnswer":{"@type":"Answer","text":"Готовый шаблон договора на авиабилеты для юрлиц (9 разделов), пошаговый чек-лист главбуха по командировочным документам и подборка нормативных актов РБ — Постановление Совмина №176, Указ №154, гл.16 НК РБ, ст.131 НК РБ, Закон о защите персональных данных."}},{"@type":"Question","name":"Можно ли использовать этот шаблон с другим агентством?","acceptedAnswer":{"@type":"Answer","text":"Да. Шаблон универсальный — реквизиты исполнителя пустые, заполняются под любого выбранного агента или поставщика. Образец практический, основан на стандартной B2B-практике в Беларуси."}},{"@type":"Question","name":"Этот шаблон легитимный с точки зрения законодательства Беларуси?","acceptedAnswer":{"@type":"Answer","text":"Шаблон опирается на действующие нормативные акты Республики Беларусь: Постановление Совмина №176 (служебные командировки в РБ), Постановление Совмина №94 (командировки за границу), Указ Президента №154, главу 16 Налогового кодекса РБ (НДС), статью 131 НК РБ (расходы на командировки), Закон о защите персональных данных 2021 года. Перед подписанием рекомендуем согласовать с вашим юристом."}},{"@type":"Question","name":"Сколько действует этот документ?","acceptedAnswer":{"@type":"Answer","text":"Документ актуален на 2026 год. Если изменятся нормативные акты — обновим версию и пришлём подписчикам по e-mail."}},{"@type":"Question","name":"Это бесплатно?","acceptedAnswer":{"@type":"Answer","text":"Да. Скачивание PDF бесплатно — нужно только указать e-mail, чтобы мы могли уведомить вас об обновлениях. Не передаём адрес третьим лицам."}}]}</script>
@@ -193,5 +199,9 @@ document.getElementById('dogovor-form').addEventListener('submit',function(e){
     });
 });
 </script>
+<div class="sticky-mobile-cta">
+    <a href="tel:+375447725266" class="smc-call" onclick="try{ym(107237229,'reachGoal','sticky_call_lead_dogovor_mobile');}catch(e){}">Позвонить</a>
+    <a href="https://t.me/travelangelby_bot?start=sticky_lead_dogovor_mobile" class="smc-tg" target="_blank" rel="noopener" onclick="try{ym(107237229,'reachGoal','sticky_tg_lead_dogovor_mobile');}catch(e){}">Telegram</a>
+</div>
 </body>
 </html>

@@ -1,0 +1,22 @@
+fix(mobile): trust-strip fonts + sticky-mobile-cta + Yandex Maps fix
+
+Mobile UX/CRO fixes по результатам mobile-audit-2026-05-15:
+
+F1: index.html trust-strip
+- .ts-num 11px на 14px на mobile
+- .ts-label 10px на 12px на mobile (раньше нечитаемо ниже Apple HIG)
+
+F2: sticky-mobile-cta на 5 B2B-страницах
+- /komandirovki/, /tickets/aviabilety-dlya-yurlic/, /resources/calculator/,
+  /resources/dogovor-template/, /cases/
+- Bottom-fixed bar: Позвонить (tel:) + Telegram bot deeplink
+- Y.Metrika goals: sticky_call_X + sticky_tg_X
+- При показе sticky-cta — tg-bubble сдвигается на bottom:80px
+
+F3: mobile-preview.html — Yandex Maps fix
+- rating-card: ссылка на Yandex Business (pervy_klass/68945387734)
+  вместо Google Maps. Label также: Яндекс Карты.
+- ymaps-badge: карточка нашей компании вместо generic поиска адреса
+- onclick reachGoal yandex_reviews_click и yandex_map_click
+
+Все правки применены параллельно с Codex без конфликтов.
