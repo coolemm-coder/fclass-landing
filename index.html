@@ -443,6 +443,11 @@
         }
         .hero-ctas { display: flex; gap: 20px; justify-content: center; }
         .hero-trust-line { margin-top: 16px; font-size: 13px; color: rgba(255,255,255,0.65); letter-spacing: 0.3px; }
+        .hero-sub { color: var(--accent-light); font-size: 16px; letter-spacing: 0.5px; margin: 0 0 28px; font-weight: 500; }
+        .hero-bullets { list-style: none; padding: 0; margin: 0 auto 36px; max-width: 640px; text-align: left; display: inline-block; }
+        .hero-bullets li { color: rgba(255,255,255,0.86); font-size: 17px; line-height: 1.5; padding: 8px 0 8px 28px; position: relative; }
+        .hero-bullets li::before { content: ''; position: absolute; left: 0; top: 16px; width: 14px; height: 2px; background: var(--accent); }
+        @media (max-width: 720px) { .hero-bullets li { font-size: 15px; padding-left: 22px; } .hero-bullets li::before { width: 10px; top: 14px; } .hero-sub { font-size: 14px; } }
         .btn {
             display: inline-flex; align-items: center; gap: 10px;
             padding: 18px 36px; font-size: 12px; font-weight: 600;
@@ -1152,9 +1157,14 @@
         <div class="hero-glow"></div>
         <div class="hero-content hero-center">
             <div class="hero-eyebrow">Работаем с 2018 года</div>
-            <h1><span class="hero-line">Командировки</span><br><span class="hero-line"><em>под ключ</em></span></h1>
+            <h1><span class="hero-line">Авиабилеты</span><br><span class="hero-line"><em>для организаций и физлиц</em></span></h1>
             <span class="hero-accent-line"></span>
-            <p class="hero-text">Вы говорите куда и когда — мы делаем всё остальное. Билеты, отели, визы, трансферы и закрывающие документы.</p>
+            <p class="hero-sub">Наличный и безналичный расчёт</p>
+            <ul class="hero-bullets">
+                <li>Командировки под ключ: проживание, визы, трансферы</li>
+                <li>Персональный менеджер и поддержка 24/7</li>
+                <li>Закрывающие документы для бухгалтерии</li>
+            </ul>
             <div class="hero-ctas">
                 <a href="/komandirovki/" class="btn btn-primary">Организовать командировку</a>
                 <a href="https://t.me/travelangelby_bot?start=lead_hero" class="btn btn-outline" target="_blank" rel="noopener">Заявка через бота</a>
@@ -1632,6 +1642,7 @@
                 <h4>Услуги</h4>
                 <ul class="footer-links">
                     <li><a href="/komandirovki/">Командировки</a></li>
+                    <li><a href="/komandirovki-na-vystavki/">Командировки на выставки 2026</a></li>
                     <li><a href="#services">Авиа и ж/д билеты</a></li>
                     <li><a href="/tickets/aviabilety-dlya-yurlic/">Билеты для юрлиц</a></li>
                     <li><a href="#services">Проживание</a></li>
@@ -1790,10 +1801,10 @@
                 .fromTo('.hero-line',
                     { clipPath: 'inset(0 0 100% 0)', y: 25, immediateRender: false },
                     Object.assign({ clipPath: 'inset(0 0 -10% 0)', y: 0, duration: 1.1, ease: 'expo.out', stagger: 0.12 }, ir), 0.35)
-                /* Subtitle */
-                .fromTo('.hero-text',
+                /* Subtitle + bullets */
+                .fromTo('.hero-sub, .hero-bullets li',
                     { y: 25, opacity: 0 },
-                    Object.assign({ y: 0, opacity: 1, duration: 0.9, ease: ease }, ir), 0.75)
+                    Object.assign({ y: 0, opacity: 1, duration: 0.9, ease: ease, stagger: 0.08 }, ir), 0.75)
                 /* CTA button: subtle scale bounce */
                 .fromTo(document.querySelector('.hero-actions a, .hero-buttons a, .hero-content a') ? '.hero-actions a, .hero-buttons a, .hero-content a' : '.hero-content .btn',
                     { y: 15, opacity: 0, scale: 0.95 },

@@ -94,7 +94,7 @@ jobs:
         run: |
           echo "Deploy completed at $(date -u)"
           echo "Verifying live URLs..."
-          for path in "/" "/komandirovochnye-kalkulyator/" "/tickets/" "/tickets/direct-flights/" "/tickets/aviabilety-dlya-yurlic/" "/tickets/minsk-kaliningrad/" "/tickets/minsk-sochi/" "/tickets/minsk-baku/" "/tickets/minsk-sharm-el-sheikh/" "/komandirovki/" "/privacy/" "/sitemap.xml"; do
+          for path in "/" "/komandirovochnye-kalkulyator/" "/tickets/" "/tickets/direct-flights/" "/tickets/aviabilety-dlya-yurlic/" "/tickets/minsk-kaliningrad/" "/tickets/minsk-sochi/" "/tickets/minsk-baku/" "/tickets/minsk-sharm-el-sheikh/" "/komandirovki/" "/komandirovki-na-vystavki/" "/privacy/" "/sitemap.xml"; do
             STATUS=$(curl -s -o /dev/null -w "%{http_code}" "https://fclass.by${path}")
             echo "  ${path} -> HTTP ${STATUS}"
           done

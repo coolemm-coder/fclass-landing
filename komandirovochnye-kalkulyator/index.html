@@ -63,7 +63,7 @@
 
 <div class="row2">
 <div class="field"><label for="suti-foreign">Суточные за границей (USD/день, для коммерческих и ИП)</label><input type="number" id="suti-foreign" min="0" value="40"></div>
-<div class="field"><label for="rate">Курс USD к BYN</label><input type="number" id="rate" step="0.01" min="0" value="2.80" inputmode="decimal"><div class="field-note" id="rate-note">Пробуем загрузить официальный курс Нацбанка РБ. Значение можно изменить вручную.</div></div>
+<div class="field"><label for="rate">Курс USD к BYN</label><input type="number" id="rate" step="0.0001" min="0" value="2.80" inputmode="decimal"><div class="field-note" id="rate-note">Пробуем загрузить официальный курс Нацбанка РБ. Значение можно изменить вручную.</div></div>
 </div>
 
 <div class="row2">
@@ -193,7 +193,7 @@ function calc(){
     let usd=sutiForeign;
     if(orgtype==='budget')usd=BUDGET_USD[dest]||30;
     perDay=usd*rate;
-    note=`Применена норма ${usd} USD/день × курс ${rate.toFixed(2)} = ${perDay.toFixed(2)} BYN/день. ${orgtype==='budget'?'Норма Минфина для бюджетной организации.':'Норма по локальному акту нанимателя.'} День возвращения в РБ оплачивается по внутренней норме 13 BYN — учтено в расчёте.`;
+    note=`Применена норма ${usd} USD/день × курс ${rate.toFixed(4)} = ${perDay.toFixed(2)} BYN/день. ${orgtype==='budget'?'Норма Минфина для бюджетной организации.':'Норма по локальному акту нанимателя.'} День возвращения в РБ оплачивается по внутренней норме 13 BYN — учтено в расчёте.`;
     if(days>1)perDay=((perDay*(days-1))+13)/days;
   }
   
@@ -250,8 +250,8 @@ async function loadUsdRate(){
   if(!input)return;
   const cached=readCachedUsdRate();
   if(cached){
-    input.value=Number(cached.value).toFixed(2);
-    updateRateNote(`Последний сохранённый курс Нацбанка РБ${cached.date?' на '+formatNbrbDate(cached.date):''}: ${Number(cached.value).toFixed(2)} BYN за 1 USD. Проверяем обновление.`);
+    input.value=Number(cached.value).toFixed(4);
+    updateRateNote(`Последний сохранённый курс Нацбанка РБ${cached.date?' на '+formatNbrbDate(cached.date):''}: ${Number(cached.value).toFixed(4)} BYN за 1 USD. Проверяем обновление.`);
     calc();
   }
   for(const url of NBRB_USD_RATE_URLS){
@@ -264,9 +264,9 @@ async function loadUsdRate(){
       const data=await response.json();
       const value=Number(data.Cur_OfficialRate);
       if(!Number.isFinite(value)||value<=0)throw new Error('rate value missing');
-      input.value=value.toFixed(2);
+      input.value=value.toFixed(4);
       writeCachedUsdRate(value,data.Date);
-      updateRateNote(`Курс Нацбанка РБ${data.Date?' на '+formatNbrbDate(data.Date):''}: ${value.toFixed(2)} BYN за 1 USD. Можно изменить вручную.`);
+      updateRateNote(`Курс Нацбанка РБ${data.Date?' на '+formatNbrbDate(data.Date):''}: ${value.toFixed(4)} BYN за 1 USD. Можно изменить вручную.`);
       calc();
       return;
     }catch(err){
@@ -275,11 +275,11 @@ async function loadUsdRate(){
   }
   const latest=readCachedUsdRate();
   if(latest){
-    input.value=Number(latest.value).toFixed(2);
-    updateRateNote(`Нацбанк РБ не ответил, используем последний сохранённый курс${latest.date?' на '+formatNbrbDate(latest.date):''}: ${Number(latest.value).toFixed(2)} BYN за 1 USD. Значение можно изменить вручную.`);
+    input.value=Number(latest.value).toFixed(4);
+    updateRateNote(`Нацбанк РБ не ответил, используем последний сохранённый курс${latest.date?' на '+formatNbrbDate(latest.date):''}: ${Number(latest.value).toFixed(4)} BYN за 1 USD. Значение можно изменить вручную.`);
   }else{
-    input.value=FALLBACK_USD_BYN.toFixed(2);
-    updateRateNote(`Курс Нацбанка РБ не загрузился. Используем резервное значение ${FALLBACK_USD_BYN.toFixed(2)} BYN за 1 USD, его можно изменить вручную.`);
+    input.value=FALLBACK_USD_BYN.toFixed(4);
+    updateRateNote(`Курс Нацбанка РБ не загрузился. Используем резервное значение ${FALLBACK_USD_BYN.toFixed(4)} BYN за 1 USD, его можно изменить вручную.`);
   }
   calc();
 }
