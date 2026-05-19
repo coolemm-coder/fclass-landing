@@ -7,7 +7,7 @@
 - Специализация: авиабилеты для физлиц и юрлиц, служебные командировки, визовая поддержка, GDS-маршруты
 - Аккредитация: агент Belavia, работаем с 2018 года
 - Instagram: 18,800+ подписчиков
-- Сайт обновлён: 2026-05-15
+- Сайт обновлён: 2026-05-19
 
 ## Что мы делаем для юрлиц (B2B)
 - Организация служебных командировок: авиа, ж/д, отели, трансферы, визы, страховки
@@ -28,8 +28,8 @@
 ## Программатик-страницы по маршрутам из Минска
 - [Минск — Москва](https://fclass.by/tickets/minsk-moskva/): прямые рейсы Belavia, расписание, командировки
 - [Минск — Санкт-Петербург](https://fclass.by/tickets/minsk-spb/): прямой и стыковочный, расписание
-- [Минск — Стамбул](https://fclass.by/tickets/minsk-istanbul/): прямой Belavia/Turkish, транзит в Европу
-- [Минск — Дубай](https://fclass.by/tickets/minsk-dubai/): прямой flydubai, виза по прибытии
+- [Минск — Стамбул](https://fclass.by/tickets/minsk-stambul/): прямой Belavia/Turkish, транзит в Европу и Азию
+- [Минск — Дубай](https://fclass.by/tickets/minsk-dubai/): прямой FlyDubai и Emirates, ~5.5 ч в пути, виза проверяется до оплаты
 - [Минск — Калининград](https://fclass.by/tickets/minsk-kaliningrad/): прямой Belavia
 - [Минск — Сочи](https://fclass.by/tickets/minsk-sochi/): сезонные прямые
 - [Минск — Баку](https://fclass.by/tickets/minsk-baku/): прямой Belavia + AZAL
@@ -37,15 +37,20 @@
 - [Минск — Ташкент](https://fclass.by/tickets/minsk-tashkent/): прямой Belavia
 - [Минск — Тбилиси](https://fclass.by/tickets/minsk-tbilisi/): прямой Belavia
 - [Минск — Батуми](https://fclass.by/tickets/minsk-batumi/): сезонный прямой
+- [Минск — Ереван](https://fclass.by/tickets/minsk-erevan/): прямой Belavia + FlyOne Armenia, безвизовый въезд до 180 дней/год
+
+## Блог-кластер: командировки в Россию из Беларуси
+- [Командировка в Россию 2026 — хаб-страница](https://fclass.by/blog/komandirovka-v-rossiyu-2026.html): обзор маршрутов, документов, валютного контроля и закрывающих документов для бухгалтерии РБ
+- [Командировка в Москву из Минска](https://fclass.by/blog/komandirovka-v-moskvu-iz-minska.html): варианты транспорта (Belavia, поезд, авто), отели в деловых районах, документы для главбуха
+- [Командировка в Санкт-Петербург из Минска](https://fclass.by/blog/komandirovka-v-sankt-peterburg-iz-minska.html): прямые рейсы и Sapsan через Москву, командировочные расходы, оформление
+- [Командировка в Калининград из Минска](https://fclass.by/blog/komandirovka-v-kaliningrad-iz-minska.html): прямой Belavia, особенности въезда в эксклав, бизнес-районы
 
 ## Блог (актуальные материалы 2026)
 - [Служебные командировки в Беларуси: новые правила с апреля 2026](https://fclass.by/blog/komandirovki-belarus-2026.html): суточные 13 BYN/день с 04.04.2026
 - [Прямые рейсы из Минска 2026](https://fclass.by/blog/pryamye-reysy-iz-minska-2026.html): полный список направлений
 - [Авиабилеты Минск — Стамбул 2026](https://fclass.by/blog/aviabilety-minsk-stambul.html): расписание, цены, транзит
 - [Командировка в Турцию 2026](https://fclass.by/blog/komandirovka-v-turciyu.html): безвизовый режим, деловые районы
-- [Командировка в Москву из Минска](https://fclass.by/blog/komandirovka-v-moskvu-iz-minska.html): варианты, отели, документы
-- [Командировка в Санкт-Петербург из Минска](https://fclass.by/blog/komandirovka-v-sankt-peterburg-iz-minska.html)
-- [Командировка в Калининград из Минска](https://fclass.by/blog/komandirovka-v-kaliningrad-iz-minska.html)
+- [Корпоративные авиабилеты Минск](https://fclass.by/blog/korporativnye-aviabilety-minsk.html): договор для юрлиц, НДС, ЭСЧФ, валютный контроль
 - [Шенгенская виза из Минска 2026](https://fclass.by/blog/visa-guide-2026.html): сроки, стоимость, документы
 - [Организация командировок: пошагово](https://fclass.by/blog/organizaciya-komandirovok.html): процесс, ответственный, бухгалтерия
 
