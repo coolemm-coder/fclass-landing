@@ -66,7 +66,7 @@ jobs:
             echo "set net:idle 30"
             echo "set xfer:clobber on"
             echo "set mirror:set-permissions no"
-            echo "set cmd:fail-exit on"
+            echo "set cmd:fail-exit no"
             echo "open -u \"${FTP_USERNAME}\",\"${FTP_PASSWORD}\" \"${FTP_HOST}\""
             for f in "${files[@]}"; do
               remote="${f#./}"
