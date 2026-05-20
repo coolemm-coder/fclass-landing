@@ -65,4 +65,4 @@
 - Телефон: +375 44 772-52-66
 - Email: marketing@fclass.by (для юрлиц)
 - Instagram: @firstclass.travel.by
-- Telegram: @travelangelby_bot (бот «Travel Angel» для заявок на авиабилеты и командировки)
+- Telegram: @fclassmsk_bot (бот «Travel Angel» для заявок на авиабилеты и командировки)

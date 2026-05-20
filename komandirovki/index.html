@@ -79,7 +79,7 @@
             </div>
             <div class="btns">
                 <a href="#form" class="btn btn-primary">Рассчитать командировку</a>
-                <a href="https://t.me/travelangelby_bot?start=site" class="btn btn-outline" target="_blank" rel="noopener">Написать в Telegram</a>
+                <a href="https://t.me/fclassmsk_bot?start=site" class="btn btn-outline" target="_blank" rel="noopener">Написать в Telegram</a>
             </div>
         </div>
     </section>
@@ -184,16 +184,16 @@
             <div><img src="/logo.png" alt="First Class" style="height:42px"><p>Организация командировок и продажа авиабилетов в Минске. Работаем с юридическими и физическими лицами.</p></div>
             <div><h4>Услуги</h4><div class="footer-links"><a href="/komandirovki/">Командировки</a><a href="/tickets/">Билеты</a><a href="/tickets/aviabilety-dlya-yurlic/">Авиабилеты для юр лиц</a><a href="/visa-support/">Визы</a></div></div>
             <div><h4>Полезное</h4><div class="footer-links"><a href="/komandirovochnye-kalkulyator/">Калькулятор командировочных</a><a href="/blog/organizaciya-komandirovok.html">Чек-лист</a><a href="/blog/sutochnye-komandirovka-2026.html">Суточные</a></div></div>
-            <div><h4>Контакты</h4><div class="footer-links"><a href="tel:+375447725266">+375 44 772-52-66</a><a href="mailto:marketing@fclass.by">marketing@fclass.by</a><a href="https://t.me/travelangelby_bot?start=site" target="_blank">Telegram</a><a href="https://wa.me/375447725266" target="_blank">WhatsApp</a></div></div>
+            <div><h4>Контакты</h4><div class="footer-links"><a href="tel:+375447725266">+375 44 772-52-66</a><a href="mailto:marketing@fclass.by">marketing@fclass.by</a><a href="https://t.me/fclassmsk_bot?start=site" target="_blank">Telegram</a><a href="https://wa.me/375447725266" target="_blank">WhatsApp</a></div></div>
         </div>
     </footer>
     <script>
         document.getElementById('lead-form').addEventListener('submit',async function(e){e.preventDefault();var btn=e.target.querySelector('button');var original=btn.textContent;btn.textContent='Отправка...';btn.disabled=true;var data=Object.fromEntries(new FormData(e.target));data.timestamp=new Date().toISOString();try{await fetch('https://emikss.host/webhook/fc-lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});if(window.ym)ym(107237229,'reachGoal','LEAD');if(window.gtag)gtag('event','generate_lead',{event_category:'lead',event_label:'komandirovki'});btn.textContent='Отправлено';btn.style.background='#22c55e';e.target.reset()}catch(err){btn.textContent='Ошибка - позвоните нам'}setTimeout(function(){btn.textContent=original;btn.style.background='';btn.disabled=false},4000)});
     </script>
-<div class="tg-bubble" data-bubble="v1"><a href="https://t.me/travelangelby_bot?start=bubble_komandirovki" target="_blank" rel="noopener" title="Спросить нашего Telegram-бота за 30 секунд" onclick="try{ym(107237229,'reachGoal','tg_bubble_click');gtag('event','click',{outbound:'telegram_bubble'});}catch(e){}"><svg viewBox="0 0 24 24" fill="white" width="22" height="22" aria-hidden="true"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.7L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg><span class="tg-bubble-text">Спросить за 30 сек</span></a></div>
+<div class="tg-bubble" data-bubble="v1"><a href="https://t.me/fclassmsk_bot?start=bubble_komandirovki" target="_blank" rel="noopener" title="Спросить нашего Telegram-бота за 30 секунд" onclick="try{ym(107237229,'reachGoal','tg_bubble_click');gtag('event','click',{outbound:'telegram_bubble'});}catch(e){}"><svg viewBox="0 0 24 24" fill="white" width="22" height="22" aria-hidden="true"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.7L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg><span class="tg-bubble-text">Спросить за 30 сек</span></a></div>
 <div class="sticky-mobile-cta">
     <a href="tel:+375447725266" class="smc-call" onclick="try{ym(107237229,'reachGoal','sticky_call_lead_komandirovki_mobile');}catch(e){}">Позвонить</a>
-    <a href="https://t.me/travelangelby_bot?start=sticky_lead_komandirovki_mobile" class="smc-tg" target="_blank" rel="noopener" onclick="try{ym(107237229,'reachGoal','sticky_tg_lead_komandirovki_mobile');}catch(e){}">Telegram</a>
+    <a href="https://t.me/fclassmsk_bot?start=sticky_lead_komandirovki_mobile" class="smc-tg" target="_blank" rel="noopener" onclick="try{ym(107237229,'reachGoal','sticky_tg_lead_komandirovki_mobile');}catch(e){}">Telegram</a>
 </div>
 </body>
 </html>
