@@ -34,5 +34,15 @@
       ],
       "destination": "/robots-vercel.txt"
     }
+  ],
+  "redirects": [
+    {
+      "source": "/:path((?!robots\\.txt|robots-vercel\\.txt).*)",
+      "has": [
+        { "type": "host", "value": ".*\\.vercel\\.app" }
+      ],
+      "destination": "https://fclass.by/:path",
+      "permanent": true
+    }
   ]
 }
