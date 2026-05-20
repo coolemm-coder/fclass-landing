@@ -11,6 +11,7 @@
 - [x] Исправлена страница Минск-Дубай: убрано утверждение, что Emirates выполняет прямой рейс из Минска; оставлены FlyDubai и варианты Emirates/партнёров.
 - [x] На странице `/komandirovki-na-vystavki/` сокращены title/description и добавлен мобильный горизонтальный скролл таблиц.
 - [x] Deploy workflow снова fail-fast: `cmd:fail-exit yes`; verify step теперь падает, если публичный URL не `200` или внутренний URL отдаёт `200`.
+- [x] Deploy workflow больше не держит устаревшие деплои перед актуальными: `cancel-in-progress: true`; также добавлен Node 24 opt-in для GitHub Actions.
 - [x] `scripts/send_outreach_4.py` нейтрализован: больше не содержит готовых outbound-писем и не может отправить рассылку случайным запуском.
 - [x] Обновлены `llms.txt`, `tickets/direct-flights/index.html` и `scripts/indexnow_submit.py` под безопасные формулировки и canonical `/tickets/minsk-stambul/`.
 
