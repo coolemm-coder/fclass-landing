@@ -29,7 +29,7 @@
 - [Минск — Москва](https://fclass.by/tickets/minsk-moskva/): прямые рейсы Belavia, расписание, командировки
 - [Минск — Санкт-Петербург](https://fclass.by/tickets/minsk-spb/): прямой и стыковочный, расписание
 - [Минск — Стамбул](https://fclass.by/tickets/minsk-stambul/): прямой Belavia/Turkish, транзит в Европу и Азию
-- [Минск — Дубай](https://fclass.by/tickets/minsk-dubai/): прямой FlyDubai и Emirates, ~5.5 ч в пути, виза проверяется до оплаты
+- [Минск — Дубай](https://fclass.by/tickets/minsk-dubai/): прямой FlyDubai и варианты Emirates/партнёров через DXB, правила въезда проверяются до оплаты
 - [Минск — Калининград](https://fclass.by/tickets/minsk-kaliningrad/): прямой Belavia
 - [Минск — Сочи](https://fclass.by/tickets/minsk-sochi/): сезонные прямые
 - [Минск — Баку](https://fclass.by/tickets/minsk-baku/): прямой Belavia + AZAL
@@ -37,7 +37,7 @@
 - [Минск — Ташкент](https://fclass.by/tickets/minsk-tashkent/): прямой Belavia
 - [Минск — Тбилиси](https://fclass.by/tickets/minsk-tbilisi/): прямой Belavia
 - [Минск — Батуми](https://fclass.by/tickets/minsk-batumi/): сезонный прямой
-- [Минск — Ереван](https://fclass.by/tickets/minsk-erevan/): прямой Belavia + FlyOne Armenia, безвизовый въезд до 180 дней/год
+- [Минск — Ереван](https://fclass.by/tickets/minsk-erevan/): прямой Belavia и альтернативные варианты, безвизовый въезд до 180 дней/год
 
 ## Блог-кластер: командировки в Россию из Беларуси
 - [Командировка в Россию 2026 — хаб-страница](https://fclass.by/blog/komandirovka-v-rossiyu-2026.html): обзор маршрутов, документов, валютного контроля и закрывающих документов для бухгалтерии РБ

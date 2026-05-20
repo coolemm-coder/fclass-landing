@@ -66,7 +66,7 @@ jobs:
             echo "set net:idle 30"
             echo "set xfer:clobber on"
             echo "set mirror:set-permissions no"
-            echo "set cmd:fail-exit no"
+            echo "set cmd:fail-exit yes"
             echo "open -u \"${FTP_USERNAME}\",\"${FTP_PASSWORD}\" \"${FTP_HOST}\""
             for f in "${files[@]}"; do
               remote="${f#./}"
@@ -93,14 +93,19 @@ jobs:
       - name: Verify deploy
         run: |
           echo "Deploy completed at $(date -u)"
+          fail=0
           echo "Verifying live URLs..."
           for path in "/" "/komandirovochnye-kalkulyator/" "/tickets/" "/tickets/direct-flights/" "/tickets/aviabilety-dlya-yurlic/" "/tickets/minsk-kaliningrad/" "/tickets/minsk-sochi/" "/tickets/minsk-baku/" "/tickets/minsk-sharm-el-sheikh/" "/komandirovki/" "/komandirovki-na-vystavki/" "/privacy/" "/sitemap.xml"; do
-            STATUS=$(curl -s -o /dev/null -w "%{http_code}" "https://fclass.by${path}")
+            STATUS=$(curl -sS -L --max-time 30 -o /dev/null -w "%{http_code}" "https://fclass.by${path}" || echo "000")
             echo "  ${path} -> HTTP ${STATUS}"
+            if [ "$STATUS" != "200" ]; then fail=1; fi
           done
 
           echo "Verifying internal URLs are blocked..."
           for path in "/api/lead-magnet.php" "/docs/audit/dashboard.html" "/web-panel/" "/questionnaires/pdf/pasha_b2b.html" "/fclass-landing/blog/index.html" "/n8n-workflows/lp-lead.workflow.json" "/blog/_template.html" "/firstclass-growth-playbook.html"; do
-            STATUS=$(curl -s -o /dev/null -w "%{http_code}" "https://fclass.by${path}")
+            STATUS=$(curl -sS -L --max-time 30 -o /dev/null -w "%{http_code}" "https://fclass.by${path}" || echo "000")
             echo "  ${path} -> HTTP ${STATUS}"
+            if [ "$STATUS" = "200" ]; then fail=1; fi
           done
+
+          exit "$fail"

@@ -15,7 +15,7 @@ URLS = [
     "https://fclass.by/resources/calculator/",
     "https://fclass.by/tickets/minsk-moskva/",
     "https://fclass.by/tickets/minsk-spb/",
-    "https://fclass.by/tickets/minsk-istanbul/",
+    "https://fclass.by/tickets/minsk-stambul/",
     "https://fclass.by/tickets/minsk-dubai/",
     "https://fclass.by/tickets/minsk-kaliningrad/",
     "https://fclass.by/tickets/minsk-sochi/",
