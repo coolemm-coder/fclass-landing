@@ -107,12 +107,12 @@ jobs:
           {
             echo "set ftp:passive-mode on"
             echo "set ftp:ssl-allow no"
-            echo "set net:max-retries 8"
-            echo "set net:reconnect-interval-base 5"
+            echo "set net:max-retries 3"
+            echo "set net:reconnect-interval-base 3"
             echo "set net:reconnect-interval-multiplier 1.5"
-            echo "set net:reconnect-interval-max 30"
-            echo "set net:timeout 20"
-            echo "set net:idle 20"
+            echo "set net:reconnect-interval-max 8"
+            echo "set net:timeout 15"
+            echo "set net:idle 15"
             echo "set xfer:clobber on"
             echo "set mirror:set-permissions no"
             # ActiveCloud FTP intermittently stalls on a RANDOM file (max-retries
