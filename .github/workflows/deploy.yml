@@ -16,6 +16,7 @@ jobs:
   deploy:
     name: FTP Deploy
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -24,33 +25,81 @@ jobs:
         run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp
 
       - name: FTP Sync (lftp, single session)
+        timeout-minutes: 20
         env:
           FTP_HOST: ${{ secrets.FTP_HOST }}
           FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
           FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          BEFORE_SHA: ${{ github.event.before }}
+          AFTER_SHA: ${{ github.sha }}
         run: |
           set -euo pipefail
 
-          mapfile -d '' files < <(
-            find . \
-              \( -path './.git' -o -path './.github' -o -path './node_modules' -o -path './.claude' -o -path './api' -o -path './docs' -o -path './web-panel' -o -path './questionnaires' -o -path './content' -o -path './scripts' -o -path './n8n' -o -path './n8n-workflows' -o -path './data' -o -path './fclass-landing' \) -prune -o \
-              -type f \
-              ! -name '.env' \
-              ! -name '.env.*' \
-              ! -name '.DS_Store' \
-              ! -name '.gitignore' \
-              ! -name '.claudeignore' \
-              ! -name '.mcp.json' \
-              ! -name '*.md' \
-              ! -name 'package.json' \
-              ! -name 'package-lock.json' \
-              ! -name 'vercel.json' \
-              ! -name 'robots-vercel.txt' \
-              ! -name 'firstclass-growth-playbook.html' \
-              ! -name 'firstclass-gtm-plan.html' \
-              ! -path './blog/_template.html' \
-              -print0
-          )
+          is_public_file() {
+            local f="$1"
+            local base
+            [ -f "$f" ] || return 1
+            base="$(basename "$f")"
+
+            case "$f" in
+              ./.git/*|./.github/*|./node_modules/*|./.claude/*|./api/*|./docs/*|./web-panel/*|./questionnaires/*|./content/*|./scripts/*|./n8n/*|./n8n-workflows/*|./data/*|./fclass-landing/*)
+                return 1
+                ;;
+              ./blog/_template.html|./firstclass-growth-playbook.html|./firstclass-gtm-plan.html)
+                return 1
+                ;;
+            esac
+
+            case "$base" in
+              .env|.env.*|.DS_Store|.gitignore|.claudeignore|.mcp.json|*.md|package.json|package-lock.json|vercel.json|robots-vercel.txt)
+                return 1
+                ;;
+            esac
+
+            return 0
+          }
+
+          files=()
+          candidates=()
+          if [ "${GITHUB_EVENT_NAME}" = "push" ] && \
+             [ -n "${BEFORE_SHA:-}" ] && \
+             [ "${BEFORE_SHA}" != "0000000000000000000000000000000000000000" ] && \
+             git cat-file -e "${BEFORE_SHA}^{commit}" 2>/dev/null; then
+            mapfile -d '' candidates < <(git diff --name-only -z --diff-filter=ACMRT "${BEFORE_SHA}" "${AFTER_SHA}" --)
+            echo "Changed files in push: ${#candidates[@]}"
+            for f in "${candidates[@]}"; do
+              f="./${f}"
+              if is_public_file "$f"; then
+                files+=("$f")
+              fi
+            done
+          fi
+
+          if [ "${#files[@]}" -eq 0 ]; then
+            echo "No public changed files detected; falling back to full public upload."
+            mapfile -d '' files < <(
+              find . \
+                \( -path './.git' -o -path './.github' -o -path './node_modules' -o -path './.claude' -o -path './api' -o -path './docs' -o -path './web-panel' -o -path './questionnaires' -o -path './content' -o -path './scripts' -o -path './n8n' -o -path './n8n-workflows' -o -path './data' -o -path './fclass-landing' \) -prune -o \
+                -type f \
+                ! -name '.env' \
+                ! -name '.env.*' \
+                ! -name '.DS_Store' \
+                ! -name '.gitignore' \
+                ! -name '.claudeignore' \
+                ! -name '.mcp.json' \
+                ! -name '*.md' \
+                ! -name 'package.json' \
+                ! -name 'package-lock.json' \
+                ! -name 'vercel.json' \
+                ! -name 'robots-vercel.txt' \
+                ! -name 'firstclass-growth-playbook.html' \
+                ! -name 'firstclass-gtm-plan.html' \
+                ! -path './blog/_template.html' \
+                -print0
+            )
+          else
+            echo "Incremental public upload files: ${#files[@]}"
+          fi
           echo "Files to upload: ${#files[@]}"
 
           declare -A dirs_made=()
