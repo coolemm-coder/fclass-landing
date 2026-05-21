@@ -1,18 +1,17 @@
+# fclass.by robots.txt — updated 2026-05-21 (SEO audit)
+
 User-agent: *
 Allow: /
 Disallow: /api/
-Disallow: /outlet/
-Disallow: /catalog/
-Disallow: /product/
 Disallow: /cart/
 Disallow: /checkout/
 Disallow: /search/
 Disallow: /search?
 Disallow: /filter/
-Disallow: /wp-admin/
-Disallow: /wp-content/
-Disallow: /wp-includes/
 # Legacy Bitrix URLs (old site, no longer maintained)
+Disallow: /catalog/
+Disallow: /product/
+Disallow: /outlet/
 Disallow: /contacts/
 Disallow: /info/
 Disallow: /company/
@@ -27,21 +26,54 @@ Disallow: /*?tags=
 Disallow: /*?q=
 Crawl-delay: 1
 
+# AI crawlers — content welcome, junk/legacy paths blocked (explicit, since
+# named groups do not inherit Disallow from *).
 User-agent: GPTBot
 Allow: /
+Disallow: /api/
+Disallow: /cart/
+Disallow: /checkout/
+Disallow: /bitrix/
+Disallow: /*.php$
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /api/
+Disallow: /cart/
+Disallow: /checkout/
+Disallow: /bitrix/
+Disallow: /*.php$
 
 User-agent: ChatGPT-User
 Allow: /
+Disallow: /api/
+Disallow: /cart/
+Disallow: /checkout/
+Disallow: /bitrix/
+Disallow: /*.php$
 
 User-agent: ClaudeBot
 Allow: /
+Disallow: /api/
+Disallow: /cart/
+Disallow: /checkout/
+Disallow: /bitrix/
+Disallow: /*.php$
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /api/
+Disallow: /cart/
+Disallow: /checkout/
+Disallow: /bitrix/
+Disallow: /*.php$
 
 User-agent: Google-Extended
 Allow: /
+Disallow: /api/
+Disallow: /cart/
+Disallow: /checkout/
+Disallow: /bitrix/
+Disallow: /*.php$
 
 Sitemap: https://fclass.by/sitemap.xml
-
-Host: https://fclass.by
