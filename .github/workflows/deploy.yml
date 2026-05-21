@@ -49,6 +49,7 @@ jobs:
               ! -name 'firstclass-growth-playbook.html' \
               ! -name 'firstclass-gtm-plan.html' \
               ! -path './blog/_template.html' \
+              ! -path './resources/calculator/index.html' \
               -print0
           )
           echo "Files to upload: ${#files[@]}"
