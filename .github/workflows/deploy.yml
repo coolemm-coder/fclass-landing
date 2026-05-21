@@ -49,7 +49,6 @@ jobs:
               ! -name 'firstclass-growth-playbook.html' \
               ! -name 'firstclass-gtm-plan.html' \
               ! -path './blog/_template.html' \
-              ! -path './resources/calculator/index.html' \
               -print0
           )
           echo "Files to upload: ${#files[@]}"
@@ -63,11 +62,15 @@ jobs:
             echo "set net:reconnect-interval-base 5"
             echo "set net:reconnect-interval-multiplier 1.5"
             echo "set net:reconnect-interval-max 30"
-            echo "set net:timeout 30"
-            echo "set net:idle 30"
+            echo "set net:timeout 20"
+            echo "set net:idle 20"
             echo "set xfer:clobber on"
             echo "set mirror:set-permissions no"
-            echo "set cmd:fail-exit yes"
+            # ActiveCloud FTP intermittently stalls on a RANDOM file (max-retries
+            # exceeded) and killed the whole 27-min deploy under fail-exit yes.
+            # fail-exit no = skip the stalled file, upload the rest; the Verify
+            # step below still fails the job if any key public URL is not 200.
+            echo "set cmd:fail-exit no"
             echo "open -u \"${FTP_USERNAME}\",\"${FTP_PASSWORD}\" \"${FTP_HOST}\""
             for f in "${files[@]}"; do
               remote="${f#./}"
