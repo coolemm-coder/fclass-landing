@@ -51,14 +51,11 @@ RewriteRule ^visa-support/?$ https://fclass.by/blog/vizovaya-podderzhka-minsk.ht
 # Retired B2C tours directory — keep crawlers and old links on an active service page.
 RedirectMatch 301 ^/tours/?$ https://fclass.by/tickets/
 
-# === MOBILE USER-AGENT REWRITE (2026-05-12) ===
-# Mobile phones on / → silently serve mobile-preview.html (URL stays as /)
-# Tablets explicitly excluded (iPad, Android tablet) so they keep desktop UX
-RewriteCond %{HTTP_USER_AGENT} (iPhone|Android.*Mobile|Windows\ Phone|BlackBerry|Opera\ Mini|webOS) [NC]
-RewriteCond %{HTTP_USER_AGENT} !iPad [NC]
-RewriteCond %{REQUEST_URI} ^/$ [OR]
-RewriteCond %{REQUEST_URI} ^/index\.html$
-RewriteRule ^(index\.html)?$ /mobile-preview.html [L]
+# === MOBILE: now served by responsive index.html (2026-05-21) ===
+# UA-sniffing to mobile-preview.html removed — index.html is fully responsive
+# (mobile menu, sticky CTA, @media). Single page for all devices = mobile-first
+# safe, no content/schema parity gap, no duplicate maintenance.
+# /mobile-preview.html still 301s to / (rule above) for any old indexed URL.
 
 # === BLOG STUB DIRECTORY REDIRECTS ===
 
