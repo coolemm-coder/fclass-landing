@@ -1,6 +1,16 @@
 # fclass.by .htaccess
 # Created 2026-04-22 to fix GSC Soft 404 warning
 # Updated 2026-05-14 — block internal artifacts and canonicalize duplicate route URLs
+# Updated 2026-05-21 — security headers (SEO audit)
+
+# === SECURITY HEADERS (SEO audit 2026-05-21) ===
+<IfModule mod_headers.c>
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
 
 RewriteEngine On
 
@@ -31,6 +41,9 @@ RewriteRule ^(?:meta-[^/]+\.md|package(?:-lock)?\.json|vercel\.json|robots-verce
 
 # Keep one canonical route URL for Minsk-Stambul to avoid cannibalization.
 RewriteRule ^tickets/minsk-istanbul/?$ https://fclass.by/tickets/minsk-stambul/ [R=301,L]
+
+# Consolidate thin "суточные апрель" post into the pillar to avoid cannibalization (SEO audit 2026-05-21).
+RewriteRule ^blog/sutochnye-komandirovki-aprel-2026\.html$ https://fclass.by/blog/sutochnye-komandirovka-2026.html [R=301,L]
 
 # Legacy nav URL without a standalone landing page.
 RewriteRule ^visa-support/?$ https://fclass.by/blog/vizovaya-podderzhka-minsk.html [R=301,L]
