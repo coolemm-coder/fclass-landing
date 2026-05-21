@@ -7,6 +7,11 @@ Health Score сейчас: **74/100**. Закрытие Critical+High → ори
 
 ## 🔴 CRITICAL — сделать сразу
 
+### C0. Вернуть money-страницы в индекс Google (добавлено по live-данным GSC 21.05)
+**Проблема:** `/tickets/aviabilety-dlya-yurlic/` = «Discovered — not indexed» (краулилась НИКОГДА); `/tickets/minsk-batumi/`, `/blog/aviabilety-dlya-yur-lic.html` = «unknown to Google». Коммерческих страниц нет в выдаче Google → ~0 коммерческого трафика. Причина: краул-голод (ИКС=10) + страницы-сироты. Детали: `LIVE-DATA-INDEXATION-2026-05-21.md`.
+**Действия:** (1) Яндекс «Переобход» money-URL (квота 139/150 свободна); (2) GSC «Запросить индексирование»; (3) перелинковка = усиленный H5 (без неё Google снова выкинет сирот); (4) `/blog/aviabilety-dlya-yur-lic.html` → canonical/301 на `/tickets/aviabilety-dlya-yurlic/`; (5) удалить 2 битых sitemap в GSC.
+**Effort:** 1-2ч + ждать переобход.
+
 ### C1. Решить mobile-first провал (главное)
 **Проблема:** `mobile-preview.html` отдаётся мобильным UA, но содержит ~40% контента и 1/4 schema. Google/Яндекс индексируют его. Яндекс: `NOT_MOBILE_FRIENDLY`.
 **Варианты:**
