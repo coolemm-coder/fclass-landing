@@ -350,22 +350,27 @@
         .nav-links.mobile-open,
         .nav-links:target {
             display: flex !important;
-            position: fixed; inset: 0; margin: 0;
-            flex-direction: column; justify-content: center; align-items: center;
+            position: fixed; top: 0; left: 0; right: 0; margin: 0;
+            height: 100vh; height: 100dvh;            /* robust on iOS */
+            box-sizing: border-box;
+            flex-direction: column; justify-content: flex-start; align-items: center;
             background: var(--primary);
-            padding: 24px; gap: 26px;
+            padding: 84px 24px 32px; gap: 4px;        /* start from top, never clipped */
             z-index: 1050;
+            overflow-y: auto; -webkit-overflow-scrolling: touch;
         }
+        .nav-links.mobile-open li,
+        .nav-links:target li { list-style: none; width: 100%; text-align: center; }
         .nav-mobile { background: none; border: none; padding: 12px; margin: 0; box-sizing: content-box; position: relative; z-index: 1002; -webkit-tap-highlight-color: transparent; }
         .nav-links.mobile-open a,
-        .nav-links:target a { color: var(--white) !important; font-size: 22px; padding: 6px 0; }
-        /* Close ✕ — only visible when the overlay is open */
-        .nav-close { display: none; }
+        .nav-links:target a { color: var(--white) !important; font-size: 20px; padding: 14px 0; display: block; }
+        /* Close ✕ — pulled out of flow, fixed top-right; only when overlay open */
+        .nav-close { display: none !important; }
+        .nav-close-li { position: fixed !important; top: 14px; right: 14px; width: auto !important; z-index: 1051; }
         .nav-links.mobile-open .nav-close,
         .nav-links:target .nav-close {
-            display: flex; align-items: center; justify-content: center;
-            position: absolute; top: 18px; right: 18px;
-            width: 44px; height: 44px; font-size: 30px; line-height: 1;
+            display: flex !important; align-items: center; justify-content: center;
+            width: 46px; height: 46px; font-size: 32px; line-height: 1; padding: 0 !important;
             color: var(--white) !important; text-decoration: none;
         }
 
@@ -1171,7 +1176,7 @@
             <img src="logo.png" alt="First Class — организация командировок в Минске" class="nav-logo-img">
         </a>
         <ul class="nav-links" id="nav-menu">
-            <li><a href="#" class="nav-close" aria-label="Закрыть меню" onclick="closeMenu()">&#10005;</a></li>
+            <li class="nav-close-li"><a href="#" class="nav-close" aria-label="Закрыть меню" onclick="closeMenu()">&#10005;</a></li>
             <li><a href="#services">Услуги</a></li>
             <li><a href="/komandirovki/">Командировки</a></li>
             <li><a href="/tickets/">Билеты</a></li>
