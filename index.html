@@ -350,7 +350,7 @@
             padding: 30px; gap: 20px;
             z-index: 1001; box-shadow: 0 8px 24px rgba(0,0,0,.4);
         }
-        button.nav-mobile { background: none; border: none; padding: 0; -webkit-tap-highlight-color: transparent; }
+        button.nav-mobile { background: none; border: none; padding: 12px; margin: -12px; box-sizing: content-box; -webkit-tap-highlight-color: transparent; }
         .nav-links.mobile-open a { color: var(--white) !important; font-size: 16px; padding: 10px 0; }
 
         /* Hero */
@@ -1840,6 +1840,13 @@
         (function() {
             var canvas = document.getElementById('heroParticles');
             if (!canvas) return;
+            /* Skip perpetual rAF particle loop on mobile / reduced-motion — it blocked
+               the main thread and made taps (incl. burger) feel dead. */
+            if (window.matchMedia('(max-width: 768px)').matches ||
+                window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                canvas.style.display = 'none';
+                return;
+            }
             var ctx = canvas.getContext('2d');
             var particles = [];
             var count = 35;
