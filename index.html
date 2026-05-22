@@ -1177,7 +1177,7 @@
         }
         document.addEventListener('click',function(e){
             var a=e.target.closest('.nav-links a');
-            if(a){document.querySelector('.nav-links')?.classList.remove('mobile-open');document.body.classList.remove('menu-open');}
+            if(a){var nl=document.querySelector('.nav-links');if(nl)nl.classList.remove('mobile-open');document.body.classList.remove('menu-open');}
         });
     </script>
 
@@ -1723,15 +1723,15 @@
         }
         document.querySelectorAll('.nav-links a').forEach(a => {
             a.addEventListener('click', () => {
-                document.querySelector('.nav-links').classList.remove('mobile-open');
-                document.querySelector('.nav-mobile')?.setAttribute('aria-expanded', 'false');
+                var nl = document.querySelector('.nav-links'); if (nl) nl.classList.remove('mobile-open');
+                var nm = document.querySelector('.nav-mobile'); if (nm) nm.setAttribute('aria-expanded', 'false');
                 document.body.classList.remove('menu-open');
             });
         });
         document.addEventListener('keydown', e => {
             if (e.key === 'Escape') {
-                document.querySelector('.nav-links')?.classList.remove('mobile-open');
-                document.querySelector('.nav-mobile')?.setAttribute('aria-expanded', 'false');
+                var nl = document.querySelector('.nav-links'); if (nl) nl.classList.remove('mobile-open');
+                var nm = document.querySelector('.nav-mobile'); if (nm) nm.setAttribute('aria-expanded', 'false');
                 document.body.classList.remove('menu-open');
             }
         });
