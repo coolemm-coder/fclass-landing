@@ -342,7 +342,7 @@
             display: none; width: 28px; height: 20px;
             flex-direction: column; justify-content: space-between; cursor: pointer;
         }
-        .nav-mobile span { height: 2px; background: var(--white); pointer-events: none; }
+        .nav-mobile span { height: 3px; background: #00c853; pointer-events: none; }
         /* Hidden checkbox drives the pure-CSS menu (works with JS disabled/blocked) */
         .nav-cb { position: absolute; opacity: 0; width: 0; height: 0; pointer-events: none; }
         .nav-links.mobile-open,
@@ -1169,7 +1169,7 @@
             <li><a href="#contact">Контакты</a></li>
         </ul>
         <a href="https://t.me/fclassmsk_bot?start=lead_nav" class="nav-cta" target="_blank" rel="noopener">Связаться</a>
-        <label class="nav-mobile" for="nav-toggle" role="button" aria-label="Открыть меню" aria-controls="nav-menu"><span></span><span></span><span></span></label>
+        <label class="nav-mobile" for="nav-toggle" role="button" aria-label="Открыть меню" aria-controls="nav-menu" onclick="toggleMenu(event)"><span></span><span></span><span></span></label>
     </nav>
     <script>
         /* Burger is pure CSS (label + #nav-toggle checkbox) and works with JS disabled.
@@ -1179,7 +1179,19 @@
             var nl=document.querySelector('.nav-links'); if(nl)nl.classList.remove('mobile-open');
             document.body.classList.remove('menu-open');
         }
-        function toggleMenu(btn){ var cb=document.getElementById('nav-toggle'); if(cb)cb.checked=!cb.checked; }
+        /* JS path: drives the menu directly so it works even where iOS Safari is
+           flaky toggling a checkbox via <label>. preventDefault stops the native
+           label toggle so we don't double-toggle. If JS is blocked, the native
+           label+checkbox (CSS) still works. */
+        function toggleMenu(e){
+            if(e&&e.preventDefault)e.preventDefault();
+            var cb=document.getElementById('nav-toggle');
+            var nl=document.querySelector('.nav-links');
+            var open=cb?!cb.checked:(nl?!nl.classList.contains('mobile-open'):true);
+            if(cb)cb.checked=open;
+            if(nl)nl.classList.toggle('mobile-open',open);
+            document.body.classList.toggle('menu-open',open);
+        }
         document.addEventListener('click',function(e){
             if(e.target.closest('.nav-links a')) closeMenu();
         });
@@ -1719,16 +1731,11 @@
         window.addEventListener('scroll', () => {
             document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
         });
-        function toggleMenu(btn) {
-            const menu = document.querySelector('.nav-links');
-            const open = menu.classList.toggle('mobile-open');
-            if (btn) btn.setAttribute('aria-expanded', open);
-            document.body.classList.toggle('menu-open', open);
-        }
+        /* toggleMenu is defined in the early inline script (robust JS+CSS burger) */
         document.querySelectorAll('.nav-links a').forEach(a => {
             a.addEventListener('click', () => {
+                var cb = document.getElementById('nav-toggle'); if (cb) cb.checked = false;
                 var nl = document.querySelector('.nav-links'); if (nl) nl.classList.remove('mobile-open');
-                var nm = document.querySelector('.nav-mobile'); if (nm) nm.setAttribute('aria-expanded', 'false');
                 document.body.classList.remove('menu-open');
             });
         });
