@@ -1138,6 +1138,20 @@
         <a href="https://t.me/fclassmsk_bot?start=lead_nav" class="nav-cta" target="_blank" rel="noopener">Связаться</a>
         <button class="nav-mobile" type="button" aria-label="Открыть меню" aria-controls="nav-menu" aria-expanded="false" onclick="toggleMenu(this)"><span></span><span></span><span></span></button>
     </nav>
+    <script>
+        /* Burger menu — defined early so it works before GSAP/CDN finishes loading */
+        function toggleMenu(btn){
+            var menu=document.querySelector('.nav-links');
+            if(!menu)return;
+            var open=menu.classList.toggle('mobile-open');
+            if(btn)btn.setAttribute('aria-expanded',open);
+            document.body.classList.toggle('menu-open',open);
+        }
+        document.addEventListener('click',function(e){
+            var a=e.target.closest('.nav-links a');
+            if(a){document.querySelector('.nav-links')?.classList.remove('mobile-open');document.body.classList.remove('menu-open');}
+        });
+    </script>
 
     <!-- Hero -->
     <section class="hero hero-fullscreen">
@@ -1586,17 +1600,6 @@
     </section>
 
     <!-- Map -->
-    <section class="map-section">
-        <div class="map-container">
-            <div class="map-header">
-                <h3 class="map-title">Мы на карте</h3>
-                <span class="map-address">г. Минск, просп. Победителей, 11, оф. 12</span>
-            </div>
-            <div class="map-wrapper">
-                <iframe src="https://yandex.ru/map-widget/v1/?ll=27.548248%2C53.909249&mode=search&oid=68945387734&ol=biz&z=16" allowfullscreen loading="lazy" title="First Class на Яндекс Картах"></iframe>
-            </div>
-        </div>
-    </section>
 
     <!-- Floating -->
     <div class="floating-buttons">
