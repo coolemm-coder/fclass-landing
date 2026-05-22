@@ -342,16 +342,20 @@
             display: none; width: 28px; height: 20px;
             flex-direction: column; justify-content: space-between; cursor: pointer;
         }
-        .nav-mobile span { height: 2px; background: var(--white); }
-        .nav-links.mobile-open {
+        .nav-mobile span { height: 2px; background: var(--white); pointer-events: none; }
+        /* Hidden checkbox drives the pure-CSS menu (works with JS disabled/blocked) */
+        .nav-cb { position: absolute; opacity: 0; width: 0; height: 0; pointer-events: none; }
+        .nav-links.mobile-open,
+        #nav-toggle:checked ~ .nav-links {
             display: flex !important;
             position: absolute; top: 100%; left: 0; right: 0;
             flex-direction: column; background: var(--primary);
             padding: 30px; gap: 20px;
             z-index: 1001; box-shadow: 0 8px 24px rgba(0,0,0,.4);
         }
-        button.nav-mobile { background: none; border: none; padding: 12px; margin: -12px; box-sizing: content-box; -webkit-tap-highlight-color: transparent; }
-        .nav-links.mobile-open a { color: var(--white) !important; font-size: 16px; padding: 10px 0; }
+        .nav-mobile { background: none; border: none; padding: 12px; margin: -12px; box-sizing: content-box; -webkit-tap-highlight-color: transparent; }
+        .nav-links.mobile-open a,
+        #nav-toggle:checked ~ .nav-links a { color: var(--white) !important; font-size: 16px; padding: 10px 0; }
 
         /* Hero */
         .hero {
@@ -1154,6 +1158,7 @@
         <a href="/" class="nav-logo">
             <img src="logo.png" alt="First Class — организация командировок в Минске" class="nav-logo-img">
         </a>
+        <input type="checkbox" id="nav-toggle" class="nav-cb" aria-hidden="true" tabindex="-1">
         <ul class="nav-links" id="nav-menu">
             <li><a href="#services">Услуги</a></li>
             <li><a href="/komandirovki/">Командировки</a></li>
@@ -1164,20 +1169,19 @@
             <li><a href="#contact">Контакты</a></li>
         </ul>
         <a href="https://t.me/fclassmsk_bot?start=lead_nav" class="nav-cta" target="_blank" rel="noopener">Связаться</a>
-        <button class="nav-mobile" type="button" aria-label="Открыть меню" aria-controls="nav-menu" aria-expanded="false" onclick="toggleMenu(this)"><span></span><span></span><span></span></button>
+        <label class="nav-mobile" for="nav-toggle" role="button" aria-label="Открыть меню" aria-controls="nav-menu"><span></span><span></span><span></span></label>
     </nav>
     <script>
-        /* Burger menu — defined early so it works before GSAP/CDN finishes loading */
-        function toggleMenu(btn){
-            var menu=document.querySelector('.nav-links');
-            if(!menu)return;
-            var open=menu.classList.toggle('mobile-open');
-            if(btn)btn.setAttribute('aria-expanded',open);
-            document.body.classList.toggle('menu-open',open);
+        /* Burger is pure CSS (label + #nav-toggle checkbox) and works with JS disabled.
+           JS here only enhances: close the menu after a link tap. */
+        function closeMenu(){
+            var cb=document.getElementById('nav-toggle'); if(cb)cb.checked=false;
+            var nl=document.querySelector('.nav-links'); if(nl)nl.classList.remove('mobile-open');
+            document.body.classList.remove('menu-open');
         }
+        function toggleMenu(btn){ var cb=document.getElementById('nav-toggle'); if(cb)cb.checked=!cb.checked; }
         document.addEventListener('click',function(e){
-            var a=e.target.closest('.nav-links a');
-            if(a){var nl=document.querySelector('.nav-links');if(nl)nl.classList.remove('mobile-open');document.body.classList.remove('menu-open');}
+            if(e.target.closest('.nav-links a')) closeMenu();
         });
     </script>
 
