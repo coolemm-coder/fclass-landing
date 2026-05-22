@@ -892,6 +892,12 @@
             .stat-number, .trust-number { font-size: 30px; }
             .ts-num           { font-size: 15px; }
             .ts-label         { font-size: 12px; }
+
+            /* ── Perf: kill GPU-heavy backdrop-blur on phones (caused janky scroll) ── */
+            .nav.scrolled       { backdrop-filter: none; -webkit-backdrop-filter: none; background: rgba(12,24,37,0.97); }
+            .sticky-mobile-cta  { backdrop-filter: none; -webkit-backdrop-filter: none; }
+            /* Scroll-reveal animations are disabled on mobile (below) — show content statically */
+            .reveal-up, .reveal-left, .reveal-right, .reveal-scale { opacity: 1 !important; transform: none !important; }
         }
         @media (max-width: 400px) {
             .hero-center h1 { font-size: 29px; }
@@ -931,6 +937,10 @@
         backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
         border: 1px solid rgba(255,255,255,0.08);
         transition: transform 0.5s var(--ease-out-expo), box-shadow 0.5s var(--ease-out-expo), border-color 0.5s ease;
+    }
+    /* Perf: drop card backdrop-blur on phones (defined after base rule to win on order) */
+    @media (max-width: 768px) {
+        .service-card { backdrop-filter: none; -webkit-backdrop-filter: none; }
     }
     .service-card:hover {
         transform: translateY(-8px) scale(1.01);
@@ -1903,6 +1913,10 @@
         (window.requestIdleCallback || function(cb){ setTimeout(cb, 300); })(function() {
         if (typeof gsap !== 'undefined') {
 
+            /* Mobile: skip scroll-linked reveals (31 ScrollTriggers janked scrolling).
+               These use gsap.fromTo, so simply not creating them leaves content visible. */
+            if (window.matchMedia('(max-width: 768px)').matches) return;
+
             /* ══ Scroll reveals ══ */
 
             /* Section titles — clipPath wipe reveal */
@@ -2136,6 +2150,9 @@
     /* ══ PREMIUM ANIMATIONS ══ */
     (function() {
         if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+        /* Mobile: skip these too — incl. the scrub:1 parallax that recalculated every
+           scroll frame. .reveal-* shown via CSS !important above. */
+        if (window.matchMedia('(max-width: 768px)').matches) return;
 
         /* ── Batch reveal: all sections fade in on scroll ── */
         gsap.utils.toArray('.reveal-up').forEach(function(el) {
