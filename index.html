@@ -339,10 +339,11 @@
             text-transform: uppercase; transition: var(--transition);
         }
         .nav-mobile {
-            display: none; width: 28px; height: 20px;
-            flex-direction: column; justify-content: space-between; cursor: pointer;
+            display: none; width: 46px; height: 46px;
+            flex-direction: column; justify-content: center; align-items: center; gap: 5px;
+            cursor: pointer; background: rgba(12,24,37,0.5); border-radius: 10px;
         }
-        .nav-mobile span { height: 3px; background: #ff7e00; }
+        .nav-mobile span { display: block; width: 22px; height: 2.5px; border-radius: 2px; background: #fff; }
         /* Burger is a plain <a href="#nav-menu"> link; menu opens via :target —
            no JS, no checkbox. Plain links are confirmed working on the device. */
         /* Full-screen overlay so it can't be hidden under the Safari bar / notch,
@@ -362,7 +363,7 @@
         }
         .nav-links.mobile-open li,
         .nav-links:target li { list-style: none; width: 100%; text-align: center; }
-        .nav-mobile { background: none; border: none; padding: 12px; margin: 0; box-sizing: content-box; position: relative; z-index: 1002; -webkit-tap-highlight-color: transparent; }
+        .nav-mobile { border: none; box-sizing: border-box; position: relative; z-index: 1002; -webkit-tap-highlight-color: transparent; }
         .nav-links.mobile-open a,
         .nav-links:target a { color: var(--white) !important; font-size: 20px; padding: 14px 0; display: block; }
         /* Close ✕ — absolute INSIDE the overlay (tied to it, can't orphan) */
@@ -868,7 +869,10 @@
         @media (max-width: 1024px) {
             .nav { padding: 0 30px; }
             .nav-links { display: none; }
-            .nav-mobile { display: flex; }
+            .nav-mobile { display: flex; flex: none; }
+            /* Hide the big nav CTA on mobile — it crowded out the burger.
+               Contact is reachable via the menu + floating TG/WA buttons. */
+            .nav .nav-cta { display: none; }
             .services-grid-3 { grid-template-columns: 1fr; }
             .services-grid-4 { grid-template-columns: repeat(2, 1fr); }
             .feelings-grid { grid-template-columns: repeat(2, 1fr); }
