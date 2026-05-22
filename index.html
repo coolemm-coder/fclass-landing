@@ -350,6 +350,17 @@
            and a :target scroll-jump can't visibly move the navbar (overlay covers it). */
         /* top+bottom+left+right:0 forces full-viewport size regardless of any
            height/dvh quirk on iOS — the overlay can't collapse. */
+        /* CRITICAL: a transform/filter/will-change on a position:fixed ancestor
+           turns it into the containing block, shrinking this overlay to the nav
+           height on iOS. Strip those from the nav (mobile only) so the overlay
+           maps to the viewport. */
+        @media (max-width: 1024px) {
+            .nav, .nav.scrolled {
+                transform: none !important; -webkit-transform: none !important;
+                filter: none !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important;
+                will-change: auto !important; perspective: none !important;
+            }
+        }
         .nav-links.mobile-open,
         .nav-links:target {
             display: flex !important;
