@@ -342,11 +342,11 @@
             display: none; width: 28px; height: 20px;
             flex-direction: column; justify-content: space-between; cursor: pointer;
         }
-        .nav-mobile span { height: 3px; background: #2962ff; }
-        /* Hidden checkbox drives the pure-CSS menu (works with JS disabled/blocked) */
-        .nav-cb { position: absolute; opacity: 0; width: 0; height: 0; pointer-events: none; }
+        .nav-mobile span { height: 3px; background: #ff7e00; }
+        /* Burger is a plain <a href="#nav-menu"> link; menu opens via :target —
+           no JS, no checkbox. Plain links are confirmed working on the device. */
         .nav-links.mobile-open,
-        #nav-toggle:checked ~ .nav-links {
+        .nav-links:target {
             display: flex !important;
             position: absolute; top: 100%; left: 0; right: 0;
             flex-direction: column; background: var(--primary);
@@ -355,7 +355,7 @@
         }
         .nav-mobile { background: none; border: none; padding: 12px; margin: 0; box-sizing: content-box; position: relative; z-index: 1002; -webkit-tap-highlight-color: transparent; }
         .nav-links.mobile-open a,
-        #nav-toggle:checked ~ .nav-links a { color: var(--white) !important; font-size: 16px; padding: 10px 0; }
+        .nav-links:target a { color: var(--white) !important; font-size: 16px; padding: 10px 0; }
 
         /* Hero */
         .hero {
@@ -1158,7 +1158,6 @@
         <a href="/" class="nav-logo">
             <img src="logo.png" alt="First Class — организация командировок в Минске" class="nav-logo-img">
         </a>
-        <input type="checkbox" id="nav-toggle" class="nav-cb" aria-hidden="true" tabindex="-1">
         <ul class="nav-links" id="nav-menu">
             <li><a href="#services">Услуги</a></li>
             <li><a href="/komandirovki/">Командировки</a></li>
@@ -1169,28 +1168,24 @@
             <li><a href="#contact">Контакты</a></li>
         </ul>
         <a href="https://t.me/fclassmsk_bot?start=lead_nav" class="nav-cta" target="_blank" rel="noopener">Связаться</a>
-        <button type="button" class="nav-mobile" aria-label="Открыть меню" aria-controls="nav-menu" aria-expanded="false" onclick="toggleMenu(event)"><span></span><span></span><span></span></button>
+        <a href="#nav-menu" class="nav-mobile" role="button" aria-label="Открыть меню" aria-controls="nav-menu" onclick="toggleMenu(event)"><span></span><span></span><span></span></a>
     </nav>
     <script>
-        /* Burger is pure CSS (label + #nav-toggle checkbox) and works with JS disabled.
-           JS here only enhances: close the menu after a link tap. */
+        /* Burger is a plain <a href="#nav-menu"> link; with JS off the menu opens
+           via CSS :target. With JS on, this toggles a class (and clears the hash)
+           so the same button can also close it. Plain links are confirmed working
+           on the user's device, unlike JS/checkbox approaches. */
         function closeMenu(){
-            var cb=document.getElementById('nav-toggle'); if(cb)cb.checked=false;
             var nl=document.querySelector('.nav-links'); if(nl)nl.classList.remove('mobile-open');
             document.body.classList.remove('menu-open');
+            if(location.hash==='#nav-menu' && history.replaceState) history.replaceState(null,'',location.pathname+location.search);
         }
-        /* JS path: drives the menu directly so it works even where iOS Safari is
-           flaky toggling a checkbox via <label>. preventDefault stops the native
-           label toggle so we don't double-toggle. If JS is blocked, the native
-           label+checkbox (CSS) still works. */
         function toggleMenu(e){
+            var nl=document.querySelector('.nav-links'); if(!nl) return;
+            var willOpen=!nl.classList.contains('mobile-open');
             if(e&&e.preventDefault)e.preventDefault();
-            var cb=document.getElementById('nav-toggle');
-            var nl=document.querySelector('.nav-links');
-            var open=cb?!cb.checked:(nl?!nl.classList.contains('mobile-open'):true);
-            if(cb)cb.checked=open;
-            if(nl)nl.classList.toggle('mobile-open',open);
-            document.body.classList.toggle('menu-open',open);
+            nl.classList.toggle('mobile-open',willOpen);
+            document.body.classList.toggle('menu-open',willOpen);
         }
         document.addEventListener('click',function(e){
             if(e.target.closest('.nav-links a')) closeMenu();
