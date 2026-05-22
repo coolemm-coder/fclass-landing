@@ -347,16 +347,17 @@
            no JS, no checkbox. Plain links are confirmed working on the device. */
         /* Full-screen overlay so it can't be hidden under the Safari bar / notch,
            and a :target scroll-jump can't visibly move the navbar (overlay covers it). */
+        /* top+bottom+left+right:0 forces full-viewport size regardless of any
+           height/dvh quirk on iOS — the overlay can't collapse. */
         .nav-links.mobile-open,
         .nav-links:target {
             display: flex !important;
-            position: fixed; top: 0; left: 0; right: 0; margin: 0;
-            height: 100vh; height: 100dvh;            /* robust on iOS */
+            position: fixed; top: 0; bottom: 0; left: 0; right: 0; margin: 0;
             box-sizing: border-box;
-            flex-direction: column; justify-content: flex-start; align-items: center;
+            flex-direction: column; justify-content: center; align-items: center; gap: 4px;
             background: var(--primary);
-            padding: 84px 24px 32px; gap: 4px;        /* start from top, never clipped */
-            z-index: 1050;
+            padding: 72px 24px 32px;
+            z-index: 1100;
             overflow-y: auto; -webkit-overflow-scrolling: touch;
         }
         .nav-links.mobile-open li,
@@ -364,13 +365,14 @@
         .nav-mobile { background: none; border: none; padding: 12px; margin: 0; box-sizing: content-box; position: relative; z-index: 1002; -webkit-tap-highlight-color: transparent; }
         .nav-links.mobile-open a,
         .nav-links:target a { color: var(--white) !important; font-size: 20px; padding: 14px 0; display: block; }
-        /* Close ✕ — pulled out of flow, fixed top-right; only when overlay open */
+        /* Close ✕ — absolute INSIDE the overlay (tied to it, can't orphan) */
         .nav-close { display: none !important; }
-        .nav-close-li { position: fixed !important; top: 14px; right: 14px; width: auto !important; z-index: 1051; }
+        .nav-close-li { width: auto !important; }
         .nav-links.mobile-open .nav-close,
         .nav-links:target .nav-close {
             display: flex !important; align-items: center; justify-content: center;
-            width: 46px; height: 46px; font-size: 32px; line-height: 1; padding: 0 !important;
+            position: absolute; top: 14px; right: 16px;
+            width: 46px; height: 46px; font-size: 34px; line-height: 1; padding: 0 !important;
             color: var(--white) !important; text-decoration: none;
         }
 
