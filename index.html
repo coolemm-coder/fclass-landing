@@ -24,7 +24,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://fclass.by/">
     <meta property="og:locale" content="ru_BY">
-    <meta property="og:image" content="https://fclass.by/hero-bg.jpg">
+    <meta property="og:image" content="https://fclass.by/hero-bg-air.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
 
@@ -43,7 +43,7 @@
         "description": "Организация служебных командировок в Минске с 2018 года. Авиабилеты, ж/д, проживание, трансферы, визовая поддержка.",
         "url": "https://fclass.by",
         "logo": "https://fclass.by/logo.png",
-        "image": "https://fclass.by/hero-bg.jpg",
+        "image": "https://fclass.by/hero-bg-air.jpg",
         "sameAs": ["https://t.me/fclassmsk_bot", "https://yandex.by/maps/org/pervy_klass/68945387734/"],
         "telephone": "+375447725266",
         "email": "marketing@fclass.by",
@@ -217,7 +217,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="First Class — Организация командировок в Минске">
     <meta name="twitter:description" content="Командировки под ключ: билеты, отели, визы, трансферы. Закажите организацию командировки. С 2018 года.">
-    <meta name="twitter:image" content="https://fclass.by/hero-bg.jpg">
+    <meta name="twitter:image" content="https://fclass.by/hero-bg-air.jpg">
 
     <!-- Yandex.Metrika -->
     <script type="text/javascript">
@@ -231,7 +231,7 @@
     <!-- GSAP loaded at bottom of body -->
 
     <!-- Preload critical assets for LCP -->
-    <link rel="preload" as="image" href="hero-bg.webp" type="image/webp">
+    <link rel="preload" as="image" href="hero-bg-air.jpg">
 
     <!-- Fonts (reduced weights) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -390,14 +390,24 @@
 
         /* Hero */
         .hero {
-            min-height: 100vh; display: flex; align-items: center; justify-content: center;
-            position: relative; background: var(--primary-dark);
+            min-height: 100vh; display: flex; align-items: center; justify-content: flex-start;
+            position: relative; background: var(--primary-dark); overflow: hidden;
+            padding-inline: clamp(20px, 7vw, 130px);
         }
-        .hero-bg { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
-        .hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
+        .hero-bg {
+            position: absolute; inset: 0; z-index: 0; overflow: hidden;
+            background: #060d14 url('hero-bg-air.jpg') center 45% / cover no-repeat;
+        }
+        .hero-video {
+            width: 100%; height: 100%; object-fit: cover; object-position: center 45%;
+            display: block;
+        }
+        @media (prefers-reduced-motion: reduce) { .hero-video { display: none; } }
         .hero-overlay {
             position: absolute; inset: 0;
-            background: linear-gradient(180deg, rgba(12,24,37,0.4) 0%, rgba(12,24,37,0.6) 50%, rgba(12,24,37,0.8) 100%);
+            background:
+                linear-gradient(90deg, rgba(8,15,24,0.92) 0%, rgba(8,15,24,0.78) 28%, rgba(8,15,24,0.30) 60%, rgba(8,15,24,0.05) 100%),
+                linear-gradient(180deg, rgba(8,15,24,0.45) 0%, rgba(8,15,24,0.15) 45%, rgba(8,15,24,0.65) 100%);
         }
         /* Hero shimmer overlay */
         .hero-shimmer {
@@ -431,7 +441,7 @@
         }
         /* Animated accent line under h1 */
         .hero-accent-line {
-            display: block; width: 80px; height: 2px; margin: 0 auto 28px;
+            display: block; width: 72px; height: 2px; margin: 0 0 28px;
             background: linear-gradient(90deg, transparent, var(--accent), transparent);
             position: relative; overflow: hidden;
         }
@@ -445,7 +455,7 @@
             0%, 70%, 100% { transform: translateX(-100%); }
             30%, 40% { transform: translateX(100%); }
         }
-        .hero-center { text-align: center; max-width: 900px; z-index: 1; }
+        .hero-center { text-align: left; max-width: 600px; z-index: 1; }
         .hero-content { opacity: 1; }
         .hero-eyebrow {
             font-size: 11px; font-weight: 600; letter-spacing: 2px;
@@ -472,10 +482,10 @@
         .hero-center .hero-text {
             color: rgba(255,255,255,0.8); font-size: 22px; margin-bottom: 48px;
         }
-        .hero-ctas { display: flex; gap: 20px; justify-content: center; }
+        .hero-ctas { display: flex; gap: 16px; justify-content: flex-start; flex-wrap: wrap; }
         .hero-trust-line { margin-top: 16px; font-size: 13px; color: rgba(255,255,255,0.65); letter-spacing: 0.3px; }
         .hero-sub { color: var(--accent-light); font-size: 16px; letter-spacing: 0.5px; margin: 0 0 28px; font-weight: 500; }
-        .hero-bullets { list-style: none; padding: 0; margin: 0 auto 36px; max-width: 640px; text-align: left; display: inline-block; }
+        .hero-bullets { list-style: none; padding: 0; margin: 0 0 36px; max-width: 560px; text-align: left; display: block; }
         .hero-bullets li { color: rgba(255,255,255,0.86); font-size: 17px; line-height: 1.5; padding: 8px 0 8px 28px; position: relative; }
         .hero-bullets li::before { content: ''; position: absolute; left: 0; top: 16px; width: 14px; height: 2px; background: var(--accent); }
         @media (max-width: 720px) { .hero-bullets li { font-size: 15px; padding-left: 22px; } .hero-bullets li::before { width: 10px; top: 14px; } .hero-sub { font-size: 14px; } }
@@ -487,16 +497,18 @@
             transition: var(--transition); cursor: pointer; border: none;
         }
         .btn-primary {
-            background: var(--white); border: 1px solid var(--white);
-            color: var(--primary); padding: 20px 48px; font-size: 13px;
-            font-weight: 700;
+            background: linear-gradient(135deg, #e8d5a3 0%, #c9a962 52%, #b8954f 100%);
+            border: 1px solid rgba(201,169,98,0.55);
+            color: #1a1308; padding: 19px 44px; font-size: 13px; font-weight: 700;
+            box-shadow: 0 10px 26px rgba(201,169,98,0.26), inset 0 1px 0 rgba(255,255,255,0.4);
         }
-        .btn-primary:hover { background: var(--accent); border-color: var(--accent); color: var(--primary); }
+        .btn-primary:hover { filter: brightness(1.05); }
         .btn-outline {
-            background: transparent; border: 1.5px solid rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.04); border: 1.5px solid rgba(255,255,255,0.32);
             color: var(--white); padding: 18px 36px; font-size: 12px; font-weight: 600;
+            -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
         }
-        .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.6); }
+        .btn-outline:hover { background: rgba(255,255,255,0.12); border-color: rgba(201,169,98,0.7); color: var(--accent-light); }
         .scroll-hint { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index: 1; }
         .scroll-hint span {
             display: block; width: 1px; height: 60px;
@@ -904,7 +916,9 @@
             .ts-num { font-size: 14px; }
             .ts-label { font-size: 12px; }
             .ts-sep { display: none; }
-            .hero-ctas { flex-direction: column; align-items: center; }
+            .hero-ctas { flex-direction: column; align-items: stretch; gap: 12px; }
+            .hero-ctas .btn { justify-content: center; width: 100%; }
+            .hero-center { max-width: 100%; }
             .feelings-grid { grid-template-columns: 1fr; }
             .services-grid-4 { grid-template-columns: 1fr; }
             .expertise-stats { grid-template-columns: repeat(3, 1fr); gap: 20px; }
@@ -1230,10 +1244,10 @@
     <!-- Hero -->
     <section class="hero hero-fullscreen">
         <div class="hero-bg">
-            <picture>
-                <source srcset="hero-bg.webp" type="image/webp">
-                <img src="hero-bg.jpg" alt="Организация служебных командировок в Минске — First Class" loading="eager" fetchpriority="high" decoding="async">
-            </picture>
+            <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="hero-bg-air.jpg" aria-hidden="true">
+                <source src="hero-loop3.webm" type="video/webm">
+                <source src="hero-loop3.mp4" type="video/mp4">
+            </video>
             <div class="hero-overlay"></div>
             <div class="hero-shimmer"></div>
         </div>
@@ -1900,48 +1914,54 @@
             }
             var ctx = canvas.getContext('2d');
             var particles = [];
-            var count = 35;
+            var count = 46;
             var gold = [201, 169, 98];
+            var W = 0, H = 0;
 
             function resize() {
                 var hero = document.querySelector('.hero');
-                canvas.width = hero.offsetWidth;
-                canvas.height = hero.offsetHeight;
+                W = canvas.width = hero.offsetWidth;
+                H = canvas.height = hero.offsetHeight;
             }
             resize();
             window.addEventListener('resize', resize);
 
-            for (var i = 0; i < count; i++) {
-                particles.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    r: Math.random() * 2 + 0.5,
-                    vx: (Math.random() - 0.5) * 0.3,
-                    vy: -(Math.random() * 0.4 + 0.1),
-                    alpha: Math.random() * 0.5 + 0.1,
+            /* Flowing golden light — streaks drift up-right along the trail curve,
+               weighted to the lower-right where the plane's light trails are. */
+            function spawn(init) {
+                var speed = Math.random() * 1.6 + 0.8;
+                return {
+                    /* bias spawn toward bottom-right band */
+                    x: init ? Math.random() * W : (W * (0.25 + Math.random() * 0.85)),
+                    y: init ? Math.random() * H : (H * (0.55 + Math.random() * 0.6)),
+                    vx: speed,                       /* rightward */
+                    vy: -speed * (0.45 + Math.random() * 0.3), /* upward */
+                    len: Math.random() * 26 + 10,    /* streak length */
+                    w: Math.random() * 1.4 + 0.5,
+                    alpha: Math.random() * 0.45 + 0.15,
                     pulse: Math.random() * Math.PI * 2
-                });
+                };
             }
+            for (var i = 0; i < count; i++) particles.push(spawn(true));
 
             function draw() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.clearRect(0, 0, W, H);
                 for (var i = 0; i < particles.length; i++) {
                     var p = particles[i];
-                    p.x += p.vx;
-                    p.y += p.vy;
-                    p.pulse += 0.015;
+                    p.x += p.vx; p.y += p.vy; p.pulse += 0.02;
                     var a = p.alpha * (0.6 + 0.4 * Math.sin(p.pulse));
-                    if (p.y < -10) { p.y = canvas.height + 10; p.x = Math.random() * canvas.width; }
-                    if (p.x < -10) p.x = canvas.width + 10;
-                    if (p.x > canvas.width + 10) p.x = -10;
-                    ctx.beginPath();
-                    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-                    ctx.fillStyle = 'rgba(' + gold[0] + ',' + gold[1] + ',' + gold[2] + ',' + a + ')';
-                    ctx.fill();
-                    /* soft glow */
-                    ctx.beginPath();
-                    ctx.arc(p.x, p.y, p.r * 3, 0, Math.PI * 2);
-                    ctx.fillStyle = 'rgba(' + gold[0] + ',' + gold[1] + ',' + gold[2] + ',' + (a * 0.15) + ')';
+                    /* recycle when off-screen (top or right) */
+                    if (p.x > W + 30 || p.y < -30) { particles[i] = spawn(false); continue; }
+                    var nrm = Math.sqrt(p.vx * p.vx + p.vy * p.vy) || 1;
+                    var tx = p.x - (p.vx / nrm) * p.len, ty = p.y - (p.vy / nrm) * p.len;
+                    var g = ctx.createLinearGradient(p.x, p.y, tx, ty);
+                    g.addColorStop(0, 'rgba(' + gold[0] + ',' + gold[1] + ',' + gold[2] + ',' + a + ')');
+                    g.addColorStop(1, 'rgba(' + gold[0] + ',' + gold[1] + ',' + gold[2] + ',0)');
+                    ctx.strokeStyle = g; ctx.lineWidth = p.w; ctx.lineCap = 'round';
+                    ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(tx, ty); ctx.stroke();
+                    /* head glow */
+                    ctx.beginPath(); ctx.arc(p.x, p.y, p.w * 1.6, 0, Math.PI * 2);
+                    ctx.fillStyle = 'rgba(' + gold[0] + ',' + gold[1] + ',' + gold[2] + ',' + (a * 0.5) + ')';
                     ctx.fill();
                 }
                 requestAnimationFrame(draw);
