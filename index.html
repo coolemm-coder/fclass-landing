@@ -934,6 +934,11 @@
 
         /* ── Unified mobile type scale (base 16px · ratio ~1.2) ── */
         @media (max-width: 768px) {
+            /* Portrait crops the wide video hard — shift toward the plane (upper-right)
+               so it stays visible; the left scrim keeps the text legible regardless. */
+            .hero            { min-height: 90svh; }
+            .hero-video      { object-position: 74% 32%; }
+            .hero-bg         { background-position: 74% 32%; }
             .hero-center h1   { font-size: 32px; line-height: 1.12; margin-bottom: 18px; }
             .hero-sub         { font-size: 16px; margin-bottom: 22px; }
             .hero-bullets li  { font-size: 16px; }
