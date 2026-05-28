@@ -6,11 +6,12 @@
 <meta charset="UTF-8">
 <script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,'script','https://mc.yandex.ru/metrika/tag.js?id=107237229','ym');ym(107237229,'init',{ssr:true,webvisor:true,clickmap:true,accurateTrackBounce:true,trackLinks:true});</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Калькулятор командировочных РБ 2026 | First Class</title>
-<meta name="description" content="Калькулятор командировочных расходов в РБ: суточные, проезд и проживание. Быстрый расчет для бухгалтера и сотрудника.">
+<title>Калькулятор командировочных расходов в Беларуси 2026: суточные, нормы, расчёт | First Class</title>
+<meta name="description" content="Калькулятор командировочных расходов в Беларуси на 2026: суточные 13 BYN (Постановление №135), проезд, проживание, расчёт за границу. Для бухгалтера и сотрудника.">
+<meta name="keywords" content="командировочные расходы беларусь 2026, командировочные расходы в беларуси в 2026 году, суточные рб 2026, размер командировочных, норма суточных 2026, расчёт командировочных, командировочные рб 2026">
 <meta name="robots" content="index, follow">
-<meta property="og:title" content="Калькулятор командировочных РБ 2026">
-<meta property="og:description" content="Считаем суточные, проезд и проживание для бухгалтера. Учёт Постановления №135 от 04.04.2026.">
+<meta property="og:title" content="Калькулятор командировочных расходов в Беларуси 2026: суточные, нормы">
+<meta property="og:description" content="Расчёт суточных (13 BYN), проезда и проживания с учётом Постановления №135. Для бухгалтера и сотрудника.">
 <meta property="og:url" content="https://fclass.by/komandirovochnye-kalkulyator/">
 <link rel="canonical" href="https://fclass.by/komandirovochnye-kalkulyator/">
 <link rel="icon" href="/favicon.ico">
@@ -123,7 +124,31 @@
 <div class="cta-final">
 <h2>Командировки под ключ для юрлиц и ИП</h2>
 <p>Оформляем билеты, гостиницу, трансфер и документы для бухгалтерии. Условия оплаты и состав закрывающих документов согласуем заранее. УНП 193218120.</p>
-<a href="/#contact" class="btn">Получить расчёт за 15 минут</a>
+<form id="kalkLeadForm" style="max-width:480px;margin:18px auto 0;display:grid;gap:10px;text-align:left">
+  <input type="text" name="name" placeholder="Имя" required style="padding:14px 16px;border:0;border-radius:6px;font-size:14px;font-family:inherit;color:#0c1825">
+  <input type="tel" name="phone" placeholder="+375..." required style="padding:14px 16px;border:0;border-radius:6px;font-size:14px;font-family:inherit;color:#0c1825">
+  <input type="text" name="route" placeholder="Маршрут / даты / пассажиров" style="padding:14px 16px;border:0;border-radius:6px;font-size:14px;font-family:inherit;color:#0c1825">
+  <button type="submit" class="btn" style="margin-top:4px;background:#c9a962;color:#0c1825;display:block">Получить расчёт за 15 минут</button>
+</form>
+<p style="margin-top:14px;font-size:12px;opacity:.7">Менеджер посчитает и пришлёт смету в рабочее время. Или напишите в <a href="https://t.me/fclassmsk_bot?start=kalkulyator" style="color:#c9a962">Telegram</a>.</p>
+<script>
+document.getElementById('kalkLeadForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  var form=e.target,btn=form.querySelector('button'),orig=btn.textContent;
+  btn.textContent='Отправка...';btn.disabled=true;
+  var d=Object.fromEntries(new FormData(form));
+  d.source='komandirovochnye-kalkulyator-cta';
+  d.timestamp=new Date().toISOString();
+  fetch('https://emikss.host/webhook/fc-lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})
+    .then(function(){
+      if(window.ym)ym(107237229,'reachGoal','LEAD');
+      if(window.gtag)gtag('event','generate_lead',{event_category:'lead',event_label:'kalkulyator_cta'});
+      btn.textContent='Отправлено';btn.style.background='#22c55e';form.reset();
+    })
+    .catch(function(){btn.textContent='Ошибка — позвоните +375 44 772-52-66';})
+    .finally(function(){setTimeout(function(){btn.textContent=orig;btn.disabled=false;btn.style.background='#c9a962';},5000);});
+});
+</script>
 </div>
 
 <h2>Часто задаваемые вопросы</h2>
@@ -318,5 +343,6 @@ function submitLead(e){
 
 window.addEventListener('DOMContentLoaded',()=>{calc();loadUsdRate();});
 </script>
+<script src="/assets/mobnav.js" defer></script>
 </body>
 </html>
