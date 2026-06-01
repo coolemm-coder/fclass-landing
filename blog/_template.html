@@ -33,7 +33,7 @@
     <div class="cta-b2b" id="cta-b2b-main">
         <h3>Командируете 4+ раз в месяц?</h3>
         <p>Получите расчёт условий: маршрут, тариф, способ оплаты и пакет первичных документов для бухгалтерии согласуем до оплаты.</p>
-        <form class="b2b-form" action="https://emikss.host/webhook/fclass-blog-lead" method="POST" onsubmit="try{ym(107237229,'reachGoal','blog_form_submit');gtag('event','generate_lead',{source:'blog_cta'});}catch(e){}">
+        <form class="b2b-form" data-lead-form>
             <input type="hidden" name="source" value="blog_cta">
             <input type="hidden" name="page" class="cta-page-field">
             <input type="text" name="company" placeholder="Название компании / ИП" required maxlength="120">
@@ -66,12 +66,27 @@
 </div>
 
 <footer class="footer"><div class="footer-content"><div class="footer-brand"><img src="/logo.png" alt="First Class" class="footer-logo" loading="lazy"><p class="footer-desc">Организация командировок в Минске. Билеты, проживание, трансферы, визовая поддержка. Работаем с юридическими лицами с 2018 года. УНП 193218120.</p></div><div class="footer-col"><h4>Услуги</h4><ul class="footer-links"><li><a href="/#services">Авиа и ж/д билеты</a></li><li><a href="/#services">Проживание</a></li><li><a href="/#services">Трансферы</a></li><li><a href="/visa-support/">Визовая поддержка</a></li></ul></div><div class="footer-col"><h4>Для бизнеса</h4><ul class="footer-links"><li><a href="/tickets/aviabilety-dlya-yurlic/">Авиабилеты для юрлиц</a></li><li><a href="/#contact">Гибкие условия оплаты</a></li><li><a href="/#contact">Документы для бухгалтерии</a></li><li><a href="/#contact">Персональный менеджер</a></li></ul></div><div class="footer-col"><h4>Контакты</h4><ul class="footer-links"><li><a href="tel:+375447725266" onclick="try{ym(107237229,'reachGoal','footer_phone_click');}catch(e){}">+375 44 772-52-66</a></li><li><a href="mailto:marketing@fclass.by" onclick="try{ym(107237229,'reachGoal','footer_email_click');}catch(e){}">marketing@fclass.by</a></li><li>Пн-Пт: 9:00-19:00</li></ul></div></div><div style="text-align:center;padding-top:30px;border-top:1px solid rgba(255,255,255,0.1);margin-top:40px;"><p style="font-size:12px;color:rgba(255,255,255,0.4);">Сайт разработан <a href="https://landingpro.by" target="_blank" rel="noopener" style="color:rgba(201,169,98,0.6);text-decoration:none;">LandingPro</a></p></div></footer>
+
+<script src="/assets/mobnav.js" defer></script>
 <script>
-document.querySelector('.nav-mobile').addEventListener('click',function(){document.querySelector('.nav-links').classList.toggle('mobile-open')});
-// Populate page URL into hidden form field for tracking which post sent the lead
-document.addEventListener('DOMContentLoaded',function(){var fs=document.querySelectorAll('.cta-page-field');fs.forEach(function(f){f.value=window.location.pathname+window.location.search;});
-// AJAX submit to avoid full reload + show thanks
-var forms=document.querySelectorAll('.b2b-form');forms.forEach(function(form){form.addEventListener('submit',function(e){e.preventDefault();var thanks=form.parentElement.querySelector('.cta-thanks');var data=new FormData(form);fetch(form.action,{method:'POST',body:data,mode:'no-cors'}).finally(function(){form.style.display='none';if(thanks){thanks.style.display='block';}try{ym(107237229,'reachGoal','blog_form_submit');gtag('event','generate_lead',{source:'blog_cta'});}catch(err){}});});});});
+document.querySelectorAll('[data-lead-form]').forEach(function(form){
+    form.addEventListener('submit', async function(event){
+        event.preventDefault();
+        var button = form.querySelector('button');
+        var original = button.textContent;
+        button.textContent = 'Отправка...';
+        button.disabled = true;
+        var data = Object.fromEntries(new FormData(form));
+        data.timestamp = new Date().toISOString();
+        try {
+            await fetch('https://emikss.host/webhook/fc-lead', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+            if (window.ym) ym(107237229,'reachGoal','LEAD');
+            if (window.gtag) gtag('event','generate_lead',{event_category:'lead',event_label:data.source||'blog'});
+            form.reset(); form.style.display='none';
+            var thanks=form.parentElement.querySelector('.cta-thanks'); if(thanks) thanks.style.display='block';
+        } catch(err){ button.textContent='Ошибка - позвоните нам'; setTimeout(function(){button.textContent=original;button.disabled=false;},4000); }
+    });
+});
 </script>
 </body>
 </html>

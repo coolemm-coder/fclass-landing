@@ -1,0 +1,11 @@
+{
+  "updated": "2026-05-22",
+  "note": "Цены-ОРИЕНТИРЫ «от». Обновляет менеджер раз в неделю. НЕ оферта — точную цену считает менеджер при запросе.",
+  "routes": [
+    {"from": "МИНСК", "to": "МОСКВА",     "airline": "Belavia",      "price": "165", "cur": "BYN", "bg": "", "type": "direct"},
+    {"from": "МИНСК", "to": "СТАМБУЛ",    "airline": "Belavia/Turkish","price": "230", "cur": "BYN", "bg": "istanbul", "type": "direct"},
+    {"from": "МИНСК", "to": "ДУБАЙ",      "airline": "FlyDubai",     "price": "980", "cur": "BYN", "bg": "dubai", "type": "direct"},
+    {"from": "МИНСК", "to": "БАКУ",       "airline": "Belavia/AZAL", "price": "420", "cur": "BYN", "bg": "", "type": "direct"},
+    {"from": "ВИЛЬНЮС","to": "БАРСЕЛОНА", "airline": "Wizz Air",     "price": "47",  "cur": "EUR", "bg": "barcelona", "type": "lowcost"}
+  ]
+}

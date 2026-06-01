@@ -438,7 +438,7 @@
                 padding: 0.7rem;
             }
         }
-    </style>
+    .cta-b2b{background:linear-gradient(135deg,var(--primary) 0%,var(--primary-light) 100%);color:var(--white);padding:40px;border-radius:12px;margin:48px 0;text-align:center}.cta-b2b h3{color:var(--white);font-family:var(--font-serif);font-size:24px;margin:0 0 12px}.cta-b2b p{color:rgba(255,255,255,.85);margin-bottom:20px;font-size:15px}.b2b-form{display:flex;flex-direction:column;gap:10px;max-width:420px;margin:0 auto 20px}.b2b-form input{padding:14px 16px;border:none;border-radius:6px;font-family:var(--font-sans);font-size:14px;color:var(--primary)}.b2b-form input::placeholder{color:#9ca3af}.cta-submit{padding:16px 32px;background:var(--accent);color:var(--primary);border:none;border-radius:6px;font-weight:700;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:transform .2s}.cta-submit:hover{transform:translateY(-2px)}.cta-alt{font-size:13px;color:rgba(255,255,255,.7)!important;margin-top:8px!important}.cta-alt a{color:var(--accent);text-decoration:none;font-weight:600}.cta-thanks{display:none;padding:24px;background:rgba(255,255,255,.08);border-radius:8px;color:var(--white)}</style>
 </head>
 <body>
     <!-- Navigation -->
@@ -706,7 +706,21 @@
             <div class="tip-box">
                 <strong>Едете на выставку в Китай?</strong> Canton Fair, CIIE и другие — см. <a href="/komandirovki-na-vystavki/">Командировки на выставки 2026</a>: график выставок Китая, прямой рейс Air China CA722, переводчики, трансферы и документы для бухгалтерии.
             </div>
-        </article>
+            <div class="cta-b2b">
+        <h3>Поможем организовать поездку без хлопот</h3>
+        <p>Подберём билеты, проживание и трансфер, подготовим закрывающие документы для бухгалтерии.</p>
+        <form class="b2b-form" data-lead-form>
+            <input type="text" name="name" placeholder="Имя" required>
+            <input type="tel" name="phone" placeholder="+375 29 000-00-00" required>
+            <input type="text" name="company" placeholder="Компания / УНП, если есть">
+            <input type="hidden" name="destination" value="Командировка в Китай из Беларуси 2026: визы, перелёт, советы">
+            <input type="hidden" name="source" value="blog_komandirovka_v_kitay">
+            <button type="submit" class="cta-submit">Получить расчёт</button>
+        </form>
+        <p class="cta-alt">Или напишите в <a href="https://t.me/fclassmsk_bot?start=blog_komandirovka_v_kitay" target="_blank" rel="noopener">Telegram</a></p>
+        <div class="cta-thanks">Спасибо. Менеджер свяжется с вами.</div>
+    </div>
+</article>
     </main>
 
     <!-- Footer -->
@@ -846,5 +860,37 @@
     </script>
 <div class="tg-bubble" data-bubble="v1"><a href="https://t.me/fclassmsk_bot?start=bubble" target="_blank" rel="noopener" title="Спросить нашего Telegram-бота за 30 секунд" onclick="try{ym(107237229,'reachGoal','tg_bubble_click');gtag('event','click',{outbound:'telegram_bubble'});}catch(e){}"><svg viewBox="0 0 24 24" fill="white" width="22" height="22" aria-hidden="true"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.7L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg><span class="tg-bubble-text">Спросить за 30 сек</span></a></div>
 <script src="/assets/mobnav.js" defer></script>
+<script>
+document.querySelectorAll('[data-lead-form]').forEach(function(form){
+    form.addEventListener('submit', async function(event){
+        event.preventDefault();
+        var button = form.querySelector('button');
+        var original = button.textContent;
+        button.textContent = 'Отправка...';
+        button.disabled = true;
+        var data = Object.fromEntries(new FormData(form));
+        data.timestamp = new Date().toISOString();
+        try {
+            await fetch('https://emikss.host/webhook/fc-lead', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(data)
+            });
+            if (window.ym) ym(107237229, 'reachGoal', 'LEAD');
+            if (window.gtag) gtag('event', 'generate_lead', {event_category: 'lead', event_label: data.source || 'blog'});
+            form.reset();
+            form.style.display = 'none';
+            var thanks = form.parentElement.querySelector('.cta-thanks');
+            if (thanks) thanks.style.display = 'block';
+        } catch (err) {
+            button.textContent = 'Ошибка - позвоните нам';
+            setTimeout(function(){
+                button.textContent = original;
+                button.disabled = false;
+            }, 4000);
+        }
+    });
+});
+</script>
 </body>
 </html>

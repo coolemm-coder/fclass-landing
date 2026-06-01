@@ -34,6 +34,8 @@ RewriteRule ^mobile-preview\.html$ https://fclass.by/ [R=301,L]
 # === PUBLIC SURFACE GUARDRAILS ===
 # These directories and files are workspace/internal artifacts and must not be public landing pages.
 RewriteRule (^|/)\.(?!well-known/) - [G,L]
+# Lead-magnet endpoint (калькулятор email-gate) must stay live — exempt before /api/ block
+RewriteRule ^api/lead-magnet\.php$ - [L]
 RewriteRule ^(?:api|docs|web-panel|questionnaires|content|scripts|fclass-landing|n8n-workflows)(?:/|$) - [G,L]
 RewriteRule ^blog/_template\.html$ - [G,L]
 RewriteRule ^(?:firstclass-growth-playbook|firstclass-gtm-plan)\.html$ - [G,L]
@@ -90,4 +92,14 @@ RewriteRule ^blog/([^/]+)/$ https://fclass.by/blog/$1.html [R=301,L]
   ExpiresByType image/x-icon "access plus 1 year"
   ExpiresByType text/css "access plus 1 month"
   ExpiresByType application/javascript "access plus 1 month"
+</IfModule>
+
+# HTML must always revalidate — fixes stale pages in Safari/iOS after deploys (2026-05-22).
+# no-cache = browser may cache but MUST check with server (304 if unchanged) before reuse.
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html|htm)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+    Header unset Expires
+    Header unset Pragma
+  </FilesMatch>
 </IfModule>

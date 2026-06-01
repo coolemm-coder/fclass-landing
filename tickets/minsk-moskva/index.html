@@ -548,7 +548,7 @@
                 pax: this.pax.value,
                 comment: this.comment.value
             };
-            fetch('https://emikss.host/webhook/fc-ticket-request', {
+            fetch('https://emikss.host/webhook/fc-lead', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(data)
@@ -562,5 +562,6 @@
             });
         });
     </script>
+<script src="/assets/mobnav.js" defer></script>
 </body>
 </html>

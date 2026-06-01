@@ -35,7 +35,8 @@
 
     <p>Если ищете общее руководство по командировкам в РФ — см. <a href="/blog/komandirovka-v-rossiyu-2026.html">главный пост по командировкам в Россию из Беларуси</a>. Ниже — три специфики СПб.</p>
 
-    <h2>Нюанс 1: Поезд часто выгоднее самолёта (и быстрее, чем кажется)</h2>
+    <div class="tip-box" style="background:#ecfdf5;border-left:4px solid #10b981;padding:20px 24px;margin:24px 0;border-radius:0 8px 8px 0"><strong style="color:#065f46;display:block;margin-bottom:8px">✈️ Билеты Минск–Санкт-Петербург</strong>Подберём перелёт под командировку и оформим документы для бухгалтерии. <a href="/tickets/minsk-spb/">Открыть направление Минск–СПб →</a></div>
+        <h2>Нюанс 1: Поезд часто выгоднее самолёта (и быстрее, чем кажется)</h2>
     <p>В Москву из Минска самолёт почти всегда лучше — 1 час 20 минут полёт vs 9-13 часов поездом. В СПб разница не так очевидна:</p>
 
     <table class="info-table">
@@ -98,7 +99,7 @@
     <div class="cta-b2b">
         <h3>Командируете сотрудников в СПб регулярно?</h3>
         <p>Через <a href="/blog/korporativnye-aviabilety-minsk.html" style="color:var(--accent)">договор для юрлиц</a> заранее фиксируются способ оплаты, порядок заявки, маршрутные квитанции, акты и документы для бухгалтерии.</p>
-        <form class="b2b-form" action="https://emikss.host/webhook/fclass-blog-lead" method="POST">
+        <form class="b2b-form" data-lead-form>
             <input type="hidden" name="source" value="blog_cta_spb">
             <input type="hidden" name="page" class="cta-page-field">
             <input type="text" name="company" placeholder="Название компании / ИП" required maxlength="120">
@@ -144,6 +145,39 @@
 <div class="tg-bubble" data-bubble="v1"><a href="https://t.me/fclassmsk_bot?start=bubble" target="_blank" rel="noopener" title="Спросить нашего Telegram-бота за 30 секунд" onclick="try{ym(107237229,'reachGoal','tg_bubble_click');gtag('event','click',{outbound:'telegram_bubble'});}catch(e){}"><svg viewBox="0 0 24 24" fill="white" width="22" height="22" aria-hidden="true"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.7L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg><span class="tg-bubble-text">Спросить за 30 сек</span></a></div>
 
 <footer class="footer"><div class="footer-content"><div class="footer-brand"><img src="/logo.png" alt="First Class" class="footer-logo" loading="lazy"><p class="footer-desc">Организация командировок в Минске. Билеты, проживание, трансферы, визовая поддержка. Работаем с юридическими лицами с 2018 года. УНП 193218120.</p></div><div class="footer-col"><h4>Услуги</h4><ul class="footer-links"><li><a href="/#services">Авиа и ж/д билеты</a></li><li><a href="/#services">Проживание</a></li><li><a href="/#services">Трансферы</a></li><li><a href="/visa-support/">Визовая поддержка</a></li></ul></div><div class="footer-col"><h4>Для бизнеса</h4><ul class="footer-links"><li><a href="/tickets/aviabilety-dlya-yurlic/">Авиабилеты для юрлиц</a></li><li><a href="/#contact">Гибкие условия оплаты</a></li><li><a href="/#contact">Документы для бухгалтерии</a></li><li><a href="/#contact">Персональный менеджер</a></li></ul></div><div class="footer-col"><h4>Контакты</h4><ul class="footer-links"><li><a onclick="try{ym(107237229,'reachGoal','post_phone_click');}catch(e){}" href="tel:+375447725266">+375 44 772-52-66</a></li><li><a onclick="try{ym(107237229,'reachGoal','post_email_click');}catch(e){}" href="mailto:marketing@fclass.by">marketing@fclass.by</a></li><li>Пн-Пт: 9:00-19:00</li></ul></div></div></footer>
-<script>document.querySelector('.nav-mobile').addEventListener('click',function(){document.querySelector('.nav-links').classList.toggle('mobile-open')});document.addEventListener('DOMContentLoaded',function(){var fs=document.querySelectorAll('.cta-page-field');fs.forEach(function(f){f.value=window.location.pathname+window.location.search;});var forms=document.querySelectorAll('.b2b-form');forms.forEach(function(form){form.addEventListener('submit',function(e){e.preventDefault();var thanks=form.parentElement.querySelector('.cta-thanks');var data=new FormData(form);fetch(form.action,{method:'POST',body:data,mode:'no-cors'}).finally(function(){form.style.display='none';if(thanks){thanks.style.display='block';}try{ym(107237229,'reachGoal','blog_form_submit');gtag('event','generate_lead',{source:'blog_cta'});}catch(err){}});});});});</script>
+
+<script src="/assets/mobnav.js" defer></script>
+<script>
+document.querySelectorAll('[data-lead-form]').forEach(function(form){
+    form.addEventListener('submit', async function(event){
+        event.preventDefault();
+        var button = form.querySelector('button');
+        var original = button.textContent;
+        button.textContent = 'Отправка...';
+        button.disabled = true;
+        var data = Object.fromEntries(new FormData(form));
+        data.timestamp = new Date().toISOString();
+        try {
+            await fetch('https://emikss.host/webhook/fc-lead', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(data)
+            });
+            if (window.ym) ym(107237229, 'reachGoal', 'LEAD');
+            if (window.gtag) gtag('event', 'generate_lead', {event_category: 'lead', event_label: data.source || 'blog'});
+            form.reset();
+            form.style.display = 'none';
+            var thanks = form.parentElement.querySelector('.cta-thanks');
+            if (thanks) thanks.style.display = 'block';
+        } catch (err) {
+            button.textContent = 'Ошибка - позвоните нам';
+            setTimeout(function(){
+                button.textContent = original;
+                button.disabled = false;
+            }, 4000);
+        }
+    });
+});
+</script>
 </body>
 </html>
