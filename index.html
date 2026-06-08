@@ -370,9 +370,9 @@
             display: flex !important;
             position: fixed; top: 0; bottom: 0; left: 0; right: 0; margin: 0;
             box-sizing: border-box;
-            flex-direction: column; justify-content: center; align-items: center; gap: 4px;
+            flex-direction: column; justify-content: flex-start; align-items: center; gap: 4px;
             background: var(--primary);
-            padding: 72px 24px 32px;
+            padding: 88px 24px 32px;
             z-index: 1100;
             overflow-y: auto; -webkit-overflow-scrolling: touch;
         }
@@ -390,6 +390,16 @@
             position: absolute; top: 14px; right: 16px;
             width: 46px; height: 46px; font-size: 34px; line-height: 1; padding: 0 !important;
             color: var(--white) !important; text-decoration: none;
+        }
+        /* CTA «Связаться» внутри мобильного меню */
+        .nav-cta-mobile { display: none; }
+        .nav-links.mobile-open .nav-cta-mobile,
+        .nav-links:target .nav-cta-mobile { display: block; width: 100%; margin-top: 20px; }
+        .nav-links.mobile-open .nav-cta-mobile a,
+        .nav-links:target .nav-cta-mobile a {
+            background: var(--accent); color: var(--primary) !important;
+            border-radius: 8px; font-weight: 700; padding: 16px 0 !important;
+            text-transform: uppercase; letter-spacing: 1px;
         }
 
         /* Hero */
@@ -1215,16 +1225,7 @@
         <a href="/" class="nav-logo">
             <img src="logo.png" alt="First Class — организация командировок в Минске" class="nav-logo-img">
         </a>
-        <ul class="nav-links" id="nav-menu">
-            <li class="nav-close-li"><a href="#" class="nav-close" aria-label="Закрыть меню" onclick="closeMenu()">&#10005;</a></li>
-            <li><a href="/tickets/">Билеты</a></li>
-            <li><a href="/komandirovki/">Командировки</a></li>
-            <li><a href="/tickets/aviabilety-dlya-yurlic/">Юрлицам</a></li>
-            <li><a href="/visa-support/">Визы</a></li>
-            <li><a href="/blog/">Блог</a></li>
-            <li><a href="#expertise">О нас</a></li>
-            <li><a href="#contact">Контакты</a></li>
-        </ul>
+        <ul class="nav-links" id="nav-menu"><li class="nav-close-li"><a href="#" class="nav-close" aria-label="Закрыть меню" onclick="closeMenu()">&#10005;</a></li><li><a href="/komandirovki/">Командировки</a></li><li><a href="/tickets/">Билеты</a></li><li><a href="/tickets/aviabilety-dlya-yurlic/">Юрлицам</a></li><li><a href="/visa-support/">Визы</a></li><li><a href="/blog/">Блог</a></li><li><a href="#contact">Контакты</a></li><li class="nav-cta-mobile"><a href="https://t.me/fclassmsk_bot?start=lead_nav" target="_blank" rel="noopener">Связаться</a></li></ul>
         <a href="https://t.me/fclassmsk_bot?start=lead_nav" class="nav-cta" target="_blank" rel="noopener">Связаться</a>
         <a href="#nav-menu" class="nav-mobile" role="button" aria-label="Открыть меню" aria-controls="nav-menu" onclick="toggleMenu(event)"><span></span><span></span><span></span></a>
     </nav>
