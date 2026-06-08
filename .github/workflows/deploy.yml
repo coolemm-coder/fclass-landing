@@ -2,6 +2,8 @@ name: Deploy to fclass.by
 
 # Этот workflow заменяет сломанный fclass-ftp-sync (sandbox blocked).
 # Триггерится на push в main → автодеплой на ISPmanager FTP.
+# Загрузка: параллельный curl (--ftp-create-dirs) вместо lftp single-session,
+# который стабильно зависал на пачках файлов (max-retries exceeded).
 
 on:
   push:
@@ -23,10 +25,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install lftp
-        run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp
-
-      - name: FTP Sync (lftp, single session)
+      - name: FTP Sync (parallel curl)
         timeout-minutes: 20
         env:
           FTP_HOST: ${{ secrets.FTP_HOST }}
@@ -104,46 +103,49 @@ jobs:
           fi
           echo "Files to upload: ${#files[@]}"
 
-          declare -A dirs_made=()
-          script="/tmp/lftp.cmd"
-          {
-            echo "set ftp:passive-mode on"
-            echo "set ftp:ssl-allow no"
-            echo "set net:max-retries 3"
-            echo "set net:reconnect-interval-base 3"
-            echo "set net:reconnect-interval-multiplier 1.5"
-            echo "set net:reconnect-interval-max 8"
-            echo "set net:timeout 15"
-            echo "set net:idle 15"
-            echo "set xfer:clobber on"
-            echo "set mirror:set-permissions no"
-            # ActiveCloud FTP intermittently stalls on a RANDOM file (max-retries
-            # exceeded) and killed the whole 27-min deploy under fail-exit yes.
-            # fail-exit no = skip the stalled file, upload the rest; the Verify
-            # step below still fails the job if any key public URL is not 200.
-            echo "set cmd:fail-exit no"
-            echo "open -u \"${FTP_USERNAME}\",\"${FTP_PASSWORD}\" \"${FTP_HOST}\""
-            for f in "${files[@]}"; do
-              remote="${f#./}"
-              dir="$(dirname "$remote")"
-              base="$(basename "$remote")"
-              if [ "$dir" != "." ] && [ -z "${dirs_made[$dir]:-}" ]; then
-                echo "mkdir -fp \"${dir}\""
-                dirs_made[$dir]=1
-              fi
-              if [ "$dir" = "." ]; then
-                echo "put \"${f}\" -o \"${base}\""
-              else
-                echo "put \"${f}\" -o \"${dir}/${base}\""
-              fi
-            done
-            echo "bye"
-          } > "$script"
+          if [ "${#files[@]}" -eq 0 ]; then
+            echo "Nothing to upload."
+            exit 0
+          fi
 
-          # Hide credentials from logs even though GH masks them.
-          echo "Running lftp ($(wc -l < "$script") commands)…"
-          lftp -f "$script"
-          echo "Uploaded ${#files[@]} files via lftp"
+          # Normalize host: strip any scheme/trailing slash.
+          host="${FTP_HOST#ftp://}"; host="${host#ftps://}"; host="${host%/}"
+          export CURL_HOST="$host" FTP_USERNAME FTP_PASSWORD
+
+          # Per-file uploader. --ftp-create-dirs makes remote dirs as needed.
+          # --disable-epsv forces classic PASV (ActiveCloud FTP stalls on EPSV).
+          # --retry handles the intermittent single-file stalls that killed lftp.
+          upload_one() {
+            local f="$1"
+            local remote="${f#./}"
+            if curl -sS --disable-epsv --ftp-create-dirs \
+                 --connect-timeout 15 --max-time 120 --retry 3 --retry-delay 2 \
+                 -T "$f" "ftp://${CURL_HOST}/${remote}" \
+                 --user "${FTP_USERNAME}:${FTP_PASSWORD}" \
+                 -o /dev/null 2>/dev/null; then
+              echo "OK   ${remote}"
+            else
+              echo "FAIL ${remote}"
+            fi
+          }
+          export -f upload_one
+
+          echo "Uploading ${#files[@]} files via parallel curl (4 workers)…"
+          printf '%s\0' "${files[@]}" | xargs -0 -P 4 -I{} bash -c 'upload_one "$@"' _ {} | tee /tmp/upload.log
+
+          # Second pass for any stragglers (FTP flake), sequential.
+          fails=$(grep -c '^FAIL' /tmp/upload.log || true)
+          if [ "${fails:-0}" -gt 0 ]; then
+            echo "Retrying ${fails} failed file(s) sequentially…"
+            grep '^FAIL' /tmp/upload.log | sed 's/^FAIL //' | while IFS= read -r remote; do
+              upload_one "./${remote}"
+            done | tee /tmp/upload2.log
+            fails=$(grep -c '^FAIL' /tmp/upload2.log || true)
+          fi
+
+          echo "Done. Remaining failures after retry: ${fails:-0}"
+          # Do not hard-fail on individual FTP flake; the Verify step below
+          # fails the job if any key public URL is not 200.
 
       - name: Verify deploy
         run: |
