@@ -93,3 +93,6 @@ docs/audit/uon-*.json
 scripts/backup_*.json
 scripts/wf_*.json
 .vercel
+
+# agent-browser auth state (Yandex cookies) — НЕ коммитить
+.state/
