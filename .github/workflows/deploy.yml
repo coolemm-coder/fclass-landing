@@ -76,8 +76,13 @@ jobs:
             done
           fi
 
+          if [ "${#files[@]}" -eq 0 ] && [ "${GITHUB_EVENT_NAME}" != "workflow_dispatch" ]; then
+            echo "No public files changed in this push; nothing to deploy."
+            exit 0
+          fi
+
           if [ "${#files[@]}" -eq 0 ]; then
-            echo "No public changed files detected; falling back to full public upload."
+            echo "Manual dispatch / no diff → full public upload."
             mapfile -d '' files < <(
               find . \
                 \( -path './.git' -o -path './.github' -o -path './node_modules' -o -path './.claude' -o -path './api' -o -path './docs' -o -path './web-panel' -o -path './questionnaires' -o -path './content' -o -path './scripts' -o -path './n8n' -o -path './n8n-workflows' -o -path './data' -o -path './fclass-landing' -o -path './demo-carousel-phuket' \) -prune -o \
@@ -118,8 +123,8 @@ jobs:
           upload_one() {
             local f="$1"
             local remote="${f#./}"
-            if curl -sS --disable-epsv --ftp-create-dirs \
-                 --connect-timeout 15 --max-time 120 --retry 3 --retry-delay 2 \
+            if curl -sS --disable-epsv --ftp-skip-pasv-ip --ftp-create-dirs \
+                 --connect-timeout 12 --max-time 45 --retry 2 --retry-delay 2 \
                  -T "$f" "ftp://${CURL_HOST}/${remote}" \
                  --user "${FTP_USERNAME}:${FTP_PASSWORD}" \
                  -o /dev/null 2>/dev/null; then
