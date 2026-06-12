@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>First Class — фирменный бланк</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=PT+Serif:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+:root{
+  --wine:#7c1322; --wine2:#9c2436; --wine-dk:#5e0f1a;
+  --ink:#1f1f1f; --muted:#5f6368; --paper:#ffffff;
+  --serif:'PT Serif',Georgia,serif; --disp:'Playfair Display',Georgia,serif; --sans:'DM Sans',Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#d4d7dc;font-family:var(--serif);color:var(--ink);line-height:1.5;
+  -webkit-print-color-adjust:exact;print-color-adjust:exact}
+
+.sheet{width:210mm;min-height:297mm;margin:20px auto;background:var(--paper);position:relative;
+  display:flex;flex-direction:column;overflow:hidden;box-shadow:0 22px 64px rgba(31,31,31,.26);
+  padding:20mm 20mm 0}
+
+/* глобус — водяной знак */
+.globe{position:absolute;right:-70mm;top:62mm;width:200mm;height:200mm;z-index:0;opacity:.9;pointer-events:none}
+.globe svg{width:100%;height:100%}
+.sheet>*{position:relative;z-index:1}
+.sheet>.globe{position:absolute;z-index:0}
+
+/* ШАПКА */
+.head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px}
+.head .logo{height:62px;width:auto;display:block}
+.head .corp{text-align:right;font-family:var(--serif);font-size:12.5px;color:var(--ink);line-height:1.55}
+.head .corp .nm{font-weight:700;font-size:13.5px;margin-bottom:1px}
+.head .corp .sp{height:9px}
+.head .corp a{color:var(--wine);text-decoration:none}
+
+/* META */
+.meta{display:flex;justify-content:space-between;align-items:flex-start;margin:30px 0 16px}
+.meta .k{font-family:var(--sans);font-size:8px;letter-spacing:2.4px;text-transform:uppercase;color:var(--wine);font-weight:600;margin-bottom:5px}
+.meta .to{font-size:12.5px;max-width:90mm}
+.meta .to .ln{display:block;width:62mm;border-bottom:0.5pt dotted #999;margin-top:8px}
+.meta .date{text-align:right;font-size:12.5px;color:var(--ink);line-height:1.7}
+
+/* ЗАГОЛОВОК */
+.title{font-family:var(--disp);font-weight:700;font-size:25px;line-height:1.2;color:var(--wine);margin-bottom:8px}
+.subtitle{font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);
+  font-weight:600;margin-bottom:18px;display:flex;align-items:center;gap:11px}
+.subtitle::after{content:"";height:0;border-top:0.7pt solid var(--wine);flex:1}
+
+.lede{font-size:13.5px;line-height:1.6;margin-bottom:6px}
+.lede::first-letter{font-family:var(--disp);font-weight:700;font-size:44px;float:left;line-height:.82;margin:6px 11px 0 0;color:var(--wine)}
+p.txt{font-size:12.5px;line-height:1.6;margin-bottom:10px}
+
+.sec{font-family:var(--disp);font-weight:600;font-style:italic;font-size:15px;color:var(--wine);
+  margin:18px 0 11px;display:flex;align-items:center;gap:10px}
+.sec::after{content:"";height:0;border-top:0.5pt solid #e3d6d8;flex:1}
+
+.svc{display:grid;grid-template-columns:1fr 1fr;gap:8px 28px}
+.svc .it{position:relative;padding-left:18px;font-size:12px;line-height:1.45}
+.svc .it::before{content:"";position:absolute;left:3px;top:7px;width:6px;height:6px;background:var(--wine);transform:rotate(45deg)}
+.svc .it b{color:var(--wine-dk);font-weight:700}
+
+.stats{display:flex;margin:18px 0 2px;border-top:0.7pt solid #e6dadc;border-bottom:0.7pt solid #e6dadc}
+.stats div{flex:1;text-align:center;padding:12px 4px;position:relative}
+.stats div+div::before{content:"";position:absolute;left:0;top:24%;height:52%;border-left:0.5pt solid #ecdfe1}
+.stats .n{font-family:var(--disp);font-weight:700;font-size:20px;color:var(--wine);line-height:1}
+.stats .c{font-family:var(--sans);font-size:7.5px;letter-spacing:1.3px;text-transform:uppercase;color:var(--muted);margin-top:6px}
+
+.note{font-size:13px;line-height:1.55;border-left:2.5pt solid var(--wine);padding:8px 0 8px 15px;margin:16px 0 0;color:var(--wine-dk)}
+
+.grow{flex:1}
+.sign{display:flex;justify-content:space-between;align-items:flex-end;margin-top:20px}
+.sign .nm{font-family:'Pinyon Script',cursive;font-size:36px;color:var(--wine);line-height:.7;margin-bottom:7px}
+.sign .role{font-size:11px}
+.sign .role b{color:var(--wine-dk);font-weight:700}
+.sign .ct{font-family:var(--sans);font-size:9.5px;color:var(--muted);margin-top:2px}
+.sign .with{text-align:right;font-style:italic;font-size:12.5px;color:var(--wine)}
+
+/* ПОДВАЛ — банковские реквизиты */
+.foot{margin-top:16px;padding:9px 0 14px;border-top:1pt solid var(--wine);text-align:center;
+  font-size:10px;color:#444;line-height:1.55}
+.foot b{color:var(--ink)}
+
+@media print{body{background:#fff}.sheet{margin:0;box-shadow:none;width:auto;min-height:auto}@page{size:A4;margin:0}}
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <!-- глобус водяной знак (как в брендбуке) -->
+  <div class="globe">
+    <svg viewBox="0 0 600 600" fill="none" stroke="#ece9ea" stroke-width="2.2">
+      <circle cx="300" cy="300" r="250"/>
+      <ellipse cx="300" cy="300" rx="250" ry="90"/>
+      <ellipse cx="300" cy="300" rx="250" ry="165"/>
+      <ellipse cx="300" cy="300" rx="165" ry="250"/>
+      <ellipse cx="300" cy="300" rx="90" ry="250"/>
+      <line x1="50" y1="300" x2="550" y2="300"/>
+      <line x1="300" y1="50" x2="300" y2="550"/>
+    </svg>
+  </div>
+
+  <!-- ШАПКА -->
+  <div class="head">
+    <img src="fc-logo.png" alt="First Class" class="logo">
+    <div class="corp">
+      <div class="nm">ООО «Первый класс»</div>
+      220004, Республика Беларусь<br>
+      г. Минск, ул. Кальварийская, 16-238
+      <div class="sp"></div>
+      E-mail: <a href="mailto:info@fclass.by">info@fclass.by</a><br>
+      Тел: +375 (17) 300 30 34
+    </div>
+  </div>
+
+  <!-- META -->
+  <div class="meta">
+    <div class="to"><div class="k">Адресат</div>Руководителю · отдел командировок<span class="ln"></span></div>
+    <div class="date"><div class="k" style="text-align:right">Дата · исх.</div>Минск, ___ ________ 2026<br>№ ____</div>
+  </div>
+
+  <!-- ПИСЬМО -->
+  <h1 class="title">Организация деловых поездок<br>и&nbsp;поездок на&nbsp;выставки под&nbsp;ключ</h1>
+  <div class="subtitle">Коммерческое предложение для юридических лиц</div>
+
+  <p class="lede">Уважаемые коллеги! First Class организует корпоративные командировки для белорусских компаний с 2018 года. Мы берём на себя весь цикл деловой поездки — от подбора билетов до закрывающих документов для бухгалтерии, — чтобы ваши сотрудники занимались работой, а не логистикой.</p>
+
+  <div class="sec">Что мы берём на себя</div>
+  <div class="svc">
+    <div class="it"><b>Авиа, ж/д и автобус</b> — 400+ авиакомпаний через 5 GDS</div>
+    <div class="it"><b>Проживание</b> — бронирование в 190+ странах</div>
+    <div class="it"><b>Визы</b> — Шенген, Великобритания, Китай, сопровождение</div>
+    <div class="it"><b>Трансферы</b> — встреча в аэропорту, VIP-залы, fast track</div>
+    <div class="it"><b>Выставки и MICE</b> — конференции, логистика участников</div>
+    <div class="it"><b>Документы</b> — договор, акты, счета-фактуры для юрлиц</div>
+  </div>
+
+  <div class="stats">
+    <div><div class="n">с&nbsp;2018</div><div class="c">на рынке</div></div>
+    <div><div class="n">400+</div><div class="c">авиакомпаний</div></div>
+    <div><div class="n">190+</div><div class="c">стран</div></div>
+    <div><div class="n">15&nbsp;мин</div><div class="c">ответ</div></div>
+    <div><div class="n">5.0</div><div class="c">44 · Яндекс</div></div>
+  </div>
+
+  <div class="sec">Как мы работаем</div>
+  <p class="txt">Заключаем договор с юридическим лицом. За каждой компанией закреплён персональный менеджер, во время командировки доступна поддержка 24/7. Стоимость зависит от направления и набора услуг — подготовим персональное предложение под ваши маршруты.</p>
+
+  <div class="note">Подскажите, в какие страны и на какие выставки ваши сотрудники ездят чаще всего, — и мы пришлём расчёт и план организации под ваши направления.</div>
+
+  <div class="grow"></div>
+  <div class="sign">
+    <div>
+      <div class="nm">Надежда Кузнецова</div>
+      <div class="role"><b>Менеджер</b> по работе с корпоративными клиентами</div>
+      <div class="ct">+375 44 772-52-66 · marketing@fclass.by</div>
+    </div>
+    <div class="with">С уважением,<br>команда First Class</div>
+  </div>
+
+  <!-- ПОДВАЛ: банковские реквизиты -->
+  <div class="foot">
+    р/с <b>BY48 ALFA 3012 2452 4900 1027 0000</b> в ЗАО «Альфа-банк» ALFABY2X, г. Минск, ул. Сурганова, 43<span style="color:var(--wine)">&nbsp;·&nbsp;</span>УНП <b>193218120</b>
+  </div>
+
+</div>
+</body>
+</html>
