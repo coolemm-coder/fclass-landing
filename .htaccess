@@ -47,6 +47,11 @@ RewriteRule ^tickets/minsk-istanbul/?$ https://fclass.by/tickets/minsk-stambul/ 
 # Consolidate thin "суточные апрель" post into the pillar to avoid cannibalization (SEO audit 2026-05-21).
 RewriteRule ^blog/sutochnye-komandirovki-aprel-2026\.html$ https://fclass.by/blog/sutochnye-komandirovka-2026.html [R=301,L]
 
+# Consolidate B2B "авиабилеты юрлицам" cluster into one canonical money page (cannibalization fix 2026-06-17).
+# GSC: 3 pages competed for the same intent (pos 11-42, 0 clicks). Signal consolidated to commercial /tickets/ page.
+RewriteRule ^blog/aviabilety-dlya-yur-lic\.html$ https://fclass.by/tickets/aviabilety-dlya-yurlic/ [R=301,L]
+RewriteRule ^blog/korporativnye-aviabilety-minsk\.html$ https://fclass.by/tickets/aviabilety-dlya-yurlic/ [R=301,L]
+
 # Legacy nav URL without a standalone landing page.
 RewriteRule ^visa-support/?$ https://fclass.by/blog/vizovaya-podderzhka-minsk.html [R=301,L]
 
