@@ -189,7 +189,7 @@
 
     <script>
         document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>q.parentElement.classList.toggle('open')));
-        document.getElementById('ticketForm').addEventListener('submit',function(e){e.preventDefault();var d={source:'tickets/minsk-stambul',name:this.name.value,phone:this.phone.value,date:this.date.value,pax:this.pax.value,comment:this.comment.value};fetch('https://emikss.host/webhook/fc-lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)}).then(()=>{if(window.ym)ym(107237229,'reachGoal','LEAD');if(window.gtag)gtag('event','generate_lead',{event_category:'lead',event_label:d.source});alert('Заявка отправлена! Менеджер ответит в рабочее время.');this.reset()}).catch(()=>{alert('Не удалось отправить. Напишите в Telegram: t.me/fclassmsk_bot')})});
+        document.getElementById('ticketForm').addEventListener('submit',function(e){e.preventDefault();var d={source:'tickets/minsk-stambul',name:this.name.value,phone:this.phone.value,date:this.date.value,pax:this.pax.value,comment:this.comment.value};fetch('https://automation.landingpro.by/webhook/fc-lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)}).then(()=>{if(window.ym)ym(107237229,'reachGoal','LEAD');if(window.gtag)gtag('event','generate_lead',{event_category:'lead',event_label:d.source});alert('Заявка отправлена! Менеджер ответит в рабочее время.');this.reset()}).catch(()=>{alert('Не удалось отправить. Напишите в Telegram: t.me/fclassmsk_bot')})});
     </script>
 <script src="/assets/mobnav.js" defer></script>
 </body>

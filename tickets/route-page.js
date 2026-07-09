@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 button.textContent = 'Отправляем...';
             }
 
-            fetch('https://emikss.host/webhook/fc-ticket-request', {
+            fetch('https://automation.landingpro.by/webhook/fc-ticket-request', {
                 method: 'POST',
                 body: data,
                 mode: 'no-cors'

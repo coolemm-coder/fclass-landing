@@ -1,22 +1,22 @@
-# N8N Workflows для emikss.host
+# N8N Workflows для automation.landingpro.by
 
 Три webhook'а для приёма лидов с fclass.by и landingpro.by.
 
 ## Импорт
 
-1. Открой https://emikss.host
+1. Открой https://automation.landingpro.by
 2. Каждый файл `*.workflow.json` импортируй: **Workflows → + → Import from File**
 3. **ВАЖНО:** в node «Telegram уведомление» подставь credentials `@travelangelby_bot` для fclass и `@landingproby_bot` для LandingPro
 4. Для fclass укажи групповой chat_id через env `FCLASS_LEADS_CHAT_ID` или замени `-100REPLACE_WITH_GROUP_ID` в Telegram node
 5. Активируй workflow (toggle справа сверху)
-6. Скопируй Webhook URL из node «Webhook» (он автоматически будет вида https://emikss.host/webhook/X)
+6. Скопируй Webhook URL из node «Webhook» (он автоматически будет вида https://automation.landingpro.by/webhook/X)
 
 ## После импорта
 
 Webhook'и должны быть **именно с этими paths** (это в коде форм на сайтах):
-- `https://emikss.host/webhook/fclass-blog-lead` — формы в блог-постах fclass
-- `https://emikss.host/webhook/fclass-pdf-lead` — форма захвата PDF на /resources/dogovor-template/
-- `https://emikss.host/webhook/lp-lead` — формы на лендингах landingpro
+- `https://automation.landingpro.by/webhook/fclass-blog-lead` — формы в блог-постах fclass
+- `https://automation.landingpro.by/webhook/fclass-pdf-lead` — форма захвата PDF на /resources/dogovor-template/
+- `https://automation.landingpro.by/webhook/lp-lead` — формы на лендингах landingpro
 
 Если n8n назначит другие paths — измени параметр Path в Webhook node на эти три.
 

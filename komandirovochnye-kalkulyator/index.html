@@ -139,7 +139,7 @@ document.getElementById('kalkLeadForm').addEventListener('submit',function(e){
   var d=Object.fromEntries(new FormData(form));
   d.source='komandirovochnye-kalkulyator-cta';
   d.timestamp=new Date().toISOString();
-  fetch('https://emikss.host/webhook/fc-lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})
+  fetch('https://automation.landingpro.by/webhook/fc-lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})
     .then(function(){
       if(window.ym)ym(107237229,'reachGoal','LEAD');
       if(window.gtag)gtag('event','generate_lead',{event_category:'lead',event_label:'kalkulyator_cta'});

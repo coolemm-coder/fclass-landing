@@ -12,7 +12,7 @@ if not key:
 
 wid = sys.argv[1]
 req = urllib.request.Request(
-    f"https://emikss.host/api/v1/workflows/{wid}",
+    f"https://automation.landingpro.by/api/v1/workflows/{wid}",
     headers={"X-N8N-API-KEY": key, "Accept": "application/json"}
 )
 data = json.loads(urllib.request.urlopen(req, context=ctx, timeout=15).read())

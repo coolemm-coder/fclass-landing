@@ -6,7 +6,7 @@ class AuditForm {
     constructor(config) {
         this.role = config.role;
         this.sections = config.sections;
-        this.webhookUrl = config.webhookUrl || 'https://emikss.host/webhook/fc-audit';
+        this.webhookUrl = config.webhookUrl || 'https://automation.landingpro.by/webhook/fc-audit';
 
         this.currentSection = 0;
         this.answers = {};

@@ -7,7 +7,7 @@ N8N_IP = '91.218.143.156'
 N8N_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjYmU3ZWU3My1mMmY3LTRmMDMtYmM2ZC1jN2Y0MDcyMDcyMTciLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwiaWF0IjoxNzY5MTY0OTY3fQ.mcot7vYqR2c_H8dHKLhIeNVEwUg5KHbIlRWSVgr1NdU'
 
 orig_gai = socket.getaddrinfo
-socket.getaddrinfo = lambda h,*a,**kw: orig_gai(N8N_IP if h=='emikss.host' else h,*a,**kw)
+socket.getaddrinfo = lambda h,*a,**kw: orig_gai(N8N_IP if h=='automation.landingpro.by' else h,*a,**kw)
 ctx = ssl.create_default_context(); ctx.check_hostname=False; ctx.verify_mode=ssl.CERT_NONE
 
 class Handler(http.server.SimpleHTTPRequestHandler):
@@ -17,7 +17,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
         if self.path == '/fc-stats':
             try:
-                req = urllib.request.Request('https://emikss.host/webhook/fc-stats')
+                req = urllib.request.Request('https://automation.landingpro.by/webhook/fc-stats')
                 data = urllib.request.urlopen(req, context=ctx, timeout=10).read()
                 self.send_response(200)
                 self.send_header('Content-Type', 'application/json')

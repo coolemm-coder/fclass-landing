@@ -27,7 +27,7 @@
 
 **Где:** `web-panel/js/*.js`
 ```javascript
-fetch('https://emikss.host/webhook/fc-audit', ...)
+fetch('https://automation.landingpro.by/webhook/fc-audit', ...)
 ```
 
 **Риск:** При смене сервера нужно менять во всех файлах
@@ -35,7 +35,7 @@ fetch('https://emikss.host/webhook/fc-audit', ...)
 **Решение:**
 ```javascript
 const CONFIG = {
-  webhookUrl: 'https://emikss.host/webhook/fc-audit'
+  webhookUrl: 'https://automation.landingpro.by/webhook/fc-audit'
 };
 // Использовать: CONFIG.webhookUrl
 ```
@@ -53,7 +53,7 @@ const CONFIG = {
 **Решение:** Создать `.env.example`:
 ```env
 VERCEL_URL=https://fclass-landing.vercel.app
-N8N_HOST=https://emikss.host
+N8N_HOST=https://automation.landingpro.by
 TELEGRAM_CHAT_ID=543428212
 WHATSAPP_NUMBER=375447725266
 ```

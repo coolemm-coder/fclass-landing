@@ -81,7 +81,7 @@ cat /Users/admin/Desktop/FirstClass_Automation/n8n/workflows/fc_audit_webhook.js
 |-----|-----------|
 | https://fclass-landing.vercel.app | Лендинг |
 | https://fc-audit.vercel.app | Web-panel |
-| https://emikss.host/webhook/fc-audit | n8n webhook |
+| https://automation.landingpro.by/webhook/fc-audit | n8n webhook |
 
 ## Output
 

@@ -22,7 +22,7 @@ We use a **System User access token** (generated in Meta Business Manager) to au
 
 ### Technical architecture:
 1. Customer sends a DM to our Instagram Business account (@dasha_turaget_minsk)
-2. Meta delivers the webhook payload to our n8n server (https://emikss.host)
+2. Meta delivers the webhook payload to our n8n server (https://automation.landingpro.by)
 3. n8n workflow "FC_Instagram_DM_Router" processes the DM:
    - Parses the message
    - Fetches sender profile via instagram_business_basic

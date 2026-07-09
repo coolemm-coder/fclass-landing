@@ -112,9 +112,9 @@ First Class | fclass.by
 |----------|-----------|-----------------|
 | Формат | HTML таблицы, CSS, base64 img | Plain text |
 | Размер | ~33KB | ~1KB |
-| Ссылки | Через emikss.host (redirect) | Нет ссылок в теле (только подпись) |
+| Ссылки | Через automation.landingpro.by (redirect) | Нет ссылок в теле (только подпись) |
 | Логотип | Base64 PNG в HTML | Нет |
-| Трекинг | emikss.host pixel + click | Нет (трекинг — через Mail.ru отчёты) |
+| Трекинг | automation.landingpro.by pixel + click | Нет (трекинг — через Mail.ru отчёты) |
 | Gmail категория | PROMOTIONS | PRIMARY (inbox) |
 | Доставляемость | Низкая | Высокая |
 

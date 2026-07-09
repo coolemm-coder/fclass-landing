@@ -2,27 +2,27 @@
 
 ## Server
 
-- **URL:** https://emikss.host
+- **URL:** https://automation.landingpro.by
 - **Auth:** Login через браузер или N8N_API_KEY
 
 ## Workflows
 
 ### fc_lead_webhook.json
-- **Trigger:** `POST https://emikss.host/webhook/fc-lead`
+- **Trigger:** `POST https://automation.landingpro.by/webhook/fc-lead`
 - **Input:** `{ name, phone, email, company, message, comment, source, page, route, date, pax, payment, timestamp }`
 - **Output:** Telegram message → группа лидов First Class
 - **Chat ID:** `FCLASS_LEADS_CHAT_ID` в env n8n или ручная замена `-100REPLACE_WITH_GROUP_ID`
 - **Used by:** fclass.by contact forms, /komandirovki/, /tickets/aviabilety-dlya-yurlic/, web-panel
 
 ### fc_ticket_request_webhook.json
-- **Trigger:** `POST https://emikss.host/webhook/fc-ticket-request`
+- **Trigger:** `POST https://automation.landingpro.by/webhook/fc-ticket-request`
 - **Input:** `{ name, phone, email, route, date, pax, comment, source, page, timestamp }`
 - **Output:** Telegram message → группа лидов First Class
 - **Chat ID:** `FCLASS_LEADS_CHAT_ID` в env n8n или ручная замена `-100REPLACE_WITH_GROUP_ID`
 - **Used by:** route pages under `/tickets/` and direct flights forms
 
 ### fc_audit_webhook.json
-- **Trigger:** `POST https://emikss.host/webhook/fc-audit`
+- **Trigger:** `POST https://automation.landingpro.by/webhook/fc-audit`
 - **Input:** `{ role, answers: [...], timestamp }`
 - **Output:** Telegram message → Chat ID 543428212
 - **Used by:** Audit questionnaire forms
@@ -34,13 +34,13 @@
 
 ## How to Import
 
-1. Login: https://emikss.host
+1. Login: https://automation.landingpro.by
 2. Workflows → Import from File → select JSON
 3. Update credentials:
    - Telegram: set Bot Token in n8n Credentials
    - Leads group: add `@travelangelby_bot` to the Telegram group and set env `FCLASS_LEADS_CHAT_ID` to the group id, usually `-100...`
    - Claude: set API key via n8n Credentials
-4. Test webhook: `curl -X POST https://emikss.host/webhook/fc-lead -H "Content-Type: application/json" -d '{"name":"test","phone":"test"}'`
+4. Test webhook: `curl -X POST https://automation.landingpro.by/webhook/fc-lead -H "Content-Type: application/json" -d '{"name":"test","phone":"test"}'`
 5. Activate workflow
 
 ## Known Issues

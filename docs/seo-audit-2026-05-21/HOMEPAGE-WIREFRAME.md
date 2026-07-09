@@ -83,7 +83,7 @@ Hero · trust-strip · tickets-teaser · **services(2892)** · **philosophy(1789
 - Не ломать GSAP-анимации (привязаны к классам секций — при переименовании обновить JS-селекторы).
 - Сохранить все Schema-блоки (FAQPage, TravelAgency, BreadcrumbList).
 - Сохранить все цели Метрики/GA на CTA (reachGoal, generate_lead).
-- Не трогать lead-форму webhook (emikss.host/webhook/fc-lead).
+- Не трогать lead-форму webhook (automation.landingpro.by/webhook/fc-lead).
 - mobile-preview.html → можно удалить после подтверждения, что index.html покрывает всё.
 
 ## План внедрения (если апрув)

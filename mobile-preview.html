@@ -570,7 +570,7 @@ if(cf){cf.addEventListener('submit', async function(e){
   delete data.consent; data.timestamp=new Date().toISOString(); data.source='landing_mobile'; data.url=window.location.href;
   Object.assign(data,getUTM());
   try{
-    await fetch('https://emikss.host/webhook/fc-lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+    await fetch('https://automation.landingpro.by/webhook/fc-lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
     if(typeof ym!=='undefined') ym(107237229,'reachGoal','LEAD');
     if(typeof gtag!=='undefined') gtag('event','generate_lead',{event_category:'form',event_label:'mobile'});
     btn.textContent='Отправлено ✓'; e.target.reset();

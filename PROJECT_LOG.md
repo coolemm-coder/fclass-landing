@@ -109,7 +109,7 @@
     Форма заявки            Ручной ввод
             |                     |
             v                     v
-    n8n Webhook (emikss.host)
+    n8n Webhook (automation.landingpro.by)
             |
      +------+------+------+
      |      |      |      |
@@ -125,7 +125,7 @@
 | Инструмент | URL | Назначение |
 |------------|-----|------------|
 | Vercel | fclass-landing.vercel.app | Хостинг лендинга |
-| n8n | emikss.host | Автоматизация |
+| n8n | automation.landingpro.by | Автоматизация |
 | Telegram Bot | @travelangelby_bot | Уведомления |
 | FunSun API | api.fstravel.com | Туры FUN&SUN |
 | ABS API | on.abstour.by:9000 | Туры ABS (offline) |

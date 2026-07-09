@@ -19,8 +19,8 @@ const fs = require('fs');
 const APP_ID      = '987255807812535';
 const SUBMISSION  = '987270334477749';
 const WORKFLOW_ID = 's9Ywcb4QkN1jRfyb';
-const WEBHOOK_URL = 'https://emikss.host/webhook/fc-instagram-dm';
-const N8N_URL     = 'https://emikss.host';
+const WEBHOOK_URL = 'https://automation.landingpro.by/webhook/fc-instagram-dm';
+const N8N_URL     = 'https://automation.landingpro.by';
 const TG_URL      = 'https://web.telegram.org/k/';
 
 // Comet (Perplexity browser) — там залогинен Instagram Даши

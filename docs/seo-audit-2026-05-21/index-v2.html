@@ -1724,7 +1724,7 @@
             data.url = window.location.href;
             Object.assign(data, getUTM());
             try {
-                await fetch('https://emikss.host/webhook/fc-lead', {
+                await fetch('https://automation.landingpro.by/webhook/fc-lead', {
                     method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data)
                 });
                 if (typeof ym !== 'undefined') ym(107237229, 'reachGoal', 'LEAD');

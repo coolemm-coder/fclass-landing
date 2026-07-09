@@ -8,20 +8,20 @@
 
 ## НАЙДЕННЫЕ ПРОБЛЕМЫ (по критичности)
 
-### 🔴 КРИТИЧНО: Ссылки идут через emikss.host (redirect mismatch)
+### 🔴 КРИТИЧНО: Ссылки идут через automation.landingpro.by (redirect mismatch)
 
 **Что происходит:** Все ссылки в письме (включая fclass.by) на самом деле ведут через:
 ```
-https://emikss.host/webhook/email-click?eid=...&url=https://fclass.by...
+https://automation.landingpro.by/webhook/email-click?eid=...&url=https://fclass.by...
 ```
 
 **Почему это убивает доставляемость:**
-- Спам-фильтры видят несоответствие: текст ссылки = `fclass.by`, но href = `emikss.host`
+- Спам-фильтры видят несоответствие: текст ссылки = `fclass.by`, но href = `automation.landingpro.by`
 - Это классический паттерн фишинга — **главный триггер спам-фильтров**
-- emikss.host — неизвестный домен без репутации
+- automation.landingpro.by — неизвестный домен без репутации
 - Gmail, Outlook, корпоративные фильтры это МОМЕНТАЛЬНО помечают как spam
 
-**Решение:** Убрать click-tracking через emikss.host. Ссылки должны вести напрямую на fclass.by с UTM-метками. Если нужен click-tracking — использовать поддомен fclass.by (например, `track.fclass.by`), а не чужой домен.
+**Решение:** Убрать click-tracking через automation.landingpro.by. Ссылки должны вести напрямую на fclass.by с UTM-метками. Если нужен click-tracking — использовать поддомен fclass.by (например, `track.fclass.by`), а не чужой домен.
 
 ---
 
@@ -72,15 +72,15 @@ First Class | fclass.by
 
 ---
 
-### 🟡 ВАЖНО: Трекинг-пиксель через emikss.host
+### 🟡 ВАЖНО: Трекинг-пиксель через automation.landingpro.by
 
 **Что происходит:**
 ```html
-<img src="https://emikss.host/webhook/email-track?eid=...&a=open" width="1" height="1">
+<img src="https://automation.landingpro.by/webhook/email-track?eid=...&a=open" width="1" height="1">
 ```
 
 **Проблемы:**
-1. Домен emikss.host неизвестен — это дополнительный сигнал для спам-фильтров
+1. Домен automation.landingpro.by неизвестен — это дополнительный сигнал для спам-фильтров
 2. Многие email-клиенты блокируют внешние изображения по умолчанию
 3. Корпоративные прокси часто блокируют запросы к неизвестным доменам
 4. **Результат:** даже если письмо доставлено — open-tracking не сработает
@@ -132,13 +132,13 @@ dig MX fclass.by +short
 ## ПЛАН ИСПРАВЛЕНИЯ (по приоритету)
 
 ### Шаг 1 — Сегодня (критичные фиксы)
-- [ ] Убрать click-tracking через emikss.host → прямые ссылки на fclass.by
+- [ ] Убрать click-tracking через automation.landingpro.by → прямые ссылки на fclass.by
 - [ ] Убрать base64 логотип → внешнее изображение или убрать совсем
 - [ ] Переделать шаблон в plain text (для cold outreach)
 - [ ] Проверить SPF/DKIM/DMARC командой dig в терминале
 
 ### Шаг 2 — Завтра (трекинг)
-- [ ] Настроить поддомен `track.fclass.by` → CNAME на emikss.host
+- [ ] Настроить поддомен `track.fclass.by` → CNAME на automation.landingpro.by
 - [ ] Перенести open-pixel на track.fclass.by
 - [ ] Добавить SSL сертификат для track.fclass.by
 - [ ] Обновить n8n workflow для нового домена трекинга
@@ -169,7 +169,7 @@ dig MX fclass.by +short
 **Текущий статус:**
 - DNS: ❓ не проверено
 - Формат: ❌ тяжёлый HTML
-- Ссылки: ❌ redirect через emikss.host
+- Ссылки: ❌ redirect через automation.landingpro.by
 - Репутация: ❓ неизвестно
 - Объём: ✅ 50/день — нормально
 

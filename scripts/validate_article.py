@@ -3,7 +3,7 @@ for f in sys.argv[1:]:
     s = open(f, encoding='utf-8').read()
     print("===", f, "===")
     checks = {
-        'webhook fc-lead': s.count('emikss.host/webhook/fc-lead'),
+        'webhook fc-lead': s.count('automation.landingpro.by/webhook/fc-lead'),
         'data-lead-form': s.count('data-lead-form'),
         'reachGoal LEAD': s.count("reachGoal','LEAD'"),
         'cta-thanks': s.count('cta-thanks'),

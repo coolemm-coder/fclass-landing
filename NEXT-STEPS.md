@@ -25,7 +25,7 @@
 ## 🔧 Тех-заметки
 - **Деплой docroot:** FTP-root `/` (Bitrix), блог `/blog/`. **НЕ `/www/new.fclass.by/`** (Vercel-staging, вхолостую). Проверка: `ftp.size`==`curl|wc -c`. Память `fclass-deploy-docroot`.
 - **Яндекс recrawl:** прямой API, токен в `~/.claude.json`, curl (не python-SSL), user_id `1666266757`, квота 150/день. Память `yandex-webmaster-recrawl-api`.
-- Формы → `https://emikss.host/webhook/fc-lead` (живой). Билетные route-формы → `fc-ticket-request`.
+- Формы → `https://automation.landingpro.by/webhook/fc-lead` (живой). Билетные route-формы → `fc-ticket-request`.
 
 ---
 
@@ -41,7 +41,7 @@
 - ✅ Воркфлоу есть: FC_ColdEmail_Campaign `RPVnm6DlyS1AK4JS` (webhook-триггер), FC_ManualSend `H8YOY2gf3rZANXFl`. SMTP cred `VpkGLKfbHK9X4zNb`.
 
 ## ДОДЕЛАТЬ — slow-drip двигатель
-1. [ ] Залить контакты (3528+26) в источник, читаемый n8n ежедневно: Google Sheet «FC_Leads» или n8n DataTable. (n8n MCP лежит → строить через REST: POST `/api/v1/workflows` + `/activate`; `--resolve emikss.host:443:91.218.143.156`, ключ `$N8N_API_KEY`.)
+1. [ ] Залить контакты (3528+26) в источник, читаемый n8n ежедневно: Google Sheet «FC_Leads» или n8n DataTable. (n8n MCP лежит → строить через REST: POST `/api/v1/workflows` + `/activate`; `--resolve automation.landingpro.by:443:91.218.143.156`, ключ `$N8N_API_KEY`.)
 2. [ ] Воркфлоу-планировщик: Schedule daily → читает источник → дедуп по sent-логу (static `sentEmails`) → берёт next N (warmup: нед.1 ~20/д → ~50/д) → Build+SMTP (реюз из FC_ColdEmail) → отметка sent + лог в Sheet.
 3. [ ] Сегмент `category` → выбор v2-шаблона (`data/email_templates_v2_plaintext.md`: Экспортёры / IT-ПВТ / «киты»).
 4. [ ] (опц.) Follow-up через 3-4 дня без ответа (шаблон готов).

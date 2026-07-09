@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""List n8n workflows on emikss.host, search for cold-email related."""
+"""List n8n workflows on automation.landingpro.by, search for cold-email related."""
 import os, json, urllib.request, ssl
 ctx = ssl.create_default_context()
 
@@ -21,7 +21,7 @@ if not key:
     print("ERR: N8N_API_KEY not in env, not in ~/.zshrc"); raise SystemExit(1)
 
 req = urllib.request.Request(
-    "https://emikss.host/api/v1/workflows?limit=200",
+    "https://automation.landingpro.by/api/v1/workflows?limit=200",
     headers={"X-N8N-API-KEY": key, "Accept": "application/json"}
 )
 data = json.loads(urllib.request.urlopen(req, context=ctx, timeout=15).read())

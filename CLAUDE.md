@@ -11,8 +11,8 @@
   - `/resources/calculator/`, `/cases/` и `llms.txt` очищены от публичных формулировок `Калькулятор экономии`, `Окупаемость`, `корп.договор`, `подбор туров`; теперь это `Калькулятор командировочных`, бюджетный эффект, договор для юрлиц и заявки на авиабилеты/командировки;
   - главная, маршрутные страницы и ключевые статьи дополнительно очищены от безусловных обещаний `полный пакет закрывающих документов`, `работаем с НДС`, фиксированных `20-30%` и ссылок с текстом `Корпоративный договор`; использовать формулировку: состав документов, НДС/ЭСЧФ, сроки оплаты и тарифы согласуются до выписки/оплаты;
   - в `/komandirovochnye-kalkulyator/` добавлен 12-часовой localStorage-кеш курса USD/BYN из официального API Нацбанка РБ; при сбое API берётся последний сохраненный курс, затем fallback `2.80`;
-  - `n8n/workflows/fc_lead_webhook.json` переведен на квалифицированное сообщение и `FCLASS_LEADS_CHAT_ID`; добавлен `n8n/workflows/fc_ticket_request_webhook.json` для `https://emikss.host/webhook/fc-ticket-request`;
-  - важно: реальные n8n workflows нужно импортировать/обновить на `emikss.host`, добавить `@travelangelby_bot` в рабочую группу и задать `FCLASS_LEADS_CHAT_ID=-100...`; без этого repo-шаблоны сами не включат отправку в группу.
+  - `n8n/workflows/fc_lead_webhook.json` переведен на квалифицированное сообщение и `FCLASS_LEADS_CHAT_ID`; добавлен `n8n/workflows/fc_ticket_request_webhook.json` для `https://automation.landingpro.by/webhook/fc-ticket-request`;
+  - важно: реальные n8n workflows нужно импортировать/обновить на `automation.landingpro.by`, добавить `@travelangelby_bot` в рабочую группу и задать `FCLASS_LEADS_CHAT_ID=-100...`; без этого repo-шаблоны сами не включат отправку в группу.
 - `fix(seo): strengthen business ticket intent`
   - `/tickets/aviabilety-dlya-yurlic/` усилена под коммерческие формулировки `авиабилеты для юр лиц`, `купить билеты в командировку`, `авиабилеты по безналичному расчету`;
   - `/komandirovki/` получила видимый FAQ и связку "купить билеты в командировку" без турового и корпоративного позиционирования;
@@ -44,7 +44,7 @@
   - не возвращать в публичный текст обещания вида `скидка 15-25%`, `GDS-скидки 10-25%`, `экономия 15-20%`: это выглядит как неподтверждённая гарантия и конфликтует с текущим позиционированием.
 - `fix(conversion): add lead forms to top SEO articles`
   - по данным Метрики прямые формы добавлены в две SEO-страницы с основным трафиком: `/blog/komandirovka-v-rossiyu-2026.html` и `/blog/sutochnye-komandirovka-2026.html`;
-  - формы отправляют заявки в `https://emikss.host/webhook/fc-lead`, цель Метрики `LEAD`, GA event `generate_lead`, источники `blog_komandirovka_rossiya`, `blog_komandirovka_rossiya_bottom`, `blog_sutochnye_komandirovka`;
+  - формы отправляют заявки в `https://automation.landingpro.by/webhook/fc-lead`, цель Метрики `LEAD`, GA event `generate_lead`, источники `blog_komandirovka_rossiya`, `blog_komandirovka_rossiya_bottom`, `blog_sutochnye_komandirovka`;
   - в этих же местах очищены публичные формулировки `корпоративные авиабилеты` в пользу `авиабилеты для юрлиц`/`договор для юрлиц`.
 - `fix(conversion): clean direct flights CTA`
   - в `/blog/pryamye-reysy-iz-minska-2026.html` заменен CTA-ссылка на прямую форму подбора билета с `source=blog_pryamye_reysy`;
@@ -53,7 +53,7 @@
 - `fix(copy): clean legal entity ticket contract article`
   - в старой статье `/blog/korporativnye-aviabilety-minsk.html` оставлен SEO-URL, но видимое позиционирование переписано как `договор на авиабилеты для юрлиц`/`договор для юрлиц`;
   - удалены гарантированные скидки `15–25%`, точные обещания отсрочки/НДС/ЭСЧФ и неподтвержденные цифры; условия оплаты, спецтарифы и состав документов теперь описаны как согласуемые до выписки билета;
-  - финальный CTA заменен на форму заявки `source=blog_yurlic_contract` в `https://emikss.host/webhook/fc-lead`.
+  - финальный CTA заменен на форму заявки `source=blog_yurlic_contract` в `https://automation.landingpro.by/webhook/fc-lead`.
 - `fix(copy): remove legacy discount claims`
   - публичные остатки `корпоративные авиабилеты`, `корпоративный договор`, `скидка 15–25%`, фиксированная отсрочка и автоматические документы очищены в: `/blog/belavia-novye-reysy-2026.html`, `/blog/komandirovka-v-moskvu-iz-minska.html`, `/blog/komandirovka-v-sankt-peterburg-iz-minska.html`, `/blog/komandirovka-v-gruziyu-2026.html`, `/blog/komandirovki-belarus-2026.html`, `/blog/organizaciya-komandirovok.html`, `/blog/aviabilety-minsk-stambul.html`, `/blog/komandirovka-v-polshu-2026.html`, `/tickets/minsk-dubai/`, `/tickets/minsk-istanbul/` (редиректный legacy-файл), `/concierge/`, `/resources/calculator/`, `/cases/`;
   - новое правило: не обещать фиксированный процент экономии; писать `договор для юрлиц`, `безналичная оплата`, `условия и документы согласуем до оплаты`.
@@ -85,7 +85,7 @@
   - обновлены `dateModified`/`sitemap.xml` для затронутых страниц.
 - `feat(seo): add route landing pages and clean business travel copy`
   - добавлены посадочные страницы `/tickets/minsk-kaliningrad/`, `/tickets/minsk-sochi/`, `/tickets/minsk-baku/`, `/tickets/minsk-sharm-el-sheikh/`;
-  - для новых route pages вынесены общие стили и JS в `/tickets/route-page.css` и `/tickets/route-page.js`, формы отправляют заявки в `https://emikss.host/webhook/fc-ticket-request`;
+  - для новых route pages вынесены общие стили и JS в `/tickets/route-page.css` и `/tickets/route-page.js`, формы отправляют заявки в `https://automation.landingpro.by/webhook/fc-ticket-request`;
   - обновлена перелинковка в `/tickets/`, `/tickets/direct-flights/` и `sitemap.xml`;
   - в GitHub Actions verify deploy добавлены проверки новых route pages;
   - `/visa-support/` добавлен как 301-редирект на актуальную статью `/blog/vizovaya-podderzhka-minsk.html`, чтобы старые nav-ссылки не вели в 404;
@@ -103,7 +103,7 @@
   - эти же внутренние папки исключены из FTP deploy в `.github/workflows/deploy.yml`, чтобы они не публиковались повторно;
   - `/tickets/minsk-istanbul/` канонизирован 301-редиректом на основной `/tickets/minsk-stambul/`;
   - в `sitemap.xml` добавлены `/tickets/direct-flights/`, `/tickets/minsk-dubai/` и новые статьи про командировки в Москву, Санкт-Петербург и Калининград;
-  - на `/tickets/direct-flights/` добавлена форма заявки прямо в CTA-блок, отправка идет в `https://emikss.host/webhook/fc-ticket-request`, цель Метрики `LEAD`, GA event `generate_lead` с `event_label=direct_flights`;
+  - на `/tickets/direct-flights/` добавлена форма заявки прямо в CTA-блок, отправка идет в `https://automation.landingpro.by/webhook/fc-ticket-request`, цель Метрики `LEAD`, GA event `generate_lead` с `event_label=direct_flights`;
   - битые/неверсионируемые OG-картинки в блоге, `/cases/` и `/resources/` заменены на `/hero-bg.jpg`;
   - в репозиторий возвращены публичные ассеты из live/локальных копий: `logo.png`, `hero-bg.jpg`, `hero-bg.webp`, `about-bg.jpg`, `about-bg.webp`, `favicon.ico`, `favicon.png`, изображения блога в `images/blog/`;
   - сокращены meta description/title на `/tickets/` и `/tickets/aviabilety-dlya-yurlic/`;
@@ -120,7 +120,7 @@
 - `6883be1 feat(seo): add business travel and legal entity ticket pages`
   - добавлены `/komandirovki/` и `/tickets/aviabilety-dlya-yurlic/`;
   - добавлены ссылки с главной, `/tickets/`, `/blog/` и `sitemap.xml`;
-  - новые формы отправляют в тот же webhook `https://emikss.host/webhook/fc-lead` с `source=landing_komandirovki` и `source=landing_tickets_yurlic`;
+  - новые формы отправляют в тот же webhook `https://automation.landingpro.by/webhook/fc-lead` с `source=landing_komandirovki` и `source=landing_tickets_yurlic`;
   - деплой GitHub Actions прошёл успешно, живые URL проверены.
 - `be01b9e fix(positioning): clarify ticket service audience`
   - очищены формулировки про "корпоративные авиабилеты";

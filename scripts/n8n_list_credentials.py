@@ -11,7 +11,7 @@ if not key:
 
 # n8n public REST API doesn't have GET /credentials list endpoint by default.
 # But we can inspect workflows for which credentials they use.
-req = urllib.request.Request("https://emikss.host/api/v1/workflows?limit=200",
+req = urllib.request.Request("https://automation.landingpro.by/api/v1/workflows?limit=200",
     headers={"X-N8N-API-KEY": key, "Accept": "application/json"})
 data = json.loads(urllib.request.urlopen(req, context=ctx, timeout=15).read())
 items = data.get("data", data) if isinstance(data, dict) else data

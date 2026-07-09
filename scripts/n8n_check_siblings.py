@@ -10,7 +10,7 @@ if not key:
                 key = line.split("=", 1)[1].strip().strip('"').strip("'"); break
 
 def get(wid):
-    r = urllib.request.Request(f"https://emikss.host/api/v1/workflows/{wid}",
+    r = urllib.request.Request(f"https://automation.landingpro.by/api/v1/workflows/{wid}",
         headers={"X-N8N-API-KEY": key, "Accept": "application/json"})
     return json.loads(urllib.request.urlopen(r, context=ctx, timeout=15).read())
 

@@ -6,7 +6,7 @@
 |-------|-----------|
 | Лендинг | HTML5 + CSS3 + Vanilla JS (all-in-one index.html) |
 | Хостинг | Vercel (fclass-landing.vercel.app) |
-| Автоматизация | n8n (emikss.host, Beget) |
+| Автоматизация | n8n (automation.landingpro.by, Beget) |
 | Уведомления | Telegram Bot API |
 | CRM | Google Sheets (планируется) |
 | Карты | Яндекс.Карты (embed) |
@@ -25,7 +25,7 @@
 Форма заявки
    |
    v (TODO: подключить)
-n8n Webhook (emikss.host)
+n8n Webhook (automation.landingpro.by)
    |
    +--------+---------+--------+
    |        |         |        |
@@ -39,9 +39,9 @@ Telegram  GSheets   Email   Авто-ответ
 |----------|---------|--------|
 | fclass-landing.vercel.app | Лендинг B2B | Active |
 | fc-audit.vercel.app | Web-panel аудита | Active |
-| emikss.host/webhook/fc-audit | n8n аудит webhook | Active |
-| emikss.host/webhook/fc-lead | n8n leads webhook | TODO |
-| emikss.host/webhook/tour-search-unified | Tour Search API | Active |
+| automation.landingpro.by/webhook/fc-audit | n8n аудит webhook | Active |
+| automation.landingpro.by/webhook/fc-lead | n8n leads webhook | TODO |
+| automation.landingpro.by/webhook/tour-search-unified | Tour Search API | Active |
 
 ## Project Structure
 
@@ -88,4 +88,4 @@ FirstClass_Automation/
 
 ## Связь с FC_LeadRouter
 
-Общий n8n сервер (emikss.host). Tour Search API и Telegram Bot из FC_LeadRouter могут быть адаптированы для First Class.
+Общий n8n сервер (automation.landingpro.by). Tour Search API и Telegram Bot из FC_LeadRouter могут быть адаптированы для First Class.

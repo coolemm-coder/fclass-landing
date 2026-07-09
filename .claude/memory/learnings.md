@@ -147,7 +147,7 @@ document.getElementById('form').addEventListener('submit', async (e) => {
   const data = Object.fromEntries(formData.entries());
 
   try {
-    const response = await fetch('https://emikss.host/webhook/fc-audit', {
+    const response = await fetch('https://automation.landingpro.by/webhook/fc-audit', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)

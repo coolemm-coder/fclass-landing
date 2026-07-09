@@ -18,7 +18,7 @@ if not key:
                 key = line.split("=", 1)[1].strip().strip('"').strip("'"); break
 
 WID = "RPVnm6DlyS1AK4JS"
-BASE = "https://emikss.host/api/v1"
+BASE = "https://automation.landingpro.by/api/v1"
 H = {"X-N8N-API-KEY": key, "Accept": "application/json", "Content-Type": "application/json"}
 
 def api(method, path, body=None):

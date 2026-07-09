@@ -14,11 +14,11 @@
 
 ```javascript
 // BAD - hardcoded
-fetch('https://emikss.host/webhook/fc-audit', ...)
+fetch('https://automation.landingpro.by/webhook/fc-audit', ...)
 
 // BETTER - config object
 const CONFIG = {
-  webhookUrl: 'https://emikss.host/webhook/fc-audit',
+  webhookUrl: 'https://automation.landingpro.by/webhook/fc-audit',
   // В production можно загружать из env
 };
 fetch(CONFIG.webhookUrl, ...)

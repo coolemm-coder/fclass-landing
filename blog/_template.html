@@ -79,7 +79,7 @@ document.querySelectorAll('[data-lead-form]').forEach(function(form){
         var data = Object.fromEntries(new FormData(form));
         data.timestamp = new Date().toISOString();
         try {
-            await fetch('https://emikss.host/webhook/fc-lead', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+            await fetch('https://automation.landingpro.by/webhook/fc-lead', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
             if (window.ym) ym(107237229,'reachGoal','LEAD');
             if (window.gtag) gtag('event','generate_lead',{event_category:'lead',event_label:data.source||'blog'});
             form.reset(); form.style.display='none';

@@ -629,7 +629,7 @@ function submitLead(e){
     var form=e.target;
     var data=new FormData(form);
     data.append('source','komandirovki_na_vystavki');
-    fetch('https://emikss.host/webhook/fc-lead',{method:'POST',body:data})
+    fetch('https://automation.landingpro.by/webhook/fc-lead',{method:'POST',body:data})
         .then(function(){
             form.style.display='none';
             document.getElementById('cta-thanks').style.display='block';
