@@ -1,7 +1,6 @@
 {
   "version": 2,
   "name": "fclass-landing",
-  "public": true,
   "trailingSlash": true,
   "cleanUrls": true,
   "headers": [
