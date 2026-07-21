@@ -322,3 +322,20 @@ Account-side actions still not changed by Codex because they modify external acc
 - Link GA4 with Google Search Console.
 - Verify Google Business Profile for `ООО Первый класс`.
 - Complete Yandex Business profile fields/photos/hours and reply to reviews.
+
+## Visual CTA Simplification Draft
+
+Codex local draft after user feedback that the lower CTA block felt too heavy:
+
+- Replaced the repeated dark bottom messenger CTA on:
+  - `/komandirovochnye-kalkulyator/`
+  - `/blog/komandirovka-v-rossiyu-2026.html`
+  - `/blog/sutochnye-komandirovka-2026.html`
+- New component is a compact light strip:
+  - white background;
+  - thin gold left border;
+  - title `Нужна помощь с поездкой?`;
+  - short practical text;
+  - two calm actions: `Telegram` and `Позвонить`.
+- Removed the floating WhatsApp button from the home page draft; left one Telegram bot floating action with an accessible label.
+- This draft is intentionally calmer and more B2B/professional than the previous dark promotional messenger block.
