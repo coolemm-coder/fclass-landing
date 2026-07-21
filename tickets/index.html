@@ -183,7 +183,7 @@
         .floating-btn.whatsapp { background: #25D366; }
         .floating-btn.telegram { background: #0088cc; }
         .floating-btn svg { width: 28px; height: 28px; }
-        .business-entry-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:24px; max-width:900px; margin:0 auto; }
+        .business-entry-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; max-width:1100px; margin:0 auto; }
 
         /* Mobile */
         @media (max-width: 768px) {
@@ -278,7 +278,7 @@
                 "name": "Сколько стоят услуги First Class по бронированию билетов?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Сервисный сбор зависит от сложности маршрута и типа обслуживания. Перед оплатой показываем тариф, сервисный сбор, правила обмена, возврата и пакет документов. Оставьте заявку — рассчитаем стоимость под ваш маршрут."
+                    "text": "Сервисный сбор First Class за оформление авиабилета — 30 BYN за билет. Перед оплатой показываем тариф перевозчика, сервисный сбор, правила обмена, возврата и пакет документов."
                 }
             }
         ]
@@ -301,7 +301,7 @@
         <a href="/" class="nav-logo">
             <img src="/logo.png" alt="First Class — авиабилеты из Минска" class="nav-logo-img">
         </a>
-        <ul class="nav-links"><li><a href="/komandirovki/">Командировки</a></li><li><a href="/tickets/">Билеты</a></li><li><a href="/tickets/aviabilety-dlya-yurlic/">Юрлицам</a></li><li><a href="/visa-support/">Визы</a></li><li><a href="/blog/">Блог</a></li><li><a href="/#contact">Контакты</a></li></ul>
+        <ul class="nav-links"><li><a href="/komandirovki/">Командировки</a></li><li><a href="/tickets/">Билеты</a></li><li><a href="/tickets/aviabilety-dlya-yurlic/">Юрлицам</a></li><li><a href="/tarify/">Тарифы</a></li><li><a href="/visa-support/">Визы</a></li><li><a href="/blog/">Блог</a></li><li><a href="/#contact">Контакты</a></li></ul>
         <a href="https://t.me/fclassmsk_bot?start=lead_nav" class="nav-cta" target="_blank" rel="noopener" onclick="try{ym(107237229,'reachGoal','tickets_tg_nav_click');gtag('event','click',{event_category:'messenger',event_label:'tickets_tg_nav'});}catch(e){}">Связаться</a>
         <div class="nav-mobile" onclick="toggleMenu()">
             <span></span><span></span><span></span>
@@ -411,6 +411,10 @@
             <a href="/komandirovki/" style="display:block; text-decoration:none; color:inherit; background:#fff; border:1px solid rgba(0,0,0,0.08); border-radius:12px; padding:30px;">
                 <h3 style="font-family:'Playfair Display',serif; font-size:24px; margin-bottom:10px;">Организация командировок</h3>
                 <p style="color:#5a6d7e; font-size:15px;">Билеты, отели, визы, трансферы, поддержка 24/7 и закрывающие документы.</p>
+            </a>
+            <a href="/tarify/" style="display:block; text-decoration:none; color:inherit; background:#fff; border:1px solid rgba(0,0,0,0.08); border-radius:12px; padding:30px;">
+                <h3 style="font-family:'Playfair Display',serif; font-size:24px; margin-bottom:10px;">Тарифы</h3>
+                <p style="color:#5a6d7e; font-size:15px;">Авиабилет 30 BYN, ж/д билет 20 BYN, проживание 30 BYN. Без абонентской платы при сервисном сборе.</p>
             </a>
         </div>
     </section>
@@ -707,6 +711,7 @@
                 <div class="footer-links">
                     <a href="/tickets/">Билеты</a>
                     <a href="/tickets/aviabilety-dlya-yurlic/">Билеты для юрлиц</a>
+                    <a href="/tarify/">Тарифы</a>
                     <a href="/komandirovki/">Командировки</a>
                     <a href="/visa-support/">Визовая поддержка</a>
                     <a href="/tickets/direct-flights/">Прямые рейсы</a>

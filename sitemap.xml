@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url><loc>https://fclass.by/</loc><lastmod>2026-06-03</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
-    <url><loc>https://fclass.by/komandirovki/</loc><lastmod>2026-05-15</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+    <url><loc>https://fclass.by/</loc><lastmod>2026-07-21</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+    <url><loc>https://fclass.by/komandirovki/</loc><lastmod>2026-07-21</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
     <url><loc>https://fclass.by/komandirovki-na-vystavki/</loc><lastmod>2026-05-19</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
-    <url><loc>https://fclass.by/tickets/</loc><lastmod>2026-05-15</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
-    <url><loc>https://fclass.by/tickets/aviabilety-dlya-yurlic/</loc><lastmod>2026-06-17</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
+    <url><loc>https://fclass.by/tickets/</loc><lastmod>2026-07-21</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+    <url><loc>https://fclass.by/tickets/aviabilety-dlya-yurlic/</loc><lastmod>2026-07-21</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
+    <url><loc>https://fclass.by/tarify/</loc><lastmod>2026-07-21</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
     <url><loc>https://fclass.by/tickets/direct-flights/</loc><lastmod>2026-05-28</lastmod><changefreq>weekly</changefreq><priority>0.98</priority></url>
     <url><loc>https://fclass.by/tickets/minsk-moskva/</loc><lastmod>2026-05-15</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
     <url><loc>https://fclass.by/tickets/minsk-stambul/</loc><lastmod>2026-05-15</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>

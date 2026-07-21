@@ -12,6 +12,7 @@
   var CANON = [
     ['/#services', 'Услуги'],
     ['/tickets/', 'Билеты'],
+    ['/tarify/', 'Тарифы'],
     ['/visa-support/', 'Визы'],
     ['/#expertise', 'О нас'],
     ['/blog/', 'Блог'],
