@@ -40,6 +40,8 @@ const FORBIDDEN_PATTERNS = [
   /скидк[аиуое]/i
 ];
 
+const ABORTABLE_RESOURCE_TYPES = new Set(['image', 'media', 'font']);
+
 const MIME = {
   '.html': 'text/html; charset=utf-8',
   '.css': 'text/css; charset=utf-8',
@@ -153,8 +155,11 @@ async function auditPage(browser, baseUrl, route, outDir) {
   });
   page.on('requestfailed', (request) => {
     const requestUrl = request.url();
+    const resourceType = request.resourceType();
+    const failure = request.failure() ? request.failure().errorText : 'failed';
     if (sameOrigin(baseUrl, requestUrl)) {
-      requestFailures.push({ url: requestUrl, error: request.failure() ? request.failure().errorText : 'failed' });
+      if (ABORTABLE_RESOURCE_TYPES.has(resourceType) && failure.includes('ERR_ABORTED')) return;
+      requestFailures.push({ url: requestUrl, error: failure, resourceType });
     }
   });
 
@@ -331,7 +336,7 @@ async function auditPage(browser, baseUrl, route, outDir) {
   }
 
   resourceErrors.forEach((err) => pageIssues.push(issue('error', 'RESOURCE_ERROR', `${err.status} ${err.url}`)));
-  requestFailures.forEach((err) => pageIssues.push(issue('error', 'REQUEST_FAILED', `${err.url}: ${err.error}`)));
+  requestFailures.forEach((err) => pageIssues.push(issue('error', 'REQUEST_FAILED', `${err.url} (${err.resourceType}): ${err.error}`)));
   consoleErrors.slice(0, 10).forEach((err) => pageIssues.push(issue('warn', 'CONSOLE_ERROR', err)));
 
   await page.close();

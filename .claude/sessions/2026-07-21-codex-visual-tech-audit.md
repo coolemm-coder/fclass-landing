@@ -89,8 +89,9 @@ Codex добавил повторяемый Playwright-аудит сайта:
 - `npm run site:audit:sitemap` - расширенный проход по sitemap;
 - отчеты пишутся в `/tmp/fclass-site-quality-*`.
 
-Последний локальный прогон: `/tmp/fclass-site-quality-2026-07-21T15-02-17-463Z/report.md`.
-Результат: `Errors: 0`, `Warnings: 0`.
+Последний локальный прогон: `/tmp/fclass-site-quality-2026-07-21T15-12-46-105Z/report.md`.
+Последний live-прогон: `/tmp/fclass-site-quality-2026-07-21T15-11-32-749Z/report.md`.
+Результат обоих прогонов: `Errors: 0`, `Warnings: 0`.
 
 Что исправлено этим пакетом:
 
@@ -106,6 +107,7 @@ Codex добавил повторяемый Playwright-аудит сайта:
 - На `/komandirovki-na-vystavki/` увеличены anchor-nav touch targets до 44px.
 
 Quality gate проверяет: HTTP status, title/meta/canonical, один H1, JSON-LD parse, missing alt, `target="_blank"` без `rel`, onclick на несемантических элементах, запрещенные обещания/скидки, 4xx/5xx ресурсов, console errors, mobile/tablet/desktop overflow, конкурирующие mobile CTA и маленькие above-fold touch targets.
+Для визуальных ассетов (`image`, `media`, `font`) аудит не считает `net::ERR_ABORTED` ошибкой, если файл отдается сервером: Playwright может сам прервать повторную загрузку картинки/видео при смене viewport. 4xx/5xx по этим ресурсам остаются ошибками через response-status check.
 
 Не откатывать без причины:
 
