@@ -750,6 +750,7 @@
             font-family: var(--font-serif); font-size: 20px; font-weight: var(--weight-bold);
             color: var(--charcoal); cursor: pointer; display: flex;
             justify-content: space-between; align-items: center; gap: 20px;
+            width: 100%; padding: 0; border: 0; background: transparent; text-align: left;
         }
         .faq-question::after {
             content: '+'; font-size: 24px; font-weight: 300; color: var(--accent);
@@ -1660,23 +1661,23 @@
         <h2 class="section-title">Частые вопросы о командировках</h2>
         <div class="faq-grid">
             <div class="faq-item">
-                <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">Сколько стоит организация командировки?</div>
+                <button class="faq-question" type="button" aria-expanded="false" onclick="this.parentElement.classList.toggle('open');this.setAttribute('aria-expanded', this.parentElement.classList.contains('open'))">Сколько стоит организация командировки?</button>
                 <div class="faq-answer"><p>Базовый сервисный сбор: авиабилет 30 BYN за билет, ж/д билет 20 BYN за билет, проживание 30 BYN за бронирование. Итоговая сумма зависит от тарифа перевозчика, проживания, багажа и правил изменения.</p></div>
             </div>
             <div class="faq-item">
-                <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">Как вы помогаете с оформлением виз?</div>
+                <button class="faq-question" type="button" aria-expanded="false" onclick="this.parentElement.classList.toggle('open');this.setAttribute('aria-expanded', this.parentElement.classList.contains('open'))">Как вы помогаете с оформлением виз?</button>
                 <div class="faq-answer"><p>Берём на себя процесс: подбор консульства, подготовку документов, запись в визовый центр и сопровождение до выдачи. Сроки, сборы, страховку и правила въезда проверяем перед подачей, потому что они меняются по стране и сезону.</p></div>
             </div>
             <div class="faq-item">
-                <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">Работаете ли вы с юридическими лицами?</div>
+                <button class="faq-question" type="button" aria-expanded="false" onclick="this.parentElement.classList.toggle('open');this.setAttribute('aria-expanded', this.parentElement.classList.contains('open'))">Работаете ли вы с юридическими лицами?</button>
                 <div class="faq-answer"><p>Да, мы работаем с юрлицами. Заключаем договор, выставляем счёт и заранее согласуем пакет закрывающих документов: акт, маршрутные квитанции, реестр и документы по НДС/ЭСЧФ там, где они предусмотрены.</p></div>
             </div>
             <div class="faq-item">
-                <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">С какими авиакомпаниями вы работаете?</div>
+                <button class="faq-question" type="button" aria-expanded="false" onclick="this.parentElement.classList.toggle('open');this.setAttribute('aria-expanded', this.parentElement.classList.contains('open'))">С какими авиакомпаниями вы работаете?</button>
                 <div class="faq-answer"><p>Мы аккредитованный агент Belavia и имеем сертификат Департамента авиации РБ на продажу авиабилетов. Работаем через основные GDS-системы — Amadeus, Sabre, Travelport, Sirena, ТКП. Бронируем от эконома до бизнес-класса и заранее показываем правила тарифа.</p></div>
             </div>
             <div class="faq-item">
-                <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">Сопровождаете ли сотрудника в поездке?</div>
+                <button class="faq-question" type="button" aria-expanded="false" onclick="this.parentElement.classList.toggle('open');this.setAttribute('aria-expanded', this.parentElement.classList.contains('open'))">Сопровождаете ли сотрудника в поездке?</button>
                 <div class="faq-answer"><p>Консьерж-сервис 24/7: VIP-залы, fast track, трансферы, помощь при задержках рейсов, изменение бронирования. Персональный менеджер на связи круглосуточно.</p></div>
             </div>
         </div>
@@ -2254,7 +2255,7 @@
     <!-- Sticky mobile CTA -->
     <div class="sticky-mobile-cta" id="sticky-cta" style="display:none">
         <a href="tel:+375447725266" class="smc-call">Позвонить</a>
-        <a href="https://t.me/fclassmsk_bot?start=lead_mobile" class="smc-tg" target="_blank">Telegram</a>
+        <a href="https://t.me/fclassmsk_bot?start=lead_mobile" class="smc-tg" target="_blank" rel="noopener">Telegram</a>
     </div>
     <script>
     (function(){var cta=document.getElementById('sticky-cta');if(!cta||window.innerWidth>768)return;window.addEventListener('scroll',function(){cta.style.display=window.scrollY>600?'flex':'none'})})();

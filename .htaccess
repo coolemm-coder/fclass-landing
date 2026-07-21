@@ -52,8 +52,7 @@ RewriteRule ^blog/sutochnye-komandirovki-aprel-2026\.html$ https://fclass.by/blo
 RewriteRule ^blog/aviabilety-dlya-yur-lic\.html$ https://fclass.by/tickets/aviabilety-dlya-yurlic/ [R=301,L]
 RewriteRule ^blog/korporativnye-aviabilety-minsk\.html$ https://fclass.by/tickets/aviabilety-dlya-yurlic/ [R=301,L]
 
-# Legacy nav URL without a standalone landing page.
-RewriteRule ^visa-support/?$ https://fclass.by/blog/vizovaya-podderzhka-minsk.html [R=301,L]
+# /visa-support/ is a standalone service landing page.
 
 # Retired B2C tours directory — keep crawlers and old links on an active service page.
 RedirectMatch 301 ^/tours/?$ https://fclass.by/tickets/

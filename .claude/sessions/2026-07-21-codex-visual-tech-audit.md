@@ -79,3 +79,37 @@
 - На `/blog/` добавлена ссылка `Тарифы` в навигацию и компактные фильтры-разделы после hero. Также исправлен старый неоформленный Telegram-блок внизу страницы: на desktop он стал нормальным fixed bubble, на mobile скрыт. Это единственная осознанная desktop-правка в визуальном cleanup, потому что блог визуально был самым монотонным и навигационно неполным.
 
 Важно: основная часть изменений сделана в mobile media queries, чтобы не менять desktop-верстку money-pages.
+
+## Дополнение Codex - профессиональный quality gate
+
+Codex добавил повторяемый Playwright-аудит сайта:
+
+- `npm run site:audit` - локальный аудит ключевых страниц;
+- `npm run site:audit:live` - тот же набор на `https://fclass.by`;
+- `npm run site:audit:sitemap` - расширенный проход по sitemap;
+- отчеты пишутся в `/tmp/fclass-site-quality-*`.
+
+Последний локальный прогон: `/tmp/fclass-site-quality-2026-07-21T15-02-17-463Z/report.md`.
+Результат: `Errors: 0`, `Warnings: 0`.
+
+Что исправлено этим пакетом:
+
+- Добавлена полноценная service landing page `/visa-support/` вместо 301-редиректа на старую blog-страницу. Внутренние ссылки и schema теперь ведут на реальную услугу.
+- В `.htaccess` удален redirect `/visa-support/ -> /blog/vizovaya-podderzhka-minsk.html`.
+- В `sitemap.xml` добавлен `/visa-support/`.
+- На `/tickets/minsk-stambul/` убрана битая ссылка на `/tickets/_route-styles.css`, из-за которой аудит ловил failed resource.
+- На route-pages Минск-Москва, Минск-Стамбул, Минск-Баку, Минск-Калининград сокращены title, чтобы не резались в выдаче.
+- В `index.html`, `/komandirovki/`, `/tickets/aviabilety-dlya-yurlic/` добавлен `rel="noopener"` для внешних ссылок с `target="_blank"`.
+- На `/cases/` в mobile скрыт floating Telegram bubble, когда показан sticky CTA, чтобы не было двух конкурирующих кнопок.
+- На `/visa-support/` mobile sticky CTA теперь появляется после скролла, а не перекрывает первый экран.
+- На главной и `/komandirovki-na-vystavki/` FAQ-переключатели заменены на семантические `button` с `aria-expanded`.
+- На `/komandirovki-na-vystavki/` увеличены anchor-nav touch targets до 44px.
+
+Quality gate проверяет: HTTP status, title/meta/canonical, один H1, JSON-LD parse, missing alt, `target="_blank"` без `rel`, onclick на несемантических элементах, запрещенные обещания/скидки, 4xx/5xx ресурсов, console errors, mobile/tablet/desktop overflow, конкурирующие mobile CTA и маленькие above-fold touch targets.
+
+Не откатывать без причины:
+
+- новую страницу `/visa-support/`;
+- `scripts/site-quality-audit.js`;
+- npm scripts `site:audit`, `site:audit:live`, `site:audit:sitemap`;
+- удаление redirect для `/visa-support/`.

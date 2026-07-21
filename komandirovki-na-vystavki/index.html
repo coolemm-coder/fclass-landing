@@ -43,7 +43,7 @@
         main ul{margin:0 0 20px 24px;color:#374151}
         main li{margin-bottom:8px}
         .anchor-nav{display:flex;gap:10px;flex-wrap:wrap;margin:24px 0 8px;padding:18px 22px;background:var(--cream);border-radius:10px;border-left:4px solid var(--accent)}
-        .anchor-nav a{padding:8px 16px;background:var(--white);border-radius:6px;color:var(--primary);text-decoration:none;font-size:14px;font-weight:600;transition:all .25s ease}
+        .anchor-nav a{min-height:44px;display:inline-flex;align-items:center;padding:8px 16px;background:var(--white);border-radius:6px;color:var(--primary);text-decoration:none;font-size:14px;font-weight:600;transition:all .25s ease}
         .anchor-nav a:hover{background:var(--primary);color:var(--white)}
         .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin:28px 0}
         .service-card{padding:22px;background:var(--cream);border-radius:10px;border-top:3px solid var(--accent)}
@@ -75,7 +75,7 @@
         .cta-alt a{color:var(--accent);text-decoration:none;font-weight:600}
         .cta-thanks{display:none;padding:24px;background:rgba(255,255,255,.08);border-radius:8px}
         .faq-item{border-bottom:1px solid #e5e7eb;padding:18px 0}
-        .faq-q{font-weight:600;color:var(--primary);font-size:16px;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+        .faq-q{width:100%;padding:0;border:0;background:transparent;text-align:left;font-family:inherit;font-weight:600;color:var(--primary);font-size:16px;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
         .faq-q .ico{color:var(--accent);font-size:22px;font-weight:300;transition:transform .25s ease}
         .faq-item.open .faq-q .ico{transform:rotate(45deg)}
         .faq-a{margin-top:12px;color:#4b5563;font-size:15px;line-height:1.65;display:none}
@@ -540,32 +540,32 @@
     <h2 id="faq">Часто задаваемые вопросы</h2>
 
     <div class="faq-item">
-        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Нужна ли виза в Китай для участия в Canton Fair или CIIE? <span class="ico">+</span></div>
+        <button class="faq-q" type="button" aria-expanded="false" onclick="this.parentElement.classList.toggle('open');this.setAttribute('aria-expanded', this.parentElement.classList.contains('open'))">Нужна ли виза в Китай для участия в Canton Fair или CIIE? <span class="ico">+</span></button>
         <div class="faq-a"><p>Гражданам Беларуси для деловой поездки до 30 дней обычно <strong>виза не требуется</strong> — действует безвизовый режим. Перед вылетом проверяем актуальные требования КНР, включая электронную въездную карточку. Для пребывания дольше 30 дней или отдельной коммерческой цели обычно рассматривается виза M, для работы — Z.</p></div>
     </div>
 
     <div class="faq-item">
-        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Как мы выписываем билеты Air China? <span class="ico">+</span></div>
+        <button class="faq-q" type="button" aria-expanded="false" onclick="this.parentElement.classList.toggle('open');this.setAttribute('aria-expanded', this.parentElement.classList.contains('open'))">Как мы выписываем билеты Air China? <span class="ico">+</span></button>
         <div class="faq-a"><p>First Class — авторизованное агентство ТКП и работает с прямыми тарифами Air China. Билет на рейс CA722 Минск–Пекин выписываем напрямую через агентскую систему. Для юрлиц — счёт на оплату до выписки, маршрутная квитанция после оплаты, документы по результатам поездки.</p></div>
     </div>
 
     <div class="faq-item">
-        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Какой переводчик нужен на Canton Fair? <span class="ico">+</span></div>
+        <button class="faq-q" type="button" aria-expanded="false" onclick="this.parentElement.classList.toggle('open');this.setAttribute('aria-expanded', this.parentElement.classList.contains('open'))">Какой переводчик нужен на Canton Fair? <span class="ico">+</span></button>
         <div class="faq-a"><p>На Canton Fair большинство китайских поставщиков говорит по-английски, но для серьёзных переговоров и подписания контрактов рекомендуем переводчика с китайского. У нас есть проверенные переводчики в Гуанчжоу и Шанхае, забронируем заранее на даты вашего стенда или встреч.</p></div>
     </div>
 
     <div class="faq-item">
-        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Как оплатить от организации (юрлица)? <span class="ico">+</span></div>
+        <button class="faq-q" type="button" aria-expanded="false" onclick="this.parentElement.classList.toggle('open');this.setAttribute('aria-expanded', this.parentElement.classList.contains('open'))">Как оплатить от организации (юрлица)? <span class="ico">+</span></button>
         <div class="faq-a"><p>Заключаем договор для юридического лица, выставляем счёт, после оплаты выписываем билеты и бронируем отель. Условия оплаты, тарифные правила и состав закрывающих документов согласуем до выписки. Документы по НДС/ЭСЧФ — там, где они предусмотрены поставщиком и типом услуги.</p></div>
     </div>
 
     <div class="faq-item">
-        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Сколько стоит организация командировки на выставку? <span class="ico">+</span></div>
+        <button class="faq-q" type="button" aria-expanded="false" onclick="this.parentElement.classList.toggle('open');this.setAttribute('aria-expanded', this.parentElement.classList.contains('open'))">Сколько стоит организация командировки на выставку? <span class="ico">+</span></button>
         <div class="faq-a"><p>Зависит от направления, количества людей, длительности, класса перелёта и категории отеля. Авиабилеты тарифицируются по реальной цене авиакомпании, услуги агентства — фиксированная сервисная плата или включена в тариф. Точную смету пришлём после уточнения деталей: дата, направление, выставка, число сотрудников.</p></div>
     </div>
 
     <div class="faq-item">
-        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Можете ли вы организовать поездку на выставку в Европу? <span class="ico">+</span></div>
+        <button class="faq-q" type="button" aria-expanded="false" onclick="this.parentElement.classList.toggle('open');this.setAttribute('aria-expanded', this.parentElement.classList.contains('open'))">Можете ли вы организовать поездку на выставку в Европу? <span class="ico">+</span></button>
         <div class="faq-a"><p>Да. Из Минска прямых рейсов в ЕС нет (с мая 2021), поэтому используем хабы Вильнюса, Риги, Варшавы. Подберём билет на лоукостер из ближайшего хаба, отель у выставочного центра и трансферы. Шенгенскую визу оформляем заранее — нужен зазор минимум 4–6 недель.</p></div>
     </div>
 
