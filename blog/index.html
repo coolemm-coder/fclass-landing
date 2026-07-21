@@ -38,13 +38,13 @@ html { scroll-behavior: smooth; overflow-x: hidden; }
 body { font-family: var(--font-sans); background: var(--white); color: var(--charcoal); line-height: 1.7; }
 .nav {position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 60px; height: 80px; display: flex; justify-content: space-between; align-items: center; background: rgba(12, 24, 37, 0.95); backdrop-filter: blur(20px);}
 .nav-logo-img { height: 56px; }
-.nav-links { display: flex; gap: 44px; list-style: none; }
+.nav-links { display: flex; gap: 30px; list-style: none; }
 .nav-links a { text-decoration: none; font-size: 13px; font-weight: 500; letter-spacing: 0.5px; color: var(--white); transition: var(--transition); }
 .nav-links a:hover { color: var(--accent); }
 .nav-cta { padding: 14px 32px; border-radius: 6px; font-size: 12px; font-weight: 500; text-decoration: none; letter-spacing: 1.5px; text-transform: uppercase; background: var(--accent); color: var(--primary); transition: var(--transition); }
 .nav-mobile { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 10px; }
 .nav-mobile span { display: block; width: 24px; height: 2px; background: var(--white); }
-.hero-inner { padding: 160px 60px 80px; background: var(--primary); color: var(--white); text-align: center; }
+.hero-inner { padding: 132px 60px 64px; background: var(--primary); color: var(--white); text-align: center; }
 .hero-inner .eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
 .hero-inner h1 { font-family: var(--font-serif); font-size: clamp(32px, 5vw, 52px); font-weight: 700; margin-bottom: 20px; }
 .hero-inner p { font-size: 18px; color: rgba(255,255,255,0.7); max-width: 600px; margin: 0 auto; }
@@ -56,6 +56,12 @@ body { font-family: var(--font-sans); background: var(--white); color: var(--cha
 .article-card h2 { font-family: var(--font-serif); font-size: 22px; margin-bottom: 12px; line-height: 1.3; }
 .article-card p { font-size: 15px; color: var(--gray); line-height: 1.7; margin-bottom: 16px; }
 .article-date { font-size: 13px; color: var(--gray); }
+.blog-filters { max-width: 900px; margin: 0 auto; padding: 34px 30px 0; display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+.blog-filter { display: inline-flex; align-items: center; min-height: 40px; padding: 9px 14px; border: 1px solid #e5e7eb; border-radius: 999px; color: var(--charcoal); text-decoration: none; font-size: 13px; font-weight: 700; background: var(--white); transition: var(--transition); }
+.blog-filter:hover { border-color: var(--accent); color: var(--primary); }
+.tg-bubble { position: fixed; right: 20px; bottom: 20px; z-index: 999; }
+.tg-bubble a { display: flex; align-items: center; gap: 10px; background: #0088cc; color: #fff; padding: 14px 22px; border-radius: 50px; text-decoration: none; box-shadow: 0 4px 20px rgba(0,136,204,.4); font-weight: 600; font-size: 14px; }
+.tg-bubble svg { flex-shrink: 0; }
 .footer-mini { padding: 30px; text-align: center; font-size: 13px; color: var(--gray); border-top: 1px solid #eef0f2; }
 .footer-mini a { color: var(--charcoal); text-decoration: none; }
 @media (max-width: 768px) {
@@ -64,7 +70,10 @@ body { font-family: var(--font-sans); background: var(--white); color: var(--cha
     .nav-links.mobile-open { display: flex; flex-direction: column; width: 100%; gap: 16px; padding: 20px 0; }
     .nav-cta.mobile-open { display: inline-block; }
     .nav-mobile { display: flex; }
-    .hero-inner { padding: 120px 20px 60px; }
+    .hero-inner { padding: 104px 20px 48px; }
+    .blog-filters { padding: 24px 20px 0; justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; -webkit-overflow-scrolling: touch; }
+    .blog-filter { white-space: nowrap; }
+    .tg-bubble { display: none; }
     .content { padding: 60px 20px; }
     .articles-grid { grid-template-columns: 1fr; }
     .article-card h2 { font-size: 20px; }
@@ -75,7 +84,7 @@ body { font-family: var(--font-sans); background: var(--white); color: var(--cha
 <body>
 <nav class="nav">
     <a href="/"><img src="/logo.png" alt="First Class" class="nav-logo-img"></a>
-    <ul class="nav-links"><li><a href="/komandirovki/">Командировки</a></li><li><a href="/tickets/">Билеты</a></li><li><a href="/tickets/aviabilety-dlya-yurlic/">Юрлицам</a></li><li><a href="/visa-support/">Визы</a></li><li><a href="/blog/">Блог</a></li><li><a href="/#contact">Контакты</a></li></ul>
+    <ul class="nav-links"><li><a href="/komandirovki/">Командировки</a></li><li><a href="/tickets/">Билеты</a></li><li><a href="/tickets/aviabilety-dlya-yurlic/">Юрлицам</a></li><li><a href="/tarify/">Тарифы</a></li><li><a href="/visa-support/">Визы</a></li><li><a href="/blog/">Блог</a></li><li><a href="/#contact">Контакты</a></li></ul>
     <a href="https://t.me/fclassmsk_bot?start=lead_nav" class="nav-cta" target="_blank" rel="noopener">Связаться</a>
     <div class="nav-mobile" onclick="document.querySelector('.nav-links').classList.toggle('mobile-open');document.querySelector('.nav-cta').classList.toggle('mobile-open')"><span></span><span></span><span></span></div>
 </nav>
@@ -84,6 +93,13 @@ body { font-family: var(--font-sans); background: var(--white); color: var(--cha
     <h1>Полезное о командировках</h1>
     <p>Лайфхаки, чек-листы и советы для тех, кто организует деловые поездки</p>
 </section>
+<div class="blog-filters" aria-label="Разделы блога">
+    <a href="/tickets/aviabilety-dlya-yurlic/" class="blog-filter">Бухгалтеру</a>
+    <a href="/tickets/" class="blog-filter">Авиабилеты</a>
+    <a href="/komandirovki/" class="blog-filter">Командировки</a>
+    <a href="/visa-support/" class="blog-filter">Визы</a>
+    <a href="/tarify/" class="blog-filter">Тарифы</a>
+</div>
 <div class="content">
     <div class="articles-grid">
         <a href="/blog/komandirovka-v-serbiyu-2026.html" class="article-card"><div class="article-tag">Командировки</div><h2>Командировка в Сербию из Минска 2026</h2><p>Прямой рейс Belavia Минск-Белград, безвизовый въезд до 30 дней, единственная в Европе зона свободной торговли с Беларусью и документы для бухгалтерии.</p><div class="article-date">15 июля 2026</div></a>
