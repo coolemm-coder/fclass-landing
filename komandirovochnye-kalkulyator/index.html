@@ -100,6 +100,10 @@
 </form>
 <p id="lead-status" style="margin-top:10px;font-size:13px"></p>
 </div>
+<div style="margin-top:24px;padding-top:22px;border-top:1px solid #e5e7eb">
+<p style="margin-bottom:10px;font-size:14px;color:#374151"><strong>Если расчёт нужен для реальной поездки:</strong> First Class оформит билеты, проживание и закрывающие документы под вашу командировку.</p>
+<p style="margin:0;font-size:14px;color:#5a6d7e"><a href="/komandirovki/" style="color:#0c1825;font-weight:700">Организация командировок</a> · <a href="/tickets/aviabilety-dlya-yurlic/" style="color:#0c1825;font-weight:700">авиабилеты по безналу</a> · <a href="/tarify/" style="color:#0c1825;font-weight:700">тарифы на оформление</a></p>
+</div>
 </div>
 </div>
 
@@ -183,7 +187,7 @@ document.getElementById('kalkLeadForm').addEventListener('submit',function(e){
 
 </section>
 
-<div class="msg-cta-block"></div><div style="max-width:680px;margin:44px auto;background:linear-gradient(135deg,#0c1825,#1a3a5c);border-radius:16px;padding:38px 32px;text-align:center;color:#fff;font-family:'DM Sans',sans-serif"><div style="font-family:'Playfair Display',serif;font-size:25px;font-weight:700;margin-bottom:10px">Посчитали командировочные? Организуем саму поездку</div><p style="color:rgba(255,255,255,.82);font-size:15px;line-height:1.65;margin:0 auto 22px;max-width:520px">Организуем командировку под ключ: билеты юрлицу по безналу, отель, виза, трансфер, документы для бухгалтерии.</p><a href="https://t.me/fclassmsk_bot?start=site" style="display:inline-block;background:#0088cc;color:#fff;padding:15px 30px;border-radius:8px;font-weight:700;text-decoration:none;margin:5px;font-size:14px">✈ Написать в Telegram</a><a href="https://wa.me/375447725266" style="display:inline-block;background:#25D366;color:#fff;padding:15px 30px;border-radius:8px;font-weight:700;text-decoration:none;margin:5px;font-size:14px">WhatsApp</a><div style="color:rgba(255,255,255,.5);font-size:12px;margin-top:14px">Для юрлиц — договор, безнал, счёт-фактура и акт · ответ в рабочее время</div></div>
+<div class="msg-cta-block"></div><div style="max-width:680px;margin:44px auto;background:linear-gradient(135deg,#0c1825,#1a3a5c);border-radius:16px;padding:38px 32px;text-align:center;color:#fff;font-family:'DM Sans',sans-serif"><div style="font-family:'Playfair Display',serif;font-size:25px;font-weight:700;margin-bottom:10px">Посчитали командировочные? Организуем саму поездку</div><p style="color:rgba(255,255,255,.82);font-size:15px;line-height:1.65;margin:0 auto 22px;max-width:520px">Организуем командировку под ключ: билеты юрлицу по безналу, отель, виза, трансфер, документы для бухгалтерии.</p><a href="https://t.me/fclassmsk_bot?start=site" style="display:inline-block;background:#0088cc;color:#fff;padding:15px 30px;border-radius:8px;font-weight:700;text-decoration:none;margin:5px;font-size:14px">Написать в Telegram</a><a href="https://wa.me/375447725266" style="display:inline-block;background:#25D366;color:#fff;padding:15px 30px;border-radius:8px;font-weight:700;text-decoration:none;margin:5px;font-size:14px">WhatsApp</a><div style="color:rgba(255,255,255,.5);font-size:12px;margin-top:14px">Для юрлиц — договор, счёт, акт и маршрутные квитанции · ответ в рабочее время</div></div>
 <footer class="footer">
 <div class="footer-links">
 <a href="/">Главная</a>
@@ -350,6 +354,7 @@ function submitLead(e){
 
 window.addEventListener('DOMContentLoaded',()=>{calc();loadUsdRate();});
 </script>
+<script src="/assets/lead-tracking.js" defer></script>
 <script src="/assets/mobnav.js" defer></script>
 </body>
 </html>

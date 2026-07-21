@@ -204,6 +204,7 @@
     <script>
         document.getElementById('lead-form').addEventListener('submit',async function(e){e.preventDefault();var btn=e.target.querySelector('button');var original=btn.textContent;btn.textContent='Отправка...';btn.disabled=true;var data=Object.fromEntries(new FormData(e.target));data.timestamp=new Date().toISOString();try{await fetch('https://automation.landingpro.by/webhook/fc-lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});if(window.ym)ym(107237229,'reachGoal','LEAD');if(window.gtag)gtag('event','generate_lead',{event_category:'lead',event_label:'tarify'});btn.textContent='Отправлено';btn.style.background='#22c55e';e.target.reset()}catch(err){btn.textContent='Ошибка - позвоните нам'}setTimeout(function(){btn.textContent=original;btn.style.background='';btn.disabled=false},4000)});
     </script>
+    <script src="/assets/lead-tracking.js" defer></script>
     <script src="/assets/mobnav.js" defer></script>
 </body>
 </html>

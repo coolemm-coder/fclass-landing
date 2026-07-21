@@ -57,6 +57,11 @@ RewriteRule ^blog/korporativnye-aviabilety-minsk\.html$ https://fclass.by/ticket
 # Retired B2C tours directory — keep crawlers and old links on an active service page.
 RedirectMatch 301 ^/tours/?$ https://fclass.by/tickets/
 
+# Retired legacy pages reported by Yandex Webmaster as duplicate-description URLs.
+# Keep search signals on active commercial/resource pages instead of thin stubs.
+RedirectMatch 301 ^/services/?$ https://fclass.by/komandirovki/
+RedirectMatch 301 ^/calendar/?$ https://fclass.by/resources/calculator/
+
 # === MOBILE: now served by responsive index.html (2026-05-21) ===
 # UA-sniffing to mobile-preview.html removed — index.html is fully responsive
 # (mobile menu, sticky CTA, @media). Single page for all devices = mobile-first
