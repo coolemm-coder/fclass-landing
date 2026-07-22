@@ -339,3 +339,16 @@ Codex local draft after user feedback that the lower CTA block felt too heavy:
   - two calm actions: `Telegram` and `Позвонить`.
 - Removed the floating WhatsApp button from the home page draft; left one Telegram bot floating action with an accessible label.
 - This draft is intentionally calmer and more B2B/professional than the previous dark promotional messenger block.
+
+## Mobile Footer Compacting
+
+Codex follow-up after user clarified that the problem was the very bottom footer on mobile, not the CTA strip above it:
+
+- Updated home page footer in `index.html`.
+- Desktop footer remains complete with all columns and certificate links.
+- Mobile footer now hides the long stacked footer columns and certificate strip at `max-width: 768px`.
+- Added compact mobile-only footer links: tickets, business trips, legal entities, tariffs.
+- Added mobile-only direct phone and email rows.
+- Replaced the incorrect `footer-links` class on the privacy-policy inline link with a dedicated `footer-policy-link`.
+- Mobile sticky CTA (`Позвонить / Telegram`) now hides when the footer is visible, so it does not cover the legal/footer area.
+- Goal: reduce footer length on phones while keeping the key navigation and contact paths reachable.
