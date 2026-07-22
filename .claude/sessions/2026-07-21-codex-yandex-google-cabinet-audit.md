@@ -350,5 +350,5 @@ Codex follow-up after user clarified that the problem was the very bottom footer
 - Added compact mobile-only footer links: tickets, business trips, legal entities, tariffs.
 - Added mobile-only direct phone and email rows.
 - Replaced the incorrect `footer-links` class on the privacy-policy inline link with a dedicated `footer-policy-link`.
-- Mobile sticky CTA (`Позвонить / Telegram`) now hides when the footer is visible, so it does not cover the legal/footer area.
+- Mobile sticky CTA (`Позвонить / Telegram`) now hides when the footer is visible, using both footer position checks and IntersectionObserver, so it does not cover the legal/footer area.
 - Goal: reduce footer length on phones while keeping the key navigation and contact paths reachable.

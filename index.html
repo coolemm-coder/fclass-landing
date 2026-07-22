@@ -2355,6 +2355,10 @@
         var footer=document.querySelector('.footer');
         var footerVisible=false;
         function syncStickyCta(){
+            if(footer){
+                var rect=footer.getBoundingClientRect();
+                footerVisible=rect.top<window.innerHeight&&rect.bottom>0;
+            }
             cta.style.display=(window.scrollY>600&&!footerVisible)?'flex':'none';
         }
         if('IntersectionObserver' in window&&footer){
