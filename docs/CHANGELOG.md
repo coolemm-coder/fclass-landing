@@ -2,11 +2,12 @@
 
 > Журнал правок сайта. Новые записи добавлять СЮДА (короткой строкой: коммит, что поменялось, какие URL, деплой/проверка), НЕ в CLAUDE.md.
 
-- `fix(mobile): restore homepage hero fallback and burger overlay` (2026-07-27, pending deploy)
+- `fix(mobile): restore homepage hero fallback and burger overlay` (2026-07-27, deployed)
   - на телефонах главная всегда показывает исходный `hero-bg-air.webp`, не завися от autoplay/декодирования фонового видео;
+  - мобильное кадрирование выровнено по правому краю и уменьшено до `82%` высоты hero, чтобы самолёт помещался целиком даже на экране 320 px;
   - `.nav` исключена из общего `overflow-x:hidden`: full-screen burger больше не обрезается высотой navbar;
   - добавлены блокировка фонового скролла и синхронизация `aria-expanded`;
-  - production deployment и проверка после Actions пока не выполнены.
+  - первый production deploy: `a544f91`; последующая правка кадрирования проверена локально на 320 px и 390 px перед публикацией.
 
 
 Последние изменения от Codex на 2026-05-15:
