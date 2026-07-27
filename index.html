@@ -958,9 +958,9 @@
             /* Keep the original airplane hero visible on phones even when mobile
                browsers block autoplay or fail to decode the background video. */
             .hero-video      { display: none; }
-            /* Align the wide artwork to its right edge so the complete aircraft,
-               not only its nose, stays inside a narrow portrait viewport. */
-            .hero-bg         { background-position: right 32%; background-size: auto 82%; background-repeat: no-repeat; }
+            /* Fill the whole hero without a visible lower seam. Right alignment
+               keeps the aircraft in frame on portrait screens. */
+            .hero-bg         { background-position: right center; background-size: cover; background-repeat: no-repeat; }
             .hero-center h1   { font-size: 30px; line-height: 1.12; margin-bottom: 16px; }
             .hero-sub         { font-size: 16px; margin-bottom: 18px; }
             .hero-bullets li  { font-size: 16px; }
