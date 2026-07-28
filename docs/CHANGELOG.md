@@ -2,6 +2,13 @@
 
 > Журнал правок сайта. Новые записи добавлять СЮДА (короткой строкой: коммит, что поменялось, какие URL, деплой/проверка), НЕ в CLAUDE.md.
 
+- `fix(forms): require confirmed lead delivery` (2026-07-28, deployed with `5203a4a`)
+  - 59 публичных страниц с формами подключают общий guard до inline-обработчиков: успех показывается только после HTTP 2xx и JSON `success:true` или `ok:true`;
+  - четыре webhook-направления защищены 12-секундным timeout: `fc-lead`, `fc-ticket-request`, `fclass-blog-lead`, `fclass-pdf-lead`;
+  - на маршрутных страницах, калькуляторе и форме PDF удалены `no-cors` и ложный success из `finally`; аналитические цели срабатывают только после подтверждённого ответа;
+  - локальные проверки: P0 static/runtime tests прошли, полный site audit — 0 ошибок и 0 предупреждений;
+  - GitHub Actions run `30382142672` завершён успешно; production-файлы guard и обновлённые обработчики вернули HTTP 200.
+
 - `fix(seo): allow Google to retire one removed legacy staff URL` (2026-07-28, deployed with `565bbad`)
   - добавлено точечное `Allow` для `/company/staff/darya-sakhonchik/`, чтобы Google увидел текущий `404` и удалил старый URL из индекса;
   - общий запрет `/company/` сохранён, sitemap и действующие страницы не менялись;
