@@ -14,6 +14,9 @@ Disallow: /product/
 Disallow: /outlet/
 Disallow: /contacts/
 Disallow: /info/
+# Let Google revisit this removed legacy profile once and observe its 404.
+# The more specific Allow keeps the rest of /company/ blocked.
+Allow: /company/staff/darya-sakhonchik/$
 Disallow: /company/
 Disallow: /personal/
 Disallow: /auth/
