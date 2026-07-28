@@ -10,6 +10,7 @@
     "site:audit": "node scripts/site-quality-audit.js",
     "site:audit:live": "AUDIT_BASE_URL=https://fclass.by node scripts/site-quality-audit.js",
     "site:audit:sitemap": "AUDIT_SCOPE=sitemap node scripts/site-quality-audit.js",
+    "site:p0": "node scripts/verify-site-p0.mjs && node scripts/test-lead-webhook-guard.mjs",
     "test": "npm run site:audit"
   },
   "keywords": [],

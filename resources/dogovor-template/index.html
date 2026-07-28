@@ -73,6 +73,7 @@
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"DigitalDocument","name":"Шаблон договора на авиабилеты для юрлиц + чек-лист главбуха","description":"Готовый шаблон договора на авиабилеты для юрлиц в Беларуси (9 разделов) и чек-лист главбуха по командировочным документам.","fileFormat":"application/pdf","publisher":{"@type":"Organization","name":"First Class","url":"https://fclass.by"},"datePublished":"2026-05-13"}</script>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная","item":"https://fclass.by/"},{"@type":"ListItem","position":2,"name":"Ресурсы","item":"https://fclass.by/resources/"},{"@type":"ListItem","position":3,"name":"Шаблон договора","item":"https://fclass.by/resources/dogovor-template/"}]}</script>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Что входит в этот PDF?","acceptedAnswer":{"@type":"Answer","text":"Готовый шаблон договора на авиабилеты для юрлиц (9 разделов), пошаговый чек-лист главбуха по командировочным документам и подборка нормативных актов РБ — Постановление Совмина №176, Указ №154, гл.16 НК РБ, ст.131 НК РБ, Закон о защите персональных данных."}},{"@type":"Question","name":"Можно ли использовать этот шаблон с другим агентством?","acceptedAnswer":{"@type":"Answer","text":"Да. Шаблон универсальный — реквизиты исполнителя пустые, заполняются под любого выбранного агента или поставщика. Образец практический, основан на стандартной B2B-практике в Беларуси."}},{"@type":"Question","name":"Этот шаблон легитимный с точки зрения законодательства Беларуси?","acceptedAnswer":{"@type":"Answer","text":"Шаблон опирается на действующие нормативные акты Республики Беларусь: Постановление Совмина №176 (служебные командировки в РБ), Постановление Совмина №94 (командировки за границу), Указ Президента №154, главу 16 Налогового кодекса РБ (НДС), статью 131 НК РБ (расходы на командировки), Закон о защите персональных данных 2021 года. Перед подписанием рекомендуем согласовать с вашим юристом."}},{"@type":"Question","name":"Сколько действует этот документ?","acceptedAnswer":{"@type":"Answer","text":"Документ актуален на 2026 год. Если изменятся нормативные акты — обновим версию и пришлём подписчикам по e-mail."}},{"@type":"Question","name":"Это бесплатно?","acceptedAnswer":{"@type":"Answer","text":"Да. Скачивание PDF бесплатно — нужно только указать e-mail, чтобы мы могли уведомить вас об обновлениях. Не передаём адрес третьим лицам."}}]}</script>
+    <script src="/assets/lead-webhook-guard.js"></script>
 </head>
 <body>
 <nav class="nav"><a href="/" class="nav-logo"><img src="/logo.png" alt="First Class" class="nav-logo-img"></a><ul class="nav-links"><li><a href="/komandirovki/">Командировки</a></li><li><a href="/tickets/">Билеты</a></li><li><a href="/tickets/aviabilety-dlya-yurlic/">Юрлицам</a></li><li><a href="/visa-support/">Визы</a></li><li><a href="/blog/">Блог</a></li><li><a href="/#contact">Контакты</a></li></ul><a href="https://t.me/fclassmsk_bot?start=lead_nav" class="nav-cta" target="_blank" rel="noopener">Связаться</a></nav>
@@ -189,13 +190,16 @@ document.getElementById('dogovor-form').addEventListener('submit',function(e){
     btn.textContent='Отправляем...';
     btn.disabled=true;
     var data=new FormData(form);
-    fetch(form.action,{method:'POST',body:data,mode:'no-cors'}).finally(function(){
+    fetch(form.action,{method:'POST',body:data}).then(function(){
         form.style.display='none';
         document.getElementById('thanks-block').style.display='block';
         try{
             ym(107237229,'reachGoal','pdf_lead_submit');
             gtag('event','generate_lead',{source:'pdf_dogovor'});
         }catch(err){}
+    }).catch(function(){
+        btn.textContent='Ошибка — напишите нам в Telegram';
+        btn.disabled=false;
     });
 });
 </script>

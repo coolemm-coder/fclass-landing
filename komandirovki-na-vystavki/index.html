@@ -116,6 +116,7 @@
     @media(max-width:768px){.info-table,.route-table,.compare-table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}}</style>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Командировки на международные выставки","provider":{"@type":"Organization","name":"First Class","url":"https://fclass.by","telephone":"+375447725266","address":{"@type":"PostalAddress","streetAddress":"просп. Победителей, 11","addressLocality":"Минск","postalCode":"220004","addressCountry":"BY"}},"areaServed":[{"@type":"Country","name":"Беларусь"}],"serviceType":"Организация деловых поездок на выставки","description":"Организация командировок белорусских компаний на международные выставки в Китае, России и Казахстане 2026: авиабилеты Air China и Belavia, проживание, трансферы, переводчики, безналичный расчёт, документы для бухгалтерии."}</script>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная","item":"https://fclass.by/"},{"@type":"ListItem","position":2,"name":"Командировки на выставки","item":"https://fclass.by/komandirovki-na-vystavki/"}]}</script>
+    <script src="/assets/lead-webhook-guard.js"></script>
 </head>
 <body>
 <nav class="nav">
@@ -637,9 +638,10 @@ function submitLead(e){
             try{gtag('event','generate_lead',{currency:'BYN',value:100});}catch(err){}
         })
         .catch(function(){
-            form.style.display='none';
+            form.style.display='block';
             document.getElementById('cta-thanks').style.display='block';
-            document.getElementById('cta-thanks').textContent='Заявка принята локально. Если менеджер не свяжется в течение 30 минут — напишите в Telegram-бот.';
+            document.getElementById('cta-thanks').setAttribute('role','alert');
+            document.getElementById('cta-thanks').textContent='Не удалось отправить заявку. Попробуйте ещё раз или напишите в Telegram-бот.';
         });
     return false;
 }

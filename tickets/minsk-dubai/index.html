@@ -18,6 +18,7 @@
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Авиабилеты Минск-Дубай","provider":{"@type":"TravelAgency","name":"First Class","url":"https://fclass.by","telephone":"+375447725266"},"areaServed":"BY","serviceType":"Бронирование авиабилетов","description":"Подбор и оформление авиабилетов Минск-Дубай для частных клиентов, деловых поездок и юридических лиц."}</script>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная","item":"https://fclass.by/"},{"@type":"ListItem","position":2,"name":"Билеты","item":"https://fclass.by/tickets/"},{"@type":"ListItem","position":3,"name":"Минск — Дубай","item":"https://fclass.by/tickets/minsk-dubai/"}]}</script>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Нужна ли виза в ОАЭ белорусам?","acceptedAnswer":{"@type":"Answer","text":"Правила въезда в ОАЭ нужно проверять перед оплатой билета. В зависимости от актуального визового режима может применяться visa on arrival, электронное разрешение или оформление заранее. First Class проверяет требования по официальным источникам ОАЭ и авиакомпании до оплаты."}},{"@type":"Question","name":"Сколько времени в полёте Минск-Дубай?","acceptedAnswer":{"@type":"Answer","text":"Прямой рейс FlyDubai занимает около 5 часов 30 минут. Варианты Emirates обычно проверяем как партнёрские или стыковочные маршруты через Дубай."}},{"@type":"Question","name":"Какие документы нужны на въезд в ОАЭ?","acceptedAnswer":{"@type":"Answer","text":"Паспорт гражданина РБ с достаточным сроком действия, обратный билет или дальнейший маршрут, подтверждение бронирования отеля или приглашение принимающей стороны в ОАЭ."}},{"@type":"Question","name":"Можно ли оплатить билет Минск-Дубай с расчётного счёта компании?","acceptedAnswer":{"@type":"Answer","text":"Да, через агентство по договору для юрлиц. Для отдельных валютных платежей банк может запросить договор и счёт до оплаты. First Class готовит закрывающие документы для бухгалтерии: счёт, акт, маршрут-квитанцию."}}]}</script>
+    <script src="/assets/lead-webhook-guard.js"></script>
 </head>
 <body>
 <nav class="nav"><a href="/" class="nav-logo"><img src="/logo.png" alt="First Class" class="nav-logo-img"></a><ul class="nav-links"><li><a href="/komandirovki/">Командировки</a></li><li><a href="/tickets/">Билеты</a></li><li><a href="/tickets/aviabilety-dlya-yurlic/">Юрлицам</a></li><li><a href="/visa-support/">Визы</a></li><li><a href="/blog/">Блог</a></li><li><a href="/#contact">Контакты</a></li></ul><a href="https://t.me/fclassmsk_bot?start=lead_nav" class="nav-cta" target="_blank" rel="noopener">Связаться</a></nav>
@@ -119,7 +120,38 @@
 <div class="tg-bubble" data-bubble="v1"><a href="https://t.me/fclassmsk_bot?start=bubble" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="white" width="22" height="22"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.7L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg><span class="tg-bubble-text">Спросить за 30 сек</span></a></div>
 
 <footer class="footer"><div class="footer-content"><div class="footer-brand"><img src="/logo.png" alt="First Class" style="height:64px"><p style="font-size:14px;color:rgba(255,255,255,.6);max-width:300px;margin-top:16px">Организация командировок в Минске. УНП 193218120.</p></div><div class="footer-col"><h4>Услуги</h4><ul class="footer-links"><li><a href="/#services">Авиа и ж/д билеты</a></li><li><a href="/visa-support/">Визовая поддержка</a></li></ul></div><div class="footer-col"><h4>Для бизнеса</h4><ul class="footer-links"><li><a href="/tickets/aviabilety-dlya-yurlic/">Авиабилеты для юрлиц</a></li><li><a href="/#contact">Документы для бухгалтерии</a></li></ul></div><div class="footer-col"><h4>Контакты</h4><ul class="footer-links"><li><a href="tel:+375447725266">+375 44 772-52-66</a></li><li><a href="mailto:marketing@fclass.by">marketing@fclass.by</a></li></ul></div></div></footer>
-<script>document.addEventListener('DOMContentLoaded',function(){var fs=document.querySelectorAll('.cta-page-field');fs.forEach(function(f){f.value=window.location.pathname;});var forms=document.querySelectorAll('.b2b-form');forms.forEach(function(form){form.addEventListener('submit',function(e){e.preventDefault();var thanks=form.parentElement.querySelector('.cta-thanks');var data=new FormData(form);fetch(form.action,{method:'POST',body:data,mode:'no-cors'}).finally(function(){form.style.display='none';if(thanks){thanks.style.display='block';}try{ym(107237229,'reachGoal','route_form_submit');}catch(err){}});});});});</script>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+    document.querySelectorAll('.cta-page-field').forEach(function(field){
+        field.value=window.location.pathname;
+    });
+    document.querySelectorAll('.b2b-form').forEach(function(form){
+        form.addEventListener('submit',function(event){
+            event.preventDefault();
+            var thanks=form.parentElement.querySelector('.cta-thanks');
+            var button=form.querySelector('.cta-submit');
+            if(button){button.disabled=true;button.textContent='Отправляем...';}
+            if(thanks){thanks.style.display='none';thanks.removeAttribute('role');}
+            fetch(form.action,{method:'POST',body:new FormData(form)}).then(function(){
+                form.style.display='none';
+                if(thanks){
+                    thanks.textContent='✓ Заявка отправлена. Менеджер свяжется в течение рабочего часа.';
+                    thanks.setAttribute('role','status');
+                    thanks.style.display='block';
+                }
+                try{if(window.ym)ym(107237229,'reachGoal','route_form_submit');}catch(err){}
+            }).catch(function(){
+                if(thanks){
+                    thanks.textContent='Не удалось отправить заявку. Попробуйте ещё раз или напишите нам в Telegram.';
+                    thanks.setAttribute('role','alert');
+                    thanks.style.display='block';
+                }
+                if(button){button.disabled=false;button.textContent='Отправить заявку';}
+            });
+        });
+    });
+});
+</script>
 <script src="/assets/mobnav.js" defer></script>
 </body>
 </html>
