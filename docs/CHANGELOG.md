@@ -2,9 +2,11 @@
 
 > Журнал правок сайта. Новые записи добавлять СЮДА (короткой строкой: коммит, что поменялось, какие URL, деплой/проверка), НЕ в CLAUDE.md.
 
-- `fix(seo): allow Google to retire one removed legacy staff URL` (2026-07-28, pending deploy)
+- `fix(seo): allow Google to retire one removed legacy staff URL` (2026-07-28, deployed with `565bbad`)
   - добавлено точечное `Allow` для `/company/staff/darya-sakhonchik/`, чтобы Google увидел текущий `404` и удалил старый URL из индекса;
-  - общий запрет `/company/` сохранён, sitemap и действующие страницы не менялись.
+  - общий запрет `/company/` сохранён, sitemap и действующие страницы не менялись;
+  - production подтвердил новое правило и HTTP `404`, GitHub Actions run `30346441859` завершён успешно;
+  - в Google Search Console запущена проверка исправления, статус `Начато` от 28.07.2026.
 
 - `fix(mobile): fill homepage hero without lower seam` (2026-07-28, deployed with `a454409`)
   - мобильный фон снова заполняет hero целиком через `cover`, поэтому фотография не заканчивается заметной тёмной полосой;
