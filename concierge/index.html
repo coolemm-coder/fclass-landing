@@ -333,7 +333,7 @@ document.getElementById('concierge-form').addEventListener('submit', async (e) =
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
         });
-        btn.textContent = 'Отправлено!';
+        btn.textContent = 'Отправлено!'; try{if(window.ym){ym(107237229,'reachGoal','LEAD');}if(window.gtag){gtag('event','generate_lead',{event_category:'lead',event_label:'concierge'});}}catch(e){}
         e.target.reset();
     } catch (err) {
         btn.textContent = 'Ошибка';

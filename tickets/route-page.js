@@ -50,6 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 try {
                     if (window.ym) {
                         ym(107237229, 'reachGoal', 'route_form_submit');
+                        ym(107237229, 'reachGoal', 'LEAD');
                     }
                     if (window.gtag) {
                         gtag('event', 'generate_lead', { event_category: 'lead', event_label: form.dataset.route || 'route_page' });

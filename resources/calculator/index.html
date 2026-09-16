@@ -201,7 +201,7 @@ document.getElementById('calc-form').addEventListener('submit', function(e) {
         form.style.display = 'none';
         document.getElementById('thanks').style.display = 'block';
         try {
-            ym(107237229, 'reachGoal', 'calc_lead_submit');
+            ym(107237229, 'reachGoal', 'calc_lead_submit'); ym(107237229, 'reachGoal', 'LEAD');
             gtag('event', 'generate_lead', {source: 'calculator', value: parseInt(document.getElementById('hf-savings').value || 0)});
         } catch(err) {}
     }).catch(function() {
