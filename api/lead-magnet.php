@@ -62,6 +62,28 @@ if ($fp) {
     fclose($fp);
 }
 
+// 1b. Send to lead pipeline (Telegram group + fc_leads register).
+// Mail alone proved unreliable: leads from 2026-06..08 sat unseen in leads.csv.
+$hookPayload = http_build_query([
+    'name'    => $company ?: 'Лид-магнит',
+    'email'   => $email,
+    'company' => $company,
+    'phone'   => '',
+    'source'  => 'lead-magnet:' . $source,
+    'page'    => '/resources/calculator/',
+    'service' => 'скачал шаблон для бухгалтера',
+]);
+$hookCtx = stream_context_create([
+    'http' => [
+        'method'        => 'POST',
+        'header'        => "Content-Type: application/x-www-form-urlencoded\r\n",
+        'content'       => $hookPayload,
+        'timeout'       => 5,
+        'ignore_errors' => true,
+    ],
+]);
+@file_get_contents('https://automation.landingpro.by/webhook/fclass-blog-lead', false, $hookCtx);
+
 // 2. Notify team
 $mailTo = 'marketing@fclass.by';
 $mailSubject = '[Lead] ' . $source . ' — ' . $email;
