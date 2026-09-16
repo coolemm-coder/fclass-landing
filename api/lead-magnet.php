@@ -62,6 +62,17 @@ if ($fp) {
     fclose($fp);
 }
 
+// Which page the magnet was submitted from: payload first, then referer.
+// Two calculators exist (/komandirovochnye-kalkulyator/ carries the traffic,
+// /resources/calculator/ is the second one), so do not hardcode either.
+$page = substr(trim($data['page'] ?? ''), 0, 200);
+if ($page === '') {
+    $ref = $_SERVER['HTTP_REFERER'] ?? '';
+    $path = $ref ? parse_url($ref, PHP_URL_PATH) : '';
+    $page = $path ?: '/komandirovochnye-kalkulyator/';
+}
+$page = htmlspecialchars($page, ENT_QUOTES, 'UTF-8');
+
 // 1b. Send to lead pipeline (Telegram group + fc_leads register).
 // Mail alone proved unreliable: leads from 2026-06..08 sat unseen in leads.csv.
 $hookPayload = http_build_query([
@@ -70,7 +81,7 @@ $hookPayload = http_build_query([
     'company' => $company,
     'phone'   => '',
     'source'  => 'lead-magnet:' . $source,
-    'page'    => '/resources/calculator/',
+    'page'    => $page,
     'service' => 'скачал шаблон для бухгалтера',
 ]);
 $hookCtx = stream_context_create([
