@@ -170,7 +170,7 @@
                 <div class="form-row"><div class="form-group"><label class="form-label" for="name">Имя</label><input class="form-input" type="text" id="name" name="name" required></div><div class="form-group"><label class="form-label" for="phone">Телефон / WhatsApp</label><input class="form-input" type="tel" id="phone" name="phone" required></div></div>
                 <div class="form-row"><div class="form-group"><label class="form-label" for="date">Дата вылета</label><input class="form-input" type="date" id="date" name="date"></div><div class="form-group"><label class="form-label" for="pax">Пассажиров</label><input class="form-input" type="number" id="pax" name="pax" min="1" value="1"></div></div>
                 <div class="form-group"><label class="form-label" for="comment">Комментарий (туда-обратно, далее в Европу, юрлицо…)</label><textarea class="form-input" id="comment" name="comment" rows="3"></textarea></div>
-                <button type="submit" class="btn btn-primary form-submit">Получить варианты билетов</button>
+                <div class="form-row"><div class="form-group"><label class="form-label" for="trip_type">Цель поездки</label><select class="form-input" id="trip_type" name="trip_type"><option value="Рабочая — командировка">Рабочая — командировка</option><option value="Личная поездка">Личная поездка</option></select></div></div><button type="submit" class="btn btn-primary form-submit">Получить варианты билетов</button>
                 <p class="form-note">Нажимая «Получить варианты», соглашаетесь с <a href="/privacy/">политикой конфиденциальности</a>.</p>
             </form>
         </div>
